@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+.mhide {display:none !important}
+
+.visual .subTitle {padding-top:60px;}
+.visual {height:176px;}
+
+.imgView .left > ul {
+	position:static;
+	left:unset;
+	bottom:unset;
+	margin:5px 0 0 0;
+	text-align:center;
+}
+
+.tblType01Wrap {width:100%; overflow-x:scroll;}
+.tblType01 {width:1000px;}
+.tblType02, .tblType02 thead, .tblType02 tbody, .tblType02 tr, .tblType02 th, .tblType02 td {display:block;}
+.tblType01, .tblType02 {box-sizing:border-box;}
+.tblType02 th, .tblType02 td {padding:13px 8px;}
+.saleCompleteArea {padding:25px 5px; }
+.saleCompleteArea .text {text-align:center;}
+
+.qnaVersion {width:60px;}
+.qnaDown {width:70px;}
+.mNoBg {background-image:none !important;}
+.tblType01.listView .title {background-image:none !important}
+.cilab .img {
+	height: 160px;
+	background-size: 100%;
+}
+.loginBox .img {display: block;}
+.loginBox .login {padding-left: 0; text-align: center; padding: 35px 0 15px;}
+.loginBox .loginInput {margin: 0; padding:10px 0 0 0; width: 100%;}
+.loginBox .loginBtn {
+	position: static;
+	top: unset;
+	right: unset;
+	margin-top: 5px;
+	height: 37px;
+	line-height: 37px;
+	width: 100%;
+}
+.loginBox .saveID {margin: 10px 0 0 0;}
+.loginBox .loginInput input {width: 235px;}
+
+.sitemapAreaWrap {margin: 0;}
+.sitemapArea {
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 50px 0;
+	margin: 0 0 30px 0;
+}
+.sitemapArea:first-child {margin-right: 0;}
+.emptyArea {height: 100px;}
+.mainText {
+	padding:0 15px;
+}
+.mainMenu {
+	position: static;
+	left: unset;
+	bottom: unset;
+	margin: 70px 0 0 0;
+	font-size: 0;
+}
+.mainMenu li {
+	width: 50%;
+	margin-bottom: 5px;
+	text-align: center;
+	padding-left: 0;
+}
+
+.mainMenu li img {width: 100%;}
+.mainVisual {
+	padding-bottom: 30px;
+	height: auto;
+	background: url('../images/main/visual_m.png') no-repeat 0 0;
+	background-size: cover;
+}
+.mainNoti {
+	padding-left: 70px;
+	background: url('../images/main/btn_noti_m.png') no-repeat 0 0;
+	font-weight: bold;
+}
+.mainNoti .date {display: none;}
+.mainNoti .title a {
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
