@@ -103,3 +103,7 @@ function tab(name, tot, num) {
 function popup(url,id,width,height) {
 	window.open(url,id,"toolbar=no,location=no,status=no,menubar=no,scrollbars=no,left=0, top=0, resizable=no,width=" + width + "px,height=" + height + "px");
 }
+
+
+
+
