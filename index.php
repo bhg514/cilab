@@ -37,7 +37,7 @@
 		</div>
 		<div class="mainNotiWrap">
 			<div class="mainNoti">
-				<p class="title"><a href="#a">가장 최근 공지사항 입니다.가장 최근 공지사항 입니다.가장 최근 공지사항 입니다.</a></p>
+				<p class="title"><a href="#a">가장 최근 공지사항 입니다.가장 최근 공지사항 입니다.가장 최근 공지사항 입니다. </a></p>
 				<p class="date">2017.10.01</p>
 			</div>
 		</div>
