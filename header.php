@@ -10,10 +10,11 @@
 	<link rel="stylesheet" type="text/css" href="../css/mobile_menu_styles.css">
 	<link rel="stylesheet" media="screen and (max-width:999px)" type="text/css" href="../css/tablet.css">
 	<link rel="stylesheet" media="screen and (max-width:480px)" type="text/css" href="../css/mobile.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>		
 	<script type="text/javascript" src="../js/common.js"></script>
 	<script type="text/javascript" src="../js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="../js/mobile_menu_script.js"></script>
+
 	<!--[if lt IE 9]>
 		<script src="../js/respond.js"></script>
 		<script src="../js/html5.js"></script>

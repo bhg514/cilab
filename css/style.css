@@ -871,3 +871,7 @@ footer .copyright {
 .reg_hp{
 	width: 60px;
 }
+
+.error{
+	color: red;
+}
