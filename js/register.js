@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 	//이메일 선택 
 	$('#selectEmail').change(function(){
@@ -95,15 +96,29 @@ $(document).ready(function(){
                 $('#reg_mb_zip-error').hide()
             }
 
+            if($('input[name="mail_reception"]:checked').val()==null){
+                $('#mail_reception-error').text("메일 수신 여부를 선택하세요.")
+                $('#mail_reception-error').show()
+                vail_chk=1
+            }else{
+                $('#mail_reception-error').hide()
+            }
+            if($('input[name="mb_gender"]:checked').val()==null){
+                $('#mb_gender-error').text("성별을 선택해주세요.")
+                $('#mb_gender-error').show()
+                vail_chk=1
+            }else{
+                $('#mb_gender-error').hide()
+            }
+
             if(vail_chk == 0)
-               alert("정상")
+               reg_form()
             
 
         },
         rules : {
             mb_name: {
-                required : true,
-                minlength : 5                
+                required : true                           
             },
             mb_id : {
                 required : true             
@@ -112,6 +127,9 @@ $(document).ready(function(){
                 required : true
             },
             mb_password_re : {
+                required : true
+            },
+            mb_bd : {
                 required : true
             },
             mb_hp1: {
@@ -134,15 +152,11 @@ $(document).ready(function(){
             },
             mb_addr1 : {
                 required : false
-            },           
-            mail_reception : {
-                required : true
             }
         },
         messages : {
             mb_name: {
-                required : "이름을 입력해주세요.",
-                minlength : "최소 {0}글자이상이어야 합니다"                
+                required : "이름을 입력해주세요."                
             },
             mb_id : {
                 required : "ID를 입력해주세요. "             
@@ -153,20 +167,66 @@ $(document).ready(function(){
             mb_password_re : {
                 required : "비밀번호를 입력해주세요."
             },
-            mb_hp1: {
+            mb_bd : {
+                required : "생일을 선택해주세요."
+            },
+            mb_hp1 : {
                 required : "연락처를 입력해주세요."
             },
             mb_email1 : {
                 required : "이메일을 입력해주세요."
-            },  
-            mail_reception : {
-                required : "메일 수신동의 해주세요"
             }
             
         }
     });
    
 })
+
+
+//회원정보 전달
+function reg_form(){
+    var name = $("#reg_mb_name").val();
+    var id = $("#reg_mb_id").val();
+    var pw = $("#reg_mb_password").val();
+    var hp = $("#reg_mb_hp1").val()+"-"+$("#reg_mb_hp2").val()+"-"+$("#reg_mb_hp3").val();
+    var gender = $('input[name="mb_gender"]:checked').val();
+    var birthday = $('#reg_mb_bd').val();
+    var mail= $("#str_email01").val()+"@"+$("#str_email02").val();
+    var zip= $("#reg_mb_zip").val();
+    var addr1= $("#reg_mb_addr1").val();
+    var addr2= $("#reg_mb_addr2").val();
+    var mail_reception= $('input[name="mail_reception"]:checked').val();
+    $.ajax({
+        type: "POST",
+        url: "../ajax/join_form_result.php",
+        processData : false,
+        contentType : false,
+        data: { 
+            name : encodeURIComponent(name),
+            id :  id,
+            pw : pw,
+            hp : hp,
+            gender : gender,
+            birthday : birthday,
+            mail : mail,
+            zip : zip,
+            addr1 : addr1,
+            addr2 : addr2,
+            mail_reception : mail_reception
+        },
+        dataType: "json",
+        success: function(data) {   
+            if(data==1){
+                alert("회원가입이 정상적으로 진행되었습니다.\n로그인 후 계속 진행해주세요.");
+            }else{
+                alert("error");                
+            }
+        }
+    });
+    
+
+
+}
 
 //이메일 선택 
 function email_change(){

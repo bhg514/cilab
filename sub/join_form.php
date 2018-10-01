@@ -10,6 +10,7 @@
 <script type="text/javascript" src="../js/additional-methods.min.js"></script>
 <script type="text/javascript" src="../js/messages_ko.min.js"></script>
 <script type="text/javascript" src="../js/register.js"></script>
+<script type="text/javascript" src="../js/click_cal.js"></script>
 
 <section class="container">	
 	<div class="visual etc">
@@ -22,7 +23,7 @@
 	</div>
 	<div class="contents">
 		<div class="tabletInner">
-			<form id="reg_form" action="#" method="post">
+			<form id="reg_form" action="join_form_result.php" method="post">
 				<fieldset>
 					<table class="tblType02">
 						<caption>회원가입 정보</caption>
@@ -34,7 +35,7 @@
 							<tr>						
 								<th scope="row">이름</th>						
 								<td>
-									<input type="text" id="reg_mb_name" name="mb_name" value="" class="inTbl frm_input required " size="10">
+									<input type="text" id="reg_mb_name" name="mb_name" value="" class="inTbl frm_input required" minlength="1" size="10">
 								</td>
 							</tr>					
 							<tr>
@@ -66,6 +67,22 @@
 									<span id="wrong_pw" class="fcR ml05 fs12 b hide">비밀번호가 일치하지 않습니다.</span> <!-- span tag에 hide 유무에 따라 화면에 표현이 결정됩니다.  -->
 								</td>
 							</tr>
+							<tr>
+								<th scope="row">성별</th>
+								<td>
+									<label><input type="radio" name="mb_gender" value="m"> 남자</label>
+									<label><input type="radio" name="mb_gender" value="w"> 여자</label>
+									<label id="mb_gender-error" class="error" for="mb_gender" style="display:none;" >성별을 선택하세요.</label>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">생일</th>
+								<td>
+									<input id="reg_mb_bd" name="mb_bd" type="text" class="required" OnClick="Calendar(this, 'down','no');">
+								</td>
+							</tr>
+
+							
 							<tr>
 								<th scope="row">휴대전화번호</th>
 								<td>
@@ -121,9 +138,9 @@
 							<tr>
 								<th scope="row">메일수신여부</th>
 								<td>
-									<label><input type="radio" name="mail_reception"> 동의함</label>
-									<label><input type="radio"> 동의하지 않음</label>
-									<label id="mail_reception-error" class="error" for="mail_reception" style="display:none;" ></label>
+									<label><input type="radio" name="mail_reception" value="y"> 동의함</label>
+									<label><input type="radio" name="mail_reception" value="n"> 동의하지 않음</label>
+									<label id="mail_reception-error" class="error" for="mail_reception" style="display:none;" >메일 수신 여부를 선택하세요.</label>
 								</td>
 							</tr>					
 						</tbody>
