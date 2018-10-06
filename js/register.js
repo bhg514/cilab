@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 	//이메일 선택 
 	$('#selectEmail').change(function(){
@@ -199,10 +198,10 @@ function reg_form(){
     $.ajax({
         type: "POST",
         url: "../ajax/join_form_result.php",
-        processData : false,
-        contentType : false,
+        cache: false,
+        async: false,
         data: { 
-            name : encodeURIComponent(name),
+            name : name,
             id :  id,
             pw : pw,
             hp : hp,
@@ -217,7 +216,7 @@ function reg_form(){
         dataType: "json",
         success: function(data) {   
             if(data==1){
-                alert("회원가입이 정상적으로 진행되었습니다.\n로그인 후 계속 진행해주세요.");
+                window.location.href = 'http://http://localhost/register/result.php';
             }else{
                 alert("error");                
             }

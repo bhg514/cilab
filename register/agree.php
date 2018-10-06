@@ -14,7 +14,7 @@
 	<div class="contents">
 		<div class="tabletInner">
 			<div class="joinBox">
-				<form action="join_form.php" method="post">
+				<form action="form.php" method="post">
 					<div class="contract1">
 						<div class="title">◎회원약관 확인</div>
 						<div class="content">

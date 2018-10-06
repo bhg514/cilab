@@ -17,12 +17,14 @@
 				<div class="img"><img src="../images/common/img_idpw.png" alt="비밀번호찾기 이미지"></div>
 				<div class="input">
 					<p class="login">가입 시 입력한 이메일을 입력해주세요.</p>
-					<div class="loginInput pwSt">
-						<div>
-							<input type="text" placeholder="E-mail">
+					<form id="find_id_form" action="./find_id_form.php" method="post">
+						<div class="loginInput pwSt">
+							<div>
+								<input name="input_mail" type="text" placeholder="E-mail">
+							</div>
+							<input type="submit" class="loginBtn pwSt" value="아이디 찾기">
 						</div>
-						<a href="#a" class="loginBtn pwSt">아이디 찾기</a>
-					</div>
+					</form>
 				</div>
 			</div>
 			<div class="mt20 ar">

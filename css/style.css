@@ -764,12 +764,12 @@ footer .copyright {
 	border: 1px solid #949494;
 	color: #949494;
 }
-.loginBox .loginBtn {
+.loginBox input.loginBtn {
 	position: absolute;
 	top: 0;
 	right: 0;
 	display: inline-block;
-	width: 82px;
+	width: 120px !important;
 	height: 70px;
 	line-height: 70px;
 	text-align: center;
