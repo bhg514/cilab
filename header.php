@@ -27,7 +27,8 @@
 			<div class="gnbInner">
 				<?php 
 					include_once('common.php');
-					if(!isset($_SESSION['user_id'])){
+					if(!isset($_SESSION['user_id']) && !isset($_SESSION['user_name']) ){
+
 				?>
 				<a href="../member/login.php" class="gnb_login">로그인</a>
 				<a href="../register/agree.php" class="gnb_join">회원가입</a>
@@ -36,7 +37,7 @@
 				?>
 
 				<a href="../member/logout.php" class="gnb_login">로그아웃</a>
-				<a href="../register/mypage.php" class="gnb_join">마이페이지</a>
+				<a href="../mypage/info.php" class="gnb_join">마이페이지</a>
 				<?php
 					}
 				?>

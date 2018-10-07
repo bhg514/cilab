@@ -12,7 +12,7 @@
 		}
 		$count++;
 	}
-
+	$_SESSION['input_mail'] = $input_mail;
 	$_SESSION['mail_code'] = $code;
 	// 발생한 난수 저장 
 

@@ -1,7 +1,9 @@
 <?php
 	include '../header.php';
 	include_once('../common.php');
-	$_SESSION['pre_url']=$_SERVER["HTTP_REFERER"];
+	if($_SERVER["HTTP_REFERER"]!="http://localhost/member/login_chk.php"){
+		$_SESSION['pre_url']=$_SERVER["HTTP_REFERER"];
+	}
 ?>
 <script type="text/javascript" src="../js/member.js"></script>
 <section class="container">
@@ -19,13 +21,13 @@
 				<div class="img"><img src="../images/common/img_login.png" alt="로그인 이미지"></div>
 				<div class="input">
 					<p class="login">LOGIN</p>
-					<form id='login_form' action="./login_chk.php" method="post">
+					<form id='user_login_form' action="./login_chk.php" method="post">
 						<div class="loginInput">
 							<div>
-								<input name="input_id" type="text" placeholder="ID">
+								<input name="id" type="text" placeholder="ID">
 							</div>
 							<div>
-								<input name="input_pw" type="password" placeholder="Password">
+								<input name="pw" type="password" placeholder="Password">
 							</div>
 							<input type="submit" class="loginBtn" value="로그인">
 						</div>

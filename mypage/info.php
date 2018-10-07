@@ -12,6 +12,10 @@
 		</div>
 	</div>
 	<div class="contents">
+		<div class="btnTab">
+			<a href="./info.php" class="on">정보 수정</a>
+			<a href="./order.php" >배송 조회</a>
+		</div>
 		<div class="tabletInner">
 			<div class="tblType01Wrap">
 				<table class="tblType01 listView">
