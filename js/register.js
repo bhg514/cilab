@@ -23,7 +23,7 @@ $(document).ready(function(){
 			$('#right_pw').hide();
 			$('#wrong_pw').show();
 		}
-	})
+	});
 
     //비밀번호 합부판정
 	$('#reg_mb_password').change(function(){
@@ -37,11 +37,12 @@ $(document).ready(function(){
 		}else{
             $("#pw_chk").val(0);
 			$('#good_pw').hide();
+            $('#bad_pw').text('[사용불가]비밀번호 기준에 맞지 않습니다.');
 			$('#bad_pw').show();
 		}	
-	})
+	});
 
-    //회원가입 유효성 검사
+    /*//회원가입 유효성 검사
     $("#reg_form").validate({
         submitHandler : function() {
             var id_chk = $('#id_chk_val').val()
@@ -177,11 +178,99 @@ $(document).ready(function(){
             }
             
         }
+    });*/
+
+    $('#sub_btn').click(function(){
+        msg_hide()
+        var chk_val = input_chk();
+        if(chk_val == 1) {
+            return false;
+        }
+
     });
-   
+
 })
+function msg_hide() {
+    $('#mb_name-error').hide()
+    $('#r_id').hide()    
+    $('#bad_pw').hide()
+    $('#wrong_pw').hide()
+    $('#wrong_gender').hide()
+    $('#wrong_bd').hide()
+    $('#wrong_hp').hide()
+    $('#wrong_mail').hide()
+    $('#wrong_zip').hide()
+    $('#wrong_mail_reception').hide()
+}
+function input_chk(){
+    var chk_val = 0;
+    var name = $("#reg_mb_name").val();
+    var id = $("#reg_mb_id").val();
+    var id_chk = $('#id_chk_val').val();
+    var pw = $("#reg_mb_password").val();
+    var pw_re = $("#reg_mb_password_re").val();
+    var gender = $('input[name="mb_gender"]:checked').val();
+    var birthday = $('#reg_mb_bd').val();
+    var hp1 = $("#reg_mb_hp1").val()
+    var hp2 = $("#reg_mb_hp2").val()
+    var hp3 = $("#reg_mb_hp3").val();
+    var mail1= $("#str_email01").val()
+    var mail2= $("#str_email02").val();
 
+    var zip= $("#reg_mb_zip").val();
+    var addr1= $("#reg_mb_addr1").val();
+    var addr2= $("#reg_mb_addr2").val();
+    var mail_reception= $('input[name="mail_reception"]:checked').val();
+    if (name==""){
+        $('#mb_name-error').show()
+        chk_val=1;
+    }
+    if (id==""){
+        $('#r_id').text("아이디를 입력하세요")
+        $('#r_id').show()   
+        chk_val=1;
+    }else if(id_chk==0){
+        $('#r_id').text("중복체크를 해주세요")
+        $('#r_id').show()
+        chk_val=1;
+    }
 
+    if (pw==""){
+        $('#bad_pw').text("비밀번호를 입력하세요") 
+        $('#bad_pw').show()   
+        chk_val=1;
+    }
+    if(pw!=pw_re){
+        $('#wrong_pw').show()
+        chk_val=1;
+    }
+    if (gender==null){
+        $('#wrong_gender').show()   
+        chk_val=1;
+    }
+    if (birthday==""){
+        $('#wrong_bd').show()   
+        chk_val=1;
+    }
+    if (hp1==""||hp2==""||hp3==""){
+        $('#wrong_hp').show()   
+        chk_val=1;
+    }
+    if (mail1==""||mail2==""){
+        $('#wrong_mail').show() 
+        chk_val=1;
+    }
+    if (zip==""||addr1==""||addr2==""){
+        $('#wrong_zip').show() 
+        chk_val=1;
+    }    
+    if (mail_reception==null){
+        $('#wrong_mail_reception').show() 
+        chk_val=1;
+    }
+    return chk_val;
+
+}
 //회원정보 전달
 function reg_form(){
     var name = $("#reg_mb_name").val();
@@ -216,15 +305,12 @@ function reg_form(){
         dataType: "json",
         success: function(data) {   
             if(data==1){
-                window.location.href = 'http://http://localhost/register/result.php';
+                window.location.href = 'http://localhost/register/result.php';
             }else{
                 alert("error");                
             }
         }
     });
-    
-
-
 }
 
 //이메일 선택 
@@ -368,6 +454,21 @@ var win_zip = function(frm_name, frm_zip, frm_addr1, frm_addr2, frm_addr3, frm_j
     }
 }
 
+function isNumber(s) {
+  s += ''; // 문자열로 변환
+  s = s.replace(/^\s*|\s*$/g, ''); // 좌우 공백 제거
+  if (s == '' || isNaN(s)) return false;
+  return true;
+}
+
+function fn_press_han(obj){
+    if(!isNumber(obj.value) && obj.value!=""){
+        alert("숫자만 입력하세요");
+        obj.value="";
+    }
+}
+
+
 function id_chk(){
 
     var chk_type = $('#id_chk_val').val()//id_chk 여부  0:체크 전 , 1: 체크 후
@@ -394,7 +495,7 @@ function id_chk(){
                         $('#r_id').hide();
                         $('#bl_id').show();
                         $('#id_chk_val').val(1);
-                        document.getElementById("reg_mb_id").disabled = true;
+                        document.getElementById('control_EMAIL').readOnly = true;
                         $('#id_chk_btn').text("아이디 변경");
                         
                     }
@@ -410,8 +511,10 @@ function id_chk(){
         $('#bl_id').hide();
         $('#id_chk_val').val(0);
         $('#id_chk_btn').text("중복 체크");
-        document.getElementById("reg_mb_id").disabled = false;
+        document.getElementById('control_EMAIL').readOnly = false;
     }
+
+
 
     
     

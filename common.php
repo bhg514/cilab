@@ -1,6 +1,8 @@
 <?php
-	include_once('config/db_config.php'); 
+	@ob_start();
+	header ( "content-type:text/html; charset=utf-8" );
 	session_start();
+	include_once('config/db_config.php'); 
 	$mysqli = new mysqli($host, $user, $pw, $dbName);
 
 	function mysql_q($query){
@@ -15,12 +17,12 @@
    		$id_count = mysqli_fetch_array($result);
 		return $id_count[0];
 	}
-	function get_id_pw($id){
+	function get_user_info_to_id($id){
 		global $mysqli;
 		$query = 'select * from tb_user where fd_id = "'.$id.'"';
 		$result = mysqli_query($mysqli, $query);
-   		$id_count = mysqli_fetch_array($result);
-		return $id_count;
+   		$info = mysqli_fetch_array($result);
+		return $info;
 	}
 
 	function get_id_to_mail($mail){
@@ -31,7 +33,7 @@
 	}
 
 	function check_password($pw, $hash){
-		if(password_verify($pw , $hash)){
+		if(crypt($pw , $hash) == $hash){
 			return true;
 		}else{
 			return false;
@@ -40,7 +42,5 @@
 
 	function alert($msg,$url){
 		echo "<script>alert(\"".$msg."\");location.replace('".$url."');</script>";
-	}
-
-	
+	}	
 ?>

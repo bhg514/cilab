@@ -5,7 +5,7 @@
 	$input_pw = $_POST['input_pw'];
 	echo $input_id;
 	
-	$chk_info = get_id_pw($input_id);
+	$chk_info = get_user_info_to_id($input_id);
 	if (!$chk_info['fd_id'] || !check_password($input_pw, $chk_info['fd_pw'])) {
 	    echo 0;
 	}else{

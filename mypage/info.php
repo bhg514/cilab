@@ -1,110 +1,173 @@
 <?php
 	header ( "content-type:text/html; charset=utf-8" );
-	include '../header.php'
+	include '../header.php';
+	if(!isset($_SESSION['user_id'])&&!isset($_SESSION['user_name'])){
+		header('location:http://localhost/index.php');
+	}
+	
+	if($_SESSION['user_chk']=="1"){
+		unset($_SESSION['user_chk']);		
+	}else{
+		header('location:http://localhost/mypage/user_chk.php');
+	}
+	$id = $_SESSION['user_id'];
+	$user_info = get_user_info_to_id($id);
+	$hp_split = explode('-', $user_info['fd_hp']);
+	$hp1 = $hp_split[0];
+	$hp2 = $hp_split[1];
+	$hp3 = $hp_split[2];
+	$mail_split = explode('@',$user_info['fd_mail']);
+	$mail = $mail_split[0];
+	$mail_site = $mail_split[1];
+
 ?>
-<section class="container">
-	<div class="visual store">
-		<p class="subTitle">STORE</p>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="../js/additional-methods.min.js"></script>
+<script type="text/javascript" src="../js/messages_ko.min.js"></script>
+<script type="text/javascript" src="../js/register.js"></script>
+<script type="text/javascript" src="../js/click_cal.js"></script>
+<section class="container">	
+	<div class="visual etc">
+		<p class="subTitle">정보수정</p>
 		<div class="location">
 			<img src="../images/common/icon_home.png" alt="Home">
 			<span>&gt;</span>
-			<span>STORE</span>
+			<span>마이페이지</span>
+			<span>&gt;</span>
+			<span>정보 수정</span>
 		</div>
 	</div>
 	<div class="contents">
 		<div class="btnTab">
-			<a href="./info.php" class="on">정보 수정</a>
 			<a href="./order.php" >배송 조회</a>
+			<a href="./info.php" class="on">정보 수정</a>
 		</div>
 		<div class="tabletInner">
-			<div class="tblType01Wrap">
-				<table class="tblType01 listView">
-					<caption>주문정보</caption>
-					<colgroup>
-						<col style="width:120px;">
-						<col>
-						<col style="width:115px;">
-						<col style="width:75px;">
-						<col style="width:110px;">
-						<col style="width:110px;">
-						<col style="width:110px;">
-						<col style="width:110px;">
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="col">주문일자</th>
-							<th scope="col">상품명</th>
-							<th scope="col">총액</th>
-							<th scope="col">상태</th>
-							<th scope="col">배송조회</th>
-							<th scope="col">반품신청</th>
-							<th scope="col">환불신청</th>
-							<th scope="col">구매확정</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>2017.09.02</td>
-							<td class="title">ROV1</td>
-							<td>255,000원</td>
-							<td>배송중</td>
-							<td><a href="#a" class="btn type05">배송조회</a></td>
-							<td><a href="#a" class="btn type05">반품신청</a></td>
-							<td><a href="#a" class="btn type05">환불신청</a></td>
-							<td><a href="#a" class="btn type05">구매확정</a></td>
-						</tr>
-						<tr>
-							<td>2017.09.02</td>
-							<td class="title">ROV1</td>
-							<td>255,000원</td>
-							<td>배송중</td>
-							<td><a href="#a" class="btn type05">배송조회</a></td>
-							<td><a href="#a" class="btn type05">반품신청</a></td>
-							<td><a href="#a" class="btn type05">환불신청</a></td>
-							<td><a href="#a" class="btn type05">구매확정</a></td>
-						</tr>
-						<tr>
-							<td>2017.09.02</td>
-							<td class="title">ROV1</td>
-							<td>255,000원</td>
-							<td>배송중</td>
-							<td><a href="#a" class="btn type05">배송조회</a></td>
-							<td><a href="#a" class="btn type05">반품신청</a></td>
-							<td><a href="#a" class="btn type05">환불신청</a></td>
-							<td><a href="#a" class="btn type05">구매확정</a></td>
-						</tr>
-						<tr>
-							<td>2017.09.02</td>
-							<td class="title">ROV1</td>
-							<td>255,000원</td>
-							<td>배송중</td>
-							<td><a href="#a" class="btn type05">배송조회</a></td>
-							<td><a href="#a" class="btn type05">반품신청</a></td>
-							<td><a href="#a" class="btn type05">환불신청</a></td>
-							<td><a href="#a" class="btn type05">구매확정</a></td>
-						</tr>
-						<tr>
-							<td>2017.09.02</td>
-							<td class="title">ROV1</td>
-							<td>255,000원</td>
-							<td>배송중</td>
-							<td><a href="#a" class="btn type05">배송조회</a></td>
-							<td><a href="#a" class="btn type05">반품신청</a></td>
-							<td><a href="#a" class="btn type05">환불신청</a></td>
-							<td><a href="#a" class="btn type05">구매확정</a></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="mt20 fs15">
-				<label><input type="checkbox"> 상품구매에 동의합니다.</label>
-			</div>
-			<div class="mt20 ar">
-				<a href="#a" class="btn type06">상품구매</a>
-				<a href="#a" class="btn type06 st2">취소</a>
-			</div>
+			<form id="info_form" action="info_form_result.php" method="post">
+				<fieldset>
+					<table class="tblType02">
+						<caption>정보 수정 </caption>
+						<colgroup>
+							<col style="width:170px;">
+							<col>
+						</colgroup>
+						<tbody>
+							<tr>						
+								<th scope="row">이름</th>						
+								<td><?=$user_info['fd_name']?></td>
+							</tr>					
+							<tr>
+								<th scope="row">아이디</th>
+								<td><?=$user_info['fd_id']?></td>
+							</tr>
+							<tr>
+								<th scope="row">비밀번호</th>
+								<td>
+									<input type="hidden" id="pw_chk" >
+									<input type="password" name="mb_password" id="reg_mb_password" class="inTbl frm_input required" minlength="9" maxlength="20">
+									<span id="good_pw" class="fcBl ml05 fs12 b hide">[안전] 사용 가능한 비밀번호입니다.</span>
+									<span id="bad_pw" class="fcR ml05 fs12 b hide">[사용불가]비밀번호 기준에 맞지 않습니다.</span>	<!-- span tag에 hide 유무에 따라 화면에 표현이 결정됩니다.  -->
+									<p class="mt05">* 9자리 이상의 영문 소문자,특수문자,숫자를 혼합하여 입력해주세요.</p>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">비밀번호 확인</th>
+								<td>
+									<input type="password" name="mb_password_re" id="reg_mb_password_re" class="inTbl frm_input required" minlength="9" maxlength="20">
+									<span id="right_pw" class="fcBl ml05 fs12 b hide">입력한 비밀번호가 일치합니다.</span>
+									<span id="wrong_pw" class="fcR ml05 fs12 b hide">비밀번호가 일치하지 않습니다.</span> <!-- span tag에 hide 유무에 따라 화면에 표현이 결정됩니다.  -->
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">성별</th>
+								<td>
+									<label><input type="radio" name="mb_gender" value="m" <?if($user_info['fd_gender']=="m"){ echo "checked";}?>> 남자</label>
+									<label><input type="radio" name="mb_gender" value="w" <?if($user_info['fd_gender']=="w"){ echo "checked";}?>> 여자</label>
+									<label id="mb_gender-error" class="error" for="mb_gender" style="display:none;" >성별을 선택하세요.</label>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">생일</th>
+								<td>
+									<input id="reg_mb_bd" name="mb_bd" type="text" class="required" OnClick="Calendar(this, 'down','no');" value="<?=$user_info['fd_birthday']?>">
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">휴대전화번호</th>
+								<td>
+									<input type="text" name="mb_hp1" value="<?=$hp1?>" id="reg_mb_hp1" class="inTbl frm_input required reg_hp" maxlength="3">-
+									<input type="text" name="mb_hp2" value="<?=$hp2?>" id="reg_mb_hp2" class="inTbl frm_input required reg_hp" maxlength="4">-
+									<input type="text" name="mb_hp3" value="<?=$hp3?>" id="reg_mb_hp3" class="inTbl frm_input required reg_hp" maxlength="4">
+									<label id="reg_mb_hp1-error" class="error" for="reg_mb_hp1" style="display:none;"></label>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">이메일</th>
+								<td><!-- <input type="text" class="inTbl"> -->
+									<input type="hidden" name="old_email" value="">
+									<input type="text" name="mb_email1" id="str_email01" class="inTbl frm_input required" value="<?=$mail?>">   @
+									<input type="text" name="mb_email2" id="str_email02" value="<?=$mail_site?>" class="inTbl frm_input required">
+									<select name="email" id="selectEmail">
+									    <option selected hidden>선택하세요</option>
+									    <option value="1">직접입력</option>
+									    <option value="naver.com" >naver.com</option> 
+									    <option value="hanmail.net">hanmail.net</option> 
+									    <option value="hotmail.com">hotmail.com</option> 
+									    <option value="nate.com">nate.com</option> 
+									    <option value="yahoo.co.kr">yahoo.co.kr</option> 
+									    <option value="empas.com">empas.com</option> 
+									    <option value="dreamwiz.com">dreamwiz.com</option> 
+									    <option value="freechal.com">freechal.com</option> 
+									    <option value="lycos.co.kr">lycos.co.kr</option> 
+									    <option value="korea.com">korea.com</option> 
+									    <option value="gmail.com">gmail.com</option> 
+									    <option value="hanmir.com">hanmir.com</option> 
+									    <option value="paran.com">paran.com</option>
+									</select>	
+									<label id="str_email01-error" class="error" for="str_email01" style="display:none;"></label>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">주소</th>
+								<td>
+									<label for="reg_mb_zip" class="sound_only">우편번호</label>
+									<input type="text" name="mb_zip" value="<?=$user_info['fd_zip']?>" id="reg_mb_zip" class="inTbl frm_input required" size="5" maxlength="6" readonly >
+									<a href="javascript:win_zip('fregisterform', 'mb_zip', 'mb_addr1', 'mb_addr2', 'mb_addr3', 'mb_addr_jibeon');" class="btn type05 ml10">주소 검색</a><label id="reg_mb_zip-error" class="error" for="reg_mb_zip" style="display:none;" ></label><br>
+									<div id="daum_juso_pagemb_zip" style="display:none; border:1px solid; left:0px; width:100%; height:267px; margin:5px 0px;position:relative;">
+										<img src="//i1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-21px;z-index:1" class="close_daum_juso" alt="접기 버튼">
+									</div>
+									<input type="text" name="mb_addr1" value="<?=$user_info['fd_address1']?>" id="reg_mb_addr1"  class="inTbl frm_input frm_address required" size="50" readonly>
+									<label for="reg_mb_addr1">기본주소<strong class="sound_only"> 필수</strong></label><br>
+									<input type="text" name="mb_addr2" value="<?=$user_info['fd_address2']?>" id="reg_mb_addr2"  class="inTbl frm_input frm_address " size="50">
+									<label for="reg_mb_addr2">상세주소</label>
+									<br>							
+									<input type="hidden" name="mb_addr_jibeon" value="R">
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">메일수신여부</th>
+								<td>
+									<label><input type="radio" name="mail_reception" value="y" <?if($user_info['fd_reception']=="y"){ echo "checked";}?>> 동의함</label>
+									<label><input type="radio" name="mail_reception" value="n"<?if($user_info['fd_reception']=="n"){ echo "checked";}?>> 동의하지 않음</label>
+									<label id="mail_reception-error" class="error" for="mail_reception" style="display:none;" >메일 수신 여부를 선택하세요.</label>
+								</td>
+							</tr>					
+						</tbody>
+					</table>
+
+					<div class="mt20 ar">
+						<!-- <input type="submit" value="회원가입" id="btn_submit" class="btn_submit" accesskey="s"> -->
+						<input type="submit" value="정보 수정" class="btn type07 st2">
+						<!-- <a href="javascript:login_do();" class="btn type07 st2">회원가입</a> -->
+						<a href="http://localhost/mypage/info.php" class="btn type07">초기화</a>
+					</div>
+				</fieldset>
+			</form>
 		</div>
 	</div>
+
 </section>
 <?php
 	include '../footer.php'

@@ -2,6 +2,9 @@
 	header ( "content-type:text/html; charset=utf-8" );	
 	include '../header.php';
 	include_once('../common.php');
+	if(isset($_SESSION['user_id'])&&isset($_SESSION['user_name'])){
+		header('location:http://localhost/index.php');
+	}
 
 ?>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -35,11 +38,11 @@
 
 <?php include '../footer.php' ?>
 
-<?php	
-	if (isset($_SESSION['reg_user_id']))
-  		$id = get_id($_SESSION['reg_user_id']);
-
-  	if ($id == null)
-  		header("Location: http://localhost");
+<?php	  	
+	if (isset($_SESSION['reg_user_id'])){
+  		session_destroy();
+	}else{
+		header("Location: http://localhost");
+	}
   	
 ?>

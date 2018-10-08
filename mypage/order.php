@@ -1,20 +1,25 @@
 <?php
 	header ( "content-type:text/html; charset=utf-8" );
-	include '../header.php'
+	include '../header.php';
+	if(!isset($_SESSION['user_id'])&&!isset($_SESSION['user_name'])){
+		header('location:http://localhost/index.php');
+	}
 ?>
 <section class="container">
 	<div class="visual store">
-		<p class="subTitle">STORE</p>
+		<p class="subTitle">배송 조회</p>
 		<div class="location">
 			<img src="../images/common/icon_home.png" alt="Home">
 			<span>&gt;</span>
-			<span>STORE</span>
+			<span>마이페이지</span>
+			<span>&gt;</span>
+			<span>배송조회</span>
 		</div>
 	</div>
 	<div class="contents">
 		<div class="btnTab">
-			<a href="./info.php" >정보 수정</a>
 			<a href="./order.php" class="on">배송 조회</a>
+			<a href="./info.php" >정보 수정</a>
 		</div>
 		<div class="tabletInner">
 			<div class="tblType01Wrap">
