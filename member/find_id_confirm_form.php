@@ -5,7 +5,8 @@
 	$form_code = $_SESSION['mail_code'];
 	if($input_code == $form_code){
 		$mail = $_SESSION['input_mail'];
-		$id = get_id_to_mail($mail);
+		$info = get_user_info_to_mail($mail);
+		$id = $info['fd_id'];
 		if($id!=null){
 			$msg = "고객님의 아이디는 ".$id."입니다.";
 		}else{

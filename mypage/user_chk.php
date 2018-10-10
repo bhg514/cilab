@@ -21,7 +21,7 @@
 							<div>
 								<input name="input_pw" type="password" placeholder="PW">
 							</div>
-							<input type="submit" class="loginBtn pwSt" value="비밀번호 찾기">
+							<input type="submit" class="loginBtn pwSt" value="확인">
 						</div>
 					</form>
 				</div>

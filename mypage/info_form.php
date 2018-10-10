@@ -2,7 +2,8 @@
 	header ( "content-type:text/html; charset=utf-8" );
 	include_once('../common.php');	
 	try {
-		$name = "=?UTF-8?B?".base64_encode($_POST['mb_name'])."?=";
+		$no = $_POST['pk_no'];
+		$name = $_POST['mb_name'];
 		$id = $_POST['mb_id'];
 		$pw = crypt($_POST['mb_password']);
 		$gender = $_POST['mb_gender'];
@@ -20,15 +21,12 @@
 		$today = date("Y-m-d"); 
 		$mail_reception = $_POST['mail_reception'];
 
-		$sql = 'INSERT INTO tb_user (fd_id, fd_pw, fd_name, fd_hp, fd_mail, fd_zip, fd_address1, fd_address2, fd_reception, fd_date, fd_gender, fd_birthday) VALUES ("'.$id.'", "'.$pw.'", "'.$name.'","'.$hp.'","'.$mail.'", "'.$zip.'", "'.$addr1.'", "'.$addr2.'", "'.$mail_reception.'", "'.$today.'", "'.$gender.'", "'.$birthday.'")';
-		
-		
+		$sql = 'UPDATE tb_user SET fd_id = "'.$id.'", fd_pw = "'.$pw.'", fd_name = "'.$name.'", fd_hp = "'.$hp.'", fd_mail = "'.$mail.'", fd_zip = "'.$zip.'", fd_address1 =  "'.$addr1.'", fd_address2 =  "'.$addr2.'", fd_reception = "'.$mail_reception.'", fd_date = "'.$today.'", fd_gender = "'.$gender.'", fd_birthday = "'.$birthday.'" WHERE pk_no="'.$no.'"';		
 		mysql_q($sql);
 		$_SESSION['reg_user_id'] = $id;		
 	} catch (Exception $e) {
 	    alert('회원가입 중 에러가 발생하였습니다\n 잠시 후 다시 시도해주세요.','http://localhost/register/agree.php');
 	}
-	header('Location: http://localhost/register/result.php');		
-	
+	header('Location: http://localhost/mypage/info_result.php');		
 
 ?>

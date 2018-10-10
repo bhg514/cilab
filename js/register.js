@@ -42,148 +42,19 @@ $(document).ready(function(){
 		}	
 	});
 
-    /*//회원가입 유효성 검사
-    $("#reg_form").validate({
-        submitHandler : function() {
-            var id_chk = $('#id_chk_val').val()
-            var pw_chk = $('#pw_chk').val()
-            var pw = $('#reg_mb_password').val()
-            var pw_re = $('#reg_mb_password_re').val()
-            var hp2 = $('#reg_mb_hp2').val()
-            var hp3 = $('#reg_mb_hp3').val()
-            var mail = $('#str_email02').val()
-            var zip = $('#reg_mb_zip').val()            
-            var vail_chk = 0
-            if(id_chk == 0) {
-                $('#r_id').text("중복체크를 해주세요.")
-                $('#r_id').show()
-                vail_chk = 1
-            }else if (id_chk ==1){
-                $('#r_id').hide()                
-            }
-            if(pw_chk==0){
-                $('#good_pw').hide();
-                $('#bad_pw').show();
-                vail_chk = 1
-            }else if(pw!=pw_re){
-                $('#right_pw').hide();
-                $('#wrong_pw').show();
-                vail_chk = 1
-            }else if(pw==pw_re){
-                $('#right_pw').show();
-                $('#wrong_pw').hide();
-            }
-            if(hp2==""||hp3==""){
-                $('#reg_mb_hp1-error').text("연락처를 입력해주세요..")
-                $('#reg_mb_hp1-error').show()
-                vail_chk = 1
-            }else if(hp2!=""&&hp3!=""){
-                $('#reg_mb_hp1-error').hide()
-            }
-            if(mail == ""){
-                $('#str_email01-error').text("이메일을 입력해주세요.")
-                $('#str_email01-error').show()
-                vail_chk = 1
-            }else if(mail != ""){
-                $('#str_email01-error').hide()
-            }
-
-            if(zip ==""){
-                $('#reg_mb_zip-error').text("주소를 입력해주세요")
-                $('#reg_mb_zip-error').show()
-                vail_chk=1
-            }else{
-                $('#reg_mb_zip-error').hide()
-            }
-
-            if($('input[name="mail_reception"]:checked').val()==null){
-                $('#mail_reception-error').text("메일 수신 여부를 선택하세요.")
-                $('#mail_reception-error').show()
-                vail_chk=1
-            }else{
-                $('#mail_reception-error').hide()
-            }
-            if($('input[name="mb_gender"]:checked').val()==null){
-                $('#mb_gender-error').text("성별을 선택해주세요.")
-                $('#mb_gender-error').show()
-                vail_chk=1
-            }else{
-                $('#mb_gender-error').hide()
-            }
-
-            if(vail_chk == 0)
-               reg_form()
-            
-
-        },
-        rules : {
-            mb_name: {
-                required : true                           
-            },
-            mb_id : {
-                required : true             
-            },
-            mb_password : {
-                required : true
-            },
-            mb_password_re : {
-                required : true
-            },
-            mb_bd : {
-                required : true
-            },
-            mb_hp1: {
-                required : true
-            },
-            mb_hp2 : {
-                required : false
-            },
-            mb_hp3 : {
-                required : false
-            },
-            mb_email1 : {
-                required : true
-            }, 
-            mb_email2 : {
-                required : false
-            },           
-            mb_zip : {
-                required : false
-            },
-            mb_addr1 : {
-                required : false
-            }
-        },
-        messages : {
-            mb_name: {
-                required : "이름을 입력해주세요."                
-            },
-            mb_id : {
-                required : "ID를 입력해주세요. "             
-            },
-            mb_password : {
-                required : "비밀번호를 입력해주세요."
-            },
-            mb_password_re : {
-                required : "비밀번호를 입력해주세요."
-            },
-            mb_bd : {
-                required : "생일을 선택해주세요."
-            },
-            mb_hp1 : {
-                required : "연락처를 입력해주세요."
-            },
-            mb_email1 : {
-                required : "이메일을 입력해주세요."
-            }
-            
-        }
-    });*/
-
     $('#sub_btn').click(function(){
         msg_hide()
         var chk_val = input_chk();
         if(chk_val == 1) {
+            return false;
+        }
+
+    });
+
+    $('#change_pw_sub').click(function(){
+        var pw = $("#reg_mb_password").val();
+        var pw_re = $("#reg_mb_password_re").val();
+        if(pw != pw_re || $("#pw_chk").val()!=1){            
             return false;
         }
 

@@ -9,8 +9,13 @@
 	}else{
 		$_SESSION['user_id'] = $chk_info['fd_id'];
 		$_SESSION['user_name'] = $chk_info['fd_name'];
-		$pre_url = $_SESSION['pre_url'];		
-		header("Location: ".$pre_url);				
+		$pre_url = $_SESSION['pre_url'];
+		if($pre_url !='http://localhost/member/change_pw.php' )	{
+			header("Location: ".$pre_url);
+		}else{
+			header("Location: http://localhost/");
+		}
+		
 		
 	}
 

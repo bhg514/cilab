@@ -94,8 +94,8 @@
 								<th scope="row">전화번호</th>
 								<td>
 									<input type="text" name="mb_hp1" value="" id="reg_mb_hp1" class="inTbl frm_input required reg_hp" maxlength="3" onkeyup="fn_press_han(this);">-
-									<input type="text" name="mb_hp2" value="" id="reg_mb_hp2" class="inTbl frm_input required reg_hp" maxlength="4">-
-									<input type="text" name="mb_hp3" value="" id="reg_mb_hp3" class="inTbl frm_input required reg_hp" maxlength="4">
+									<input type="text" name="mb_hp2" value="" id="reg_mb_hp2" class="inTbl frm_input required reg_hp" maxlength="4" onkeyup="fn_press_han(this);">-
+									<input type="text" name="mb_hp3" value="" id="reg_mb_hp3" class="inTbl frm_input required reg_hp" maxlength="4" onkeyup="fn_press_han(this);">
 									<span id="wrong_hp" class="fcR ml05 fs12 b hide">전화번호를 입력하세요</span>										
 								</td>
 							</tr>
@@ -104,7 +104,7 @@
 								<td><!-- <input type="text" class="inTbl"> -->
 									<input type="hidden" name="old_email" value="">
 									<input type="text" name="mb_email1" id="str_email01" class="inTbl frm_input required">   @
-									<input type="text" name="mb_email2" id="str_email02" value="" class="inTbl frm_input required">
+									<input type="text" name="mb_email2" id="str_email02" class="inTbl frm_input required">
 									<select name="email" id="selectEmail">
 									    <option selected hidden>선택하세요</option>
 									    <option value="1">직접입력</option>

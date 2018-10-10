@@ -4,7 +4,6 @@
 	session_start();
 	include_once('config/db_config.php'); 
 	$mysqli = new mysqli($host, $user, $pw, $dbName);
-
 	function mysql_q($query){
 		global $mysqli;
 		mysqli_query($mysqli, $query);
@@ -25,11 +24,12 @@
 		return $info;
 	}
 
-	function get_id_to_mail($mail){
-		$query = 'select fd_id from tb_user where fd_mail="'.$mail.'"';
-		$result = mysqli_query($query);
-		$id - mysqli_fetch_array($result);
-		return $id;
+	function get_user_info_to_mail($mail){
+		global $mysqli;
+		$query = 'select * from tb_user where fd_mail="'.$mail.'"';			
+		$result = mysqli_query($mysqli, $query);
+		$info = mysqli_fetch_array($result);
+		return $info;
 	}
 
 	function check_password($pw, $hash){
