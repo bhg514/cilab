@@ -1,10 +1,10 @@
 <?php
 	include '../header.php';
 	include_once('../common.php');
-	if(isset($_SESSION['user_id'])&&isset($_SESSION['user_name'])){
-		header('location:http://localhost/index.php');
+	if(isset($_SESSION['user_id'])){
+		header("location:http://".$http_host."/index.php");
 	}
-	if($_SERVER["HTTP_REFERER"]!="http://localhost/member/login_chk.php"){
+	if($_SERVER["HTTP_REFERER"]!="http://".$http_host."/member/login_chk.php"){
 		$_SESSION['pre_url']=$_SERVER["HTTP_REFERER"];
 	}
 ?>

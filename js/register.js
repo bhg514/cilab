@@ -176,7 +176,7 @@ function reg_form(){
         dataType: "json",
         success: function(data) {   
             if(data==1){
-                window.location.href = 'http://localhost/register/result.php';
+                window.location.href = "http://".$http_host."/register/result.php";
             }else{
                 alert("error");                
             }
@@ -366,7 +366,7 @@ function id_chk(){
                         $('#r_id').hide();
                         $('#bl_id').show();
                         $('#id_chk_val').val(1);
-                        document.getElementById('control_EMAIL').readOnly = true;
+                        document.getElementById('reg_mb_id').readOnly = true;
                         $('#id_chk_btn').text("아이디 변경");
                         
                     }
@@ -382,7 +382,7 @@ function id_chk(){
         $('#bl_id').hide();
         $('#id_chk_val').val(0);
         $('#id_chk_btn').text("중복 체크");
-        document.getElementById('control_EMAIL').readOnly = false;
+        document.getElementById('reg_mb_id').readOnly = false;
     }
 
 

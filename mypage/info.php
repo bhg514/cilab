@@ -1,14 +1,14 @@
 <?php
 	
 	include '../header.php';
-	if(!isset($_SESSION['user_id'])&&!isset($_SESSION['user_name'])){
-		header('location:http://localhost/index.php');
+	if(!isset($_SESSION['user_id'])){
+		header("location:http://".$http_host."/index.php");
 	}
 	
 	if($_SESSION['user_chk']=="1"){
 		unset($_SESSION['user_chk']);		
 	}else{
-		header('location:http://localhost/mypage/user_chk.php');
+		header("location:http://".$http_host."/mypage/user_chk.php");
 	}
 	$id = $_SESSION['user_id'];
 	$user_info = get_user_info_to_id($id);

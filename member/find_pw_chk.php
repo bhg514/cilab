@@ -49,9 +49,9 @@
 	$result = mail($to_mail, $_id_mail_subject, $_id_mail_body, $header, $from_mail);
 
 	if(!$result) {
-		alert("메일 전송을 실패했습니다. 잠시 후 다시 시도해주세요.", 'http://localhost/member/find_pw.php');
+		alert("메일 전송을 실패했습니다. 잠시 후 다시 시도해주세요.", "http://".$http_host."/member/find_pw.php");
 
 	}else{
-		header('location:http://localhost/member/find_pw_confirm.php');
+		header("location:http://".$http_host."/member/find_pw_confirm.php");
 	}
 ?>

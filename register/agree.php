@@ -1,8 +1,8 @@
 <?php
 	header ( "content-type:text/html; charset=utf-8" );
 	include '../header.php';
-	if(isset($_SESSION['user_id'])&&isset($_SESSION['user_name'])){
-		header('location:http://localhost/index.php');
+	if(isset($_SESSION['user_id'])){
+		header("location:http://".$http_host."/index.php");
 	}
 ?>
 <section class="container">

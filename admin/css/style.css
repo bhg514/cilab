@@ -1,0 +1,102 @@
+* {
+   margin:0; padding:0
+}
+
+body {
+   font-family: '맑은 고딕' 돋움; font-size:0.75em; color:#333
+}
+
+ul li{
+   list-style-type: none;
+}
+
+.admin_menu{
+   margin: 50px auto 0 auto;
+   width:700px;   
+}
+
+.admin_menu ul{
+   height:30px;
+}
+
+.admin_menu li{
+   float:left;
+   width:110px;
+   height:30px;      
+   line-height:30px;          /* 중앙정렬 */
+   margin-right: 2px;
+   text-align: center;
+   background-color: #fff;
+   border: 1px solid;
+   border-radius:3px 3px 0 0;
+   cursor: pointer;
+}
+
+.admin_menu li.selected{
+   background-color: #ccc;
+}
+
+.tab-view{
+   width:506px;
+   height:100px;
+   line-height: 100px;
+   border: 1px solid gray;
+   text-align:center;
+   margin-top:-1px;
+}
+
+
+/*사이드 메뉴*/
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    width: 130px;
+    position: fixed;
+    z-index: 1;
+    top: 215px;
+    left: 10px;
+    overflow-x: hidden;
+
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 12px;
+    color: #000000  ;
+    display: block;
+    border: 1px solid;
+    
+}
+
+.sidenav a.selected {
+    color: #fff;
+    background: #9e9e9e;
+}
+
+.container {
+    margin-left: 140px; /* Same width as the sidebar + left position in px */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.menu_point{
+  float: right;
+}
+#side_title{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+/*사이드 메뉴 끝*/
+
+hr.garo { border: solid #dedede; border-width: 1px 0 0;}
+
+

@@ -30,14 +30,13 @@
 			<div class="gnbInner">
 				<?php 
 					
-					if(!isset($_SESSION['user_id']) && !isset($_SESSION['user_name']) ){
+					if(!isset($_SESSION['user_id'])){
 				?>
 				<a href="../member/login.php" class="gnb_login">로그인</a>
 				<a href="../register/agree.php" class="gnb_join">회원가입</a>
 				<?php 
 					}else{
-				?>
-
+				?>				
 				<a href="../member/logout.php" class="gnb_login">로그아웃</a>
 				<a href="../mypage/order.php" class="gnb_join">마이페이지</a>
 				<?php
