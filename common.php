@@ -64,11 +64,11 @@
 		echo "<script>alert(\"".$msg."\");location.replace('".$url."');</script>";
 	}	
 
-	function get_production_list($start_num){
+	function while_get_production_list($start_num){
 		global $mysqli;
 		$query = 'select * from tb_product where pk_no>='.$start_num.' order by pk_no limit 10';
 		$result = mysqli_query($mysqli, $query);
-		$list = mysqli_fetch_array($result);
-		return $list;
+		
+		return $result;
 	}
 ?>

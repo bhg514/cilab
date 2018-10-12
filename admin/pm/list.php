@@ -24,42 +24,21 @@
 		</thead>
 		<tbody>
 				<?php
-					$row = get_production_list(1);
-					foreach ($row as $r) {
-						# code...
-					
-					/*$sql = 'select * from board_free order by b_no desc';
-					$result = $db->query($sql);
-					while($row = $result->fetch_assoc())
-					{
-						$datetime = explode(' ', $row['b_date']);
-						$date = $datetime[0];
-						$time = $datetime[1];
-						if($date == Date('Y-m-d'))
-							$row['b_date'] = $time;
-						else
-							$row['b_date'] = $date;*/
-					/*$count = 10;
-					while ( $count>0) {
-						$count --;*/
-
-					
+					$result = while_get_production_list(1);
+					while ($r = mysqli_fetch_array($result)) {
 				?>
 			<tr>
-				<td class="no"><?php echo $row['b_no']?></td>
-				<td class="title"><?php echo $row['b_title']?></td>
-				<td class="author"><?php echo $row['b_id']?></td>
-				<td class="date"><?php echo $row['b_date']?></td>
-				<td class="hit"><?php echo $row['b_hit']?></td>
+				<td> 
+					<input type="checkbox" name="">
+				</td>
+				<td class="no"><?= $r['fd_category']?></td>
+				<td class="title"><?= $r['fd_name']?></td>
+				<td class="author"><?=$r['fd_stock']?></td>
+				<td class="date"><?=$r['fd_price']?></td>
+				<td class="hit"><?=$r['fd_date']?></td>
+				<td class="hit"><?=$r['fd_status']?></td>
 			</tr>
-			<tr>
-				<td><input type="checkbox" name=""></td>
-				<td class="no">1</td>
-				<td class="title">2</td>
-				<td class="author">3</td>
-				<td class="date">4</td>
-				<td class="hit">5</td>
-			</tr>
+			
 
 				<?php
 					}
