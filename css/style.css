@@ -97,34 +97,49 @@ header h1 a {
 	margin:0 auto;
 	width:1000px;
 }
+
 footer {
 	/*margin:40px 0 0 0;*/
 	padding:20px 0;
 	background:#f2f2f2;
 }
+
 .footerInner {
 	margin:0 auto;
 	width:1000px;
 }
+
 .logo_footer {
 	float:left;
 }
+
 .text_footer {
 	float:left;
 	margin-left:10px;
 }
-footer address,
-footer .tel,
-footer .fax,
-footer .email,
-footer .copyright {
+
+footer address, footer .tel, footer .fax, footer .email, footer .copyright
+	{
 	display:inline-block;
 	padding-right:10px;
 	font-style:normal;
 	color:#808080;
 }
+
 .footerFloor1 {
 	padding:0 0 3px 0;
+}
+
+.f_name {
+	display:inline-block;
+	color:#808080;
+	padding-right:5px;
+}
+
+.f_char {
+	display:inline-block;
+	color:#808080;
+	padding-right:10px;
 }
 
 /* btn */
