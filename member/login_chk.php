@@ -5,7 +5,8 @@
 	$input_pw = $_POST["pw"]; 
 	$chk_info = get_all_info_to_id($input_id);	
 	
-	
+	alert($chk_info['fd_id'],'#');
+	alert($input_id,'#');
 	if (!$chk_info['fd_id'] || !check_password($input_pw, $chk_info['fd_pw'])) {
 		alert("틀림","http://".$http_host."/member/login.php");	    
 	}else{		

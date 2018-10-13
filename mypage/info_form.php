@@ -5,7 +5,7 @@
 		$no = $_POST['pk_no'];
 		$name = $_POST['mb_name'];
 		$id = $_POST['mb_id'];
-		$pw = crypt($_POST['mb_password']);
+		$pw = crypt($_POST['mb_password'],'');
 		$gender = $_POST['mb_gender'];
 		$birthday = $_POST['mb_bd'];
 		$hp1 = $_POST['mb_hp1'];

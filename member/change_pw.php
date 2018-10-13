@@ -2,7 +2,7 @@
 	header ( "content-type:text/html; charset=utf-8" );
 	include_once('../common.php');	
 	try{
-		$new_pw = crypt($_POST['input_pw']);
+		$new_pw = crypt($_POST['input_pw'],'');
 		$pk_no = $_SESSION['pk_no'];
 		$sql = "UPDATE tb_user set fd_pw='".$new_pw."' where pk_no='".$pk_no."'";
 		mysql_q($sql);		
