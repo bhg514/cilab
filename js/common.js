@@ -104,6 +104,11 @@ function popup(url,id,width,height) {
 	window.open(url,id,"toolbar=no,location=no,status=no,menubar=no,scrollbars=no,left=0, top=0, resizable=no,width=" + width + "px,height=" + height + "px");
 }
 
+// 개인정보처리방침 팝업
+function perinfo(){
+	window.open('/privacy.html','index','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');
+}
+
 
 
 

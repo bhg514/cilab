@@ -88,8 +88,8 @@
 							<tr>
 								<th scope="row">성별</th>
 								<td>
-									<label><input type="radio" name="mb_gender" value="m" <?if($user_info['fd_gender']=="m"){ echo "checked";}?>> 남자</label>
-									<label><input type="radio" name="mb_gender" value="w" <?if($user_info['fd_gender']=="w"){ echo "checked";}?>> 여자</label>
+									<label><input type="radio" name="mb_gender" value="m" <?php if($user_info['fd_gender']=="m"){ echo "checked";}?>> 남자</label>
+									<label><input type="radio" name="mb_gender" value="w" <?php if($user_info['fd_gender']=="w"){ echo "checked";}?>> 여자</label>
 									<span id="wrong_gender" class="fcR ml05 fs12 b hide">성별을 선택하세요</span>									
 								</td>
 							</tr>
@@ -158,8 +158,8 @@
 							<tr>
 								<th scope="row">메일수신여부</th>
 								<td>
-									<label><input type="radio" name="mail_reception" value="y" <?if($user_info['fd_reception']=="y"){ echo "checked";}?>> 동의함</label>
-									<label><input type="radio" name="mail_reception" value="n"<?if($user_info['fd_reception']=="n"){ echo "checked";}?>> 동의하지 않음</label>
+									<label><input type="radio" name="mail_reception" value="y" <?php if($user_info['fd_reception']=="y"){ echo "checked";}?>> 동의함</label>
+									<label><input type="radio" name="mail_reception" value="n"<?php if($user_info['fd_reception']=="n"){ echo "checked";}?>> 동의하지 않음</label>
 									<span id="wrong_mail_reception" class="fcR ml05 fs12 b hide">메일 수신 여부를 선택하세요</span>										
 								</td>
 							</tr>					
@@ -168,7 +168,7 @@
 
 					<div class="mt20 ar">
 						<!-- <input type="submit" value="회원가입" id="btn_submit" class="btn_submit" accesskey="s"> -->
-						<input type="submit" value="회원가입" id="sub_btn" class="btn type07 st2">
+						<input type="submit" value="정보수정" id="sub_btn" class="btn type07 st2">
 						<!-- <a href="javascript:login_do();" class="btn type07 st2">회원가입</a> -->
 						<a href="/" class="btn type07">취소</a>
 					</div>

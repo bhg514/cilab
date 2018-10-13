@@ -21,19 +21,19 @@
 				<a href="./qna.php">문의하기</a>
 			</div>
 			<table class="tblType01 listView">
-				<caption>문의하기</caption>
+				<caption>공지사항</caption>
 				<colgroup>
 					<col style="width:70px;" class="mhide">
 					<col>
-					<col class="qnaVersion">
-					<col class="qnaDown">
+					<col class="noticeDate">
+					<col class="noticeCount">
 				</colgroup>
 				<thead>
 					<tr>
-						<th scope="col" class="mhide">번호</th>
-						<th scope="col" class="mNoBg">S/W 명</th>
-						<th scope="col">버전</th>
-						<th scope="col">다운로드</th>
+						<th scope="col">번호</th>
+						<th scope="col">제목</th>
+						<th scope="col">날짜</th>
+						<th scope="col">조회</th>
 					</tr>
 				</thead>
 				<tbody>
