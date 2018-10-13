@@ -48,9 +48,9 @@
 		<div id="cssmenu">
 			<ul>
 				<li><a href="../menu/introWD.php">Water Drone</a></li>
-				<li><a href="../menu/introCilab.php">기업소개</a></li>
-				<li><a href="../menu/notice.php">SUPPORT</a></li>
 				<li><a href="../menu/store.php">STORE</a></li>
+				<li><a href="../menu/notice.php">SUPPORT</a></li>
+				<li><a href="../menu/introCilab.php">기업소개</a></li>
 			</ul>
 		</div>
 	</header>

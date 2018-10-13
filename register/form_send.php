@@ -21,7 +21,6 @@
 		$mail_reception = $_POST['mail_reception'];
 
 		$sql = 'INSERT INTO tb_user (fd_id, fd_pw, fd_name, fd_hp, fd_mail, fd_zip, fd_address1, fd_address2, fd_reception, fd_date, fd_gender, fd_birthday) VALUES ("'.$id.'", "'.$pw.'", "'.$name.'","'.$hp.'","'.$mail.'", "'.$zip.'", "'.$addr1.'", "'.$addr2.'", "'.$mail_reception.'", "'.$today.'", "'.$gender.'", "'.$birthday.'")';
-		alert($sql ,'#');
 		
 		mysql_q($sql);
 		$_SESSION['reg_user_id'] = $id;		

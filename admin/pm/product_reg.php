@@ -5,15 +5,29 @@
 	include_once("../../common.php");
 
 ?>
+<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
+	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+</script>
 <section class="container">	
 	
 
 	<div class="contents">
 		<div class="tabletInner">
-			<form id="reg_form" action="./form_send.php" method="post">
+			<form id="product_form" action="./product_form.php" method="post">
 				<fieldset>
-					<table class="tblType02">
-						<caption>회원가입 정보</caption>
+					<table class="product_reg_tb">
+						<dir>
+							<dir>상품관리</dir>
+							<dir>Home  » 상품 관리 » 상품 관리</dir>
+						</dir>
+						<hr class="garo" style="display: block;"> 
+						<dir>
+							<a class="btn type07">저장</a>
+							<a class="btn type07">삭제</a>
+							<a class="btn type07">목록</a>
+						</dir>
+						<h3>■ 상품정보</h3>
+						<caption>상품 등록</caption>
 						<colgroup>
 							<col style="width:170px;">
 							<col>
@@ -77,7 +91,6 @@
 								<td>
 									<form enctype='multipart/form-data' action='upload_ok.php' method='post'>
 										<input type='file' name='myfile'>
-										<button>보내기</button>
 									</form>
 								</td>
 							</tr>
@@ -85,20 +98,16 @@
 								<th scope="row">추가이미지</th>
 								<td>
 									<form enctype='multipart/form-data' action='upload_ok.php' method='post'>
-										<input type='file' name='myfile'>
-										<button>보내기</button>
+										<input type='file' name='myfile'>										
 									</form>
 									<form enctype='multipart/form-data' action='upload_ok.php' method='post'>
 										<input type='file' name='myfile'>
-										<button>보내기</button>
 									</form>
 									<form enctype='multipart/form-data' action='upload_ok.php' method='post'>
 										<input type='file' name='myfile'>
-										<button>보내기</button>
 									</form>
 									<form enctype='multipart/form-data' action='upload_ok.php' method='post'>
 										<input type='file' name='myfile'>
-										<button>보내기</button>
 									</form>									
 								</td>
 							</tr>					
@@ -113,16 +122,16 @@
 							<tr>
 								<th scope="row">상세내용</th>
 								<td>
-									웹에디터 삽입 (이미지 미리 보기 기능 )
+									<textarea name="area2" style="width: 100%; height:100%;"></textarea><br />
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">최종수정일</th>
-								<td>시간 자리</td>
+								<td><?=date("Y-m-d h:i:s")?></td>
 							</tr>
 							<tr>
 								<th scope="row">최종등록자</th>
-								<td>사용자 이름 자리</td>
+								<td><?=$_SESSION['user_name']?></td>
 							</tr>				
 						</tbody>
 					</table>

@@ -97,6 +97,11 @@ body {
 }
 /*사이드 메뉴 끝*/
 
+/*상단 메뉴*/
 hr.garo { border: solid #dedede; border-width: 1px 0 0;}
 
 
+/*에디터*/
+.nicEdit-main{
+  min-height: 400px !important ;
+}
