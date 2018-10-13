@@ -145,7 +145,7 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 /* btn */
 .btn {
 	display:inline-block;
-	line-height:normal;
+	line-height:1.2;
 }
 .btn.type01 {
 	padding:15px 55px;
@@ -636,8 +636,8 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 .tblType01.listView {
 	/* width:100%; */
 }
-.qnaVersion {width:100px;}
-.qnaDown {width:120px;}
+.qnaVersion, .noticeDate {width:100px;}
+.qnaDown, .noticeCount {width:120px;}
 
 .tblType02 {border-top:2px solid #3fa2d5; border-left:1px solid #e8e8e8; border-right:1px solid #e8e8e8;}
 .tblType02 th {
