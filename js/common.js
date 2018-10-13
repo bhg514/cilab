@@ -106,7 +106,7 @@ function popup(url,id,width,height) {
 
 // 개인정보처리방침 팝업
 function perinfo(){
-	window.open('/privacy.html','index','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no ,directories=no');
+	window.open('/privacy.html','index','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');
 }
 
 
