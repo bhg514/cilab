@@ -4,7 +4,7 @@
 ?>
 <section class="container">
 	<div class="visual intro">
-		<p class="subTitle">조직도</p>
+		<p class="subTitle">찾아오시는 길</p>
 		<div class="location">
 			<img src="../images/common/icon_home.png" alt="Home">
 			<span>&gt;</span>
@@ -17,7 +17,7 @@
 		<div class="tabletInner">
 			<div class="btnTab">
 				<a href="./introCilab.php">소개</a>
-				<a href="./introCilab2.php">조직도</a>
+				<a href="./introCilab2.php">History</a>
 				<a href="./introCilab3.php" class="on">찾아오시는 길</a>
 			</div>
 			<div class="map">
