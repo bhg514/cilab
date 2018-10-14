@@ -2,6 +2,7 @@
 	header ( "content-type:text/html; charset=utf-8" );
 	include '../header.php'
 ?>
+
 <section class="container">
 	<div class="visual store">
 		<p class="subTitle">STORE</p>
@@ -91,20 +92,39 @@
 					<tr>
 						<th scope="row">주소</th>
 						<td>
-							<div><input type="text" class="inTbl"> <a href="#a" class="btn type05">우편번호</a></div>
-							<div class="mt05"><input type="text" class="inTbl" placeholder="상세주소를 입력하세요."></div>
+							<div><input type="text" name="address1" class="inTbl"> <a href="#a" class="btn type05">우편번호</a></div>
+							<div class="mt05"><input type="text" class="inTbl long" name="address2" placeholder="상세주소를 입력하세요."></div>
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">전화번호</th>
-						<td>1234@naver.com</td>
+						<td><input type="text" class="inTbl" name="phone"></td>
 					</tr>
 					<tr>
 						<th scope="row">배송시 요청사항</th>
-						<td>서울시 강동구 천호동</td>
+						<td>
+						<select class="inTbl" id="requestSel" name="request1" title="배송시 요청사항 선택">
+    						<option>빠른 배송 부탁드립니다.</option>
+    						<option>배송 전, 연락주세요.</option>
+    						<option>부재 시, 휴대폰으로 연락주세요.</option>
+    						<option>부재 시, 경비실에 맡겨주세요.</option>
+    						<option>경비실이 없습니다. 배송 전, 연락주세요.</option>
+    						<option>직접입력</option>
+						</select>
+						<input type="text" class="inTbl long" name="request2" title="배송시 요청사항 기재" style="display: none;">
+						</td>
 					</tr>
 				</tbody>
 			</table>
+<script type="text/javascript">
+	$("#requestSel").change(function(){
+		if($("#requestSel option:selected").val() == "직접입력"){
+			$("input[name='request2']").show();
+		}else{
+			$("input[name='request2']").hide();
+		}
+	});
+</script>
 			<p class="blt01">결제정보</p>
 			<table class="tblType02">
 				<caption>결제정보</caption>
@@ -121,9 +141,9 @@
 						<th scope="row">결제방법</th>
 						<td>
 							<div>
-								<label><input type="radio"> 신용카드</label>
-								<label><input type="radio"> 무통장 입금</label>
-								<label><input type="radio"> 핸드폰 결제</label>
+								<label><input type="radio" name="pay"> 신용카드</label>
+								<label><input type="radio" name="pay"> 무통장 입금</label>
+								<label><input type="radio" name="pay"> 핸드폰 결제</label>
 							</div>
 							<div class="mt05">
 								<select class="inTbl">
@@ -147,6 +167,7 @@
 		</div>
 	</div>
 </section>
+
 <?php
 	include '../footer.php'
 ?>
