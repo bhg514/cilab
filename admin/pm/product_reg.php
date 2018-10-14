@@ -5,15 +5,22 @@
 	include_once("../../common.php");
 
 ?>
-<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
-	bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-</script>
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+
+<!-- include summernote css/js -->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+
+<script type="text/javascript" src="../js/admin.js"></script>
 <section class="container">	
 	
 
 	<div class="contents">
 		<div class="tabletInner">
-			<form id="product_form" action="./product_form.php" method="post">
+			<form enctype='multipart/form-data' id="product_form" action="./product_form.php" method="post">
 				<fieldset>
 					<table class="product_reg_tb">
 						<dir>
@@ -36,98 +43,90 @@
 							<tr>						
 								<th scope="row">상태</th>						
 								<td>
-									<select>
-										<option>판매 중</option>
-										<option>판매 중지</option>
+									<select name="status" >
+										<option value="판매중">판매중</option>
+										<option value="판매중지">판매중지</option>
 									</select>
 								</td>
 							</tr>					
 							<tr>
 								<th scope="row">상품명</th>
 								<td>
-									<input type="text" name="mb_id" value="" id="reg_mb_id" class="inTbl frm_input required " minlength="6" maxlength="12">
+									<input type="text" name="name" value="" class="inTbl frm_input required ">
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">분류</th>
 								<td>
-									<select>
-										<option>Water Drone</option>
-										<option>Upgrade & Accessories</option>
-										<option>DIY & Parts</option>
-										<option>Water Education kit</option>
+									<select name="category">
+										<option value="Water Drone">Water Drone</option>
+										<option value="Upgrade & Accessories">Upgrade & Accessories</option>
+										<option value="DIY & Parts">DIY & Parts</option>
+										<option value="Water Education kit">Water Education kit</option>
 									</select>
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">가격</th>
 								<td>
-									<input type="text" name="mb_password_re" id="reg_mb_password_re" class="inTbl frm_input required" minlength="9" maxlength="20">원
+									<input type="number" name="price" class="inTbl frm_input required">원
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">수량</th>
 								<td>
-									<input type="text" name="">
+									<input type="number" name="count">
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">배송비</th>
 								<td>
-									<input type="text" name="">원
-									<label><input type="radio" name="mail_reception" value="n"> 배송비 무료</label>
+									<input type="number" name="delivery" id="delivery_input" onclick="del_non_free()">원
+									<label><input type="radio" id="free_chk" onclick="del_free();"> 배송비 무료</label>
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">제조국</th>
 								<td>
-									<select>
-										<option>대한민국</option>
+									<select name="made">
+										<option value="대한민국">대한민국</option>
 									</select>
 								</td>
 							</tr>		
 							<tr>
 								<th scope="row">대표이미지(썸네일이미지)</th>
 								<td>
-									<form enctype='multipart/form-data' action='upload_ok.php' method='post'>
-										<input type='file' name='myfile'>
-									</form>
+									<!-- <form enctype='multipart/form-data' action='upload_ok.php' method='post'> -->
+									<input type='file' name='main_img'>
+									<!-- </form> -->
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">추가이미지</th>
 								<td>
-									<form enctype='multipart/form-data' action='upload_ok.php' method='post'>
-										<input type='file' name='myfile'>										
-									</form>
-									<form enctype='multipart/form-data' action='upload_ok.php' method='post'>
-										<input type='file' name='myfile'>
-									</form>
-									<form enctype='multipart/form-data' action='upload_ok.php' method='post'>
-										<input type='file' name='myfile'>
-									</form>
-									<form enctype='multipart/form-data' action='upload_ok.php' method='post'>
-										<input type='file' name='myfile'>
-									</form>									
+									<input type='file' name='sub_img1'>
+									<input type='file' name='sub_img2'>
+									<input type='file' name='sub_img3'>
+									<input type='file' name='sub_img4'>
 								</td>
 							</tr>					
 							<tr>
 								<th scope="row">옵션</th>
 								<td>
-									<label><input type="radio" name="mail_reception" value="y"> 옵션 설정</label>
-									<label><input type="radio" name="mail_reception" value="n"> 옵션 미설정</label>
-									<span id="wrong_mail_reception" class="fcR ml05 fs12 b hide">메일 수신 여부를 선택하세요</span>										
+									<label><input type="radio" name="option" value="y"> 옵션 설정</label>
+									<label><input type="radio" name="option" value="n" checked> 옵션 미설정</label>							
 								</td>
 							</tr>	
 							<tr>
 								<th scope="row">상세내용</th>
 								<td>
-									<textarea name="area2" style="width: 100%; height:100%;"></textarea><br />
+									<input type="hidden" name="content_val" id="content_hidden">
+									<div id="summernote"></div>
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">최종수정일</th>
-								<td><?=date("Y-m-d h:i:s")?></td>
+								<td ><?=date("Y-m-d h:i:s")?></td>
 							</tr>
 							<tr>
 								<th scope="row">최종등록자</th>
@@ -137,8 +136,7 @@
 					</table>
 
 					<div class="mt20 ar">
-						<!-- <input type="submit" value="회원가입" id="btn_submit" class="btn_submit" accesskey="s"> -->
-						<input type="submit" value="회원가입" id="sub_btn" class="btn type07 st2">
+						<input type="submit" value="상품등록" id="product_reg_btn" class="btn type07 st2">
 						<!-- <a href="javascript:login_do();" class="btn type07 st2">회원가입</a> -->
 						<a href="/" class="btn type07">취소</a>
 					</div>
