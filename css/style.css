@@ -111,11 +111,12 @@ footer {
 
 .logo_footer {
 	float:left;
+	margin-top:5px;
 }
 
 .text_footer {
 	float:left;
-	margin-left:10px;
+	margin-left:20px;
 }
 
 footer address, footer .tel, footer .fax, footer .email, footer .copyright
@@ -907,5 +908,18 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	font-size:14px;
 	color:#333333;
 	border-bottom:1px solid #e8e8e8;
+}
 
+/*회원가입*/
+.term {
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    height: 250px;
+    border: 1px solid #d4d4d4;
+}
+
+.agreeArea {
+    text-align: right;
+    margin-top: 15px;
 }
