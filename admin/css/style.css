@@ -58,7 +58,6 @@ body {
     top: 215px;
     left: 10px;
     overflow-x: hidden;
-
 }
 
 .sidenav a {
@@ -68,7 +67,6 @@ body {
     color: #000000  ;
     display: block;
     border: 1px solid;
-    
 }
 
 .sidenav a.selected {
