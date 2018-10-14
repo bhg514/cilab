@@ -2,7 +2,7 @@
 	header ( "content-type:text/html; charset=utf-8" );
 	include_once('../common.php');	
 	try {
-		$name = $_POST['mb_name']);
+		$name = $_POST['mb_name'];
 		$id = $_POST['mb_id'];	
 		$pw = crypt($_POST['mb_password'],'');
 		$gender = $_POST['mb_gender'];
