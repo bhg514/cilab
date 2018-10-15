@@ -18,8 +18,9 @@
 		$sub_img_arr['sub_img3'] = $_FILES['sub_img3'];
 		$sub_img_arr['sub_img4'] = $_FILES['sub_img4'];
 
-		$option = $_POST["option"];
+		$option = $_POST["option_input"];
 		$content = $_POST["content_val"];
+		
 		$new_content = editor_conv($content);
 
 		$date_time = date("Y-m-d h:i:s");

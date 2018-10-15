@@ -8,6 +8,7 @@ $(document).ready(function() {
 
 
 
+
 });
 
 function del_free(){
@@ -16,3 +17,18 @@ function del_free(){
 function del_non_free(){
 	$('#free_chk').prop('checked',false);
 }
+
+
+
+function pop_option(){
+	window.name = "parentForm";
+	var option = $('#option_input').val()
+	
+	open_win = window.open('./pop_option.php','childForm','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
+
+
+
+}
+
+
+							
