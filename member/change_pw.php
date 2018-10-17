@@ -5,7 +5,7 @@
 		$new_pw = crypt($_POST['input_pw'],'');
 		$pk_no = $_SESSION['pk_no'];
 		$sql = "UPDATE tb_user set fd_pw='".$new_pw."' where pk_no='".$pk_no."'";
-		mysql_q($sql);		
+		query_send_non_return($sql);		
 	}catch(Exception $e){
 		alert('비밀전호 변경 중 에러가 발생하였습니다\n 잠시 후 다시 시도해주세요.',"http://".$http_host."/member/find_pw_confirm_form.php");
 	}

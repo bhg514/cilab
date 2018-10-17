@@ -3,40 +3,68 @@
 	include '../admin_header.php';
 	include './side.php';
 	include_once("../../common.php");
+	$page = $_GET['page'];	
+	$total_count = product_get_count();
 
 ?>
-<section class="container">		
-	<h3>상품관리</h3>	
+<script type="text/javascript" src="../js/admin.js"></script>
+<section class="container">			
+	<div>
+		<div class="admin_title">상품관리</div>
+		<div class="admin_position">Home  » 상품 관리 » 상품 관리</div>	
+		<hr class="garo" style="display: block;"> 
+	</div>
+	<div class="search_div">
+		<select>
+			<option value="1">상품명</option>
+			<option value="2">분류</option>
+			<option value="3">상태</option>			
+		</select>
+		<input type="text" name="">
+		<a class="btn type05">검색</a>
+
+	</div>
+	
+	<div class="btn_div">
+		<a class="btn type05">전체 상품 엑셀 다운로드</a>
+		<a class="btn type05">엑셀 다운로드</a>
+		<a class="btn type05" id="sell_start">판매시작</a>
+		<a class="btn type05" id="sell_stop">판매중지</a>
+		<a class="btn type05" id="list_del">삭제</a>
+	</div>
 	<table>
-		<caption class="readHide">자유게시판</caption>
-		<thead>
+		<caption class="readHide">상품 관리</caption>
+		<thead class="admin_list">
 			<tr>
-				<th> 
+				<th class="thead_th"> 
 					<input type="checkbox" name="">
 				</th>
-				<th scope="col" class="no">분류</th>
-				<th scope="col" class="title">상품명</th>
-				<th scope="col" class="author">수량</th>
-				<th scope="col" class="date">가격</th>
-				<th scope="col" class="hit">최종수정일</th>
-				<th scope="col" class="hit">상태</th>
+				<th scope="col" class="thead_th">no</th>
+				<th scope="col" class="thead_th">분류</th>
+				<th scope="col" class="thead_th">상품명</th>
+				<th scope="col" class="thead_th">수량</th>
+				<th scope="col" class="thead_th">가격</th>
+				<th scope="col" class="thead_th">최종수정일</th>
+				<th scope="col" class="thead_th">상태</th>
 			</tr>
 		</thead>
 		<tbody>
 				<?php
-					$result = while_get_production_list(1);
+					$result = while_get_production_list($page);
 					while ($r = mysqli_fetch_array($result)) {
 				?>
 			<tr>
-				<td> 
-					<input type="checkbox" name="">
+				<td class="tbody_td"> 
+					<input type="checkbox" class="list_chk"><?= $r['pk_no']?>		
+					<!-- <input type="text" name="pk_no" value="<?= $r['pk_no']?>"> -->
 				</td>
-				<td class="no"><?= $r['fd_category']?></td>
-				<td class="title"><?= $r['fd_name']?></td>
-				<td class="author"><?=$r['fd_stock']?></td>
-				<td class="date"><?=$r['fd_price']?></td>
-				<td class="hit"><?=$r['fd_date']?></td>
-				<td class="hit"><?=$r['fd_status']?></td>
+				<td class="tbody_td"><?= $r['row']?></td>
+				<td class="tbody_td"><?= $r['fd_category']?></td>
+				<td class="tbody_td"><?= $r['fd_name']?></td>
+				<td class="tbody_td"><?=$r['fd_stock']?></td>
+				<td class="tbody_td"><?=$r['fd_price']?></td>
+				<td class="tbody_td"><?=$r['fd_date']?></td>
+				<td class="tbody_td"><?=$r['fd_status']?></td>
 			</tr>
 			
 
@@ -45,5 +73,24 @@
 				?>
 		</tbody>
 	</table>
+	<?php
+		$start_num = 1;
+		$end_num = 10;
+		$total_page = $total_count[0]/10;
+		
+		if($end_num>$total_page){
+			for($i=$start_num; $i<=$total_page;$i++){			
+				echo "<a>".$i."</a>";
+			};
+		}else{
+			for($i=$start_num; $i<$end_num;$i++){			
+				echo "<a>".$i."</a>";
+			};
+
+		}
+
+		
+
+	?>
 </section>
 

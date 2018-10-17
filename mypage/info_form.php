@@ -22,7 +22,7 @@
 		$mail_reception = $_POST['mail_reception'];
 
 		$sql = 'UPDATE tb_user SET fd_id = "'.$id.'", fd_pw = "'.$pw.'", fd_name = "'.$name.'", fd_hp = "'.$hp.'", fd_mail = "'.$mail.'", fd_zip = "'.$zip.'", fd_address1 =  "'.$addr1.'", fd_address2 =  "'.$addr2.'", fd_reception = "'.$mail_reception.'", fd_date = "'.$today.'", fd_gender = "'.$gender.'", fd_birthday = "'.$birthday.'" WHERE pk_no="'.$no.'"';		
-		mysql_q($sql);
+		query_send_non_return($sql);
 		$_SESSION['reg_user_id'] = $id;		
 	} catch (Exception $e) {
 	    alert('회원가입 중 에러가 발생하였습니다\n 잠시 후 다시 시도해주세요.','http://".$http_host."/register/agree.php');

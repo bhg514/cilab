@@ -14,7 +14,7 @@
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 
-<script type="text/javascript" src="../js/admin.js"></script>
+<script type="text/javascript" src="../js/product_reg.js"></script>
 <section class="container">	
 	
 
@@ -23,16 +23,16 @@
 			<form enctype='multipart/form-data' id="product_form" action="./product_form.php" method="post">
 				<fieldset>
 					<table class="product_reg_tb">
-						<dir>
-							<dir>상품관리</dir>
-							<dir>Home  » 상품 관리 » 상품 관리</dir>
-						</dir>
+						<div>
+							<div>상품관리</div>
+							<div>Home  » 상품 관리 » 상품 관리</div>
+						</div>
 						<hr class="garo" style="display: block;"> 
-						<dir>
+						<div>
 							<a class="btn type07">저장</a>
 							<a class="btn type07">삭제</a>
 							<a class="btn type07">목록</a>
-						</dir>
+						</div>
 						<h3>■ 상품정보</h3>
 						<caption>상품 등록</caption>
 						<colgroup>
