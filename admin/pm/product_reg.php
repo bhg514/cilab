@@ -95,21 +95,27 @@
 							</tr>		
 							<tr>
 								<th scope="row">대표이미지(썸네일이미지)</th>
-								<td>
-									<!-- <form enctype='multipart/form-data' action='upload_ok.php' method='post'> -->
-									<input type='file' name='main_img'>
-									<!-- </form> -->
+								<td>									
+									<input type="file" name="main_img" id="main_img" style="display:none;"/>
+									<label for="main_img" id="main_img_label">클릭하여 이미지 파일을 올려주세요 </label>									
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">추가이미지</th>
 								<td>
-									<input type='file' name='sub_img1'>
-									<input type='file' name='sub_img2'>
-									<input type='file' name='sub_img3'>
-									<input type='file' name='sub_img4'>
+									<input type="file" name="sub_img1" id="sub_img1" style="display:none;"/>
+									<label for="sub_img1" id="sub_img1_label">클릭하여 이미지 파일을 올려주세요 </label>
+									<br/>
+									<input type="file" name="sub_img2" id="sub_img2" style="display:none;"/>
+									<label for="sub_img2" id="sub_img2_label">클릭하여 이미지 파일을 올려주세요 </label>
+									<br/>
+									<input type="file" name="sub_img3" id="sub_img3" style="display:none;"/>
+									<label for="sub_img3" id="sub_img3_label">클릭하여 이미지 파일을 올려주세요 </label>
+									<br/>
+									<input type="file" name="sub_img4" id="sub_img4" style="display:none;"/>
+									<label for="sub_img4" id="sub_img4_label">클릭하여 이미지 파일을 올려주세요 </label>
 								</td>
-							</tr>					
+							</tr>						
 							<tr>
 								<th scope="row">옵션</th>
 								<td>

@@ -6,12 +6,11 @@ $(document).ready(function() {
         $('#content_hidden').val($('#summernote').summernote('code'));
     });
 
+    $('input[type=file]').change(function(e){
+    	var file_name = document.getElementById(e.target.id).files[0].name;
+    	$('#'+e.target.id+'_label').text(file_name);
 
-
-
-
-
-
+    })
 });
 
 function del_free(){

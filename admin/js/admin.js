@@ -14,11 +14,7 @@ $(document).ready(function() {
 			},
 			dataType: "json",
 			success: function(data) {   	        	
-			    if(data==1){
-			    	location.reload();
-			    }else{
-			        alert("error");                
-			    }
+			    location.reload();
 			}
 		});
 	});
@@ -36,17 +32,80 @@ $(document).ready(function() {
 			},
 			dataType: "json",
 			success: function(data) {   	        	
-			    if(data==1){
-			    	location.reload();
-			    }else{
-			        alert("error");                
-			    }
+			    location.reload();
+			    
 			}
 		});
 
-   });
+    });
 
-   $('#list_del').click(function(){
+	$('#order_chk').click(function(){
+		var chk_arr = mk_chk_arr();
+		$.ajax({
+			type: "POST",
+			url: "../ajax/order_status.php",
+			cache: false,
+			async: false,
+			data: { 
+			    arr : chk_arr			    
+			},
+			dataType: "json",
+			success: function(data) {   	        	
+			    location.reload();
+			    
+			}
+		});
+	})
+
+   	$('#list_del').click(function(){	   	
+		if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+			var chk_arr = mk_chk_arr();	
+			$.ajax({
+				type: "POST",
+				url: "../ajax/product_del.php",
+				cache: false,
+				async: false,
+				data: { 
+				    arr : chk_arr,
+				    type : "stop"
+				},
+				dataType: "json",
+				success: function(data) {   	        	
+				    location.reload();
+				}
+			});
+
+		}else{   //취소
+			return;
+		}
+	});
+
+	$('#chk_all').click(function(){
+		if($("#chk_all").prop("checked")) { 			
+			$("input[class=list_chk]").prop("checked",true); 
+		} else {  
+			$("input[class=list_chk]").prop("checked",false); 
+		}
+
+	});
+
+
+
+   
+
+   $('#search_btn').click(function(){
+   		var select = document.getElementById("search_select");
+   		var select_val = select.options[select.selectedIndex].value;
+   		var input_val = $('#search_input').val();   		
+   		
+   		if(input_val!=""){
+   			location.href="?"+select_val+"="+input_val;   			
+   		}else{
+   			location.href="?";
+   		}
+
+
+
 
    });
 

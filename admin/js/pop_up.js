@@ -37,8 +37,8 @@ $(document).ready(function() {
 
 function insert_val(arr,for_count,option_count,name_count){
 	$('#tbody').children().eq(option_count).children().eq(0).find('.option_name').val(arr[for_count][0])
-	$('#tbody').children().eq(option_count).children().eq(1).find('.option_value')[name_count].value=arr[for_count][1];
-	$('#tbody').children().eq(option_count).children().eq(1).find('.option_price')[name_count].value=arr[for_count][2];
+	if(arr[for_count][1]!=null)	$('#tbody').children().eq(option_count).children().eq(1).find('.option_value')[name_count].value=arr[for_count][1];
+	if(arr[for_count][2]!=null) $('#tbody').children().eq(option_count).children().eq(1).find('.option_price')[name_count].value=arr[for_count][2];
 }
 function add_option_btn(){
 	if($('#tbody').children().length<3){
