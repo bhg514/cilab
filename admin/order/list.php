@@ -7,8 +7,10 @@
 	$order_number = $_GET['order_number'];
 	$product_name = $_GET['product_name'];
 	$order_name = $_GET['order_name'];
+	$type = $_GET['type'];
 	$start_num = 1;
 
+	if($type==null) $type = 1;
 	if($page==null) $page = 1;
 	if($order_number==null) $order_number = "";
 	if($product_name==null) $product_name = "";
@@ -17,15 +19,49 @@
 	if($product_name!=null){
 		$order_no = order_get_order_no($product_name);
 	}
-	$total_count = order_get_count($order_number,$order_name,$order_no,"1");	
+	$total_count = order_get_count($order_number,$order_name,$order_no,$type);	
+	if($type==1){
+		$type_text = '신규 주문';
+		$list_text = '결제';
+	}else if($type==2){
+		$type_text = '상품 준비';	
+		$list_text = '송장입력';
+	}
+	else if($type==3){
+		$type_text = '배송중';	
+		$list_text = '송장번호';
+	} 
+	else if($type==4) $type_text = '배송 완료';
+	else if($type==5) $type_text = '판매 완료';
+	else if($type==6) $type_text = '주문 취소';
+	else if($type==7) $type_text = '교환 신청';
+	else if($type==8) $type_text = '반품 신청';
+
+	$query_string = $_SERVER['QUERY_STRING']; 
+	$query_arr = explode('&', $query_string);
+	
+	$query_string ="";
+
+	foreach ($query_arr as $query) {
+		$query_sp = explode('=', $query);
+		
+		if($query_sp[0]!='page'){
+			$query_string .= $query."&";
+		}
+	}
+
+
+
+	
+
 	
 
 ?>
 <script type="text/javascript" src="../js/admin.js"></script>
 <section class="container">			
 	<div>
-		<div class="admin_title">상품관리</div>
-		<div class="admin_position">Home  » 주문/배송관리 » 신규 주문</div>	
+		<div class="admin_title"><?=$type_text?></div>		
+		<div class="admin_position">Home  » 주문/배송관리 » <?=$type_text?></div>			
 		<hr class="garo" style="display: block;"> 
 	</div>
 	<div class="search_div">
@@ -35,14 +71,17 @@
 			<option value="order_name">주문자</option>			
 		</select>
 		<input type="text" id="search_input">
-		<a class="btn type05" id="search_btn">검색</a>
+		<a class="btn type05" id="order_search_btn">검색</a>
 
 	</div>
 	
 	<div class="btn_div">
 		<a class="btn type05">전체 상품 엑셀 다운로드</a>
 		<a class="btn type05">엑셀 다운로드</a>
-		<a class="btn type05" id="order_chk">주문확인</a>		
+		<?php 
+			if($type==1) echo '<a class="btn type05" id="order_chk">주문확인</a>';
+			else if($type==2) echo '<a class="btn type05" id="input_invoice">송장입력 확인</a>';
+		?>
 		<a class="btn type05" id="list_del">삭제</a>
 	</div>
 	<table>
@@ -58,12 +97,12 @@
 				<th scope="col" class="thead_th">주문상품</th>
 				<th scope="col" class="thead_th">주문자</th>
 				<th scope="col" class="thead_th">결제금액</th>
-				<th scope="col" class="thead_th">결제</th>
+				<th scope="col" class="thead_th"><?=$list_text?></th>
 			</tr>
 		</thead>
 		<tbody>
-				<?php
-					$result = while_get_order_list($start_num,$order_number,$order_name,$order_no,"1");
+				<?php					
+					$result = while_get_order_list($page,$order_number,$order_name,$order_no,$type);
 					while ($r = mysqli_fetch_array($result)) {
 				?>
 			<tr>
@@ -71,13 +110,18 @@
 					<input type="checkbox" class="list_chk">
 					<input type="hidden" name="pk_no" value="<?= $r['pk_no']?>">
 				</td>
-				<td class="tbody_td"><?= $r['pk_no']?></td>
+				<td class="tbody_td"><?= $r['row']?></td>
 				<td class="tbody_td"><?= $r['fd_date']?></td>
-				<td class="tbody_td"><a href="detail.php?no=<?=$r['fk_order_number']?>"><?= $r['fk_order_number']?></a></td>
+				<td class="tbody_td"><a href="detail.php?type=<?=$type?>&no=<?=$r['pk_no']?>"><?= $r['fk_order_number']?></a></td>
 				<td class="tbody_td"><?=$r['fd_product_count']?></td>
 				<td class="tbody_td"><?=$r['fd_order_name']?></td>
 				<td class="tbody_td"><?=$r['fd_price']?></td>
-				<td class="tbody_td"><?=$r['fd_payment']?></td>
+				<?php
+				if($type ==1){
+					echo '<td class="tbody_td">'.$r["fd_payment"].'</td>';
+				}else if($type ==2)
+					echo '<td class="tbody_td"><input type="text" class="input_invoice"></td>';
+				?>
 			</tr>
 			
 
@@ -87,10 +131,10 @@
 		</tbody>
 	</table>
 	<div class="page_nav">
-		<a href="?page=1">
+		<a href="?<?=$query_string?>page=1">
 			<img src="/images/icon/btn_first.png" alt="pre" id="first_img" class="page_nav_btn">
 		</a>
-		<a href="?page=<?php if($page>1){ echo $page-1;}else{ echo '1';} ?>">
+		<a href="?<?=$query_string?>page=<?php if($page>1){ echo $page-1;}else{ echo '1';} ?>">
 			<img src="/images/icon/btn_prev.png" alt="pre" id="prev_img" class="page_nav_btn" >
 		</a>
 		<?php
@@ -107,7 +151,7 @@
 				if ($page ==$i){
 					echo "<span class = 'page_num page_select'>".$i."</span>";
 				}else{
-					echo "<a href='?page=".$i."' class = 'page_nav_btn page_num'>".$i."</a>";
+					echo "<a href='?".$query_string."page=".$i."' class = 'page_nav_btn page_num'>".$i."</a>";
 					
 				}
 			}
@@ -115,10 +159,10 @@
 			
 
 		?>
-		<a href="?page=<?php if($page<$for_end){ echo $page+1;}else{ echo $for_end;} ?>">
+		<a href="?<?=$query_string?>page=<?php if($page<$for_end){ echo $page+1;}else{ echo $for_end;} ?>">
 			<img src="/images/icon/btn_next.png" alt="pre" id="next_img" class="page_nav_btn">
 		</a>
-		<a href="?page=<?=$for_end?>">
+		<a href="?<?=$query_string?>page=<?=$for_end?>">
 			<img src="/images/icon/btn_last.png" alt="pre" id="last_img" class="page_nav_btn">
 		</a>
 	</div>

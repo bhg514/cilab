@@ -1,6 +1,7 @@
 <?php
 	include_once('../../common.php');
-	
+	$get_uri = $_SERVER['PHP_SELF'];
+	$uri_arr = explode('/',$get_uri);
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -34,13 +35,13 @@
 			</div>
 		</div>
 		<div class="admin_menu">
-			<ul>
-				<li class="selected"><a href="../pm/list.php">상품 관리</a></li>
-				<li><a href="../order/new_order.php">주문/배송 관리</a></li>
-				<li><a href="../board/notice.php">게시판/콘텐츠 관리</a></li>
-				<li><a href="../um/list.php">회원 관리</a></li>
-				<li><a href="../am/list.php">관리자 관리</a></li>
-				<li><a href="../statistic/month.php">통계 관리</a></li>
+			<ul>				
+				<li class="<?php if($uri_arr[2] == 'pm') echo 'selected' ; ?>"><a href="../pm/list.php">상품 관리</a></li>
+				<li class="<?php if($uri_arr[2] == 'order') echo 'selected' ; ?>"><a href="../order/list.php?type=1">주문/배송 관리</a></li>
+				<li class="<?php if($uri_arr[2] == '') echo 'selected' ; ?>"><a href="../board/notice.php">게시판/콘텐츠 관리</a></li>
+				<li class="<?php if($uri_arr[2] == '') echo 'selected' ; ?>"><a href="../um/list.php">회원 관리</a></li>
+				<li class="<?php if($uri_arr[2] == '') echo 'selected' ; ?>"><a href="../am/list.php">관리자 관리</a></li>
+				<li class="<?php if($uri_arr[2] == '') echo 'selected' ; ?>"><a href="../statistic/month.php">통계 관리</a></li>
 			</ul>
 		</div>
 
