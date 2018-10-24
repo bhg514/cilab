@@ -7,12 +7,7 @@ $(document).ready(function(){
 		temp2 = $(this).find("img").attr("src").replace("on.png", ".png");
 		$(this).find("img").attr("src", temp2);
 	});
-
 	
-	$(".notiList ul").bxSlider({
-		mode: 'vertical',
-		auto: true
-	});
 	
 	$(".neographBoard").click(function(){
 		$("#clientBoard").hide();

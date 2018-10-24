@@ -1,4 +1,5 @@
 $(document).ready(function() { 
+	/*이전데이터가 있다면 값 넣기*/
 	var pre_option =  opener.document.getElementById("option_input").value;	
 	if( pre_option != ""){
 		var option_split = pre_option.split("||")

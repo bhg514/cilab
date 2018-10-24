@@ -81,7 +81,7 @@ function input_chk(){
     var pw = $("#reg_mb_password").val();
     var pw_re = $("#reg_mb_password_re").val();
     var gender = $('input[name="mb_gender"]:checked').val();
-    var birthday = $('#reg_mb_bd').val();
+    var birthday = $('#datepicker1').val();
     var hp1 = $("#reg_mb_hp1").val()
     var hp2 = $("#reg_mb_hp2").val()
     var hp3 = $("#reg_mb_hp3").val();
@@ -149,7 +149,7 @@ function reg_form(){
     var pw = $("#reg_mb_password").val();
     var hp = $("#reg_mb_hp1").val()+"-"+$("#reg_mb_hp2").val()+"-"+$("#reg_mb_hp3").val();
     var gender = $('input[name="mb_gender"]:checked').val();
-    var birthday = $('#reg_mb_bd').val();
+    var birthday = $('#datepicker1').val();
     var mail= $("#str_email01").val()+"@"+$("#str_email02").val();
     var zip= $("#reg_mb_zip").val();
     var addr1= $("#reg_mb_addr1").val();

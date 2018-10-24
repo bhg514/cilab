@@ -1,7 +1,7 @@
 <?php
 	header ( "content-type:text/html; charset=utf-8" );
 	include_once("../../common.php");
-	include_once("./img_upload.php");
+	include_once("../data_upload.php");
 
 	try{
 		$status = $_POST["status"];
@@ -42,13 +42,6 @@
 			$new_main_img = file_upload($main_img);
 			$main_img = $main_img['name'];
 		}
-
-/*		$main_img = file_upload($main_img);
-		$sub_img1 = file_upload($sub_img1);
-		$sub_img2 = file_upload($sub_img2);
-		$sub_img3 = file_upload($sub_img3);
-		$sub_img4 = file_upload($sub_img4);*/
-
 
 
 		$query = 'INSERT INTO tb_product (pk_no, fd_name, fd_price, fd_category, fd_content, fd_stock, fd_date, fd_status, fd_delivery, fd_made, fd_main_img, fd_new_main_img, fd_sub_img, fd_new_sub_img, fd_option, fk_admin) VALUES ((select IFNULL(max(pk_no),0)+1 from tb_product a), "'.$product_name.'", '.$price.', "'.$category.'", "'.$new_content.'", '.$count.', "'.$date_time.'", "'.$status.'", '.$delivery.', "'.$made.'", "'.$main_img.'", "'.$new_main_img.'", "'.$sub_img.'", "'.$new_sub_img.'", "'.$option.'", "'.$user_name.'");';

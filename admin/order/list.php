@@ -9,7 +9,7 @@
 	$order_name = $_GET['order_name'];
 	$type = $_GET['type'];
 	$start_num = 1;
-
+	$date = $_GET['date'];
 	if($type==null) $type = 1;
 	if($page==null) $page = 1;
 	if($order_number==null) $order_number = "";
@@ -31,11 +31,33 @@
 		$type_text = '배송중';	
 		$list_text = '송장번호';
 	} 
-	else if($type==4) $type_text = '배송 완료';
-	else if($type==5) $type_text = '판매 완료';
-	else if($type==6) $type_text = '주문 취소';
-	else if($type==7) $type_text = '교환 신청';
-	else if($type==8) $type_text = '반품 신청';
+	else if($type==4){
+		$type_text = '배송완료';	
+		$list_text = '송장번호';
+	} 
+	else if($type==5){
+		$type_text = '판매완료';	
+		$list_text = '송장번호';
+	} 
+	else if($type==6){
+		$type_text = '주문취소';	
+		$list_text = '취소사유';
+		$list_text2 = '취소승인';
+		$list_text3 = '반려';
+	} 
+	else if($type==7){
+		$type_text = '교환신청';	
+		$list_text = '교환사유';
+		$list_text2 = '교환승인';
+		$list_text3 = '반려';
+	} 
+	else if($type==8){
+		$type_text = '반품신청';	
+		$list_text = '반품사유';
+		$list_text2 = '반품승인';
+		$list_text3 = '반려';
+	} 
+
 
 	$query_string = $_SERVER['QUERY_STRING']; 
 	$query_arr = explode('&', $query_string);
@@ -50,11 +72,6 @@
 		}
 	}
 
-
-
-	
-
-	
 
 ?>
 <script type="text/javascript" src="../js/admin.js"></script>
@@ -80,7 +97,9 @@
 		<a class="btn type05">엑셀 다운로드</a>
 		<?php 
 			if($type==1) echo '<a class="btn type05" id="order_chk">주문확인</a>';
-			else if($type==2) echo '<a class="btn type05" id="input_invoice">송장입력 확인</a>';
+			elseif($type==2) echo '<a class="btn type05" id="input_invoice">송장입력 확인</a>';
+			elseif ($type==3) echo '<a class="btn type05" id="del_chk">배송체크</a>';
+			elseif ($type==4) echo '<a class="btn type05" id="del_finish_chk">배송체크</a>';
 		?>
 		<a class="btn type05" id="list_del">삭제</a>
 	</div>
@@ -98,11 +117,21 @@
 				<th scope="col" class="thead_th">주문자</th>
 				<th scope="col" class="thead_th">결제금액</th>
 				<th scope="col" class="thead_th"><?=$list_text?></th>
+				<?php 
+					if($type==6 || $type==7 || $type==8){
+						echo '<th scope="col" class="thead_th">'.$list_text2.'</th>';	
+						echo '<th scope="col" class="thead_th">'.$list_text3.'</th>';	
+					} 				
+				?>
 			</tr>
 		</thead>
 		<tbody>
-				<?php					
-					$result = while_get_order_list($page,$order_number,$order_name,$order_no,$type);
+				<?php	
+					if ($type == 5){
+						$result = while_get_order_list_date($page,$order_number,$order_name,$order_no,$type,$date);
+					}else{
+						$result = while_get_order_list($page,$order_number,$order_name,$order_no,$type);
+					}			
 					while ($r = mysqli_fetch_array($result)) {
 				?>
 			<tr>
@@ -119,14 +148,22 @@
 				<?php
 				if($type ==1){
 					echo '<td class="tbody_td">'.$r["fd_payment"].'</td>';
-				}else if($type ==2)
+				}else if($type ==2){
 					echo '<td class="tbody_td"><input type="text" class="input_invoice"></td>';
+				}else if($type ==3 || $type ==4 || $type == 5){
+					echo '<td class="tbody_td">'.$r['fd_invoice_number'].'</td>';
+				}else if($type>=6){
+					echo '<td><a class="btn type05" id="show_msg">보기</a><input type="hidden" id="status_msg" value="'.$r['fd_status_msg'].'"></td>';
+					echo '<td><a class="btn type05" id="conf_cancel">승인</a></td>';
+					echo '<td><a class="btn type05" id="refuse_cancel">반려</a></td>';
+
+				}
 				?>
 			</tr>
 			
 
 				<?php
-					}
+				}
 				?>
 		</tbody>
 	</table>
@@ -165,6 +202,14 @@
 		<a href="?<?=$query_string?>page=<?=$for_end?>">
 			<img src="/images/icon/btn_last.png" alt="pre" id="last_img" class="page_nav_btn">
 		</a>
-	</div>
+	</div>	
+	
+	<div class="wrap-loading display-none">
+	    <div><img src="/images/icon/loading.gif" /></div>
+	</div>  
+
+
+
+
 </section>
 

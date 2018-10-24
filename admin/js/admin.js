@@ -132,6 +132,12 @@ $(document).ready(function() {
 
 
     });
+    $('#day_search_btn, #month_search_btn').click(function(e){
+    	var start_date = $(e.target).siblings()[0].value;
+    	var end_date = $(e.target).siblings()[1].value;
+    	
+    	location.href="?start_date="+start_date+"&end_date="+end_date;
+    })
 
     $('#input_invoice').click(function(){
     	var chk_no_arr = mk_chk_no_arr();
@@ -151,7 +157,7 @@ $(document).ready(function() {
 			dataType: "json",
 
 			success: function(data) {   	        	
-			    //location.reload();
+			    location.reload();
 
 			    
 			}
@@ -159,6 +165,43 @@ $(document).ready(function() {
     
 
     });
+
+    $('#del_chk').click(function(){
+		$('.wrap-loading').removeClass('display-none');
+    	$.ajax({
+			type: "POST",
+			url: "../ajax/del_chk.php",
+			cache: false,
+							
+			error : function(request,status,error) {
+			    alert("Error!");
+    		},
+			success: function(data) {   	        	
+		        $('.wrap-loading').addClass('display-none');
+			    location.reload();
+			}
+		});
+    });
+
+
+    $('#del_finish_chk').click(function(){
+		$('.wrap-loading').removeClass('display-none');
+    	$.ajax({
+			type: "POST",
+			url: "../ajax/del_finish_chk.php",
+			cache: false,
+							
+			error : function(request,status,error) {
+			    alert("Error!");
+    		},
+			success: function(data) {   	        	
+		        $('.wrap-loading').addClass('display-none');
+			    location.reload();
+			}
+		});
+    });
+
+    
 
     $('#detail_order_chk').click(function(){
     	var no = $('#no').val();
@@ -183,7 +226,89 @@ $(document).ready(function() {
 
     });
 
+    $('#show_msg').click(function(e){
+    	window.name = "parentForm";			
+    	var no = $(e.target).parent().siblings()[0].children[1].value
+		open_win = window.open('./pop_cancel_reason.php?no='+no,'childForm','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
+
+    })
+
+    $('#refuse_cancel').click(function(e){
+
+    	window.name = "parentForm";			
+    	var no = $(e.target).parent().siblings()[0].children[1].value
+		open_win = window.open('./pop_refuse_cancel.php?no='+no,'childForm','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
+    })
+
+    $('#search_select').change(function() {
+    	var select_val = $('#search_select option:selected').val();
+    	if(select_val==1){
+
+    		$('.day_cal').show();
+    		$('.month_cal').hide();
+
+    	}else{
+    		if($('#minical').css('display')=='block'){
+    			$('#minical').hide()
+    		}
+    		$('.month_cal').show();
+    		$('.day_cal').hide();
+    	}
+
+    })
+
+    $('.month_cal').click(function(){
+    	$('#styles_js').remove()
+    	addNewStyle('table.ui-datepicker-calendar { display: none; }')
+    	//$('.ui-datepicker-calendar').hide()
+    })
+    $('.day_cal').click(function(){
+    	$('#styles_js').remove()
+    	addNewStyle('table.ui-datepicker-calendar { display: table; }')
+    	//$('.ui-datepicker-calendar').show()
+    })
+    
+    $(document).on('click', '#add_file_btn', function(event) {
+    	var count = $('#add_file_btn').siblings().length +1;
+        addFileForm(count);        
+    });
+    $(document).on('click', '.button-delete-file', function(event) {
+        $(this).parent().remove();
+    	var count = $('#add_file_btn').siblings().length;
+        
+    });
+
+    $('#old_file_remove').click(function(){
+    	$('#files_td').html("")
+    	var html ='<a id="add_file_btn">파일 추가</a>';
+    	$("#files_td").append(html);
+    })
+
+    $('#notice_save_btn').click(function(){ //에디터 값 저장
+    	var classes = [];
+    	$('#files_td div input').each(function() {
+		      classes.push($(this).attr('class'));
+		});
+		$('#file_count').val(classes)
+        $('#content_hidden').val($('#summernote').summernote('code'));
+    });
+
 });
+
+
+
+function addNewStyle(newStyle) {
+    var styleElement = document.getElementById('styles_js');
+    if (!styleElement) {
+        styleElement = document.createElement('style');
+        styleElement.type = 'text/css';
+        styleElement.id = 'styles_js';
+        document.getElementsByTagName('head')[0].appendChild(styleElement);
+    }
+    styleElement.appendChild(document.createTextNode(newStyle));
+}
+
+
 
 function mk_chk_no_arr(){
 	var chk_count = $('.list_chk').size();
@@ -217,3 +342,11 @@ function mk_invoice_arr(chk_arr){
 	return invoice_arr;
 
 }
+
+function addFileForm(count) {
+    var html = "<div id='item_"+count+"'>";
+    html += "<input type='file' name='file_"+count+"' class='file_"+count+"'/>";
+    html += "<a class='button-delete-file'>삭제</a></div>";    
+    $("#files_td").append(html);
+}
+

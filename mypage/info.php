@@ -21,6 +21,13 @@
 	$mail_site = $mail_split[1];
 
 ?>
+<!--달력 -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="../js/click_cal.js"></script>
+<!-- 달력 -->
+
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
@@ -96,7 +103,7 @@
 							<tr>
 								<th scope="row">생일</th>
 								<td>
-									<input id="reg_mb_bd" name="mb_bd" type="text" class="required" OnClick="Calendar(this, 'down','no');" value="<?=$user_info['fd_birthday']?>">
+									<input id="datepicker1" name="mb_bd" type="text" class="required cal_input"  value="<?=$user_info['fd_birthday']?>" readonly>
 									<span id="wrong_bd" class="fcR ml05 fs12 b hide">생일을 입력하세요</span>										
 								</td>
 							</tr>

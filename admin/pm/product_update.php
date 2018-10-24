@@ -1,7 +1,7 @@
 <?php
 	header ( "content-type:text/html; charset=utf-8" );
 	include_once("../../common.php");
-	include_once("./img_upload.php");
+	include_once("../data_upload.php");
 
 	try{
 		$no = $_POST['no'];
@@ -13,12 +13,6 @@
 		$delivery = $_POST["delivery"]; //int
 		$made = $_POST["made"];
 		$main_img = $_FILES["main_img"];
-		$old_main_img = $_POST["old_main_img"];
-		$old_sub_img_arr = array();
-		$old_sub_img_arr['img1'] = $_POST['old_sub_img1'];
-		$old_sub_img_arr['img2'] = $_POST['old_sub_img2'];
-		$old_sub_img_arr['img3'] = $_POST['old_sub_img3'];
-		$old_sub_img_arr['img4'] = $_POST['old_sub_img4'];
 
 		$sub_img_arr = array();
 		$sub_img_arr['sub_img1'] = $_FILES['sub_img1'];
@@ -49,7 +43,10 @@
 				$sub_img .= $img['name']."||";
 			}
 		}
+		
 		$new_sub_img = substr($new_sub_img, 0, -2);
+		$sub_img = substr($sub_img, 0, -2);
+
 
 
 		$query = 'update tb_product set fd_name = "'.$product_name.'", fd_price = '.$price.', fd_category = "'.$category.'", fd_content = "'.$new_content.'", fd_stock = '.$count.', fd_date = "'.$date_time.'", fd_status = "'.$status.'", fd_delivery = "'.$delivery.'", fd_made = "'.$made.'",';

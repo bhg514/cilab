@@ -123,6 +123,17 @@
 		return $result;
 	}
 
+	function while_get_order_list_date($start_num,$order_number,$order_name,$order_no,$status,$date){
+		$start_num = ($start_num-1)*10;		
+		if($order_no == null){
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* FROM tb_order o, (SELECT @ROWNUM := '.$start_num.') R where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and fd_status like "%'.$status.'%" and fd_date="'.$date.'" order by pk_no limit '.$start_num.', 10 ';					
+		}else{
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* FROM tb_order o, (SELECT @ROWNUM := '.$start_num.') R where o.pk_no in ('.$order_no.') order by pk_no limit '.$start_num.', 10';					
+		}		
+		$result = query_send($query);		
+		return $result;
+	}
+
 	function order_get_count($order_number,$order_name,$order_no,$status){
 		if($order_no == null){
 			$query = 'select count(*) from tb_order where fk_order_number like "%'.$order_number.'%" and fd_order_name like "%'.$order_name.'%" and fd_status like "%'.$status.'%"';
@@ -185,5 +196,67 @@
 		
 	}
 
+	function while_get_order_invoice(){
+		$query = 'select pk_no, fd_invoice_number from tb_order where fd_status=3';
+		$result = query_send($query);		
+		return $result;
+	}
+
+	function del_chk($no, $status){
+		$query = 'update tb_order set fd_status='.$status.' where pk_no = '.$no;
+		query_send_non_return($query);	
+	}
+
+
+	function del_finish_chk(){
+		$query = 'SELECT pk_no FROM tb_order WHERE date(fd_date) <= date(subdate(now(), INTERVAL 14 DAY)) and fd_status=4';
+		$results = query_send($query);			
+		while ($info = mysqli_fetch_array($results)) {
+			del_chk($info['pk_no'],5);
+		}
+		
+
+	}
+
+	function refuse_msg($no, $input_msg){
+		$query='UPDATE tb_order SET fd_status = "9" , fd_status_msg="'.$input_msg.'" where pk_no ='.$no;		
+		query_send_non_return($query);
+
+	}
+
+	function while_get_complete_list($start_num,$start_date,$end_date){
+		$start_num = ($start_num-1)*10;	
+		$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* from (select fd_date, count(*) count,sum(fd_price) price, sum(fd_del_fee) del_fee, sum(fd_price+fd_del_fee) total from tb_order  where fd_date between "'.$start_date.'" and "'.$end_date.'" group by fd_date order by fd_date desc) o, (SELECT @ROWNUM := '.$start_num.') R limit '.$start_num.', 10 ';
+		$result = query_send($query);		
+		return $result;
+	}
+	function complete_count($start_date,$end_date){
+		$query =  'select count(*) from (select fd_date from tb_order where fd_date between "'.$start_date.'" and "'.$end_date.'" group by fd_date order by fd_date desc) a';		
+		$result = query_send($query);
+		$info = mysqli_fetch_array($result);
+		return $info;
+
+	}
+	function complete_sum_info($start_date,$end_date){
+		$query = 'select count(*) total, sum(fd_price) price, sum(fd_del_fee) del from tb_order where fd_date between "'.$start_date.'" and "'.$end_date.'"';
+		$result = query_send($query);
+		$info = mysqli_fetch_array($result);
+		return $info;
+
+	}
+
+	function while_get_notice_list($start_num){
+		$start_num = ($start_num-1)*10;	
+		$query = 'select @ROWNUM := @ROWNUM + 1 AS row, n.* from tb_notice n, (SELECT @ROWNUM := '.$start_num.') R limit '.$start_num.', 10';		
+		$result = query_send($query);		
+		return $result;
+	}
+
+	function notice_get_info($no){
+		$query = "select * from tb_notice where pk_no=".$no;
+		$result = query_send($query);
+		$info = mysqli_fetch_array($result);
+		return $info;
+	}
 
 ?>

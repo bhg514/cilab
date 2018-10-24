@@ -18,19 +18,6 @@
 	}
 	$info = complete_sum_info($start_date,$end_date);
 
-	$query_string = $_SERVER['QUERY_STRING']; 
-	$query_arr = explode('&', $query_string);
-	
-	$query_string ="";
-
-	foreach ($query_arr as $query) {
-		$query_sp = explode('=', $query);
-		
-		if($query_sp[0]!='page'){
-			$query_string .= $query."&";
-		}
-	}
-
 ?>
 <script type="text/javascript" src="../js/admin.js"></script>
 <section class="container">			
@@ -70,11 +57,11 @@
 				?>
 			<tr>				
 				<td class="tbody_td"><?= $r['row']?></td>
-				<td class="tbody_td"><a href="detail.php?no=<?=$r['pk_no']?>"><?= $r['fd_title']?></a></td>
+				<td class="tbody_td"><a href="list.php?type=5&date=<?=$r['fd_date']?>"><?= $r['fd_title']?></a></td>
 				<td class="tbody_td"><?= $r['fd_name']?></td>
 				<td class="tbody_td"><?=$r['fd_date']?></td>
 				<td class="tbody_td"><?=$r['fd_count']?></td>
-				<td class="tbody_td"><?php if($r['fd_attach']!=null) echo '<img src="/images/icon/save.png" class="save_img">';?></td>				
+				<td class="tbody_td"><?=$r['fd_attach']?></td>				
 			</tr>
 			
 
