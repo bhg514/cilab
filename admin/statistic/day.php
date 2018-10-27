@@ -4,9 +4,13 @@
 	include './side.php';
 	include_once("../../common.php");
 	$year = $_GET['year'];
+	$month = $_GET['month'];
 	if($year==null)
-		$year = date("Y");
-	$year_total = year_total($year);
+		$year = date("Y");		
+	if($month==null)
+		$month = date("m");
+
+	$month_total = month_total($year,$month);
 
 ?>
 <script type="text/javascript" src="../js/admin.js"></script>
@@ -20,10 +24,12 @@
 		<select id="period_select">
 			<?php
 				for($i=2018; $i<$year+10;$i++){
-					if ($i==$year)
-						echo '<option value="'.$i.'" selected>'.$i.'년</option>';
-					else
-						echo '<option value="'.$i.'">'.$i.'년</option>';
+					for($k=1; $k<12; $k++){
+						if ($year==$i && $month == $k)
+							echo '<option value="'.$i.'/'.$k.'" selected>'.$i.'년 '.$k.'월</option>';
+						else 
+							echo '<option value="'.$i.'/'.$k.'">'.$i.'년 '.$k.'월</option>';						
+					}
 				} 
 			?>
 			
@@ -38,21 +44,23 @@
 			<tr>
 				<th scope="col" class="thead_th">년</th>
 				<th scope="col" class="thead_th">월</th>
+				<th scope="col" class="thead_th">일</th>
 				<th scope="col" class="thead_th">주문수</th>
 				<th scope="col" class="thead_th">판매금액</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php
-				$result = while_get_month_list($year);
+				$result = while_get_day_list($year,$month);
 				$count = 0;
 				while ($r = mysqli_fetch_array($result)) {
 					echo '<tr>';
 					if($count ==0 ){
-						echo '<td rowspan=12 class="tbody_td">'.$year.'</td>';
+						echo '<td rowspan=31 class="tbody_td">'.$year.'</td>';
+						echo '<td rowspan=31 class="tbody_td">'.$month.'</td>';
 						$count++;
 					}
-					echo '<td class="tbody_td">'.$r['month'].'월</td>';		
+					echo '<td class="tbody_td">'.$r['day'].'일</td>';		
 					echo '<td class="tbody_td">'.$r['count'].'</td>';
 					echo '<td class="tbody_td">'.number_format($r['total']).'</td>';						
 
@@ -61,9 +69,9 @@
 				}
 			?>
 			<tr>
-				<td colspan="2">총계</td>
-				<td><?=$year_total['count']?></td>
-				<td><?=$year_total['total']?></td>
+				<td colspan="3">총계</td>
+				<td><?=$month_total['count']?></td>
+				<td><?=$month_total['total']?></td>
 			</tr>
 		</tbody>
 	</table>	

@@ -7,6 +7,7 @@
 		$no = $_POST['no'];
 		$title = $_POST['title'];
 		$files = $_POST['file_count'];	
+		$type = $_POST['type'];
 
 		
 		$content = $_POST["content_val"];
@@ -37,9 +38,8 @@
 		$new_file_name = substr($new_file_name, 0, -2);
 		$file_name = substr($file_name, 0, -2);
 
-
-		$query = 'update tb_notice set fd_title = "'.$title.'",';
-		
+		$table = table($type);
+		$query = 'update '.$table.' set fd_title = "'.$title.'",';
 		if($new_file_name!=""){
 			$query .=  ' fd_file = "'.$file_name.'", fd_new_file = "'.$new_file_name.'",' ;	
 		}
@@ -47,7 +47,7 @@
 
 		
 		query_send_non_return($query);
-		//header("location:".$_SERVER["HTTP_REFERER"]);
+		header("location:".$_SERVER["HTTP_REFERER"]);
 
 
 	} catch(Exception $e){

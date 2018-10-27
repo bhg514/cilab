@@ -1,5 +1,4 @@
 <?php
-// 옵션 사이즈 늘리기
 	header ( "content-type:text/html; charset=utf-8" );
 	include '../admin_header.php';
 	include './side.php';
@@ -24,6 +23,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 
 <script type="text/javascript" src="../js/product_reg.js"></script>
+<script type="text/javascript" src="../js/admin.js"></script>
 <section class="container">	
 	
 
@@ -38,9 +38,11 @@
 						</div>
 						<hr class="garo" style="display: block;"> 
 						<div>
-							<a class="btn type07">저장</a>
-							<a class="btn type07">삭제</a>
-							<a class="btn type07">목록</a>
+							<input type="submit" value="수정" id="product_reg_btn" class="btn type07 st2">
+							<a id="info_del" class="btn type07">삭제</a>
+							<a href="/admin/pm/list.php" class="btn type07">목록</a>
+
+
 						</div>
 						<h3>■ 상품정보</h3>
 						<caption>상품 등록</caption>
@@ -52,7 +54,7 @@
 							<tr>						
 								<th scope="row">상태</th>						
 								<td>
-									<input type="hidden" name="no" value="<?=$info['pk_no'] ?>">
+									<input type="hidden" name="no" id="no" value="<?=$info['pk_no'] ?>">
 									<select name="status" >
 										<option value="판매중" <?php if($info['fd_status']=="판매중"){ echo "selected";}?> >판매중</option>
 										<option value="판매중지" <?php if($info['fd_status']=="판매중지"){ echo "selected";}?> >판매중지</option>
@@ -115,18 +117,22 @@
 							<tr>
 								<th scope="row">추가이미지</th>
 								<td>
+									
 									<input type="file" name="sub_img1" id="sub_img1" style="display:none;"/>
 									<input type="hidden" name="old_sub_img1" value="<?php if($sub_arr[0]!=null){ echo $sub_arr[0];}?>">
 									<label for="sub_img1" id="sub_img1_label"><?php if($sub_arr[0]!=null){ echo $sub_arr[0];}else{ echo '클릭하여 이미지 파일을 올려주세요';}?> </label>
 									<br/>
+
 									<input type="file" name="sub_img2" id="sub_img2" style="display:none;"/>
 									<input type="hidden" name="old_sub_img2" value="<?php if($sub_arr[1]!=null){ echo $sub_arr[1];}?>">
 									<label for="sub_img2" id="sub_img2_label"><?php if($sub_arr[1]!=null){ echo $sub_arr[1];}else{ echo '클릭하여 이미지 파일을 올려주세요';}?></label>
 									<br/>
+
 									<input type="file" name="sub_img3" id="sub_img3" style="display:none;"/>
 									<input type="hidden" name="old_sub_img3" value="<?php if($sub_arr[2]!=null){ echo $sub_arr[2];}?>">
 									<label for="sub_img3" id="sub_img3_label"><?php if($sub_arr[2]!=null){ echo $sub_arr[2];}else{ echo '클릭하여 이미지 파일을 올려주세요';}?></label>
 									<br/>
+
 									<input type="file" name="sub_img4" id="sub_img4" style="display:none;"/>
 									<input type="hidden" name="old_sub_img4" value="<?php if($sub_arr[3]!=null){ echo $sub_arr[3];}?>">
 									<label for="sub_img4" id="sub_img4_label"><?php if($sub_arr[3]!=null){ echo $sub_arr[3];}else{ echo '클릭하여 이미지 파일을 올려주세요';}?></label>
@@ -159,9 +165,7 @@
 						</tbody>
 					</table>
 					<div class="mt20 ar">
-						<input type="submit" value="상품등록" id="product_reg_btn" class="btn type07 st2">
-						<!-- <a href="javascript:login_do();" class="btn type07 st2">회원가입</a> -->
-						<a href="/" class="btn type07">취소</a>
+						
 					</div>
 				</fieldset>
 			</form>

@@ -128,10 +128,42 @@ $(document).ready(function() {
 	   	}else{
 	   		location.href="?type="+type_val;
 	   	}
-
-
-
     });
+
+    $('#board_search_btn').click(function(){
+   		var query_string = window.location.href.split('?')[1].split('&');
+   		
+
+
+   		var input_val = $('#search_input').val();   		
+
+   		var new_q_s = "?";
+   		for (var i=0; i<query_string.length;i++){
+   			query_string_sp =query_string[i].split('=');
+			if(query_string_sp[0]=='type'){	   			
+				type_val = query_string_sp[1];
+				break;
+			}
+		}
+
+   		if(input_val!=""){
+			location.href = "?type="+type_val+"&search="+input_val;
+	   	}else{
+	   		location.href="?type="+type_val;
+	   	}
+    });
+    $('#user_search_btn').click(function(){
+   		var input_val = $('#search_input').val();   		
+
+   		if(input_val!=""){
+			location.href = "?&search="+input_val;
+	   	}else{
+	   		location.href="?";
+	   	}
+    });
+    
+
+    
     $('#day_search_btn, #month_search_btn').click(function(e){
     	var start_date = $(e.target).siblings()[0].value;
     	var end_date = $(e.target).siblings()[1].value;
@@ -256,6 +288,16 @@ $(document).ready(function() {
     	}
 
     })
+    $('#period_select').change(function() {
+    	var select_val = $('#period_select option:selected').val();
+    	select_val = select_val.split('/');
+    	if (select_val[1]==null)
+    		location.href ="?year="+select_val[0];
+    	else
+    		location.href ="?year="+select_val[0]+"&month="+select_val[1];
+
+    })
+    
 
     $('.month_cal').click(function(){
     	$('#styles_js').remove()
@@ -291,6 +333,68 @@ $(document).ready(function() {
 		});
 		$('#file_count').val(classes)
         $('#content_hidden').val($('#summernote').summernote('code'));
+    });
+
+    $('#save_btn').click(function(){
+    	var pw = $('#pw').val();
+    	var pw_re = $('#pw_re').val();
+    	if(pw!=pw_re){
+    		$('#wrong_pw').show();
+    		return false;
+    	}
+
+    });
+
+    $('#info_del').click(function(){
+    	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+    		var no = $('#no').val();
+			var type = window.location.href.split('?')[0].split('admin')[1].split('/')[1];//ex. am, pm ...
+			if(type=="board"){
+				params = window.location.href.split('?')[1].split('&');
+				for (param in params){
+					param_split = params[param].split('=')
+					if(param_split[0]=="type"){
+						type_val = param_split[1]
+						if(type_val==1) type="notice";
+						else if(type_val==2) type="sw";
+						else if(type_val==3) type="contents";
+						break;
+					}
+				}
+			}
+			$.ajax({
+				type: "POST",
+				url: "../ajax/info_del.php",
+				cache: false,
+				async: false,
+				data: { 
+				    no : no,
+				    type : type
+				},
+				dataType: "text",
+				success: function(data) {   	     
+					sub = window.location.href.split('admin')[1].split('/')[1]
+					url = window.location.host+"/admin/"+sub+"/list.php";
+					type_val = ""
+					if (sub == "order" || sub=="board") {
+						params = window.location.href.split('?')[1].split('&');
+						for (param in params){
+							param_split = params[param].split('=')
+							if(param_split[0]=="type"){
+								type_val = param_split[1]
+								break;
+							}
+						}
+						url +="?type="+type_val;
+					}
+				    location.href ="http:\/\/"+url;
+				}
+			});
+
+		}else{   //취소
+			return;
+		}
+
     });
 
 });

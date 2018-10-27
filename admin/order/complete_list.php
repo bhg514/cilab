@@ -119,6 +119,7 @@
 		<?php
 			$total_count = complete_count($start_date,$end_date);
 			$total_count = $total_count[0];
+			if($total_count == 0 ) $total_count = 1;
 			
 			
 			$end_num = 10;

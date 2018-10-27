@@ -6,37 +6,50 @@
 	$page = $_GET['page'];		
 	if($page==null) $page = 1;
 	$start_num = 1;
-	$start_date = $_GET['start_date'];
-	$end_date = $_GET['end_date'];
+	$type = $_GET['type'];
+	$search = $_GET['search'];
 
-	if($end_date == null){
-		$end_date = date("Y-m-d"); 
+	if($search== null){
+		$search="";
 	}
-	if($start_date == null){
-		$timestamp = strtotime("-1 years");
-		$start_date = date("Y-m-d", $timestamp);
+
+	$query_string = $_SERVER['QUERY_STRING']; 
+	$query_arr = explode('&', $query_string);
+	
+	$query_string ="";
+
+	foreach ($query_arr as $query) {
+		$query_sp = explode('=', $query);
+		
+		if($query_sp[0]!='page'){
+			$query_string .= $query."&";
+		}
 	}
-	$info = complete_sum_info($start_date,$end_date);
+	if($type==1) $head = '공지사항';
+	elseif($type==2) $head = 'SW다운로드';
+	elseif($type==3) $head = '콘텐츠관리';
+	elseif($type==4) $head = '1:1 문의';
 
 ?>
 <script type="text/javascript" src="../js/admin.js"></script>
 <section class="container">			
 	<div>
-		<div class="admin_title">공지사항</div>		
-		<div class="admin_position">Home  » 게시판/콘텐츠관리 » 공지사항</div>			
+		<div class="admin_title"><?=$head?></div>		
+		<div class="admin_position">Home  » 게시판/콘텐츠관리 » <?=$head?></div>			
 		<hr class="garo" style="display: block;"> 
 	</div>
 	<div class="search_div">
 		<select id="search_select">
-			<option value="order_number">일별</option>
-			<option value="product_name">월별</option>			
+			<option value="order_number">제목</option>	
 		</select>
 		<input type="text" id="search_input">		
-		<a class="btn type05" id="order_search_btn">검색</a>
+		<a class="btn type05" id="board_search_btn">검색</a>
 
 	</div>	
 	<div class="btn_div">
-		<a class="btn type05">등록</a>		
+		<?php if($type!=4)
+			echo '<a class="btn type05" href="new_data.php?type=<?=$type?>">등록</a>'
+		?>		
 	</div>
 	<table>
 		<caption class="readHide">상품 관리</caption>
@@ -46,22 +59,49 @@
 				<th scope="col" class="thead_th">제목</th>
 				<th scope="col" class="thead_th">작성자</th>
 				<th scope="col" class="thead_th">작성일</th>
+				<?php
+					if($type==1 || $type==2){
+
+				?>
 				<th scope="col" class="thead_th">조회수</th>
-				<th scope="col" class="thead_th">첨부파일</th>				
+				<th scope="col" class="thead_th">첨부파일</th>
+				<?php
+					}elseif ($type==4) {
+						echo '<th scope="col" class="thead_th">답변여부</th>';
+					}	
+				?>				
 			</tr>
 		</thead>
 		<tbody>
-				<?php					
-					$result = while_get_notice_list($start_num);					
+				<?php
+								
+					$result = while_get_board_list($start_num,$search,$type);		
 					while ($r = mysqli_fetch_array($result)) {
 				?>
 			<tr>				
 				<td class="tbody_td"><?= $r['row']?></td>
-				<td class="tbody_td"><a href="list.php?type=5&date=<?=$r['fd_date']?>"><?= $r['fd_title']?></a></td>
+				<?php
+					if($type!=4){
+						echo '<td class="tbody_td"><a href="detail.php?type='.$type.'&no='.$r["pk_no"].'">'.$r["fd_title"].'</a></td>';
+					}else{
+						echo '<td class="tbody_td"><a href="qna.php?type='.$type.'&no='.$r["pk_no"].'">'.$r["fd_title"].'</a></td>';
+					}
+				?>
 				<td class="tbody_td"><?= $r['fd_name']?></td>
 				<td class="tbody_td"><?=$r['fd_date']?></td>
+				<?php
+					if($type==1 || $type==2){
+
+				?>
 				<td class="tbody_td"><?=$r['fd_count']?></td>
-				<td class="tbody_td"><?=$r['fd_attach']?></td>				
+				<td class="tbody_td"><?php if($r['fd_file']!=null) echo '<img src="/images/icon/save.png" class="save_img">';?></td>
+				<?php
+					}elseif ($type==4) {
+						if($r['fd_reply']!=null)
+							echo '<td class="tbody_td">답변완료</td>';
+						else echo '<td class="tbody_td">미답변</td>';				
+					}	
+				?>				
 			</tr>
 			
 
@@ -78,9 +118,9 @@
 			<img src="/images/icon/btn_prev.png" alt="pre" id="prev_img" class="page_nav_btn" >
 		</a>
 		<?php
-			$total_count = complete_count($start_date,$end_date);
+			$total_count = board_count($type, $search);
 			$total_count = $total_count[0];
-			
+			if($total_count == 0 ) $total_count = 1;
 			
 			$end_num = 10;
 			$total_page = ceil($total_count/10);

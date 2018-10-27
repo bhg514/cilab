@@ -2,6 +2,10 @@
 	include_once('../../common.php');
 	$get_uri = $_SERVER['PHP_SELF'];
 	$uri_arr = explode('/',$get_uri);
+	$user_name = $_SESSION['user_name'];
+	if($user_name==null){
+		header("location:http://".$http_host."/member/login.php");
+	}
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -28,8 +32,8 @@
 	<header>
 		<h1><a href="/index.php">CiLab - Creative Idea Lab</a></h1>
 		<div class="gnb">
-			<div class="gnbInner">
-				<?=$_SESSION['user_name']?>님 환영합니다.				
+			<div class="gnbInner"><?=$user_name?>
+				님 환영합니다.				
 				<a href="../../member/logout.php" class="gnb_login">로그아웃</a>
 				
 			</div>
@@ -38,10 +42,10 @@
 			<ul>				
 				<li class="<?php if($uri_arr[2] == 'pm') echo 'selected' ; ?>"><a href="../pm/list.php">상품 관리</a></li>
 				<li class="<?php if($uri_arr[2] == 'order') echo 'selected' ; ?>"><a href="../order/list.php?type=1">주문/배송 관리</a></li>
-				<li class="<?php if($uri_arr[2] == 'board') echo 'selected' ; ?>"><a href="../board/notice.php">게시판/콘텐츠 관리</a></li>
-				<li class="<?php if($uri_arr[2] == '') echo 'selected' ; ?>"><a href="../um/list.php">회원 관리</a></li>
-				<li class="<?php if($uri_arr[2] == '') echo 'selected' ; ?>"><a href="../am/list.php">관리자 관리</a></li>
-				<li class="<?php if($uri_arr[2] == '') echo 'selected' ; ?>"><a href="../statistic/month.php">통계 관리</a></li>
+				<li class="<?php if($uri_arr[2] == 'board') echo 'selected' ; ?>"><a href="../board/list.php?type=1">게시판/콘텐츠 관리</a></li>
+				<li class="<?php if($uri_arr[2] == 'um') echo 'selected' ; ?>"><a href="../um/list.php">회원 관리</a></li>
+				<li class="<?php if($uri_arr[2] == 'am') echo 'selected' ; ?>"><a href="../am/list.php">관리자 관리</a></li>
+				<li class="<?php if($uri_arr[2] == 'statistic') echo 'selected' ; ?>"><a href="../statistic/month.php">통계 관리</a></li>
 			</ul>
 		</div>
 

@@ -43,9 +43,8 @@
 							if($type==1) echo '<a class="btn type07" id="detail_order_chk">주문확인</a>';
 							elseif ($type==2) echo '<a class="btn type07">송장입력</a>';
 						?>
-						
-						<a class="btn type07">삭제</a>
-						<a class="btn type07">목록</a>
+						<a id="info_del" class="btn type07">삭제</a>
+						<a href="/admin/order/list.php?type=<?=$type?>" class="btn type07">목록</a>
 					</div>
 					<input type="hidden" id="no" value="<?=$info['pk_no'] ?>">
 					<h3>■ 주문정보</h3>
@@ -126,9 +125,7 @@
 						</tbody>
 					</table>									
 					<div class="mt20 ar">
-						<input type="submit" value="상품등록" id="product_reg_btn" class="btn type07 st2">
-						<!-- <a href="javascript:login_do();" class="btn type07 st2">회원가입</a> -->
-						<a href="/" class="btn type07">취소</a>
+						
 					</div>
 				</fieldset>
 			</form>

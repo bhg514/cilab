@@ -66,7 +66,7 @@
 
 	function while_get_production_list($start_num,$name,$category,$status){
 		$start_num = ($start_num-1)*10;		
-		$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.* FROM tb_product p, (SELECT @ROWNUM := '.$start_num.') R where p.fd_name like "%'.$name.'%" and p.fd_category like "%'.$category.'%" and p.fd_status like "%'.$status.'%" order by pk_no limit '.$start_num.', 10 ';		
+		$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.* FROM tb_product p, (SELECT @ROWNUM := '.$start_num.') R where p.fd_name like "%'.$name.'%" and p.fd_category like "%'.$category.'%" and p.fd_status like "%'.$status.'%" order by row desc limit '.$start_num.', 10 ';		
 
 		$result = query_send($query);		
 		return $result;
@@ -115,9 +115,9 @@
 	function while_get_order_list($start_num,$order_number,$order_name,$order_no,$status){
 		$start_num = ($start_num-1)*10;		
 		if($order_no == null){
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* FROM tb_order o, (SELECT @ROWNUM := '.$start_num.') R where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and fd_status like "%'.$status.'%" order by pk_no limit '.$start_num.', 10 ';					
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* FROM tb_order o, (SELECT @ROWNUM := '.$start_num.') R where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and fd_status like "%'.$status.'%" order by row desc limit '.$start_num.', 10 ';					
 		}else{
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* FROM tb_order o, (SELECT @ROWNUM := '.$start_num.') R where o.pk_no in ('.$order_no.') order by pk_no limit '.$start_num.', 10';					
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* FROM tb_order o, (SELECT @ROWNUM := '.$start_num.') R where o.pk_no in ('.$order_no.') order by row desc limit '.$start_num.', 10';					
 		}		
 		$result = query_send($query);		
 		return $result;
@@ -126,9 +126,9 @@
 	function while_get_order_list_date($start_num,$order_number,$order_name,$order_no,$status,$date){
 		$start_num = ($start_num-1)*10;		
 		if($order_no == null){
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* FROM tb_order o, (SELECT @ROWNUM := '.$start_num.') R where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and fd_status like "%'.$status.'%" and fd_date="'.$date.'" order by pk_no limit '.$start_num.', 10 ';					
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* FROM tb_order o, (SELECT @ROWNUM := '.$start_num.') R where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and fd_status like "%'.$status.'%" and fd_date="'.$date.'" order by row desc limit '.$start_num.', 10 ';					
 		}else{
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* FROM tb_order o, (SELECT @ROWNUM := '.$start_num.') R where o.pk_no in ('.$order_no.') order by pk_no limit '.$start_num.', 10';					
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* FROM tb_order o, (SELECT @ROWNUM := '.$start_num.') R where o.pk_no in ('.$order_no.') order by row desc limit '.$start_num.', 10';					
 		}		
 		$result = query_send($query);		
 		return $result;
@@ -226,7 +226,7 @@
 
 	function while_get_complete_list($start_num,$start_date,$end_date){
 		$start_num = ($start_num-1)*10;	
-		$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* from (select fd_date, count(*) count,sum(fd_price) price, sum(fd_del_fee) del_fee, sum(fd_price+fd_del_fee) total from tb_order  where fd_date between "'.$start_date.'" and "'.$end_date.'" group by fd_date order by fd_date desc) o, (SELECT @ROWNUM := '.$start_num.') R limit '.$start_num.', 10 ';
+		$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* from (select fd_date, count(*) count,sum(fd_price) price, sum(fd_del_fee) del_fee, sum(fd_price+fd_del_fee) total from tb_order  where fd_date between "'.$start_date.'" and "'.$end_date.'" and fd_status="5" group by fd_date order by fd_date desc) o, (SELECT @ROWNUM := '.$start_num.') R order by row desc limit '.$start_num.', 10 ';
 		$result = query_send($query);		
 		return $result;
 	}
@@ -245,18 +245,105 @@
 
 	}
 
-	function while_get_notice_list($start_num){
+	function while_get_board_list($start_num,$search,$type){
+		$table = table_name($type);
 		$start_num = ($start_num-1)*10;	
-		$query = 'select @ROWNUM := @ROWNUM + 1 AS row, n.* from tb_notice n, (SELECT @ROWNUM := '.$start_num.') R limit '.$start_num.', 10';		
+		$query = 'select @ROWNUM := @ROWNUM + 1 AS row, n.* from '.$table.' n, (SELECT @ROWNUM := '.$start_num.') R where fd_title like "%'.$search.'%" order by row desc limit '.$start_num.', 10';		
 		$result = query_send($query);		
 		return $result;
 	}
 
-	function notice_get_info($no){
-		$query = "select * from tb_notice where pk_no=".$no;
+	function board_get_info($no,$type){
+		$table = table_name($type);
+		$query = "select * from ".$table." where pk_no=".$no;
 		$result = query_send($query);
 		$info = mysqli_fetch_array($result);
 		return $info;
 	}
 
+	function board_count($type, $search){
+		$table = table_name($type);
+
+		$query = "select count(*) from ".$table." where fd_title like '%".$search."%' ";
+
+		$result = query_send($query);
+		$count = mysqli_fetch_array($result);
+		return $count;
+	}
+
+	function table_name($type){
+		if($type==1) $table="tb_notice";
+		elseif ($type==2) $table ="tb_sw";
+		elseif ($type==3) $table ="tb_contents";
+		elseif ($type==4) $table ="tb_qna";
+		return $table;
+	}
+
+	function while_get_user_list($start_num,$search,$table){
+		$start_num = ($start_num-1)*10;	
+		$query = 'select @ROWNUM := @ROWNUM + 1 AS row, n.* from '.$table.' n, (SELECT @ROWNUM := '.$start_num.') R where fd_name like "%'.$search.'%" order by row desc limit '.$start_num.', 10';		
+		$result = query_send($query);		
+		return $result;
+	}
+
+	function user_count($search){
+		$table = 'tb_user';
+
+		$query = "select count(*) from ".$table." where fd_name like '%".$search."%' ";
+
+		$result = query_send($query);
+		$count = mysqli_fetch_array($result);
+		return $count;
+	}
+
+	function user_get_info($no,$table){
+
+		$query = "select * from ".$table." where pk_no=".$no;
+		$result = query_send($query);
+		$info = mysqli_fetch_array($result);
+		return $info;
+	}
+
+
+	function info_dell($no, $table){
+		$query = 'delete from '.$table.' where pk_no='.$no;
+		echo $query;
+		query_send_non_return($query);
+	}
+
+	function while_get_month_list($year){
+
+		$query = 'select month, ifnull(a.count,0) count, ifnull(a.total,0) total from (select 1 month union all select 2 union all select 3 union all select 4 union all select 5  union all select 6 union all select 7 union all select 8 union all select 9 union all select 10 union all select 11 union all select 12 ) b left join (select DATE_FORMAT(fd_date, "%c") tem_month, count(*) count, sum(fd_price+fd_del_fee) total from tb_order  where YEAR(fd_date)='.$year.'  and fd_status=5 GROUP BY YEAR(fd_date), MONTH(fd_date)) a on month=tem_month order by month';
+		$result = query_send($query);		
+		return $result;
+	}
+
+	function while_get_day_list($year,$month){
+
+		$query = 'select day, ifnull(a.count,0) count, ifnull(a.total,0) total from (select 1 day';
+		for ($i=2;$i<32;$i++){
+			$query .=' union all select '.$i;
+		}
+		$query .= ' ) b left join (select DATE_FORMAT(fd_date, "%d") tem_day, count(*) count, sum(fd_price+fd_del_fee) total from tb_order where YEAR(fd_date)="'.$year.'" and MONTH(fd_date)="'.$month.'" and fd_status=5 group by day(fd_date) ) a on day=tem_day order by day';
+
+
+		$result = query_send($query);		
+		return $result;
+	}
+
+	function month_total($year,$month){
+
+		$query = 'select count(*) count, sum(fd_price+fd_del_fee) total from tb_order where YEAR(fd_date)='.$year.' and month(fd_date)='.$month.' and fd_status=5';
+		$result = query_send($query);
+		$info = mysqli_fetch_array($result);
+		return $info;
+
+	}
+
+	function year_total($year){
+		$query = 'select count(*) count, sum(fd_price+fd_del_fee) total from tb_order where YEAR(fd_date)='.$year.' and fd_status=5';
+		$result = query_send($query);
+		$info = mysqli_fetch_array($result);
+		return $info;
+	}
 ?>
