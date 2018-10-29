@@ -71,7 +71,7 @@
 
 			foreach ($img_data_arr as $img_data) {
 				$file_name = img_save($img_data);
-				
+				$file_name=str_replace("..", "/admin", $file_name)
 				$img_tag = '<img src='.$file_name.'>';
 				array_push($new_img_tag_arr, $img_tag);
 			}
@@ -84,7 +84,7 @@
 	}
 	function file_save($file_info){
 
-		$uploads_dir = '../files/';
+		$uploads_dir = '/admin/files/';
 		
 		 
 		// 변수 정리

@@ -5,6 +5,22 @@
 	include_once('config/db_config.php'); 
 	$mysqli = new mysqli($host, $user, $pw, $dbName);
 	$http_host = $_SERVER['HTTP_HOST'];
+	
+	function formatSizeUnits($bytes){
+        if ($bytes >= 1073741824)
+            $bytes = number_format($bytes / 1073741824, 2) . ' GB';
+        elseif ($bytes >= 1048576)
+            $bytes = number_format($bytes / 1048576, 2) . ' MB';
+        elseif ($bytes >= 1024)
+            $bytes = number_format($bytes / 1024, 2) . ' KB';
+        elseif ($bytes > 1)
+            $bytes = $bytes . ' bytes';
+        elseif ($bytes == 1)
+            $bytes = $bytes . ' byte';
+        else
+            $bytes = '0 bytes';
+        return $bytes;
+    }
 
 	function query_send_non_return($query){
 		global $mysqli;
@@ -306,8 +322,7 @@
 
 
 	function info_dell($no, $table){
-		$query = 'delete from '.$table.' where pk_no='.$no;
-		echo $query;
+		$query = 'delete from '.$table.' where pk_no='.$no;		
 		query_send_non_return($query);
 	}
 
@@ -342,6 +357,23 @@
 
 	function year_total($year){
 		$query = 'select count(*) count, sum(fd_price+fd_del_fee) total from tb_order where YEAR(fd_date)='.$year.' and fd_status=5';
+		$result = query_send($query);
+		$info = mysqli_fetch_array($result);
+		return $info;
+	}
+
+	function get_board_info($no, $type){
+		$table = table_name($type);
+		$query = 'select * from '.$table.' where pk_no='.$no;
+		$result =query_send($query);
+		$info = mysqli_fetch_array($result);
+
+		return $info;
+
+	}
+
+	function get_qna_pw($no){
+		$query = "select fd_pw from tb_qna where pk_no=".$no;
 		$result = query_send($query);
 		$info = mysqli_fetch_array($result);
 		return $info;

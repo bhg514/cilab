@@ -55,6 +55,7 @@
         });
     </script>
     <form name="frmEX">
+
         <input type="text" name="sdate" id="sdate1" size="7" maxlength="7" value="2018-10" />
         <input type="text" name="sdate" id="sdate2" size="7" maxlength="7" value="2018-10" />
         <br />
@@ -62,3 +63,6 @@
     </form>
 </body>
 </html>
+<?php
+    echo $_POST['var'];
+?>
