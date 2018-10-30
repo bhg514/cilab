@@ -4,22 +4,22 @@
 	include_once("../data_upload.php");
 
 	try{
-		$status = $_POST["status"];
-		$product_name = $_POST["name"];
-		$category = $_POST["category"];
-		$price = $_POST["price"]; // int
-		$count = $_POST["count"]; // int
-		$delivery = $_POST["delivery"]; //int
-		$made = $_POST["made"];
-		$main_img = $_FILES["main_img"];
+	    $status = $_POST["status"] ?? '';
+	    $product_name = $_POST["name"] ?? '';
+	    $category = $_POST["category"] ?? '';
+	    $price = $_POST["price"] ?? 0; // int
+	    $count = $_POST["count"] ?? 0; // int
+	    $delivery = $_POST["delivery"] ?? 0; //int
+	    $made = $_POST["made"] ?? '';
+	    $main_img = $_FILES["main_img"];
 		$sub_img_arr = array();
 		$sub_img_arr['sub_img1'] = $_FILES['sub_img1'];
 		$sub_img_arr['sub_img2'] = $_FILES['sub_img2'];
 		$sub_img_arr['sub_img3'] = $_FILES['sub_img3'];
 		$sub_img_arr['sub_img4'] = $_FILES['sub_img4'];
 
-		$option = $_POST["option_input"];
-		$content = $_POST["content_val"];
+		$option = $_POST["option_input"] ?? '';
+		$content = $_POST["content_val"] ?? '';
 		
 		$new_content = editor_conv($content);
 

@@ -2,11 +2,9 @@
 	header ( "content-type:text/html; charset=utf-8" );
 	include '../header.php';
 
-    $type = $_GET['type'];
-    if($type==null) $type=5;
-    $search = $_GET['search'];
-    $page = $_GET['page'];
-    if($page==null) $page=1;
+    $type = $_GET['type'] ?? 5;
+    $search = $_GET['search'] ?? '';
+    $page = $_GET['page'] ?? 1;
     $query_string = $_SERVER['QUERY_STRING']; 
     $query_arr = explode('&', $query_string);
     
@@ -95,6 +93,7 @@
                     $total_count = $total_count[0];
                     if($total_count == 0 ) $total_count = 1;
                     
+                    $start_num = 1;
                     $end_num = 10;
                     $total_page = ceil($total_count/9);
                     if($end_num>$total_page){

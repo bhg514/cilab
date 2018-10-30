@@ -3,21 +3,14 @@
 	include '../admin_header.php';
 	include './side.php';
 	include_once("../../common.php");
-	$page = $_GET['page'];		
-	if($page==null) $page = 1;
+	$page = $_GET['page'] ?? 1;		
 	$start_num = 1;
-	$start_date = $_GET['start_date'];
-	$end_date = $_GET['end_date'];
+	$start_date = $_GET['start_date'] ?? date("Y-m-d", strtotime("-1 years")) ;
+	$end_date = $_GET['end_date'] ?? date("Y-m-d");
 
-	if($end_date == null){
-		$end_date = date("Y-m-d"); 
-	}elseif (count(explode('-', $end_date))==2 ) {
+	if (count(explode('-', $end_date))==2 ) {
 		$end_date .="-".date('t', strtotime($end_date)); //월의 마지막 날짜 
 		$start_date .="-01"; //월의 첫날 
-	}
-	if($start_date == null){
-		$timestamp = strtotime("-1 years");
-		$start_date = date("Y-m-d", $timestamp);
 	}
 	$info = complete_sum_info($start_date,$end_date);
 	$query_string = $_SERVER['QUERY_STRING']; 

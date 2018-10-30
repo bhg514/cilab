@@ -484,7 +484,7 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	color:#333;
 }
 #paging a.on, #paging a:hover {
-	color:#c7184b;
+	color:#e60000;
 }
 #paging .pageBtn img {
 	vertical-align:top;
@@ -943,12 +943,17 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	float: left;
 	width: 20%;
 	box-sizing: border-box;
+	margin-bottom: 100px;
 }
 
 .category_content {
 	float: left;
 	width: 80%;
 	margin-bottom: 80px;
+}
+
+.category_content > div:first-child {
+	min-height: 400px;
 }
 
 #category_menu li:first-child div {
@@ -984,6 +989,24 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	height: 90px;
 	font-size: 0;
 	background: url('../images/common/logo2.png') no-repeat center;
+}
+
+.page_num {
+	padding: 5px;
+	font-size: 15px;
+}
+
+.page_select {
+	color: #e60000;
+	font-weight: bold;
+}
+
+.page_nav {
+	text-align: center;
+}
+
+.page_nav > a:hover:not(.page_num) {
+	text-decoration: none;
 }
 
 /*스토어 구매*/

@@ -2,11 +2,9 @@
 	header ( "content-type:text/html; charset=utf-8" );
 	include '../header.php';
 	include_once('../common.php');	
-	$type= $_GET['type'];
-	if ($type==null) $type=1;
+	$type= $_GET['type'] ?? 1;
 	$start_num = 1;
-	$page = $_GET['page'];		
-	if($page==null) $page = 1;
+	$page = $_GET['page'] ?? 1;		
 	if($type==1) $head = "공지사항";
 	elseif($type==2) $head = "S/W다운로드";
 	elseif($type==4) $head = "문의하기";

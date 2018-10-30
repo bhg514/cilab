@@ -3,9 +3,7 @@
 	include '../admin_header.php';
 	include './side.php';
 	include_once("../../common.php");
-	$year = $_GET['year'];
-	if($year==null)
-		$year = date("Y");
+	$year = $_GET['year'] ?? date("Y");
 	$year_total = year_total($year);
 
 ?>

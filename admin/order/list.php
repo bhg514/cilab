@@ -3,21 +3,17 @@
 	include '../admin_header.php';
 	include './side.php';
 	include_once("../../common.php");
-	$page = $_GET['page'];	
-	$order_number = $_GET['order_number'];
-	$product_name = $_GET['product_name'];
-	$order_name = $_GET['order_name'];
-	$type = $_GET['type'];
+	$page = $_GET['page'] ?? 1;	
+	$order_number = $_GET['order_number'] ?? '';
+	$product_name = $_GET['product_name'] ?? '';
+	$order_name = $_GET['order_name'] ?? '';
+	$type = $_GET['type'] ?? 1;
 	$start_num = 1;
-	$date = $_GET['date'];
-	if($type==null) $type = 1;
-	if($page==null) $page = 1;
-	if($order_number==null) $order_number = "";
-	if($product_name==null) $product_name = "";
-	if($order_name==null) $order_name = "";	
+	$date = $_GET['date'] ?? '';
 
+	$order_no = 0; //임의 선언
 	if($product_name!=null){
-		$order_no = order_get_order_no($product_name);
+	    $order_no = order_get_order_no($product_name);
 	}
 	$total_count = order_get_count($order_number,$order_name,$order_no,$type);	
 	if($type==1){
@@ -110,7 +106,7 @@
 				<th class="thead_th"> 
 					<input type="checkbox" id="chk_all">
 				</th>
-				<th scope="col" class="thead_th">no</th>
+				<th scope="col" class="thead_th">No.</th>
 				<th scope="col" class="thead_th">주문일</th>
 				<th scope="col" class="thead_th">주문번호</th>
 				<th scope="col" class="thead_th">주문상품</th>

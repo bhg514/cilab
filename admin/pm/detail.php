@@ -3,10 +3,8 @@
 	include '../admin_header.php';
 	include './side.php';
 	include_once("../../common.php");
-	$no = $_GET['no'];
-	if($no==null){
-		header("location:http://".$http_host."/admin/pm/list.php");
-	};
+	$no = $_GET['no'] ?? header("location:http://".$http_host."/admin/pm/list.php");
+
 	$info = product_info($no);
 
 	$sub_arr=explode('||',$info['fd_sub_img']);

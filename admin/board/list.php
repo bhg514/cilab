@@ -3,15 +3,10 @@
 	include '../admin_header.php';
 	include './side.php';
 	include_once("../../common.php");
-	$page = $_GET['page'];		
-	if($page==null) $page = 1;
+	$page = $_GET['page'] ?? 1;		
 	$start_num = 1;
-	$type = $_GET['type'];
-	$search = $_GET['search'];
-
-	if($search== null){
-		$search="";
-	}
+	$type = $_GET['type'] ?? 1;
+	$search = $_GET['search'] ?? '';
 
 	$query_string = $_SERVER['QUERY_STRING']; 
 	$query_arr = explode('&', $query_string);
@@ -55,7 +50,7 @@
 		<caption class="readHide">상품 관리</caption>
 		<thead class="admin_list">
 			<tr>
-				<th scope="col" class="thead_th">no</th>
+				<th scope="col" class="thead_th">No.</th>
 				<th scope="col" class="thead_th">제목</th>
 				<th scope="col" class="thead_th">작성자</th>
 				<th scope="col" class="thead_th">작성일</th>

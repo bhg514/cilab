@@ -3,15 +3,10 @@
 	include '../admin_header.php';
 	include './side.php';
 	include_once("../../common.php");
-	$page = $_GET['page'];		
-	if($page==null) $page = 1;
+	$page = $_GET['page'] ?? 1;		
 	$start_num = 1;
 
-	$search = $_GET['search'];
-
-	if($search== null){
-		$search="";
-	}
+	$search = $_GET['search'] ?? '';
 
 	$query_string = $_SERVER['QUERY_STRING']; 
 	$query_arr = explode('&', $query_string);
@@ -49,7 +44,7 @@
 		<caption class="readHide">회원관리</caption>
 		<thead class="admin_list">
 			<tr>
-				<th scope="col" class="thead_th">no</th>
+				<th scope="col" class="thead_th">No.</th>
 				<th scope="col" class="thead_th">ID</th>
 				<th scope="col" class="thead_th">성명</th>
 				<th scope="col" class="thead_th">성별</th>

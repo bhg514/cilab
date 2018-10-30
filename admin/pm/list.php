@@ -3,15 +3,10 @@
 	include '../admin_header.php';
 	include './side.php';
 	include_once("../../common.php");
-	$page = $_GET['page'];	
-	$name = $_GET['name'];
-	$category = $_GET['category'];
-	$status = $_GET['status'];
-
-	if($page==null) $page = 1;
-	if($name==null) $name = "";
-	if($category==null) $category = 5;
-	if($status==null) $status = 3;	
+	$page = $_GET['page'] ?? 1;	
+	$name = $_GET['name'] ?? '';
+	$category = $_GET['category'] ?? 5;
+	$status = $_GET['status'] ?? 3;
 
 	$total_count = product_get_count($name,$category,$status);
 	
@@ -50,7 +45,7 @@
 				<th class="thead_th"> 
 					<input type="checkbox" id="chk_all">
 				</th>
-				<th scope="col" class="thead_th">no</th>
+				<th scope="col" class="thead_th">No.</th>
 				<th scope="col" class="thead_th">분류</th>
 				<th scope="col" class="thead_th">상품명</th>
 				<th scope="col" class="thead_th">수량</th>

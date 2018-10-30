@@ -4,14 +4,14 @@
 	include_once("../data_upload.php");
 
 	try{
-		$no = $_POST['no'];
-		$status = $_POST["status"];
-		$product_name = $_POST["name"];
-		$category = $_POST["category"];
-		$price = $_POST["price"]; // int
-		$count = $_POST["count"]; // int
-		$delivery = $_POST["delivery"]; //int
-		$made = $_POST["made"];
+		$no = $_POST['no'] ?? 1;
+		$status = $_POST["status"] ?? '';
+		$product_name = $_POST["name"] ?? '';
+		$category = $_POST["category"] ?? '';
+		$price = $_POST["price"] ?? 0; // int
+		$count = $_POST["count"] ?? 0; // int
+		$delivery = $_POST["delivery"] ?? 0; //int
+		$made = $_POST["made"] ?? '';
 		$main_img = $_FILES["main_img"];
 
 		$sub_img_arr = array();
