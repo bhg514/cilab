@@ -1,6 +1,17 @@
 <?php
 	header ( "content-type:text/html; charset=utf-8" );
-	include '../header.php'
+	include '../header.php';
+	$no = $_GET['no'];
+	if($no==null){
+		header("location:http://".$http_host."/admin/pm/list.php");
+	};
+	$info = product_info($no);
+
+	$sub_arr=explode('||',$info['fd_new_sub_img']);
+	$option_arr = explode('||', $info['fd_option']);
+	function ex_option($option){
+		return explode('^', $option);
+	}
 ?>
 <section class="container">
 	<div class="visual store">
@@ -14,53 +25,36 @@
 	<div class="contents">
 		<div class="imgView">
 			<div class="left">
-				<div class="image"><img src="../images/common/@img2.png" alt="이미지 설명 입력란"></div>
+				<div class="image"><img src="/admin/img/upload_image/<?=$info['fd_new_main_img']?>" alt="이미지 설명 입력란"></div>
 				<ul>
-					<li><img src="../images/common/@img3.png" alt="이미지 설명 입력란"></li>
-					<li class="on"><img src="../images/common/@img3.png" alt="이미지 설명 입력란"></li>
-					<li class="mhide"><img src="../images/common/@img4.png" alt="이미지 설명 입력란"></li>
+					<?php 
+						for($i=0; $i<count($sub_arr);$i++){
+							echo '<li clas="mhide"><img class="pro_detail_sub" src="/admin/img/upload_image/'.$sub_arr[$i].'" alt="이미지 설명 입력란"></li>';
+						}
+
+					?>					
 				</ul>
 			</div>
 			<div class="right">
-				<p class="title">Water Drone 1</p>
+				<p class="title"><?=$info['fd_name']?></p>
 				<div class="itemViewInputNumber">
 					<input type="number" value="1">
 				</div>
 				<div class="grayBox">
-					<ul class="itemView">
-						<li>
-							<label><input type="radio"> 패키지 선택안함</label>
-							<span class="priceSpan">100,000</span>
-							<ul class="stpe2">
-								<li>
-									<img src="../images/icon/icon_reply.png" alt="세부내용 아이콘">
-									<label><input type="checkbox"> 추가구성1</label>
-									<span class="priceSpan">+20,000</span>
-								</li>
-								<li>
-									<img src="../images/icon/icon_reply.png" alt="세부내용 아이콘">
-									<label><input type="checkbox"> 추가구성2</label>
-									<span class="priceSpan">+50,000</span>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<label><input type="radio"> 패키지1(구성품)</label>
-							<span class="priceSpan">120,000</span>
-						</li>
-						<li>
-							<label><input type="radio"> 패키지2(구성품)</label>
-							<span class="priceSpan">150,000</span>
-						</li>
-						<li>
-							<label><input type="radio"> 패키지3(구성품)</label>
-							<span class="priceSpan">170,000</span>
-						</li>
-					</ul>
+					<select>
+						<?php
+							for($i=0; $i<count($option_arr); $i++){
+								$option_info = ex_option($option_arr[$i]);
+								echo '<option>'.$option_info[0].' / '.$option_info[1].'</option>';
+								
+							}
+						
+						?>
+					</select>
 				</div>
 				<div class="grayBox post">
 					배송비
-					<span class="priceSpan">5,000</span>
+					<span class="priceSpan"><?=$info['fd_delivery']?></span>
 				</div>
 				<div class="priceBox">
 					총 상품금액
@@ -72,9 +66,7 @@
 			</div>
 			<div class="cb"></div>
 			<div class="itemContentBox">
-				<img src="../images/common/@img5.jpg" alt="제품 상세 이미지 영역">
-				<img src="../images/common/@img5.jpg" alt="제품 상세 이미지 영역">
-				<img src="../images/common/@img5.jpg" alt="제품 상세 이미지 영역">
+				<?=$info['fd_content']?>
 			</div>
 		</div>
 	</div>

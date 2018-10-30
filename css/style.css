@@ -987,3 +987,13 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 }
 
 /*스토어 구매*/
+
+.pd_img{
+	width: 200px;
+	height: 122px;
+}
+
+.pro_detail_sub{
+	width: 101px;
+	height: 67px;
+}

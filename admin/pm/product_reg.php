@@ -59,10 +59,10 @@
 								<th scope="row">분류</th>
 								<td>
 									<select name="category">
-										<option value="Water Drone">Water Drone</option>
-										<option value="Upgrade & Accessories">Upgrade & Accessories</option>
-										<option value="DIY & Parts">DIY & Parts</option>
-										<option value="Water Education kit">Water Education kit</option>
+										<option value="1">Water Drone</option>
+										<option value="2">Upgrade & Accessories</option>
+										<option value="3">DIY & Parts</option>
+										<option value="4">Water Education kit</option>
 									</select>
 								</td>
 							</tr>

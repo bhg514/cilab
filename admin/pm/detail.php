@@ -71,10 +71,10 @@
 								<th scope="row">분류</th>
 								<td>									
 									<select name="category">
-										<option value="Water Drone" <?php if($info['fd_category']=="water Drone"){ echo "selected";}?> >Water Drone</option>
-										<option value="Upgrade & Accessories" <?php if($info['fd_category']=="Upgrade & Accessories"){ echo "selected";}?> >Upgrade & Accessories</option>
-										<option value="DIY & Parts" <?php if($info['fd_category']=="DIY & Parts"){ echo "selected";}?>  >DIY & Parts</option>
-										<option value="Water Education kit" <?php if($info['fd_category']=="Water Education kit"){ echo "selected";}?>  >Water Education kit</option>
+										<option value="1" <?php if($info['fd_category']=="1"){ echo "selected";}?> >Water Drone</option>
+										<option value="2" <?php if($info['fd_category']=="2"){ echo "selected";}?> >Upgrade & Accessories</option>
+										<option value="3" <?php if($info['fd_category']=="3"){ echo "selected";}?>  >DIY & Parts</option>
+										<option value="4" <?php if($info['fd_category']=="4"){ echo "selected";}?>  >Water Education kit</option>
 									</select>
 								</td>
 							</tr>

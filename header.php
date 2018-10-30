@@ -48,7 +48,7 @@
 		<div id="cssmenu">
 			<ul>
 				<li><a href="../menu/introWD.php">Water Drone</a></li>
-				<li><a href="../menu/store.php">STORE</a></li>
+				<li><a href="../menu/store.php?type=5">STORE</a></li>
 				<li><a href="../menu/list.php?type=1">SUPPORT</a></li>
 				<li><a href="../menu/introCilab.php">기업소개</a></li>
 			</ul>

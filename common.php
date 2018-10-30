@@ -82,7 +82,10 @@
 
 	function while_get_production_list($start_num,$name,$category,$status){
 		$start_num = ($start_num-1)*10;		
-		$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.* FROM tb_product p, (SELECT @ROWNUM := '.$start_num.') R where p.fd_name like "%'.$name.'%" and p.fd_category like "%'.$category.'%" and p.fd_status like "%'.$status.'%" order by row desc limit '.$start_num.', 10 ';		
+		$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.* FROM tb_product p, (SELECT @ROWNUM := '.$start_num.') R where p.fd_name like "%'.$name.'%"';
+		if($category!=5) $query .= ' and p.fd_category = "'.$category.'"';
+		if($status!=3) $query .= ' and p.fd_status ="'.$status.'"';
+		$query .= ' order by row desc limit '.$start_num.', 10 ';		
 
 		$result = query_send($query);		
 		return $result;
@@ -100,7 +103,7 @@
 
 	}
 
-	function product_get_count($name,$category,$status){
+	/*function product_get_count($name,$category,$status){
 		$query = 'select count(*) from tb_product where fd_name like "%'.$name.'%" and fd_category like "%'.$category.'%" and fd_status like "%'.$status.'%"';
 		
 		$result = query_send($query);
@@ -108,7 +111,7 @@
 
 		return $count;
 
-	}
+	}*/
 
 	function list_dell($arr,$table){
 		$arr2str = implode(',', $arr);
@@ -378,4 +381,33 @@
 		$info = mysqli_fetch_array($result);
 		return $info;
 	}
+
+	function while_product_list($start_num,$type,$name,$page){
+		$start_num = ($start_num-1)*10;
+		$query = 'select pk_no,fd_name, fd_price, fd_new_main_img from tb_product where fd_name like "%'.$name.'%"';
+		if ($type!=5){
+			$query .= ' and fd_category='.$type;
+		}		
+		$query .=' order by pk_no desc limit '.$start_num.', 9';
+		$result = query_send($query);
+
+		return $result;
+
+	}
+
+	function product_get_count($name,$category,$status){
+		$query = 'select count(*) from tb_product where fd_name like "%'.$name.'%"';
+		if ($category!=5){
+			$query .= ' and fd_category='.$category;
+		}	
+		if ($status!=3){
+			$query .= ' and fd_status='.$status;
+		}		
+		$result = query_send($query);
+		$count = mysqli_fetch_array($result);
+
+		return $count;
+
+	}
+
 ?>

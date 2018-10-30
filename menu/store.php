@@ -1,6 +1,25 @@
 <?php
 	header ( "content-type:text/html; charset=utf-8" );
-	include '../header.php'
+	include '../header.php';
+
+    $type = $_GET['type'];
+    if($type==null) $type=5;
+    $search = $_GET['search'];
+    $page = $_GET['page'];
+    if($page==null) $page=1;
+    $query_string = $_SERVER['QUERY_STRING']; 
+    $query_arr = explode('&', $query_string);
+    
+    $query_string ="";
+
+    foreach ($query_arr as $query) {
+        $query_sp = explode('=', $query);
+        
+        if($query_sp[0]!='page'){
+            $query_string .= $query."&";
+        }
+    }
+
 ?>
 <section class="container">
 	<div class="visual store">
@@ -17,27 +36,27 @@
 			<ul id="ui-id-1" role="menu" tabindex="0" class="ui-menu ui-widget ui-widget-content" aria-activedescendant="ui-id-2">
 				<li class="ui-menu-item">
 					<div id="ui-id-2" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper ui-state-active">
-						<a href="" class="">Total</a>
+						<a href="?type=5" class="">Total</a>
 					</div>
 				</li>
 				<li class="ui-menu-item">
 					<div id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
-						<a href="">Water Drones</a>
+						<a href="?type=1">Water Drones</a>
 					</div>
 				</li>
 				<li class="ui-menu-item">
 					<div id="ui-id-4" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
-						<a href="">Upgrade &amp; Accessories</a>
-						</div>
-						</li>
+						<a href="?type=2">Upgrade &amp; Accessories</a>
+					</div>
+				</li>  
 				<li class="ui-menu-item">
 					<div id="ui-id-5" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
-						<a href="">DIY &amp; Parts</a>
+						<a href="?type=3">DIY &amp; Parts</a>
 					</div>
 				</li>
 				<li class="ui-menu-item">
 					<div id="ui-id-6" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
-						<a href="">Water Education kit</a>
+						<a href="?type=4">Water Education kit</a>
 					</div>
 				</li>
 			</ul>
@@ -45,80 +64,63 @@
     	<div class="category_content">
             <div class="imgType01">
                 <ul>
+                    <?php
+                                
+                        $result = while_product_list($page,$type,$search);       
+                        while ($r = mysqli_fetch_array($result)) {
+                    ?>
                     <li>
-                        <a href="./store_view.php">
-    						<div class="image"><img src="../images/common/@img.png" alt="상품 이미지"></div>
-                        	<p class="name">Water Drone1</p>
-                        	<p class="price"><span class="redbox">판매가</span> 100,000</p>
-    					</a>
+                        <a href="./store_view.php?no=<?=$r['pk_no']?>">
+                            <div class="image"><img src="/admin/img/upload_image/<?=$r['fd_new_main_img']?>" alt="상품 이미지" class="pd_img"></div>
+                            <p class="name"><?=$r['fd_name']?></p>
+                            <p class="price"><span class="redbox">판매가</span> <?=$r['fd_price']?></p>
+                        </a>
                     </li>
-                    <li>
-                        <a href="./store_view.php">
-    						<div class="image"><img src="../images/common/@img.png" alt="상품 이미지"></div>
-                        	<p class="name">Water Drone1</p>
-                        	<p class="price"><span class="redbox">판매가</span> 100,000</p>
-    					</a>
-                    </li>
-                    <li>
-                        <a href="./store_view.php">
-    						<div class="image"><img src="../images/common/@img.png" alt="상품 이미지"></div>
-                        	<p class="name">Water Drone1</p>
-                        	<p class="price"><span class="redbox">판매가</span> 100,000</p>
-    					</a>
-                    </li>
-                    <li>
-                        <a href="./store_view.php">
-    						<div class="image"><img src="../images/common/@img.png" alt="상품 이미지"></div>
-                        	<p class="name">Water Drone1</p>
-                        	<p class="price"><span class="redbox">판매가</span> 100,000</p>
-    					</a>
-                    </li>
-                    <li>
-                        <a href="./store_view.php">
-    						<div class="image"><img src="../images/common/@img.png" alt="상품 이미지"></div>
-                        	<p class="name">Water Drone1</p>
-                        	<p class="price"><span class="redbox">판매가</span> 100,000</p>
-    					</a>
-                    </li>
-                    <li>
-                        <a href="./store_view.php">
-    						<div class="image"><img src="../images/common/@img.png" alt="상품 이미지"></div>
-                        	<p class="name">Water Drone1</p>
-                        	<p class="price"><span class="redbox">판매가</span> 100,000</p>
-    					</a>
-                    </li>
-    				<li class="thide">
-                        <a href="./store_view.html">
-    						<div class="image"><img src="../images/common/@img.png" alt="상품 이미지"></div>
-                        	<p class="name">Water Drone1</p>
-                        	<p class="price"><span class="redbox">판매가</span> 100,000</p>
-    					</a>
-                    </li>
-    				<li class="thide">
-                        <a href="./store_view.html">
-    						<div class="image"><img src="../images/common/@img.png" alt="상품 이미지"></div>
-                        	<p class="name">Water Drone1</p>
-                        	<p class="price"><span class="redbox">판매가</span> 100,000</p>
-    					</a>
-                    </li>
+                    <?php
+                        }
+                    ?>
+
+
                 </ul>
             </div>
-    		<div id="paging">
-    			<a href="#a"><img src="../images/icon/btn_first.png" alt="처음으로"></a>
-    			<a href="#a"><img src="../images/icon/btn_prev.png" alt="이전으로"></a>
-    			<a href="#a">1</a>
-    			<a href="#a" class="on">2</a>
-    			<a href="#a">3</a>
-    			<a href="#a" class="mhide">4</a>
-    			<a href="#a" class="mhide">5</a>
-    			<a href="#a" class="mhide">6</a>
-    			<a href="#a" class="mhide">7</a>
-    			<a href="#a" class="mhide">8</a>
-    			<a href="#a" class="mhide">9</a>
-    			<a href="#a" class="mhide">10</a>
-    			<a href="#a"><img src="../images/icon/btn_next.png" alt="다음으로"></a>
-    			<a href="#a"><img src="../images/icon/btn_last.png" alt="마지막으로"></a>
-    		</div>
+    		<div class="page_nav">
+                <a href="?<?=$query_string?>page=1">
+                    <img src="/images/icon/btn_first.png" alt="pre" id="first_img" class="page_nav_btn">
+                </a>
+                <a href="?<?=$query_string?>page=<?php if($page>1){ echo $page-1;}else{ echo '1';} ?>">
+                    <img src="/images/icon/btn_prev.png" alt="pre" id="prev_img" class="page_nav_btn" >
+                </a>
+                <?php
+                    $total_count = product_get_count($search,$type,1);
+                    $total_count = $total_count[0];
+                    if($total_count == 0 ) $total_count = 1;
+                    
+                    $end_num = 10;
+                    $total_page = ceil($total_count/9);
+                    if($end_num>$total_page){
+                        $for_end = $total_page;
+                    }else{
+                        $for_end = $end_num;
+                    };
+                    for($i=$start_num; $i<=$for_end;$i++){          
+                        if ($page ==$i){
+                            echo "<span class = 'page_num page_select'>".$i."</span>";
+                        }else{
+                            echo "<a href='?".$query_string."page=".$i."' class = 'page_nav_btn page_num'>".$i."</a>";
+                            
+                        }
+                    }
+
+                    
+
+                ?>
+                <a href="?<?=$query_string?>page=<?php if($page<$for_end){ echo $page+1;}else{ echo $for_end;} ?>">
+                    <img src="/images/icon/btn_next.png" alt="pre" id="next_img" class="page_nav_btn">
+                </a>
+                <a href="?<?=$query_string?>page=<?=$for_end?>">
+                    <img src="/images/icon/btn_last.png" alt="pre" id="last_img" class="page_nav_btn">
+                </a>
+            </div>
     	</div>
     </div>
 </section>

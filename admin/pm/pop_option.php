@@ -35,7 +35,7 @@
 						<thead>
 							<tr>
 								<th>옵션명</th>
-								<th>옵션값/옵션별 추가금액</th>
+								<th>옵션별 가격</th>
 							</tr>
 						</thead>
 						<tbody id="tbody">
@@ -48,8 +48,8 @@
 									<table>
 										<tr>
 											<td>
-												<input type="text" class="option_value">/ * <input type="text" class="option_price">원
-												<input type="button" class="add_value_btn" value="+" onclick="add_value_btn(this)">
+												<input type="text" class="option_price">원
+												
 											</td>
 										</tr>
 									</table>

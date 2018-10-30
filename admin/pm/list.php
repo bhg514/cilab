@@ -10,8 +10,8 @@
 
 	if($page==null) $page = 1;
 	if($name==null) $name = "";
-	if($category==null) $category = "";
-	if($status==null) $status = "";	
+	if($category==null) $category = 5;
+	if($status==null) $status = 3;	
 
 	$total_count = product_get_count($name,$category,$status);
 	
@@ -70,7 +70,13 @@
 					<input type="hidden" name="pk_no" value="<?= $r['pk_no']?>">
 				</td>
 				<td class="tbody_td"><?= $r['row']?></td>
-				<td class="tbody_td"><?= $r['fd_category']?></td>
+				<td class="tbody_td">
+					<?php 
+						if($r['fd_category']==1) echo "Water Drones";
+						elseif($r['fd_category']==2) echo "Upgrade & Accessories";
+						elseif($r['fd_category']==3) echo "DIY & Parts";
+						elseif($r['fd_category']==4) echo "Water Education Kit";
+					?></td>
 				<td class="tbody_td"><a href="detail.php?no=<?=$r['pk_no']?>"><?= $r['fd_name']?></a></td>
 				<td class="tbody_td"><?=$r['fd_stock']?></td>
 				<td class="tbody_td"><?=$r['fd_price']?></td>
