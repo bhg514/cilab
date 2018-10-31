@@ -13,6 +13,7 @@
 		return explode('^', $option);
 	}
 ?>
+
 <section class="container">
 	<div class="visual store">
 		<p class="subTitle">STORE</p>

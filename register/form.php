@@ -14,7 +14,7 @@
 <script type="text/javascript" src="../js/click_cal.js"></script>
 <!-- 달력 -->
 
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script><!-- 지도 --> 
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script><!-- 우편 --> 
 
 <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="../js/additional-methods.min.js"></script>

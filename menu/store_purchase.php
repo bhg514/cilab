@@ -22,7 +22,8 @@
 
 	$user = get_user_info_to_id($_SESSION['user_id'])
 ?>
-
+<script type="text/javascript" src="../js/register.js"></script><!-- 우편 --> 
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script><!-- 우편 --> 
 <section class="container">
 	<div class="visual store">
 		<p class="subTitle">STORE</p>
@@ -119,13 +120,19 @@
 					<tr>
 						<th scope="row">주소</th>
 						<td>
-							<div><input type="text" name="address1" class="inTbl" value="<?=$user['fd_zip']?>" readonly> <a href="#a" class="btn type05">우편번호</a></div>
-							<div class="mt05">
-								<input type="text" class="inTbl long" name="address2" placeholder="상세주소를 입력하세요." value="<?=$user['fd_address1']?>" readonly>
+							<label for="reg_mb_zip" class="sound_only">우편번호</label>
+							<input type="text" name="mb_zip" value="<?=$user['fd_zip']?>" id="reg_mb_zip" class="inTbl frm_input required" size="5" maxlength="6" readonly >
+							<a href="javascript:win_zip('fregisterform', 'mb_zip', 'mb_addr1', 'mb_addr2', 'mb_addr3', 'mb_addr_jibeon');" class="btn type05 ml10">주소 검색</a>
+							<span id="wrong_zip" class="fcR ml05 fs12 b hide">주소를 입력하세요</span><br>
+							<div id="daum_juso_pagemb_zip" style="display:none; border:1px solid; left:0px; width:100%; height:267px; margin:5px 0px;position:relative;">
+								<img src="//i1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-21px;z-index:1" class="close_daum_juso" alt="접기 버튼">
 							</div>
-							<div>
-								<input type="text" class="inTbl long" name="address2" placeholder="상세주소를 입력하세요." value="<?=$user['fd_address2']?>">
-							</div>
+							<input type="text" name="mb_addr1" value="<?=$user['fd_address1']?>" id="reg_mb_addr1"  class="inTbl frm_input frm_address required" size="50" readonly>
+							<label for="reg_mb_addr1">기본주소<strong class="sound_only"> 필수</strong></label><br>
+							<input type="text" name="mb_addr2" value="<?=$user['fd_address2']?>" id="reg_mb_addr2"  class="inTbl frm_input frm_address " size="50">
+							<label for="reg_mb_addr2">상세주소</label>
+							<br>							
+							<input type="hidden" name="mb_addr_jibeon" value="R">
 						</td>
 					</tr>
 					<tr>
