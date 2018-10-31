@@ -382,7 +382,7 @@
 		return $info;
 	}
 
-	function while_product_list($start_num,$type,$name,$page){
+	function while_product_list($start_num,$type,$name){
 		$start_num = ($start_num-1)*10;
 		$query = 'select pk_no,fd_name, fd_price, fd_new_main_img from tb_product where fd_name like "%'.$name.'%"';
 		if ($type!=5){

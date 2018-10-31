@@ -72,6 +72,48 @@ $(document).ready(function(){
 		$(".mobileMenuBtnClose").hide();
 		$(this).hide();
 	});
+
+
+	$('#option_select').change(function(){
+		var select_val = $('#option_select option:selected').attr('name');
+		var select_price = $('#option_select option:selected').val();
+		var select_count = $('#select_count').val();
+		var del_fee = Number($('#del_fee').text());
+		$('#select_title').prop("selected", true);
+		$('#select_title').val(select_price);
+		$('#select_name').val(select_val);
+		$('#select_price').val(select_price);		
+		$('#select_title').text(select_val);
+		if(select_count!=0){
+			var total = numberWithCommas(select_price*select_count +del_fee);
+			$('#total_price').text(total);
+		}
+	})
+
+	$('#select_count').change(function(){
+		var select_price = $('#select_title').val();
+		if (select_price==null) select_price = Number($('#pro_price').text())
+		var select_count = $('#select_count').val();
+		var del_fee = Number($('#del_fee').text());
+		if(select_price!=0){
+			var total = numberWithCommas(select_price*select_count +del_fee);
+			$('#total_price').text(total);
+		}
+
+	})
+
+	$('.pro_detail_sub').click(function(e){
+		var click_img = e.target.src;		
+		pd_main_img.src = click_img;
+		
+	})
+
+	$('#buy_btn').click(function(){
+		if($('#total_price').text()==0){
+			alert("수량 및 옵션을 선택해주세요.");
+			return false;
+		}
+	})
 });
 
 // mouse Hover
@@ -103,6 +145,12 @@ function popup(url,id,width,height) {
 function perinfo(){
 	window.open('/privacy.html','index','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');
 }
+
+//숫자 콤마
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 
 
 

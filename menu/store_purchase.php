@@ -1,6 +1,26 @@
 <?php
 	header ( "content-type:text/html; charset=utf-8" );
-	include '../header.php'
+	include '../header.php';
+	$no = $_POST['no'];
+	$option_name = $_POST['select_name'] ?? null;
+	$option_price = $_POST['select_price'] ?? null;
+	$count = $_POST['select_count'];
+	if($no==null){
+		header("location:http://".$http_host."/menu/store.php?type=5");		
+	}elseif($count==null||$count==0){		
+		header("location:http://".$http_host."/menu/store_view.php?no=".$no);		
+	}
+	$info = product_info($no);
+	if($option_name==null&&$option_price==null){// 옵션 없는 상품
+		if($info['fd_option']!=null){//db에서 진짜 없는지 확인 
+			header("location:http://".$http_host."/menu/store_view.php?no=".$no);		
+		}
+
+	}elseif($option_name==null||$option_price==null){
+		header("location:http://".$http_host."/menu/store_view.php?no=".$no);	
+	}
+
+	$user = get_user_info_to_id($_SESSION['user_id'])
 ?>
 
 <section class="container">
@@ -38,12 +58,22 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>Water Drone1</td>
-							<td>패키지1(구성품)</td>
-							<td>1</td>
-							<td>240,000</td>
-							<td>5,000</td>
-							<td>245,000</td>
+							<td><?=$info['fd_name']?></td>
+							<td><?=$option_name?></td>
+							<td><?=$count?></td>
+							<td>
+							<?php 
+								if($option_price!=null) echo number_format($option_price*$count);
+								else echo number_format($info['fd_price']*$count);
+							?>
+							</td>
+							<td><?=number_format($info['fd_delivery'])?></td>
+							<td>
+								<?php 
+									if($option_price!=null) echo number_format($option_price*$count+$info['fd_delivery']);
+									else echo number_format($info['fd_price']*$count+$info['fd_delivery']);
+								?>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -58,26 +88,23 @@
 				<tbody>
 					<tr>
 						<th scope="row">이름</th>
-						<td>홍길동</td>
+						<td><?=$user['fd_name']?></td>
 					</tr>
 					<tr>
 						<th scope="row">전화번호</th>
-						<td>010-1234-1234</td>
+						<td><?=$user['fd_hp']?></td>
 					</tr>
 					<tr>
 						<th scope="row">이메일</th>
-						<td>1234@naver.com</td>
+						<td><?=$user['fd_mail']?></td>
 					</tr>
 					<tr>
 						<th scope="row">주소</th>
-						<td>서울시 강동구 천호동</td>
+						<td>[<?=$user['fd_zip']?>] <?=$user['fd_address1']?> <?=$user['fd_address2']?></td>
 					</tr>
 				</tbody>
 			</table>
-			<p class="blt01">배송지정보</p>
-			<div class="ar">
-				<a href="#a" class="btn type04">배송지 변경</a>
-			</div>
+			<p class="blt01">배송지정보</p>			
 			<table class="tblType02">
 				<caption>배송지정보</caption>
 				<colgroup>
@@ -87,18 +114,23 @@
 				<tbody>
 					<tr>
 						<th scope="row">받는사람</th>
-						<td><input type="text" class="inTbl" placeholder="홍길동"></td>
+						<td><input type="text" class="inTbl" placeholder="이름" value="<?=$user['fd_name']?>"></td>
 					</tr>
 					<tr>
 						<th scope="row">주소</th>
 						<td>
-							<div><input type="text" name="address1" class="inTbl"> <a href="#a" class="btn type05">우편번호</a></div>
-							<div class="mt05"><input type="text" class="inTbl long" name="address2" placeholder="상세주소를 입력하세요."></div>
+							<div><input type="text" name="address1" class="inTbl" value="<?=$user['fd_zip']?>" readonly> <a href="#a" class="btn type05">우편번호</a></div>
+							<div class="mt05">
+								<input type="text" class="inTbl long" name="address2" placeholder="상세주소를 입력하세요." value="<?=$user['fd_address1']?>" readonly>
+							</div>
+							<div>
+								<input type="text" class="inTbl long" name="address2" placeholder="상세주소를 입력하세요." value="<?=$user['fd_address2']?>">
+							</div>
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">전화번호</th>
-						<td><input type="text" class="inTbl" name="phone"></td>
+						<td><input type="text" class="inTbl" name="phone" value="<?=$user['fd_hp']?>"></td>
 					</tr>
 					<tr>
 						<th scope="row">배송시 요청사항</th>
@@ -135,7 +167,12 @@
 				<tbody>
 					<tr>
 						<th scope="row">총액</th>
-						<td>255,000</td>
+						<td>
+							<?php 
+								if($option_price!=null) echo number_format($option_price*$count+$info['fd_delivery']);
+								else echo number_format($info['fd_price']*$count+$info['fd_delivery']);
+							?>
+						</td>
 					</tr>
 					<tr>
 						<th scope="row">결제방법</th>

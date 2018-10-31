@@ -1,3 +1,4 @@
+<?php header("Content-Type:text/css; charset: UTF-8"); ?>
 @charset "utf-8";
 
 html {overflow-y:scroll;}
@@ -1017,6 +1018,16 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 }
 
 .pro_detail_sub{
-	width: 101px;
-	height: 67px;
+	width: 75px;
+	height: 70px;
+}
+
+#pd_main_img{
+	width: 100%;
+	height: 80%;
+}
+
+#option_select{
+	font-size: 20px;
+	float: right;
 }

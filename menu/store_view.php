@@ -25,44 +25,61 @@
 	<div class="contents">
 		<div class="imgView">
 			<div class="left">
-				<div class="image"><img src="/admin/img/upload_image/<?=$info['fd_new_main_img']?>" alt="이미지 설명 입력란"></div>
+				<div class="image"><img src="/admin/img/upload_image/<?=$info['fd_new_main_img']?>" alt="이미지 설명 입력란" id="pd_main_img"></div>
 				<ul>
+					<li class="mhide"><img class="pro_detail_sub" src="/admin/img/upload_image/<?=$info['fd_new_main_img']?>" alt="이미지 설명 입력란"></li>
 					<?php 
 						for($i=0; $i<count($sub_arr);$i++){
-							echo '<li clas="mhide"><img class="pro_detail_sub" src="/admin/img/upload_image/'.$sub_arr[$i].'" alt="이미지 설명 입력란"></li>';
+							echo '<li class="mhide"><img class="pro_detail_sub" src="/admin/img/upload_image/'.$sub_arr[$i].'" alt="이미지 설명 입력란"></li>';
 						}
 
 					?>					
 				</ul>
 			</div>
 			<div class="right">
-				<p class="title"><?=$info['fd_name']?></p>
-				<div class="itemViewInputNumber">
-					<input type="number" value="1">
-				</div>
-				<div class="grayBox">
-					<select>
-						<?php
-							for($i=0; $i<count($option_arr); $i++){
-								$option_info = ex_option($option_arr[$i]);
-								echo '<option>'.$option_info[0].' / '.$option_info[1].'</option>';
-								
-							}
-						
-						?>
-					</select>
-				</div>
-				<div class="grayBox post">
-					배송비
-					<span class="priceSpan"><?=$info['fd_delivery']?></span>
-				</div>
-				<div class="priceBox">
-					총 상품금액
-					<span class="priceSpan">105,000</span>
-				</div>
-				<div class="mt20 ar">
-					<a href="./store_purchase.php" class="btn type03">구매하기</a>
-				</div>
+				<form id='store_purchase' action="./store_purchase.php" method="post">
+					<p class="title"><?=$info['fd_name']?></p>
+					<input type="hidden" name="no" value="<?=$info['pk_no']?>">
+					<div class="itemViewInputNumber">
+						<input type="number" value="0" id="select_count" name="select_count">
+					</div>
+					<div class="grayBox post">
+					<?php
+						if($info['fd_option']!=null){
+					?>
+						옵션
+						<input type="hidden" name="select_name" id="select_name" value="">
+						<input type="hidden" name="select_price" id="select_price" value="">
+						<select id=option_select>
+							<option selected hidden id="select_title" value="0">옵션을 선택하세요</option>
+							<?php
+								for($i=0; $i<count($option_arr); $i++){
+									$option_info = ex_option($option_arr[$i]);
+									echo '<option value="'.$option_info[1].'" name="'.$option_info[0].'">'.$option_info[0].' / '.$option_info[1].'</option>';
+									
+								}
+							
+							?>
+						</select>
+					<?php
+						}else{
+							echo '가격 <span class=priceSpan id=pro_price>'.$info["fd_price"].'</span>';
+						}
+					?>
+					</div>
+					<div class="grayBox post">
+						배송비
+						<span class="priceSpan" id="del_fee"><?=$info['fd_delivery']?></span>
+					</div>				
+					<div class="priceBox" >
+						총 상품금액					
+						<span class="priceSpan" id="total_price">0</span>
+					</div>
+
+					<div class="mt20 ar">
+						<input type="submit" id="buy_btn" class="btn type02" value="구매하기">
+					</div>
+				</form>
 			</div>
 			<div class="cb"></div>
 			<div class="itemContentBox">
