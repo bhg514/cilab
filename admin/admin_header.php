@@ -3,7 +3,8 @@
 	$get_uri = $_SERVER['PHP_SELF'];
 	$uri_arr = explode('/',$get_uri);
 	$user_name = $_SESSION['user_name'];
-	if($user_name==null){
+	$type = $_SESSION['user_type'];
+	if($type!="a"){
 		header("location:http://".$http_host."/member/login.php");
 	}
 ?>

@@ -1,6 +1,10 @@
 <?php
 	header ( "content-type:text/html; charset=utf-8" );
 	include '../header.php';
+	if(!isset($_SESSION['user_id'])){
+		alert('로그인 후 이용해주세요.','http://'.$http_host.'/member/login.php');
+	}
+
 	$no = $_POST['no'];
 	$option_name = $_POST['select_name'] ?? null;
 	$option_price = $_POST['select_price'] ?? null;

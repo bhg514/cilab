@@ -10,7 +10,19 @@
 
 	$total_count = product_get_count($name,$category,$status);
 	
-	$param_uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+
+	$query_string = $_SERVER['QUERY_STRING']; 
+	$query_arr = explode('&', $query_string);
+	
+	$query_string ="";
+
+	foreach ($query_arr as $query) {
+		$query_sp = explode('=', $query);
+		
+		if($query_sp[0]!='page'){
+			$query_string .= $query."&";
+		}
+	}
 
 ?>
 <script type="text/javascript" src="../js/admin.js"></script>
@@ -86,10 +98,10 @@
 		</tbody>
 	</table>
 	<div class="page_nav">
-		<a href="?page=1">
+		<a href="?<?=$query_string?>page=1">
 			<img src="/images/icon/btn_first.png" alt="pre" id="first_img" class="page_nav_btn">
 		</a>
-		<a href="?page=<?php if($page>1){ echo $page-1;}else{ echo '1';} ?>">
+		<a href="?<?=$query_string?>page=<?php if($page>1){ echo $page-1;}else{ echo '1';} ?>">
 			<img src="/images/icon/btn_prev.png" alt="pre" id="prev_img" class="page_nav_btn" >
 		</a>
 		<?php
@@ -106,7 +118,7 @@
 				if ($page ==$i){
 					echo "<span class = 'page_num page_select'>".$i."</span>";
 				}else{
-					echo "<a href='?page=".$i."' class = 'page_nav_btn page_num'>".$i."</a>";
+					echo "<a href='?".$query_string."page=".$i."' class = 'page_nav_btn page_num'>".$i."</a>";
 					
 				}
 			}
@@ -114,10 +126,10 @@
 			
 
 		?>
-		<a href="?page=<?php if($page<$for_end){ echo $page+1;}else{ echo $for_end;} ?>">
+		<a href="?<?=$query_string?>page=<?php if($page<$for_end){ echo $page+1;}else{ echo $for_end;} ?>">
 			<img src="/images/icon/btn_next.png" alt="pre" id="next_img" class="page_nav_btn">
 		</a>
-		<a href="?page=<?=$for_end?>">
+		<a href="?<?=$query_string?>page=<?=$for_end?>">
 			<img src="/images/icon/btn_last.png" alt="pre" id="last_img" class="page_nav_btn">
 		</a>
 	</div>
