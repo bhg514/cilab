@@ -1,195 +1,224 @@
-<?php header("Content-Type:text/css; charset: UTF-8"); ?>
 @charset "utf-8";
 
 * {
-   margin:0; padding:0
+	margin: 0;
+	padding: 0
 }
 
 body {
-   font-family: '맑은 고딕' 돋움; font-size:0.75em; color:#333
+	font-family: '맑은 고딕' 돋움;
+	font-size: 0.75em;
+	color: #333
 }
 
-ul li{
-   list-style-type: none;
+ul li {
+	list-style-type: none;
 }
 
-.admin_menu{
-   margin: auto ;
-   width: 95%;   
+.admin_menu {
+	margin: auto;
+	width: 95%;
+	margin-bottom: 30px;
 }
 
-.admin_menu ul{
-   height:30px;
+.admin_menu ul {
+	height: 30px;
 }
 
-.admin_menu li{
-   float:left;
-   width:110px;
-   height:30px;      
-   line-height:30px;          /* 중앙정렬 */
-   margin-right: 2px;
-   text-align: center;
-   background-color: #fff;
-   border: 1px solid;
-   border-radius:3px 3px 0 0;
-   cursor: pointer;
+.admin_menu li {
+	float: left;
+	width: 110px;
+	height: 30px;
+	line-height: 30px; /* 중앙정렬 */
+	margin-right: 2px;
+	text-align: center;
+	background-color: #fff;
+	border: 1px solid;
+	border-radius: 3px 3px 0 0;
+	cursor: pointer;
 }
 
-.admin_menu li.selected{
-   background-color: #ccc;
+.admin_menu li.selected {
+	background-color: #d2eeff;
 }
 
-.tab-view{
-   width:506px;
-   height:100px;
-   line-height: 100px;
-   border: 1px solid gray;
-   text-align:center;
-   margin-top:-1px;
+.tab-view {
+	width: 506px;
+	height: 100px;
+	line-height: 100px;
+	border: 1px solid gray;
+	text-align: center;
+	margin-top: -1px;
 }
-
 
 /*사이드 메뉴*/
 body {
-    font-family: "Lato", sans-serif;
+	font-family: "Lato", sans-serif;
 }
 
 .sidenav {
-    min-width: 80px;
-    width: 10%;
-    position: fixed;
-    z-index: 1;
-    top: 215px;
-    left: 10px;
-    overflow-x: hidden;
+	min-width: 80px;
+	width: 10%;
+	position: absolute;
+	z-index: 1;
+	left: 30px;
+	overflow-x: hidden;
 }
 
 .sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 12px;
-    color: #000000  ;
-    display: block;
-    border: 1px solid;
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-size: 12px;
+	color: #000000;
+	display: block;
+	border: 1px solid #3892cb;
+	border-bottom: none;
+}
+
+.sidenav a:last-child {
+	border-bottom: 1px solid #3892cb;
 }
 
 .sidenav a.selected {
-    color: #fff;
-    background: #9e9e9e;
+	color: #fff;
+	background: #3892cb;
+	border: 1px solid #3892cb;
 }
 
 .container {
-    float: right;
-    width: 85% !important;     
-    font-size: 28px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
+	float: right;
+	width: 85% !important;
+	font-size: 28px; /* Increased text to enable scrolling */
+	padding: 0px 10px 30px;
 }
 
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+	.sidenav {
+		padding-top: 15px;
+	}
+	.sidenav a {
+		font-size: 18px;
+	}
 }
 
-.menu_point{
-  float: right;
+.menu_point {
+	float: right;
 }
-#side_title{
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
+
+.side_title {
+	font-size: 19px;
+	text-align: center;
+	font-weight: 500;
+	color: #1571c9;
+	margin-bottom: 5px;
 }
 /*사이드 메뉴 끝*/
 
 /*상단 메뉴*/
-hr.garo { border: solid #dedede; border-width: 1px 0 0;}
-
+hr.garo {
+	border: solid #dedede;
+	border-width: 1px 0 0;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
 
 /*에디터*/
-.note-editable{
-  min-height: 400px;
+.note-editable {
+	min-height: 400px;
 }
 
-.admin_position{
-  text-align: right;
-  display: inline;
-  margin-right: 10px;
-  font-size: 20px;
+.admin_position {
+	text-align: right;
+	display: inline-block;
+	margin-right: 10px;
+	margin-top: 5px;
+	font-size: 15px;
+	float: right;
 }
 
-.admin_title{
-  text-align: left;
-  display: inline;
-  margin-left: 10px;
-  font-size: 20px;
-  width: 40%;
+.admin_title {
+	text-align: left;
+	display: inline-block;
+	margin-left: 10px;
+	font-size: 20px;
+	width: 40%;
 }
 
-.btn_div, .search_div{
-  float: right;
-  margin: 10px;
+.btn_div, .search_div {
+	float: right;
+	margin: 10px;
 }
 
-.admin_list{  
-  border-top: 2px solid #e8e8e8;
-  border-bottom: 2px solid #e8e8e8;
-  background: #f7f7f7;
+#search_select, #search_input, #period_select {
+	padding: 0px 10px;
+	box-sizing: border-box;
+	line-height: 31px;
+	height: 31px;
+	border-radius: 4px;
+	border-style: solid;
+	border: 1px solid #666;
 }
 
-.page_nav{
-  margin-top: 15px;
-  text-align: center;
-
+.admin_list {
+	border-top: 2px solid #e8e8e8;
+	border-bottom: 2px solid #e8e8e8;
+	background: #f7f7f7;
 }
 
-.page_nav_btn{
-  cursor: pointer;
-  width: 20px;
+.page_nav {
+	margin-top: 15px;
+	text-align: center;
 }
 
-.page_num{
-  font-size: 15px;
-  margin: 5px;
+.page_nav_btn {
+	cursor: pointer;
+	width: 20px;
 }
 
-.page_select{
-  color: red;
-  width: 20px;
-  font-weight: bold;
+.page_num {
+	font-size: 15px;
+	margin: 5px;
+}
 
+.page_select {
+	color: red;
+	width: 20px;
+	font-weight: bold;
 }
 
 /*로딩 페이지*/
-
-.wrap-loading{ /*화면 전체를 어둡게 합니다.*/
-  position: fixed;
-  left:0;
-  right:0;
-  top:0;
-  bottom:0;
-  background: rgba(0,0,0,0.2); /*not in ie */
-  filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#20000000',endColorstr='#20000000');    /* ie */
-}
-.wrap-loading div{ /*로딩 이미지*/
-  position: fixed;
-  top:50%;
-  left:50%;
-  margin-left: -21px;
-  margin-top: -21px;
-}
-.display-none{ /*감추기*/
-  display:none;
+.wrap-loading { /*화면 전체를 어둡게 합니다.*/
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.2); /*not in ie */
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#20000000',
+		endColorstr='#20000000'); /* ie */
 }
 
-.month_cal{
-  display: none;
+.wrap-loading div { /*로딩 이미지*/
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -21px;
+	margin-top: -21px;
 }
 
-.save_img{
-  width: 15px;
+.display-none { /*감추기*/
+	display: none;
+}
+
+.month_cal {
+	display: none;
+}
+
+.save_img {
+	width: 15px;
 }
 
 /* 테이블 */
-
 table {
 	border-collapse: collapse;
 	border-top: 3px solid #3892cb;
@@ -203,12 +232,13 @@ table th {
 }
 
 table th, table td {
-	padding: 10px;
+	padding: 8px;
 	border: 1px solid #ddd;
 }
 
 table th:first-child, table td:first-child {
 	border-left: 0;
+	width: 50px;
 }
 
 table th:last-child, table td:last-child {
@@ -222,4 +252,9 @@ table tr td:first-child {
 table caption {
 	caption-side: bottom;
 	display: none;
+}
+
+/*상품등록*/
+#product_form h4 {
+	clear: both;
 }

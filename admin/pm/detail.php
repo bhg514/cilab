@@ -31,16 +31,14 @@
 				<fieldset>
 					<table class="product_reg_tb">
 						<div>
-							<div>상품관리</div>
-							<div>Home  » 상품 관리 » 상품 관리</div>
+							<div class="admin_title">상품관리</div>
+							<div class="admin_position">Home  » 상품 관리 » 상품 등록</div>
 						</div>
 						<hr class="garo" style="display: block;"> 
 						<div>
 							<input type="submit" value="수정" id="product_reg_btn" class="btn type07 st2">
 							<a id="info_del" class="btn type07">삭제</a>
 							<a href="/admin/pm/list.php" class="btn type07">목록</a>
-
-
 						</div>
 						<h3>■ 상품정보</h3>
 						<caption>상품 등록</caption>

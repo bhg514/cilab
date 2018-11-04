@@ -18,22 +18,22 @@
 <section class="container">	
 	
 
-	<div class="contents">
+	<div class="">
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="product_form" action="./product_form.php" method="post">
 				<fieldset>
 					<table class="product_reg_tb">
 						<div>
-							<div>상품관리</div>
-							<div>Home  » 상품 관리 » 상품 관리</div>
+							<div class="admin_title">상품등록</div>
+							<div class="admin_position">Home  » 상품 관리 » 상품 등록</div>
 						</div>
 						<hr class="garo" style="display: block;"> 
-						<div>
-							<a class="btn type07">저장</a>
-							<a class="btn type07">삭제</a>
-							<a class="btn type07">목록</a>
+						<div class="btn_div">
+							<a class="btn type05">저장</a>
+							<a class="btn type05">삭제</a>
+							<a class="btn type05">목록</a>
 						</div>
-						<h3>■ 상품정보</h3>
+						<h4>■ 상품정보</h4>
 						<caption>상품 등록</caption>
 						<colgroup>
 							<col style="width:170px;">
@@ -94,7 +94,7 @@
 								</td>
 							</tr>		
 							<tr>
-								<th scope="row">대표이미지(썸네일이미지)</th>
+								<th scope="row">대표이미지(썸네일)</th>
 								<td>									
 									<input type="file" name="main_img" id="main_img" style="display:none;"/>
 									<label for="main_img" id="main_img_label">클릭하여 이미지 파일을 올려주세요 </label>									

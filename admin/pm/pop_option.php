@@ -49,7 +49,6 @@
 										<tr>
 											<td>
 												<input type="text" class="option_price">원
-												
 											</td>
 										</tr>
 									</table>

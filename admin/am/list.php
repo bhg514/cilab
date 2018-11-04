@@ -25,8 +25,8 @@
 <script type="text/javascript" src="../js/admin.js"></script>
 <section class="container">			
 	<div>
-		<div class="admin_title">회원관리</div>		
-		<div class="admin_position">Home  » 회원관리 » 회원관리</div>			
+		<div class="admin_title">관리자관리</div>		
+		<div class="admin_position">Home  » 관리자관리 » 관리자관리</div>			
 		<hr class="garo" style="display: block;"> 
 	</div>
 	<div class="search_div">
