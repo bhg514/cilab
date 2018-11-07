@@ -6,7 +6,7 @@
 }
 
 body {
-	font-family: '맑은 고딕' 돋움;
+	font-family: "Lato", sans-serif, "맑은 고딕", 
 	font-size: 0.75em;
 	color: #333
 }
@@ -52,17 +52,14 @@ ul li {
 }
 
 /*사이드 메뉴*/
-body {
-	font-family: "Lato", sans-serif;
-}
-
 .sidenav {
 	min-width: 80px;
 	width: 10%;
-	position: absolute;
+	position: relative;
 	z-index: 1;
-	left: 30px;
+	margin-left: 30px;
 	overflow-x: hidden;
+	float: left;
 }
 
 .sidenav a {
@@ -127,6 +124,7 @@ hr.garo {
 	min-height: 400px;
 }
 
+/*공통*/
 .admin_position {
 	text-align: right;
 	display: inline-block;
@@ -149,7 +147,7 @@ hr.garo {
 	margin: 10px;
 }
 
-#search_select, #search_input, #period_select {
+#search_select, #search_input, #period_select, .hasDatepicker {
 	padding: 0px 10px;
 	box-sizing: border-box;
 	line-height: 31px;
@@ -214,6 +212,14 @@ hr.garo {
 	display: none;
 }
 
+#search_select, .month_cal, .day_cal {
+	float: left;
+}
+
+#search_select {
+	margin-right: 3px;
+}
+
 .save_img {
 	width: 15px;
 }
@@ -254,7 +260,18 @@ table caption {
 	display: none;
 }
 
-/*상품등록*/
+/*상품관리-상품등록*/
 #product_form h4 {
 	clear: both;
+}
+
+/*주문배송관리-판매완료*/
+.summary_div {
+	display: inline-block;
+	font-size: 14px;
+}
+
+.summary_div span {
+	display: inline-block;
+	margin:0 5px;
 }

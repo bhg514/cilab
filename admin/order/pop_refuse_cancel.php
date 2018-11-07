@@ -22,14 +22,10 @@
 				</div>
 				<div>
 					<input type="button" id="send_msg" value="내용 전달">
-					<input type="button" value="취소" onclick="window.close();  ">
+					<input type="button" value="취소" onclick="window.close();">
 				</div>
-				
 			</div>
 		</div>
 	</section>
-	
-
-
 </body>
 </html>

@@ -100,7 +100,7 @@
 		<a class="btn type05" id="list_del">삭제</a>
 	</div>
 	<table>
-		<caption class="readHide">상품 관리</caption>
+		<caption class="readHide">주문 관리</caption>
 		<thead class="admin_list">
 			<tr>
 				<th class="thead_th"> 

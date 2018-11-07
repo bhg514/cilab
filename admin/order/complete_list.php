@@ -51,27 +51,27 @@
 			<option value="2">월별</option>			
 		</select>
 		<div class="month_cal" >
-	    	<input type="text" id="sdate1" readonly />~
+	    	<input type="text" id="sdate1" readonly />
+	    	<span> ~ </span>
 	    	<input type="text" id="sdate2" readonly />
 	    	<a class="btn type05" id="month_search_btn">검색</a>
 	    </div>
 	    <div class="day_cal">
-	    	<input type="text" id="datepicker1" readonly>~
+	    	<input type="text" id="datepicker1" readonly>
+	    	<span> ~ </span>
 	    	<input type="text" id="datepicker2" readonly>			
 			<a class="btn type05" id="day_search_btn">검색</a>
 		</div>
-		
-
-	</div>
-	<div>
-		<div>주문수 Total <?=$info['total']?>건 판매금액 Total <?=$info['price']?>원 배송비 Total <?=$info['del']?>원</div>
 	</div>
 	<div class="btn_div">
 		<a class="btn type05">전체 상품 엑셀 다운로드</a>
 		<a class="btn type05" id="list_del">삭제</a>
 	</div>
+	<div class="summary_div">
+		<span>주문수 총 <?=$info['total']?>건</span>/<span>판매금액 총 <?=$info['price']?>원</span>/<span>배송비 총 <?=$info['del']?>원</span>
+	</div>
 	<table>
-		<caption class="readHide">상품 관리</caption>
+		<caption class="readHide">판매완료</caption>
 		<thead class="admin_list">
 			<tr>
 				<th scope="col" class="thead_th">no</th>
