@@ -261,7 +261,7 @@ table caption {
 }
 
 /*상품관리-상품등록*/
-#product_form h4 {
+#product_form h4, #product_update h4 {
 	clear: both;
 }
 

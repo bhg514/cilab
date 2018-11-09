@@ -25,23 +25,23 @@
 <section class="container">	
 	
 
-	<div class="contents">
+	<div class="">
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="product_update" action="product_update.php" method="post">
 				<fieldset>
 					<table class="product_reg_tb">
 						<div>
 							<div class="admin_title">상품관리</div>
-							<div class="admin_position">Home  » 상품 관리 » 상품 등록</div>
+							<div class="admin_position">Home  » 상품 관리 » 상품 관리</div>
 						</div>
 						<hr class="garo" style="display: block;"> 
-						<div>
-							<input type="submit" value="수정" id="product_reg_btn" class="btn type07 st2">
-							<a id="info_del" class="btn type07">삭제</a>
-							<a href="/admin/pm/list.php" class="btn type07">목록</a>
+						<div class="btn_div">
+							<input type="submit" value="수정" id="product_reg_btn" class="btn type05 st2">
+							<a id="info_del" class="btn type05">삭제</a>
+							<a href="/admin/pm/list.php" class="btn type05">목록</a>
 						</div>
-						<h3>■ 상품정보</h3>
-						<caption>상품 등록</caption>
+						<h4>■ 상품정보</h4>
+						<caption>상품 수정</caption>
 						<colgroup>
 							<col style="width:170px;">
 							<col>
@@ -102,7 +102,7 @@
 								</td>
 							</tr>		
 							<tr>
-								<th scope="row">대표이미지(썸네일이미지)</th>
+								<th scope="row">대표이미지(썸네일)</th>
 								<td>									
 									<input type="file" name="main_img" id="main_img" style="display:none;"/>
 									<input type="hidden" name="old_main_img" value="<?= $info['fd_main_img'] ?>">

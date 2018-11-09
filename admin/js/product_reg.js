@@ -24,9 +24,9 @@ function del_non_free(){
 
 function pop_option(){
 	window.name = "parentForm";
-	var option = $('#option_input').val()
+	var option = $('#option_input').val();
 	
-	open_win = window.open('./pop_option.php','childForm','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
+	open_win = window.open('./pop_option.php','childForm','width=800, height=500,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
 
 
 
