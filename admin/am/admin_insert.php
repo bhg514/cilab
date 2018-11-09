@@ -14,9 +14,10 @@
 		$hp = $hp1.'-'.$hp2.'-'.$hp3;
 
 
-		$query = "insert tb_user set fd_pw = '".$pw."', fd_name = '".$name."', fd_group = '".$group."', fd_position = '".$position."', fd_hp = '".$hp."', fd_id='".$id."'";
+		$query = "insert tb_admin set fd_pw = '".$pw."', fd_name = '".$name."', fd_group = '".$group."', fd_position = '".$position."', fd_hp = '".$hp."', fd_id='".$id."'";
 
 		query_send_non_return($query);
+		echo $query;
 		header("location:http://".$http_host."/admin/am/list.php");
 
 

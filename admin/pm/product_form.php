@@ -34,6 +34,7 @@
 				$sub_img .= $img['name']."||";
 			}
 		}
+		$sub_img = substr($sub_img, 0, -2);
 		$new_sub_img = substr($new_sub_img, 0, -2);
 
 		$new_main_img="";
