@@ -18,10 +18,7 @@
 		$files = explode(',', $files);
 		if(is_array($files)){			
 			foreach ($files as $file) {		
-						
-				$file_arr[$file] = $_FILES[$file];
-				
-				
+				$file_arr[$file] = $_FILES[$file];		
 			}		
 		}
 
@@ -38,7 +35,7 @@
 		$new_file_name = substr($new_file_name, 0, -2);
 		$file_name = substr($file_name, 0, -2);
 
-		$table = table($type);
+		$table = table_name($type);
 		$query = 'update '.$table.' set fd_title = "'.$title.'",';
 		if($new_file_name!=""){
 			$query .=  ' fd_file = "'.$file_name.'", fd_new_file = "'.$new_file_name.'",' ;	

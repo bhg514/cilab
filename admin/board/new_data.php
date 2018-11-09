@@ -5,6 +5,10 @@
 	include './side.php';
 	include_once("../../common.php");
 	$type = $_GET['type'];
+	if($type==1) $title = "공지사항";
+	elseif($type==2) $title = "SW다운로드";
+	elseif($type==3) $title = "콘텐츠관리";
+
 ?>
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -25,16 +29,16 @@
 				<fieldset>
 					<table class="product_reg_tb">
 						<div>
-							<div>공지사항</div>
-							<div>Home  » 게시판/콘텐츠 관리 » 공지사항</div>
+							<div><?=$title?></div>
+							<div>Home  » 게시판/콘텐츠 관리 » <?=$title?></div>
 						</div>
 						<hr class="garo" style="display: block;"> 
 						<div>
 							<a class="btn type07">등록</a>
 							<a class="btn type07">취소</a>
 						</div>
-						<h3>■ 공지사항</h3>
-						<caption>공지사항</caption>
+						<h3>■ <?=$title?></h3>
+						<caption><?=$title?></caption>
 						<colgroup>
 							<col style="width:170px;">
 							<col>

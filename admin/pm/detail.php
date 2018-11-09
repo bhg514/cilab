@@ -113,25 +113,19 @@
 							<tr>
 								<th scope="row">추가이미지</th>
 								<td>
-									
+									<?php
+										foreach ($sub_arr as $sub) {
+
+
+									?>
 									<input type="file" name="sub_img1" id="sub_img1" style="display:none;"/>
-									<input type="hidden" name="old_sub_img1" value="<?php if($sub_arr[0]!=null){ echo $sub_arr[0];}?>">
-									<label for="sub_img1" id="sub_img1_label"><?php if($sub_arr[0]!=null){ echo $sub_arr[0];}else{ echo '클릭하여 이미지 파일을 올려주세요';}?> </label>
+									<input type="hidden" name="old_sub_img1" value="<?php if($sub!=null){ echo $sub;}?>">
+									<label for="sub_img1" id="sub_img1_label"><?php if($sub!=null){ echo $sub;}else{ echo '클릭하여 이미지 파일을 올려주세요';}?> </label>
 									<br/>
+									<?php
+										}
+									?>
 
-									<input type="file" name="sub_img2" id="sub_img2" style="display:none;"/>
-									<input type="hidden" name="old_sub_img2" value="<?php if($sub_arr[1]!=null){ echo $sub_arr[1];}?>">
-									<label for="sub_img2" id="sub_img2_label"><?php if($sub_arr[1]!=null){ echo $sub_arr[1];}else{ echo '클릭하여 이미지 파일을 올려주세요';}?></label>
-									<br/>
-
-									<input type="file" name="sub_img3" id="sub_img3" style="display:none;"/>
-									<input type="hidden" name="old_sub_img3" value="<?php if($sub_arr[2]!=null){ echo $sub_arr[2];}?>">
-									<label for="sub_img3" id="sub_img3_label"><?php if($sub_arr[2]!=null){ echo $sub_arr[2];}else{ echo '클릭하여 이미지 파일을 올려주세요';}?></label>
-									<br/>
-
-									<input type="file" name="sub_img4" id="sub_img4" style="display:none;"/>
-									<input type="hidden" name="old_sub_img4" value="<?php if($sub_arr[3]!=null){ echo $sub_arr[3];}?>">
-									<label for="sub_img4" id="sub_img4_label"><?php if($sub_arr[3]!=null){ echo $sub_arr[3];}else{ echo '클릭하여 이미지 파일을 올려주세요';}?></label>
 								</td>
 							</tr>					
 							<tr>

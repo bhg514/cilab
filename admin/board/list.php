@@ -43,7 +43,7 @@
 	</div>	
 	<div class="btn_div">
 		<?php if($type!=4)
-			echo '<a class="btn type05" href="new_data.php?type=<?=$type?>">등록</a>'
+			echo '<a class="btn type05" href="new_data.php?type='.$type.'">등록</a>'
 		?>		
 	</div>
 	<table>

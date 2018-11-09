@@ -13,8 +13,11 @@
 	};
 
 	$info = board_get_info($no,$type);
-	if($info["fd_file"]!=null)
-		$fd_file=explode('||',$info["fd_file"]);
+	if($type!=3){
+		if($info["fd_file"]!=null)
+			$fd_file=explode('||',$info["fd_file"]);
+	}
+
 	if($type==1) $head = '공지사항';
 	elseif($type==2) $head = 'SW다운로드';
 	elseif($type==3) $head = '콘텐츠관리';

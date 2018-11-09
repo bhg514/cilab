@@ -12,7 +12,7 @@
 
 	<div class="contents">
 		<div class="tabletInner">
-			<form enctype='multipart/form-data' id="user_update" action="user_update.php" method="post">
+			<form enctype='multipart/form-data' id="admin_insert" action="admin_insert.php" method="post">
 				<fieldset>
 					<table class="product_reg_tb">
 						<div>
