@@ -9,7 +9,7 @@
 	<a href="./list.php?type=2" class="<?php if($_GET["type"] ==2 ) echo 'selected' ; ?>"><span class="menu_title">상품 준비</span><span class="menu_point">&gt;</span></a>
 	<a href="./list.php?type=3" class="<?php if($_GET["type"] ==3 ) echo 'selected' ; ?>"><span class="menu_title">배송중</span><span class="menu_point">&gt;</span></a>
 	<a href="./list.php?type=4" class="<?php if($_GET["type"] ==4 ) echo 'selected' ; ?>"><span class="menu_title">배송완료</span><span class="menu_point">&gt;</span></a>
-	<a href="./complete_list.php" class="<?php if($uri_arr[3] =="complete_list.php" || $_GET["type"] ==5 ) echo 'selected' ; ?>"><span class="menu_title">판매완료</span><span class="menu_point">&gt;</span></a>
+	<a href="./complete_list.php?type=5" class="<?php if($uri_arr[3] =="complete_list.php" || $_GET["type"] ==5 ) echo 'selected' ; ?>"><span class="menu_title">판매완료</span><span class="menu_point">&gt;</span></a>
 	<a href="./list.php?type=6" class="<?php if($_GET["type"] ==6 ) echo 'selected' ; ?>"><span class="menu_title">주문취소</span><span class="menu_point">&gt;</span></a>
 	<a href="./list.php?type=7" class="<?php if($_GET["type"] ==7 ) echo 'selected' ; ?>"><span class="menu_title">교환신청</span><span class="menu_point">&gt;</span></a>
 	<a href="./list.php?type=8" class="<?php if($_GET["type"] ==8 ) echo 'selected' ; ?>"><span class="menu_title">반품신청</span><span class="menu_point">&gt;</span></a>

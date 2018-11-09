@@ -873,6 +873,9 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	color: #3d3d3d;
 }
 .mainNoti .date {
+	position: absolute;
+    top: 0;
+    right: 0;
 	margin-left: 10px;
 	display: inline-block;
 	line-height: 33px;
@@ -1000,7 +1003,7 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	font-size: 15px;
 }
 
-.page_select {
+.on {
 	color: #e60000;
 	font-weight: bold;
 }

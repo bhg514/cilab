@@ -36,10 +36,15 @@
 				<a href="../register/agree.php" class="gnb_join">회원가입</a>
 				<?php 
 					}else{
+						echo $_SESSION['user_name']."님 환영합니다";
 				?>				
 				<a href="../member/logout.php" class="gnb_login">로그아웃</a>
-				<a href="../mypage/order.php" class="gnb_join">마이페이지</a>
+				
 				<?php
+						if($_SESSION['user_type']=='u')
+							echo '<a href="../mypage/order.php" class="gnb_join">마이페이지</a>';
+						else 
+							echo '<a href="../admin/pm/list.php" class="gnb_join">관리자페이지</a>';
 					}
 				?>
 				<a href="../sub/sitemap.php" class="gnb_sitemap">사이트맵</a>

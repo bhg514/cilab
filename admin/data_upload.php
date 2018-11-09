@@ -71,7 +71,7 @@
 
 			foreach ($img_data_arr as $img_data) {
 				$file_name = img_save($img_data);
-				$file_name=str_replace("..", "/admin", $file_name)
+				$file_name=str_replace("..", "/admin", $file_name);
 				$img_tag = '<img src='.$file_name.'>';
 				array_push($new_img_tag_arr, $img_tag);
 			}
@@ -84,7 +84,7 @@
 	}
 	function file_save($file_info){
 
-		$uploads_dir = '/admin/files/';
+		$uploads_dir = '../admin/files/';
 		
 		 
 		// 변수 정리
@@ -93,7 +93,7 @@
 		$tmp = explode('.', $name);
 		$ext = array_pop($tmp);
 		$new_name = uniqid().".".$ext;
-		 
+		echo $name;
 		// 오류 확인
 		if( $error != UPLOAD_ERR_OK ) {
 			switch( $error ) {
@@ -110,9 +110,7 @@
 			exit;
 		} 		 
 		// 파일 이동
-
-		move_uploaded_file( $file_info['tmp_name'], "$uploads_dir/".$new_name);
-
+		move_uploaded_file( $file_info['tmp_name'], $uploads_dir.$new_name);
 		return $new_name;
 	}
 ?>

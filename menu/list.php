@@ -3,11 +3,24 @@
 	include '../header.php';
 	include_once('../common.php');	
 	$type= $_GET['type'] ?? 1;
-	$start_num = 1;
 	$page = $_GET['page'] ?? 1;		
+
+	
 	if($type==1) $head = "공지사항";
 	elseif($type==2) $head = "S/W다운로드";
 	elseif($type==4) $head = "문의하기";
+	$query_string = $_SERVER['QUERY_STRING']; 
+    $query_arr = explode('&', $query_string);
+    
+    $query_string ="";
+
+    foreach ($query_arr as $query) {
+        $query_sp = explode('=', $query);
+        
+        if($query_sp[0]!='page'){
+            $query_string .= $query."&";
+        }
+    }
 ?>
 <section class="container">
 	<div class="visual support">
@@ -97,32 +110,12 @@
 				</a>
 				<?php
 					$total_count = board_count($type, null);
-					$total_count = $total_count[0];
-					if($total_count == 0 ) $total_count = 1;
-					
-					$end_num = 10;
-					$total_page = ceil($total_count/10);
-					if($end_num>$total_page){
-						$for_end = $total_page;
-					}else{
-						$for_end = $end_num;
-					};
-					for($i=$start_num; $i<=$for_end;$i++){			
-						if ($page ==$i){
-							echo "<a class = 'page_num on'>".$i."</a>";
-						}else{
-							echo "<a href='?".$query_string."page=".$i."' class = 'page_nav_btn page_num'>".$i."</a>";
-							
-						}
-					}
-
-					
-
+					$page_info = make_page($page,$total_count,$query_string,10);
 				?>
-				<a href="?<?=$query_string?>page=<?php if($page<$for_end){ echo $page+1;}else{ echo $for_end;} ?>">
+				<a href="?<?=$query_string?>page=<?php if($page<$page_info[0]){ echo $page+1;}else{ echo $page_info[1];} ?>">
 					<img src="/images/icon/btn_next.png" alt="pre" id="next_img" class="page_nav_btn">
 				</a>
-				<a href="?<?=$query_string?>page=<?=$for_end?>">
+				<a href="?<?=$query_string?>page=<?=$page_info[0]?>">
 					<img src="/images/icon/btn_last.png" alt="pre" id="last_img" class="page_nav_btn">
 				</a>
 			</div>				

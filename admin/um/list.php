@@ -54,7 +54,7 @@
 		</thead>
 		<tbody>
 				<?php
-					$result = while_get_user_list($start_num,$search,"tb_user");
+					$result = while_get_user_list($page,$search,"tb_user");
 					while ($r = mysqli_fetch_array($result)) {
 				?>
 			<tr>				
@@ -79,32 +79,15 @@
 		</a>
 		<?php
 			$total_count = user_count($search);
-			$total_count = $total_count[0];
-			if($total_count == 0 ) $total_count = 1;
-			
-			$end_num = 10;
-			$total_page = ceil($total_count/10);
-			if($end_num>$total_page){
-				$for_end = $total_page;
-			}else{
-				$for_end = $end_num;
-			};
-			for($i=$start_num; $i<=$for_end;$i++){			
-				if ($page ==$i){
-					echo "<span class = 'page_num page_select'>".$i."</span>";
-				}else{
-					echo "<a href='?".$query_string."page=".$i."' class = 'page_nav_btn page_num'>".$i."</a>";
-					
-				}
-			}
+			$page_info = make_page($page,$total_count,$query_string,10);
 
 			
 
 		?>
-		<a href="?<?=$query_string?>page=<?php if($page<$for_end){ echo $page+1;}else{ echo $for_end;} ?>">
+		<a href="?<?=$query_string?>page=<?php if($page<$page_info[0]){ echo $page+1;}else{ echo $page_info[1];} ?>">
 			<img src="/images/icon/btn_next.png" alt="pre" id="next_img" class="page_nav_btn">
 		</a>
-		<a href="?<?=$query_string?>page=<?=$for_end?>">
+		<a href="?<?=$query_string?>page=<?=$page_info[0]?>">
 			<img src="/images/icon/btn_last.png" alt="pre" id="last_img" class="page_nav_btn">
 		</a>
 	</div>	

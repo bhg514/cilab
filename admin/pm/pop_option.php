@@ -41,17 +41,11 @@
 						<tbody id="tbody">
 							<tr id="option_1">						
 								<td scope="row">
-									<input type="text" class="option_name" placeholder="색상">										
+									<input type="text" class="option_name" placeholder="색상">
 									<input type="button" class="add_option_btn"  value="+" onclick="add_option_btn(this)">
 								</td>						
 								<td>
-									<table>
-										<tr>
-											<td>
-												<input type="text" class="option_price">원
-											</td>
-										</tr>
-									</table>
+									<input type="text" class="option_price">원
 								</td>
 							</tr>													
 						</tbody>
