@@ -27,7 +27,7 @@
 
 		foreach ($file_arr as $file) {
 			if($file['name']!=null){
-				$new_file_name .= file_save($file)."||";
+				$new_file_name .= file_save($file,'../files/')."||";
 				$file_name .= $file['name']."||";
 			}
 		}

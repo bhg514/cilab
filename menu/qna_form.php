@@ -13,7 +13,7 @@
 
 		$date_time = date("Y-m-d h:i:s");
 		if($file['name']!=null){
-			$new_file_name = file_save($file);			
+			$new_file_name = file_save($file,"../admin/files/");			
 			$file_name = $file['name'];
 		}
 

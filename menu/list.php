@@ -2,6 +2,7 @@
 	header ( "content-type:text/html; charset=utf-8" );
 	include '../header.php';
 	include_once('../common.php');	
+	include_once('zip_down.php');	
 	$type= $_GET['type'] ?? 1;
 	$page = $_GET['page'] ?? 1;		
 
@@ -71,7 +72,7 @@
 							}elseif($type==2) {
 							    echo '<th scope="col">S/W명</th>
                                 <th scope="col">버전</th>
-                                <th scope="col">다운로드</th>';
+                                <th scope="col">조회수</th>';
 							}else if($type==4){
 								echo '<th scope="col">문의제목</th>
 								<th scope="col">작성자</th>

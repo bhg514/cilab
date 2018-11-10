@@ -4,7 +4,7 @@
     include_once('../common.php');  
     $type = $_GET['type'];
     $no = $_GET['no'];
-
+    count_up($type,$no);
     $info = get_board_info($no,$type);
 
     if($type==1) $head = "공지사항";
@@ -54,8 +54,7 @@
                         <?php
                             $file_arr = explode('||', $info['fd_file']);
                             $new_file_arr = explode('||', $info['fd_new_file']);
-                            if(count($file_arr)>1){                                
-
+                            if(count($file_arr)>=1){ 
                                 for ($i=0;$i< count($file_arr);$i++) {
                         ?>    
                             

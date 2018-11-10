@@ -38,7 +38,7 @@
 		 
 		// 파일 이동
 
-		move_uploaded_file( $file_info['tmp_name'], "$uploads_dir/".$new_name);
+		move_uploaded_file( $file_info['tmp_name'], $uploads_dir.$new_name);
 
 		return $new_name;
 	}
@@ -86,9 +86,9 @@
 		}
 		return $contents;
 	}
-	function file_save($file_info){
+	function file_save($file_info,$path){
 
-		$uploads_dir = '../admin/files/';
+		$uploads_dir = $path;
 		
 		 
 		// 변수 정리
@@ -97,7 +97,6 @@
 		$tmp = explode('.', $name);
 		$ext = array_pop($tmp);
 		$new_name = uniqid().".".$ext;
-		echo $name;
 		// 오류 확인
 		if( $error != UPLOAD_ERR_OK ) {
 			switch( $error ) {
@@ -113,6 +112,7 @@
 			}
 			exit;
 		} 		 
+		echo $uploads_dir.$new_name;
 		// 파일 이동
 		move_uploaded_file( $file_info['tmp_name'], $uploads_dir.$new_name);
 		return $new_name;
