@@ -30,7 +30,7 @@
 						</div>
 						<hr class="garo" style="display: block;"> 
 						<div class="btn_div">
-							<input type="submit" value="수정" id="product_reg_btn" class="btn type05 st2">
+							<input type="submit" value="수정" id="product_reg_btn" class="btn type05">
 							<a id="info_del" class="btn type05">삭제</a>
 							<a href="/admin/pm/list.php" class="btn type05">목록</a>
 						</div>
@@ -109,8 +109,6 @@
 								<td>
 									<?php
 										foreach ($sub_arr as $sub) {
-
-
 									?>
 									<input type="file" name="sub_img1" id="sub_img1" style="display:none;"/>
 									<input type="hidden" name="old_sub_img1" value="<?php if($sub!=null){ echo $sub;}?>">
@@ -119,7 +117,6 @@
 									<?php
 										}
 									?>
-
 								</td>
 							</tr>					
 							<tr>
@@ -148,9 +145,6 @@
 							</tr>				
 						</tbody>
 					</table>
-					<div class="mt20 ar">
-						
-					</div>
 				</fieldset>
 			</form>
 		</div>
