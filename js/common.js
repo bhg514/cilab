@@ -8,6 +8,25 @@ $(document).ready(function(){
 		$(this).find("img").attr("src", temp2);
 	});
 	
+	/*메뉴 active*/
+	var newURL = window.location.pathname;
+	//console.log(newURL);
+	
+	if(newURL.indexOf("introWD") != -1){
+		$("#cssmenu > ul > li").removeClass("active");
+		$("#cssmenu > ul > li:nth-child(1)").addClass("active");
+	}else if(newURL.indexOf("store") != -1){
+		$("#cssmenu > ul > li").removeClass("active");
+		$("#cssmenu > ul > li:nth-child(2)").addClass("active");
+	}else if(newURL.indexOf("list") != -1 || newURL.indexOf("detail") != -1){
+		$("#cssmenu > ul > li").removeClass("active");
+		$("#cssmenu > ul > li:nth-child(3)").addClass("active");
+	}else if(newURL.indexOf("introCilab") != -1){
+		$("#cssmenu > ul > li").removeClass("active");
+		$("#cssmenu > ul > li:nth-child(4)").addClass("active");
+	}else{
+		$("#cssmenu > ul > li").removeClass("active");
+	}
 	
 	$(".neographBoard").click(function(){
 		$("#clientBoard").hide();
@@ -199,8 +218,4 @@ function perinfo(){
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-
-
-
-
 
