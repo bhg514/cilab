@@ -36,8 +36,8 @@
 						</div>
 						<hr class="garo" style="display: block;"> 
 						<div class="mt20 ar">
-							<input type="submit" value="등록" id="notice_save_btn" class="btn type07 st2">						
-							<a href="/" class="btn type07">취소</a>
+							<input type="submit" value="등록" id="notice_save_btn" class="btn type05">						
+							<a href="/" class="btn type05">취소</a>
 						</div>
 						<h4>■ 1:1문의</h4>
 						<caption>1:1문의</caption>
