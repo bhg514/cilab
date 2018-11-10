@@ -272,7 +272,7 @@ table th:last-child, table td:last-child {
 	border-right: 0;
 }
 
-table.list-table tr td:first-child {
+table.list-table tr th:first-child, table.list-table tr td:first-child {
 	text-align: center;
 }
 
@@ -294,8 +294,7 @@ table caption {
 }
 
 .product_reg_tb th {
-	padding: 13px 0;
-	padding-left: 23px;
+	padding: 13px 20px;
 	font-size: 15px;
 	text-align: left;
 	color: #333333;
@@ -308,6 +307,10 @@ table caption {
 	font-size: 14px;
 	color: #333333;
 	border-bottom: 1px solid #e8e8e8;
+}
+
+.product_reg_tb tr th{
+	width: 170px;
 }
 
 /*주문배송관리-판매완료*/

@@ -23,23 +23,19 @@
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="product_update" action="product_update.php" method="post">
 				<fieldset>
+					<div>
+						<div class="admin_title">상품관리</div>
+						<div class="admin_position">Home  » 상품 관리 » 상품 관리</div>
+					</div>
+					<hr class="garo" style="display: block;"> 
+					<div class="btn_div">
+						<input type="submit" value="수정" id="product_reg_btn" class="btn type05">
+						<a id="info_del" class="btn type05">삭제</a>
+						<a href="/admin/pm/list.php" class="btn type05">목록</a>
+					</div>
+					<h4>■ 상품정보</h4>
 					<table class="product_reg_tb">
-						<div>
-							<div class="admin_title">상품관리</div>
-							<div class="admin_position">Home  » 상품 관리 » 상품 관리</div>
-						</div>
-						<hr class="garo" style="display: block;"> 
-						<div class="btn_div">
-							<input type="submit" value="수정" id="product_reg_btn" class="btn type05">
-							<a id="info_del" class="btn type05">삭제</a>
-							<a href="/admin/pm/list.php" class="btn type05">목록</a>
-						</div>
-						<h4>■ 상품정보</h4>
-						<caption>상품 수정</caption>
-						<colgroup>
-							<col style="width:170px;">
-							<col>
-						</colgroup>
+						<caption class="readHide">상품 수정</caption>
 						<tbody>
 							<tr>						
 								<th scope="row">상태</th>						
@@ -131,8 +127,7 @@
 								<th scope="row">상세내용</th>
 								<td>
 									<input type="hidden" name="content_val" id="content_hidden">
-									<div id="summernote">										
-									</div>
+									<div id="summernote"></div>
 								</td>
 							</tr>
 							<tr>
