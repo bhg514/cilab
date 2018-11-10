@@ -97,7 +97,7 @@
 		?>
 		<a class="btn type05" id="list_del">삭제</a>
 	</div>
-	<table>
+	<table class="list-table">
 		<caption class="readHide">주문 관리</caption>
 		<thead class="admin_list">
 			<tr>
@@ -187,9 +187,6 @@
 	    <div><img src="/images/icon/loading.gif" /></div>
 	</div>  
 
-
-
-
 </section>
 
 <?php
@@ -215,3 +212,7 @@ var order_name = url.searchParams.get("order_name");
 
 </script>';
 ?>
+
+</body>
+</html>
+

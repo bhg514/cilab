@@ -46,7 +46,7 @@
 			echo '<a class="btn type05" href="new_data.php?type='.$type.'">등록</a>'
 		?>		
 	</div>
-	<table>
+	<table class="board-table">
 		<caption class="readHide">상품 관리</caption>
 		<thead class="admin_list">
 			<tr>
@@ -56,7 +56,6 @@
 				<th scope="col" class="thead_th">작성일</th>
 				<?php
 					if($type==1 || $type==2){
-
 				?>
 				<th scope="col" class="thead_th">조회수</th>
 				<th scope="col" class="thead_th">첨부파일</th>
@@ -69,7 +68,6 @@
 		</thead>
 		<tbody>
 				<?php
-								
 					$result = while_get_board_list($page,$search,$type);		
 					while ($r = mysqli_fetch_array($result)) {
 				?>
@@ -86,7 +84,6 @@
 				<td class="tbody_td"><?=$r['fd_date']?></td>
 				<?php
 					if($type==1 || $type==2){
-
 				?>
 				<td class="tbody_td"><?=$r['fd_count']?></td>
 				<td class="tbody_td"><?php if($r['fd_file']!=null) echo '<img src="/images/icon/save.png" class="save_img">';?></td>
@@ -98,8 +95,6 @@
 					}	
 				?>				
 			</tr>
-			
-
 				<?php
 				}
 				?>
@@ -115,9 +110,6 @@
 		<?php
 			$total_count = board_count($type, $search);
 			$page_info = make_page($page,$total_count,$query_string,10);
-
-			
-
 		?>
 		<a href="?<?=$query_string?>page=<?php if($page<$page_info[0]){ echo $page+1;}else{ echo $page_info[1];} ?>">
 			<img src="/images/icon/btn_next.png" alt="pre" id="next_img" class="page_nav_btn">
@@ -130,9 +122,6 @@
 	<div class="wrap-loading display-none">
 	    <div><img src="/images/icon/loading.gif" /></div>
 	</div>  
-
-
-
-
 </section>
-
+</body>
+</html>

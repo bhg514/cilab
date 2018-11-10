@@ -50,7 +50,7 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th scope="col">번호</th>
+						<th scope="col" class="mhide">번호</th>
 						<?php
 							if($type==1||$type==2){
 						?>
@@ -63,7 +63,6 @@
 								<th scope="col">조회수</th>
 						<?php
 							}else if($type==4){
-
 						?>
 								<th scope="col">문의제목</th>
 								<th scope="col">작성자</th>
@@ -76,7 +75,6 @@
 				</thead>
 				<tbody>
 					<?php
-									
 						$result = while_get_board_list($page,null,$type);		
 						while ($r = mysqli_fetch_array($result)) {
 					?>
@@ -93,7 +91,6 @@
 								echo "<td>".$r['fd_date']."</td>";
 								echo "<td>".$r['fd_file']."</td>";
 							}
-
 						?>
 					</tr>
 					<?php

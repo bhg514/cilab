@@ -21,13 +21,7 @@
 	if($type==1) $head = '공지사항';
 	elseif($type==2) $head = 'SW다운로드';
 	elseif($type==3) $head = '콘텐츠관리';
-
-
 ?>
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
@@ -37,22 +31,22 @@
 <section class="container">	
 	
 
-	<div class="contents">
+	<div class="">
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="detail_update" action="detail_update.php" method="post">
 				<fieldset>
 					<table class="product_reg_tb">
 						<div>
-							<div><?=$head?></div>
-							<div>Home  » 게시판/콘텐츠 관리 » <?=$head?></div>
+							<div class="admin_title"><?=$head?></div>
+							<div class="admin_position">Home  » 게시판/콘텐츠 관리 » <?=$head?></div>
 						</div>
 						<hr class="garo" style="display: block;"> 
 						<div class="mt20 ar">
-							<input type="submit" value="수정" id="notice_save_btn" class="btn type07 st2">
-							<a id="info_del" class="btn type07">삭제</a>
-							<a href="/admin/board/list.php?type=<?=$type?>" class="btn type07">목록</a>
+							<input type="submit" value="수정" id="notice_save_btn" class="btn type05 st2">
+							<a id="info_del" class="btn type05">삭제</a>
+							<a href="/admin/board/list.php?type=<?=$type?>" class="btn type05">목록</a>
 						</div>						
-						<h3>■ <?=$head?></h3>
+						<h4>■ <?=$head?></h4>
 						<caption><?=$head?></caption>
 						<colgroup>
 							<col style="width:170px;">
@@ -69,9 +63,7 @@
 							</tr>					
 							<?php
 								if($type==1 ||$type==2){
-
 							?>
-
 							<tr>
 								<th scope="row">*작성자</th>
 								<td colspan="3"><?=$info['fd_name']?></td>
@@ -121,16 +113,12 @@
 	</div>
 
 </section>
+</body>
+</html>
 
 <?php
-	include '../admin_footer.php';
-	
-
 	echo "<script> 
 			$('#summernote').summernote();
 			$('.note-editable').html('".$info['fd_content']."');
 		</script>";
-
-
-
 ?>

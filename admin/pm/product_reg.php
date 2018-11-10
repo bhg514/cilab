@@ -3,12 +3,7 @@
 	include '../admin_header.php';
 	include './side.php';
 	include_once("../../common.php");
-
 ?>
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
@@ -29,9 +24,8 @@
 						</div>
 						<hr class="garo" style="display: block;"> 
 						<div class="btn_div">
-							<a class="btn type05">저장</a>
-							<a class="btn type05">삭제</a>
-							<a class="btn type05">목록</a>
+							<input type="submit" value="상품등록" id="product_reg_btn" class="btn type05">
+							<a href="/" class="btn type05">취소</a>
 						</div>
 						<h4>■ 상품정보</h4>
 						<caption>상품 등록</caption>
@@ -141,18 +135,10 @@
 							</tr>				
 						</tbody>
 					</table>
-
-					<div class="mt20 ar">
-						<input type="submit" value="상품등록" id="product_reg_btn" class="btn type07 st2">
-						<!-- <a href="javascript:login_do();" class="btn type07 st2">회원가입</a> -->
-						<a href="/" class="btn type07">취소</a>
-					</div>
 				</fieldset>
 			</form>
 		</div>
 	</div>
-
 </section>
-<?php
-	include '../admin_footer.php';
-?>
+</body>
+</html>

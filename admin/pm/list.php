@@ -56,7 +56,7 @@
 		<a class="btn type05" id="sell_stop">판매중지</a>
 		<a class="btn type05" id="list_del">삭제</a>
 	</div>
-	<table>
+	<table class="list-table">
 		<caption class="readHide">상품 관리</caption>
 		<thead class="admin_list">
 			<tr>
@@ -154,4 +154,8 @@ echo '<script>
 
 </script>';
 ?>
+
+
+</body>
+</html>
 

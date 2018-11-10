@@ -18,7 +18,7 @@ $(document).ready(function(){
 	}else if(newURL.indexOf("store") != -1){
 		$("#cssmenu > ul > li").removeClass("active");
 		$("#cssmenu > ul > li:nth-child(2)").addClass("active");
-	}else if(newURL.indexOf("list") != -1 || newURL.indexOf("detail") != -1){
+	}else if(newURL.indexOf("list") != -1 || newURL.indexOf("detail") != -1 || newURL.indexOf("qna") != -1){
 		$("#cssmenu > ul > li").removeClass("active");
 		$("#cssmenu > ul > li:nth-child(3)").addClass("active");
 	}else if(newURL.indexOf("introCilab") != -1){

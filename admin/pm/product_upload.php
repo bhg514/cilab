@@ -4,8 +4,3 @@
 	include './side.php';
 
 ?>
-
-
-<?php
-	include '../admin_footer.php';
-?>

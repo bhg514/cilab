@@ -112,9 +112,6 @@
 		<?php
 			$total_count = complete_count($start_date,$end_date);
 			$page_info = make_page($page,$total_count,$query_string,10);
-
-			
-
 		?>
 		<a href="?<?=$query_string?>page=<?php if($page<$page_info[0]){ echo $page+1;}else{ echo $page_info[1];} ?>">
 			<img src="/images/icon/btn_next.png" alt="pre" id="next_img" class="page_nav_btn">
@@ -127,11 +124,8 @@
 	<div class="wrap-loading display-none">
 	    <div><img src="/images/icon/loading.gif" /></div>
 	</div>  
-
-
-
-
 </section>
+
 <?php
 echo '<script>
 	var url_string = window.location.href
@@ -148,3 +142,7 @@ echo '<script>
 
 </script>';
 ?>
+
+</body>
+</html>
+

@@ -6,13 +6,26 @@
 }
 
 body {
-	font-family: "Lato", sans-serif, "맑은 고딕", 
-	font-size: 0.75em;
+	font-family: "Lato", sans-serif, "맑은 고딕", font-size : 0.75em;
 	color: #333
 }
 
 ul li {
 	list-style-type: none;
+}
+
+h4 {
+	color: #1788d0 !important;
+}
+
+.btn.type05:hover, .btn.type05:focus, .btn.type05.focus {
+    color: #333;
+    text-decoration: none;
+    background: #ddd;
+}
+
+.admin_header h1 {
+	padding: 5px 0 !important;
 }
 
 .admin_menu {
@@ -38,6 +51,13 @@ ul li {
 	cursor: pointer;
 }
 
+.admin_menu li>a {
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
 .admin_menu li.selected {
 	background-color: #d2eeff;
 }
@@ -53,8 +73,7 @@ ul li {
 
 /*사이드 메뉴*/
 .sidenav {
-	min-width: 80px;
-	width: 10%;
+	width: 120px;
 	position: relative;
 	z-index: 1;
 	margin-left: 30px;
@@ -84,9 +103,9 @@ ul li {
 
 .container {
 	float: right;
-	width: 85% !important;
+	width: calc(100% - 200px) !important;
 	font-size: 28px; /* Increased text to enable scrolling */
-	padding: 0px 10px 30px;
+	padding: 0 30px 30px 10px !important;
 }
 
 @media screen and (max-height: 450px) {
@@ -228,6 +247,7 @@ hr.garo {
 table {
 	border-collapse: collapse;
 	border-top: 3px solid #3892cb;
+	margin-bottom: 25px;
 }
 
 table th {
@@ -242,9 +262,9 @@ table th, table td {
 	border: 1px solid #ddd;
 }
 
-table th:first-child, table td:first-child {
+table.list-table th:first-child, table.list-table td:first-child {
 	border-left: 0;
-	width: 50px;
+	width: 40px;
 }
 
 table th:last-child, table td:last-child {
@@ -278,4 +298,5 @@ table caption {
 
 #cate_sel{
 	display: none;
+	margin: 0 5px;
 }

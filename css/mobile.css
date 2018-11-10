@@ -14,7 +14,7 @@
 }
 
 .tblType01Wrap {width:100%; overflow-x:scroll;}
-.tblType01 {width:1000px;}
+.tblType01 {width:100%;}
 .tblType02, .tblType02 thead, .tblType02 tbody, .tblType02 tr, .tblType02 th, .tblType02 td {display:block;}
 .tblType01, .tblType02 {box-sizing:border-box;}
 .tblType02 th, .tblType02 td {padding:13px 8px;}
