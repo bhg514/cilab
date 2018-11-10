@@ -4,9 +4,9 @@
 	include './side.php';
 	include_once("../../common.php");
 	$page = $_GET['page'] ?? 1;	
-	$name = $_GET['name'] ?? '';
+	$name = $_GET['p_name'] ?? '';
 	$category = $_GET['category'] ?? 5;
-	$status = $_GET['status'] ?? 3;
+	$status = $_GET['p_status'] ?? 3;
 
 	$total_count = product_get_count($name,$category,$status);
 	
@@ -34,11 +34,17 @@
 	</div>
 	<div class="search_div">
 		<select id="search_select">
-			<option value="name">상품명</option>
+			<option value="p_name">상품명</option>
 			<option value="category">분류</option>
-			<option value="status">상태</option>			
+			<option value="p_status">상태</option>			
 		</select>
 		<input type="text" id="search_input">
+		<select id="cate_sel">
+			<option value="1">Water Drones</option>
+			<option value="2">Upgrade & Accessories</option>
+			<option value="3">DIY & Parts</option>
+			<option value="4">Water Education Kit</option>
+		</select>
 		<a class="btn type05" id="search_btn">검색</a>
 
 	</div>
@@ -116,5 +122,40 @@
 		</a>
 	</div>
 </section>
+<?php
+echo '<script>
+	var url_string = window.location.href
+	var url = new URL(url_string);
+	var p_name = url.searchParams.get("p_name");
+	var category = url.searchParams.get("category");
+	var p_status = url.searchParams.get("p_status");
+
+	if(p_name!=null){
+		$("#search_input").val(p_name)
+		$("#search_select").val("p_name").attr("selected","true");
+	}else if(category!=null){
+		$("#search_select").val("category").attr("selected","true");
+		$("#search_input").hide()
+		$("#cate_sel").show()
+	}else if(p_status!=null){
+		$("#search_input").val(p_status)
+		$("#search_select").val("p_status").attr("selected","true");
+	}
+
+	$("#search_select").change(function(){
+		if($("#search_select option:selected").val()=="category"){
+			$("#search_input").hide()
+			$("#cate_sel").show()
+		}else{
+			$("#search_input").show()
+			$("#cate_sel").hide()
+		}
+	})
+
+</script>';
+?>
+
+
 </body>
 </html>
+

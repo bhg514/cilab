@@ -124,7 +124,7 @@
 								<td>
 									<label><input type="radio" name="option" value="y" onclick="pop_option();" <?php if($info['fd_option']!=""){ echo "checked";}?> > 옵션 설정</label>
 									<label><input type="radio" name="option" value="n" <?php if($info['fd_option']==""){ echo "checked";}?> > 옵션 미설정</label>				
-									<input type="text" id="option_input" name="option_input" value="<?=$info['fd_option']?>">												
+									<input type="hidden" id="option_input" name="option_input" value="<?=$info['fd_option']?>">												
 								</td>
 							</tr>	
 							<tr>

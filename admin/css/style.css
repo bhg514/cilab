@@ -166,7 +166,7 @@ hr.garo {
 	margin: 10px;
 }
 
-#search_select, #search_input, #period_select, .hasDatepicker {
+#search_select, #search_input, #period_select, .hasDatepicker,#cate_sel {
 	padding: 0px 10px;
 	box-sizing: border-box;
 	line-height: 31px;
@@ -293,5 +293,10 @@ table caption {
 
 .summary_div span {
 	display: inline-block;
+	margin:0 5px;
+}
+
+#cate_sel{
+	display: none;
 	margin: 0 5px;
 }
