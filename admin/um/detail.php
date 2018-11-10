@@ -85,6 +85,3 @@
 </section>
 </body>
 </html>
-<?php
-	include '../admin_footer.php';
-?>
