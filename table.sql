@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `tb_admin` (
   PRIMARY KEY (`pk_no`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 cilab.tb_admin:1 rows 내보내기
+-- 테이블 데이터 cilab.tb_admin:2 rows 내보내기
 /*!40000 ALTER TABLE `tb_admin` DISABLE KEYS */;
 INSERT INTO `tb_admin` (`pk_no`, `fd_id`, `fd_pw`, `fd_name`, `fd_group`, `fd_position`, `fd_hp`, `fd_connect`, `fd_type`) VALUES
 	(1, 'admin', '$1$770.CR..$1KAprMYQKHX35aJgxjeBq0', '김관리', 'bs', '대리', '010-3124-6767', '2018-10-13', 'a'),
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `tb_notice` (
   PRIMARY KEY (`pk_no`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 cilab.tb_notice:6 rows 내보내기
+-- 테이블 데이터 cilab.tb_notice:1 rows 내보내기
 /*!40000 ALTER TABLE `tb_notice` DISABLE KEYS */;
 INSERT INTO `tb_notice` (`pk_no`, `fd_title`, `fd_name`, `fd_date`, `fd_count`, `fd_file`, `fd_new_file`, `fd_content`) VALUES
 	(7, '공지요2', '김관리', '2018-11-09', 0, 'test.png||test1.png', '5be5cdea301f7.png||5be5cdea307aa.png', '공지오');
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `tb_order` (
   `pk_no` int(11) NOT NULL AUTO_INCREMENT,
   `fk_order_number` varchar(50) DEFAULT NULL,
   `fd_date` date DEFAULT NULL,
-  `fd_product_count` int(11) DEFAULT NULL,
+  `fd_product_no` int(11) DEFAULT NULL,
   `fd_order_id` varchar(50) DEFAULT NULL,
   `fd_order_hp` varchar(50) DEFAULT NULL,
   `fd_order_name` varchar(50) DEFAULT NULL,
@@ -107,13 +107,19 @@ CREATE TABLE IF NOT EXISTS `tb_order` (
   `fd_payment` varchar(50) DEFAULT NULL,
   `fd_paynum` varchar(50) DEFAULT NULL,
   `fd_invoice_number` varchar(50) DEFAULT NULL,
-  `fd_status` varchar(50) DEFAULT NULL,
-  `fd_status_msg` varchar(50) DEFAULT NULL,
+  `fd_status` varchar(50) DEFAULT '1',
+  `fd_status_msg` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`pk_no`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='\r\n';
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='\r\n';
 
--- 테이블 데이터 cilab.tb_order:14 rows 내보내기
+-- 테이블 데이터 cilab.tb_order:6 rows 내보내기
 /*!40000 ALTER TABLE `tb_order` DISABLE KEYS */;
+INSERT INTO `tb_order` (`pk_no`, `fk_order_number`, `fd_date`, `fd_product_no`, `fd_order_id`, `fd_order_hp`, `fd_order_name`, `fd_order_mail`, `fd_del_name`, `fd_del_zip`, `fd_del_address1`, `fd_del_address2`, `fd_del_hp`, `fd_del_comment`, `fd_price`, `fd_del_fee`, `fd_payment`, `fd_paynum`, `fd_invoice_number`, `fd_status`, `fd_status_msg`) VALUES
+	(21, '181110001', '2018-11-10', 1, 'bhg514', '010-3389-3333', '배현길', 'bhk514@hanmail.net', '배현길', '06364', '서울 강남구 자곡동 210', '상세어딘가', '010-3389-3333', '빨리주숑', 2500, 2000, NULL, NULL, NULL, '1', NULL),
+	(22, '181110002', '2018-11-10', 2, 'bhg514', '010-3389-3333', '배현길', 'bhk514@hanmail.net', '배현길', '06364', '서울 강남구 자곡동 210', '상세어딘가', '010-3389-3333', '빨리주숑', 2500, 2000, NULL, NULL, NULL, '1', NULL),
+	(23, '181110003', '2018-11-10', 1, 'bhg514', '010-3389-3333', '배현길', 'bhk514@hanmail.net', '배현길', '06364', '서울 강남구 자곡동 210', '상세어딘가', '010-3389-3333', '빨리주숑', 2500, 2000, NULL, NULL, NULL, '1', NULL),
+	(24, '181110004', '2018-11-10', 1, 'bhg514', '010-3389-3333', '배현길', 'bhk514@hanmail.net', '배현길', '06364', '서울 강남구 자곡동 210', '상세어딘가', '010-3389-3333', '빨리주숑', 2500, 2000, NULL, NULL, NULL, '1', NULL),
+	(25, '181110005', '2018-11-10', 1, 'bhg514', '010-3389-3333', '배현길', 'bhk514@hanmail.net', '배현길', '06364', '서울 강남구 자곡동 210', '상세어딘가', '010-3389-3333', '빨리주숑', 2500, 2000, NULL, NULL, NULL, '1', NULL);
 /*!40000 ALTER TABLE `tb_order` ENABLE KEYS */;
 
 -- 테이블 cilab.tb_order_detail 구조 내보내기
@@ -125,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `tb_order_detail` (
   `fd_option` varchar(50) DEFAULT NULL
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 cilab.tb_order_detail:2 rows 내보내기
+-- 테이블 데이터 cilab.tb_order_detail:0 rows 내보내기
 /*!40000 ALTER TABLE `tb_order_detail` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tb_order_detail` ENABLE KEYS */;
 
@@ -150,10 +156,13 @@ CREATE TABLE IF NOT EXISTS `tb_product` (
   PRIMARY KEY (`pk_no`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 cilab.tb_product:12 rows 내보내기
+-- 테이블 데이터 cilab.tb_product:4 rows 내보내기
 /*!40000 ALTER TABLE `tb_product` DISABLE KEYS */;
 INSERT INTO `tb_product` (`pk_no`, `fd_name`, `fd_price`, `fd_category`, `fd_content`, `fd_stock`, `fd_date`, `fd_status`, `fd_delivery`, `fd_made`, `fd_main_img`, `fd_new_main_img`, `fd_sub_img`, `fd_new_sub_img`, `fd_option`, `fk_admin`) VALUES
-	(1, '선', 2500, '2', '<p><img src=/admin/img/upload_image/5be5c9cb8fb34.png><br></p>', 6000, '2018-11-09 05:54:19', '판매중', 2000, '대한민국', 'test.png', '5be5c93fd0247.png', 'test1.png', '5be5c93fcf990.png', '굵은거^10000||얇은거^2000', '김관리');
+	(1, '선', 2500, '2', '<p><img src=/admin/img/upload_image/5be5c9cb8fb34.png><br></p>', 6000, '2018-11-09 05:54:19', '판매중', 2000, '대한민국', 'test.png', '5be5c93fd0247.png', 'test1.png', '5be5c93fcf990.png', '굵은거^10000||얇은거^2000', '김관리'),
+	(2, '선2', 2500, '2', '<p><img src=/admin/img/upload_image/5be5c9cb8fb34.png><br></p>', 6000, '2018-11-09 05:54:19', '판매중', 2000, '대한민국', 'test.png', '5be5c93fd0247.png', 'test1.png', '5be5c93fcf990.png', '굵은거^10000||얇은거^2000', '김관리'),
+	(3, '선', 2500, '2', '<p><img src=/admin/img/upload_image/5be5c9cb8fb34.png><br></p>', 6000, '2018-11-09 05:54:19', '판매중', 2000, '대한민국', 'test.png', '5be5c93fd0247.png', 'test1.png', '5be5c93fcf990.png', '굵은거^10000||얇은거^2000', '김관리'),
+	(4, '선', 2500, '2', '<p><img src=/admin/img/upload_image/5be5c9cb8fb34.png><br></p>', 6000, '2018-11-09 05:54:19', '판매중', 2000, '대한민국', 'test.png', '5be5c93fd0247.png', 'test1.png', '5be5c93fcf990.png', '굵은거^10000||얇은거^2000', '김관리');
 /*!40000 ALTER TABLE `tb_product` ENABLE KEYS */;
 
 -- 테이블 cilab.tb_qna 구조 내보내기
@@ -172,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `tb_qna` (
   PRIMARY KEY (`pk_no`)
 ) ENGINE=MyISAM AUTO_INCREMENT=141 DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 cilab.tb_qna:2 rows 내보내기
+-- 테이블 데이터 cilab.tb_qna:133 rows 내보내기
 /*!40000 ALTER TABLE `tb_qna` DISABLE KEYS */;
 INSERT INTO `tb_qna` (`pk_no`, `fd_title`, `fd_content`, `fd_file`, `fd_new_file`, `fd_pw`, `fd_name`, `fd_date`, `fd_hp`, `fd_mail`, `fd_reply`) VALUES
 	(1, 'qna_1', 'qna1', NULL, NULL, '1234', '몰라', '2018-10-28', '010-2314-7657', 'abc@def.ghi', '이것은 답변\r\n'),
@@ -306,8 +315,8 @@ INSERT INTO `tb_qna` (`pk_no`, `fd_title`, `fd_content`, `fd_file`, `fd_new_file
 	(136, '1', '1', '', '', '$1$HM0.E/1.$9YCGrCPLgCUt7METb3Lum0', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', NULL),
 	(137, '1', '1', '', '', '$1$HM0.E/1.$9YCGrCPLgCUt7METb3Lum0', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', NULL),
 	(138, '1', '1', '', '', '$1$HM0.E/1.$9YCGrCPLgCUt7METb3Lum0', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', NULL),
-	(139, '1', '1', '', '', '$1$HM0.E/1.$9YCGrCPLgCUt7METb3Lum0', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', NULL),
-	(140, '1', '1', '', '', '$1$ET..7D4.$p1ZeOmYBWhtmLRBo4LUAN/', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', NULL);
+	(139, '1', '1', '', '', '$1$HM0.E/1.$9YCGrCPLgCUt7METb3Lum0', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', '뭐시여'),
+	(140, '1', '1', '', '', '$1$ET..7D4.$p1ZeOmYBWhtmLRBo4LUAN/', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', '나도 몰러');
 /*!40000 ALTER TABLE `tb_qna` ENABLE KEYS */;
 
 -- 테이블 cilab.tb_sw 구조 내보내기
@@ -352,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `tb_user` (
 /*!40000 ALTER TABLE `tb_user` DISABLE KEYS */;
 INSERT INTO `tb_user` (`pk_no`, `fd_id`, `fd_pw`, `fd_name`, `fd_hp`, `fd_mail`, `fd_zip`, `fd_address1`, `fd_address2`, `fd_reception`, `fd_date`, `fd_gender`, `fd_birthday`, `fd_type`) VALUES
 	(6, 'test123', '$2y$10$rZQqu3dJZr38ze0Hm22XM.W9Etm/WWors/qX5/7/2A6G2jvgs9g7C', '배현길', '010-3389-3333', 'bhg514@naver.com', '06027', '서울 강남구 신사동 527-4', '지구', 'o', '2018-10-06', 'w', '2018-10-09', 'u'),
-	(7, 'bhg514', '$1$/l5.aL4.$OS1cj1kIg3VRCpPA2V3.4.', '배현길', '010-3389-3333', 'bhk514@hanmail.net', '06364', '서울 강남구 자곡동 210', '상세어딘가', 'x', '2018-10-13', 'm', '2018-10-11', 'u');
+	(7, 'bhg514', '$1$770.CR..$1KAprMYQKHX35aJgxjeBq0', '배현길', '010-3389-3333', 'bhk514@hanmail.net', '06364', '서울 강남구 자곡동 210', '상세어딘가', 'x', '2018-10-13', 'm', '2018-10-11', 'u');
 /*!40000 ALTER TABLE `tb_user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
