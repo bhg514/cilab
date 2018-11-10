@@ -271,7 +271,7 @@ table th:last-child, table td:last-child {
 	border-right: 0;
 }
 
-table tr td:first-child {
+table.list-table tr td:first-child {
 	text-align: center;
 }
 
