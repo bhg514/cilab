@@ -8,12 +8,7 @@
 	if($type==1) $title = "공지사항";
 	elseif($type==2) $title = "SW다운로드";
 	elseif($type==3) $title = "콘텐츠관리";
-
 ?>
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
@@ -29,13 +24,13 @@
 				<fieldset>
 					<table class="product_reg_tb">
 						<div>
-							<div><?=$title?></div>
-							<div>Home  » 게시판/콘텐츠 관리 » <?=$title?></div>
+							<div class="admin_title"><?=$title?></div>
+							<div class="admin_position">Home  » 게시판/콘텐츠 관리 » <?=$title?></div>
 						</div>
 						<hr class="garo" style="display: block;"> 
 						<div>
-							<a class="btn type07">등록</a>
-							<a class="btn type07">취소</a>
+							<a class="btn type05">등록</a>
+							<a class="btn type05">취소</a>
 						</div>
 						<h3>■ <?=$title?></h3>
 						<caption><?=$title?></caption>
@@ -77,8 +72,8 @@
 						</tbody>
 					</table>
 					<div class="mt20 ar">
-						<input type="submit" value="수정" id="notice_save_btn" class="btn type07 st2">						
-						<a href="/" class="btn type07">취소</a>
+						<input type="submit" value="수정" id="notice_save_btn" class="btn type05">						
+						<a href="/" class="btn type05">취소</a>
 					</div>
 				</fieldset>
 			</form>
@@ -86,16 +81,11 @@
 	</div>
 
 </section>
-
+</body>
+</html>
 <?php
-	include '../admin_footer.php';
-	
-
 	echo "<script> 
 			$('#summernote').summernote();
 			$('.note-editable').html('".$info['fd_content']."');
 		</script>";
-
-
-
 ?>

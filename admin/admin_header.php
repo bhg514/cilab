@@ -13,7 +13,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
-	<title>Water Drone소개 - CiLab</title>
+	<link rel="shortcut icon" href="/images/icon/favicon.png">
+	<title>Water Drone - CiLab Admin</title>
 	<link rel="stylesheet" type="text/css" href="/css/common.css">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/css/default.css">
@@ -21,8 +22,10 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<link rel="stylesheet" media="screen and (max-width:999px)" type="text/css" href="/css/tablet.css">
 	<link rel="stylesheet" media="screen and (max-width:480px)" type="text/css" href="/css/mobile.css">
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" ></script>		
-
+	<!-- include libraries(jQuery, bootstrap) -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
 	<!--[if lt IE 9]>
 		<script src="../js/respond.js"></script>
@@ -30,7 +33,7 @@
 	<![endif]-->
 </head>
 <body>
-	<header>
+	<header class="admin_header">
 		<h1><a href="/index.php">CiLab - Creative Idea Lab</a></h1>
 		<div class="gnb">
 			<div class="gnbInner"><?=$user_name?>

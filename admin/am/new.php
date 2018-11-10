@@ -16,13 +16,13 @@
 				<fieldset>
 					<table class="product_reg_tb">
 						<div>
-							<div>회원관리</div>
-							<div>Home  » 회원관리 » 회원관리</div>
+							<div class="admin_title">회원관리</div>
+							<div class="admin_position">Home  » 회원관리 » 회원관리</div>
 						</div>
 						<hr class="garo" style="display: block;"> 
 						<div class="mt20 ar">
-							<input type="submit" value="등록" id="save_btn" class="btn type07 st2">
-							<a href="/" class="btn type07">취소</a>
+							<input type="submit" value="등록" id="save_btn" class="btn type05">
+							<a href="/" class="btn type05">취소</a>
 						</div>
 						<h3>■ 회원관리</h3>
 						<caption>회원관리</caption>
@@ -86,7 +86,5 @@
 	</div>
 
 </section>
-
-<?php
-	include '../admin_footer.php';
-?>
+</body>
+</html>

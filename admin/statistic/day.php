@@ -78,9 +78,6 @@
 	<div class="wrap-loading display-none">
 	    <div><img src="/images/icon/loading.gif" /></div>
 	</div>  
-
-
-
-
 </section>
-
+</body>
+</html>

@@ -20,7 +20,6 @@
 			$query_string .= $query."&";
 		}
 	}
-
 ?>
 <script type="text/javascript" src="../js/admin.js"></script>
 <section class="container">			
@@ -36,12 +35,11 @@
 		<input type="text" id="search_input">		
 		<a class="btn type05" id="user_search_btn">검색</a>
 		<a class="btn type05" href="new.php">등록</a>
-
 	</div>	
 	<div class="btn_div">
 		<a class="btn type05" href="#">엑셀다운로드</a>	
 	</div>
-	<table>
+	<table class="">
 		<caption class="readHide">회원관리</caption>
 		<thead class="admin_list">
 			<tr>
@@ -83,9 +81,6 @@
 		<?php
 			$total_count = user_count($search);
 			$page_info = make_page($page,$total_count,$query_string,10);
-
-			
-
 		?>
 		<a href="?<?=$query_string?>page=<?php if($page<$page_info[0]){ echo $page+1;}else{ echo $page_info[1];} ?>">
 			<img src="/images/icon/btn_next.png" alt="pre" id="next_img" class="page_nav_btn">
@@ -98,9 +93,6 @@
 	<div class="wrap-loading display-none">
 	    <div><img src="/images/icon/loading.gif" /></div>
 	</div>  
-
-
-
-
 </section>
-
+</body>
+</html>

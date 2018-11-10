@@ -15,13 +15,7 @@
 	$info = board_get_info($no,$type);
 	if($info["fd_file"]!=null)
 		$fd_file=explode('||',$info["fd_file"]);
-
-
 ?>
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
@@ -31,21 +25,21 @@
 <section class="container">	
 	
 
-	<div class="contents">
+	<div class="">
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="qna_reply" action="qna_reply.php" method="post">
 				<fieldset>
 					<table class="product_reg_tb">
 						<div>
-							<div>1:1문의</div>
-							<div>Home  » 게시판/콘텐츠 관리 » 1:1문의</div>
+							<div class="admin_title">1:1문의</div>
+							<div class="admin_position">Home  » 게시판/콘텐츠 관리 » 1:1문의</div>
 						</div>
 						<hr class="garo" style="display: block;"> 
 						<div class="mt20 ar">
 							<input type="submit" value="등록" id="notice_save_btn" class="btn type07 st2">						
 							<a href="/" class="btn type07">취소</a>
 						</div>
-						<h3>■ 1:1문의</h3>
+						<h4>■ 1:1문의</h4>
 						<caption>1:1문의</caption>
 						<colgroup>
 							<col style="width:170px;">
@@ -80,8 +74,6 @@
 											}											
 										}
 									?>
-									
-									
 								</td>
 								<input type="hidden" name="file_count" id="file_count" value="">
 							</tr>
@@ -89,14 +81,12 @@
 								<th scope="row">질문내용</th>
 								<td colspan="3"><?=$info['fd_content']?></td>
 							</tr>
-							
 							<tr>
 								<th scope="row">상세내용</th>
 								<td colspan="3">
-									<textarea name="reply"><?=$info['fd_reply']?></textarea>
+									<textarea name="reply" class="reply"><?=$info['fd_reply']?></textarea>
 								</td>
 							</tr>
-											
 						</tbody>
 					</table>
 					
@@ -106,7 +96,5 @@
 	</div>
 
 </section>
-
-<?php
-	include '../admin_footer.php';
-?>
+</body>
+</html>
