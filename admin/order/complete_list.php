@@ -70,7 +70,7 @@
 	<div class="summary_div">
 		<span>주문수 총 <?=$info['total']?>건</span>/<span>판매금액 총 <?=$info['price']?>원</span>/<span>배송비 총 <?=$info['del']?>원</span>
 	</div>
-	<table>
+	<table class="list-table">
 		<caption class="readHide">판매완료</caption>
 		<thead class="admin_list">
 			<tr>

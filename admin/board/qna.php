@@ -29,7 +29,7 @@
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="qna_reply" action="qna_reply.php" method="post">
 				<fieldset>
-					<table>
+					<table class="list-table">
 						<div>
 							<div class="admin_title">1:1문의</div>
 							<div class="admin_position">Home  » 게시판/콘텐츠 관리 » 1:1문의</div>

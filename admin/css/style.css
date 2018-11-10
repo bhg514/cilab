@@ -263,16 +263,15 @@ table th, table td {
 	border: 1px solid #ddd;
 }
 
-table.list-table th:first-child, table.list-table td:first-child {
+table th:first-child, table td:first-child {
 	border-left: 0;
-	width: 40px;
 }
 
 table th:last-child, table td:last-child {
 	border-right: 0;
 }
 
-table.list-table tr th:first-child, table.list-table tr td:first-child {
+table.list-table {
 	text-align: center;
 }
 
