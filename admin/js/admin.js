@@ -255,8 +255,6 @@ $(document).ready(function() {
     		},
 			success: function(data) {   	        					
 			    location.href ="http:\/\/"+window.location.host+"/admin/order/list.php?type=1"
-
-			    
 			}
 		});
 

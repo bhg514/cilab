@@ -22,7 +22,7 @@
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="new_insert" action="new_insert.php" method="post">
 				<fieldset>
-					<table class="product_reg_tb">
+					<table>
 						<div>
 							<div class="admin_title"><?=$title?></div>
 							<div class="admin_position">Home  » 게시판/콘텐츠 관리 » <?=$title?></div>

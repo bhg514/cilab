@@ -14,7 +14,7 @@
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="admin_insert" action="admin_insert.php" method="post">
 				<fieldset>
-					<table class="product_reg_tb">
+					<table>
 						<div>
 							<div class="admin_title">회원관리</div>
 							<div class="admin_position">Home  » 회원관리 » 회원관리</div>

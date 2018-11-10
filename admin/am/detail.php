@@ -21,7 +21,7 @@
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="admin_update" action="admin_update.php" method="post">
 				<fieldset>
-					<table class="product_reg_tb">
+					<table>
 						<div>
 							<div class="admin_title">관리자관리</div>
 							<div class="admin_position">Home  » 관리자관리 » 관리자관리</div>
