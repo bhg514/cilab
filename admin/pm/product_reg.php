@@ -17,22 +17,18 @@
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="product_form" action="./product_form.php" method="post">
 				<fieldset>
+					<div>
+						<div class="admin_title">상품등록</div>
+						<div class="admin_position">Home  » 상품 관리 » 상품 등록</div>
+					</div>
+					<hr class="garo" style="display: block;"> 
+					<div class="btn_div">
+						<input type="submit" value="상품등록" id="product_reg_btn" class="btn type05">
+						<a href="/" class="btn type05">취소</a>
+					</div>
+					<h4>■ 상품정보</h4>
 					<table class="product_reg_tb">
-						<div>
-							<div class="admin_title">상품등록</div>
-							<div class="admin_position">Home  » 상품 관리 » 상품 등록</div>
-						</div>
-						<hr class="garo" style="display: block;"> 
-						<div class="btn_div">
-							<input type="submit" value="상품등록" id="product_reg_btn" class="btn type05">
-							<a href="/" class="btn type05">취소</a>
-						</div>
-						<h4>■ 상품정보</h4>
-						<caption>상품 등록</caption>
-						<colgroup>
-							<col style="width:170px;">
-							<col>
-						</colgroup>
+						<caption class="readHide">상품 등록</caption>
 						<tbody>
 							<tr>						
 								<th scope="row">상태</th>						

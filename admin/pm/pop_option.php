@@ -23,7 +23,7 @@
 		<div class="contents">
 			<div class="tabletInner">				
 				<fieldset>
-					<table class="product_reg_tb">				
+					<table>				
 						<h1>상품 옵션 설정</h1>
 						<hr class="garo" style="display: block;"> 						
 						<h3>■ 상품정보</h3>

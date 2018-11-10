@@ -46,7 +46,7 @@
 			echo '<a class="btn type05" href="new_data.php?type='.$type.'">등록</a>'
 		?>		
 	</div>
-	<table class="board-table">
+	<table class="list-table">
 		<caption class="readHide">상품 관리</caption>
 		<thead class="admin_list">
 			<tr>

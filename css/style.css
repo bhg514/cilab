@@ -643,9 +643,6 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 .tblType01.listView {
 	/* width:100%; */
 }
-.qnaVersion, .noticeDate {width:100px;}
-.qnaDown, .noticeCount {width:120px;}
-
 .tblType02 {border-top:2px solid #3fa2d5; border-left:1px solid #e8e8e8; border-right:1px solid #e8e8e8;}
 .tblType02 th {
 	padding:13px 0;
@@ -900,24 +897,6 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	color: red;
 }
 
-/*상품관리*/
-.product_reg_tb {border-top:2px solid #3fa2d5; border-left:1px solid #e8e8e8; border-right:1px solid #e8e8e8;}
-.product_reg_tb th {
-	padding:13px 0;
-	padding-left:23px;
-	font-size:15px;
-	text-align:left;
-	color:#333333;
-	border-bottom:1px solid #e8e8e8;
-	background:#f7f7f7;
-}
-.product_reg_tb td {
-	padding:13px 23px;
-	font-size:14px;
-	color:#333333;
-	border-bottom:1px solid #e8e8e8;
-}
-
 /*회원가입*/
 .term {
     margin-top: 10px;
@@ -1048,3 +1027,7 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 .order_input{
 	width: 40%;
 }
+
+/*게시판*/
+.listDate, .listWriter {width:100px;}
+.listCount, .listFile {width:120px;}

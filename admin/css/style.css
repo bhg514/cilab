@@ -19,9 +19,9 @@ h4 {
 }
 
 .btn.type05:hover, .btn.type05:focus, .btn.type05.focus {
-    color: #333;
-    text-decoration: none;
-    background: #ddd;
+	color: #333;
+	text-decoration: none;
+	background: #ddd;
 }
 
 .admin_header h1 {
@@ -166,7 +166,8 @@ hr.garo {
 	margin: 10px;
 }
 
-#search_select, #search_input, #period_select, .hasDatepicker,#cate_sel {
+#search_select, #search_input, #period_select, .hasDatepicker, #cate_sel
+	{
 	padding: 0px 10px;
 	box-sizing: border-box;
 	line-height: 31px;
@@ -262,16 +263,15 @@ table th, table td {
 	border: 1px solid #ddd;
 }
 
-table.list-table th:first-child, table.list-table td:first-child {
+table th:first-child, table td:first-child {
 	border-left: 0;
-	width: 40px;
 }
 
 table th:last-child, table td:last-child {
 	border-right: 0;
 }
 
-table tr td:first-child {
+table.list-table {
 	text-align: center;
 }
 
@@ -285,6 +285,33 @@ table caption {
 	clear: both;
 }
 
+/*상품관리*/
+.product_reg_tb {
+	border-top: 2px solid #3fa2d5;
+	border-left: 1px solid #e8e8e8;
+	border-right: 1px solid #e8e8e8;
+}
+
+.product_reg_tb th {
+	padding: 13px 20px;
+	font-size: 15px;
+	text-align: left;
+	color: #333333;
+	border-bottom: 1px solid #e8e8e8;
+	background: #f7f7f7;
+}
+
+.product_reg_tb td {
+	padding: 13px 23px;
+	font-size: 14px;
+	color: #333333;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+.product_reg_tb tr th{
+	width: 170px;
+}
+
 /*주문배송관리-판매완료*/
 .summary_div {
 	display: inline-block;
@@ -293,10 +320,10 @@ table caption {
 
 .summary_div span {
 	display: inline-block;
-	margin:0 5px;
+	margin: 0 5px;
 }
 
-#cate_sel{
+#cate_sel {
 	display: none;
 	margin: 0 5px;
 }

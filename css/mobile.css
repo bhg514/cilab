@@ -21,8 +21,6 @@
 .saleCompleteArea {padding:25px 5px; }
 .saleCompleteArea .text {text-align:center;}
 
-.qnaVersion {width:60px;}
-.qnaDown {width:70px;}
 .mNoBg {background-image:none !important;}
 .tblType01.listView .title {background-image:none !important}
 .cilab .img {
@@ -374,8 +372,10 @@ a.btn_admin:focus, a.btn_admin:hover {text-decoration:none}
 .rg_em table{width:100%;border-collapse:collapse}
 .rg_em caption{padding:0;font-size:0;line-height:0;overflow:hidden}
 
+/*게시판*/
+.listDate, .listWriter {width:60px;}
+.listCount, .listFile {width:70px;}
 
-/*상품관리*/
-.product_reg_tb, .product_reg_tb thead, .product_reg_tb tbody, .product_reg_tb tr, .product_reg_tb th, .product_reg_tb td {display:block;}
-.product_reg_tb {box-sizing:border-box;}
-.product_reg_tb th, .product_reg_tb td {padding:13px 8px;}
+#paging a {
+	width: auto;
+}

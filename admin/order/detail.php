@@ -20,7 +20,7 @@
 <section class="container">	
 	<div class="">
 		<div class="tabletInner">
-			<form enctype='multipart/form-data' id="product_update" action="product_update.php" method="post">
+			<form>
 				<fieldset>
 					<div>
 						<div class="admin_title">신규주문</div>
@@ -111,9 +111,6 @@
 							</tr>	
 						</tbody>
 					</table>									
-					<div class="mt20 ar">
-						
-					</div>
 				</fieldset>
 			</form>
 		</div>

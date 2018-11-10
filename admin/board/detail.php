@@ -35,7 +35,7 @@
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="detail_update" action="detail_update.php" method="post">
 				<fieldset>
-					<table class="product_reg_tb">
+					<table>
 						<div>
 							<div class="admin_title"><?=$head?></div>
 							<div class="admin_position">Home  » 게시판/콘텐츠 관리 » <?=$head?></div>
