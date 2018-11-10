@@ -25,7 +25,7 @@ $(document).ready(function(){
 		$("#cssmenu > ul > li").removeClass("active");
 		$("#cssmenu > ul > li:nth-child(4)").addClass("active");
 	}else{
-		console.log("해당 url에 맞는 메뉴가 없습니다.");
+		$("#cssmenu > ul > li").removeClass("active");
 	}
 	
 	$(".neographBoard").click(function(){
