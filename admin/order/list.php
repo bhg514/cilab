@@ -11,11 +11,9 @@
 	$start_num = 1;
 	$date = $_GET['date'] ?? '';
 
-	$order_no = 0; //임의 선언
-	if($product_name!=null){
-	    $order_no = order_get_order_no($product_name);
-	}
-	$total_count = order_get_count($order_number,$order_name,$order_no,$type);	
+	
+	$total_count = order_get_count($order_number,$order_name,$product_name,$type);	
+
 	if($type==1){
 		$type_text = '신규 주문';
 		$list_text = '결제';
@@ -124,9 +122,9 @@
 		<tbody>
 				<?php	
 					if ($type == 5){
-						$result = while_get_order_list_date($page,$order_number,$order_name,$order_no,$type,$date);
+						$result = while_get_order_list_date($page,$order_number,$order_name,$product_name,$type,$date);
 					}else{
-						$result = while_get_order_list($page,$order_number,$order_name,$order_no,$type);
+						$result = while_get_order_list($page,$order_number,$order_name,$product_name,$type);
 					}			
 					while ($r = mysqli_fetch_array($result)) {
 				?>
@@ -194,3 +192,26 @@
 
 </section>
 
+<?php
+echo '<script>
+var url_string = window.location.href
+var url = new URL(url_string);
+var order_number = url.searchParams.get("order_number");
+var product_name = url.searchParams.get("product_name");
+var order_name = url.searchParams.get("order_name");
+
+
+
+	if(order_number!=null){
+		$("#search_input").val(order_number)
+		$("#search_select").val("order_number").attr("selected","true");
+	}else if(product_name!=null){
+		$("#search_input").val(product_name)
+		$("#search_select").val("product_name").attr("selected","true");
+	}else if(order_name!=null){
+		$("#search_input").val(order_name)
+		$("#search_select").val("order_name").attr("selected","true");
+	}
+
+</script>';
+?>

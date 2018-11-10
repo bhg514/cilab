@@ -147,10 +147,6 @@
 		$arr2str = implode(',', $arr);
 		$query = 'delete from '.$table.' where pk_no in ('.$arr2str.')';
 		query_send_non_return($query);
-		if($table=='tb_order'){
-			$query = 'delete from tb_order_detail where fk_order_no in ('.$arr2str.')';			
-			query_send_non_return($query);
-		}
 	}
 
 	function product_info($no){
@@ -161,35 +157,34 @@
 		return $info;
 	}
 
-	function while_get_order_list($start_num,$order_number,$order_name,$order_no,$status){
+	function while_get_order_list($start_num,$order_number,$order_name,$product_name,$status){
 		$start_num = ($start_num-1)*10;		
-		if($order_no == null){
+		if($product_name == null){
 			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM (SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and o.fd_status like "%'.$status.'%" order by row desc limit '.$start_num.', 10 ';					
 		}else{
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM (SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where o.pk_no in ('.$order_no.') order by row desc limit '.$start_num.', 10';					
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM (SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where p.fd_name like "%'.$product_name.'%" order by row desc limit '.$start_num.', 10';					
 		}				
 
-		echo $query;
 		$result = query_send($query);		
 		return $result;
 	}
 
-	function while_get_order_list_date($start_num,$order_number,$order_name,$order_no,$status,$date){
+	function while_get_order_list_date($start_num,$order_number,$order_name,$product_name,$status,$date){
 		$start_num = ($start_num-1)*10;		
-		if($order_no == null){
+		if($product_name == null){
 			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM(SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and o.fd_status like "%'.$status.'%" and fd_date="'.$date.'" order by row desc limit '.$start_num.', 10 ';					
 		}else{
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM(SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where o.pk_no in ('.$order_no.') order by row desc limit '.$start_num.', 10';					
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM(SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where p.fd_name like "%'.$product_name.'%" order by row desc limit '.$start_num.', 10';					
 		}		
 		$result = query_send($query);		
 		return $result;
 	}
 
-	function order_get_count($order_number,$order_name,$order_no,$status){
-		if($order_no == null){
+	function order_get_count($order_number,$order_name,$product_name,$status){
+		if($product_name == null){
 			$query = 'select count(*) from tb_order where fk_order_number like "%'.$order_number.'%" and fd_order_name like "%'.$order_name.'%" and fd_status like "%'.$status.'%"';
 		}else{
-			$query = 'select count(*) from tb_order where pk_no in ("'.$order_no.'") and fd_status ="'.$status.'"';
+			$query = 'select count(o.pk_no) from tb_order o join tb_product p on o.fd_product_no = p.pk_no where p.fd_name like "%'.$product_name.'%" and o.fd_status="'.$status.'"' ;
 		}		
 		$result = query_send($query);
 		$count = mysqli_fetch_array($result);
@@ -430,10 +425,10 @@
 	function product_get_count($name,$category,$status){
 		$query = 'select count(*) from tb_product where fd_name like "%'.$name.'%"';
 		if ($category!=5){
-			$query .= ' and fd_category='.$category;
+			$query .= ' and fd_category="'.$category.'"';
 		}	
 		if ($status!=3){
-			$query .= ' and fd_status='.$status;
+			$query .= ' and fd_status="'.$status.'"';
 		}		
 		$result = query_send($query);
 		$count = mysqli_fetch_array($result);

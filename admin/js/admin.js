@@ -98,11 +98,16 @@ $(document).ready(function() {
    		var select = document.getElementById("search_select");
    		var select_val = select.options[select.selectedIndex].value;
    		var input_val = $('#search_input').val();   		
-   		
-   		if(input_val!=""){
-   			location.href="?"+select_val+"="+input_val;   			
-   		}else{
-   			location.href="?";
+   		if(select_val=="category"){   			
+   			select = document.getElementById("cate_sel");
+   			var cate_sel = select.options[select.selectedIndex].value;	
+   			location.href="?"+select_val+"="+cate_sel;
+   		}else{   			
+	   		if(input_val!=""){
+	   			location.href="?"+select_val+"="+input_val;   			
+	   		}else{
+	   			location.href="?";
+	   		}
    		}
 
     });
@@ -166,9 +171,8 @@ $(document).ready(function() {
     
     $('#day_search_btn, #month_search_btn').click(function(e){
     	var start_date = $(e.target).siblings()[0].value;
-    	var end_date = $(e.target).siblings()[1].value;
-    	
-    	location.href="?start_date="+start_date+"&end_date="+end_date;
+    	var end_date = $(e.target).siblings()[2].value;    	
+    	location.href="?type=5&start_date="+start_date+"&end_date="+end_date;
     })
 
     $('#input_invoice').click(function(){

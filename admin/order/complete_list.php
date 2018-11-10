@@ -132,4 +132,19 @@
 
 
 </section>
+<?php
+echo '<script>
+	var url_string = window.location.href
+	var url = new URL(url_string);
+	var start_date = url.searchParams.get("start_date");
+	var end_date = url.searchParams.get("end_date");
+	if(start_date.split("-").length==2){
+		$("#search_select").val("2").attr("selected","true");
+	}else{
+		$("#search_select").val("1").attr("selected","true");
+	}
+	$("#datepicker1").val(start_date)
+	$("#datepicker2").val(end_date)
 
+</script>';
+?>

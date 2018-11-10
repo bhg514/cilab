@@ -33,9 +33,9 @@
 							<div>Home  » 게시판/콘텐츠 관리 » <?=$title?></div>
 						</div>
 						<hr class="garo" style="display: block;"> 
-						<div>
-							<a class="btn type07">등록</a>
-							<a class="btn type07">취소</a>
+						<div class="mt20 ar">
+							<input type="submit" value="등록" id="notice_save_btn" class="btn type07 st2">				
+							<a href="/" class="btn type07">취소</a>
 						</div>
 						<h3>■ <?=$title?></h3>
 						<caption><?=$title?></caption>
@@ -76,10 +76,7 @@
 											
 						</tbody>
 					</table>
-					<div class="mt20 ar">
-						<input type="submit" value="수정" id="notice_save_btn" class="btn type07 st2">						
-						<a href="/" class="btn type07">취소</a>
-					</div>
+					
 				</fieldset>
 			</form>
 		</div>
