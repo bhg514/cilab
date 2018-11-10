@@ -1014,14 +1014,13 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 }
 
 #option_select{
-	font-size: 20px;
+	font-size: 16px;
 	float: right;
 }
 
 .req_label{
 	color: red;
 	display: none;
-
 }
 
 .order_input{
