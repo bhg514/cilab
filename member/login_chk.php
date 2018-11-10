@@ -14,6 +14,8 @@
 		$_SESSION['user_type'] = $chk_info['fd_type'];
 		$pre_url = $_SESSION['pre_url'];
 		if($_SESSION['user_type']=='a'){
+			$query = "update tb_admin set fd_connect='".date('Y-m-d')."' where fd_id='".$chk_info['fd_id']."'";
+			query_send_non_return($query);
 			header("Location: http://".$http_host."/admin/pm/list.php");
 
 		}else{

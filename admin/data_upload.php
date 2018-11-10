@@ -49,7 +49,6 @@
 		list(,$extension) = explode('/',$type);
 		list(,$imageData) = explode(',', $imageData);
 		$fileName = "../img/upload_image/".uniqid().'.'.$extension;
-		echo $data;
 
 		$imageData = base64_decode($imageData);
 		file_put_contents($fileName, $imageData);		
@@ -64,15 +63,20 @@
 			
 
 		if(count($matches[0]) >0){ // img가 있을 때 
-			
+
 			$img_data_arr = $matches[1];
 			$old_img_tag_arr = $matches[0];
 			$new_img_tag_arr = array();			
+			for ($i=0; $i<count($img_data_arr); $i++) {
+				if(strpos($img_data_arr[$i], "upload_image/") !=null) { 
+					$img_tag=$old_img_tag_arr[$i];
+				}else{
+					$file_name = img_save($img_data_arr[$i]);
+					$file_name=str_replace("..", "/admin", $file_name); // path 설정
+					$img_tag = preg_replace("/ src=(\"|\')?([^\"\']+)(\"|\')?/","src=".$file_name,$old_img_tag_arr[$i]); //src수정
+					$img_tag = preg_replace("/ data-filename=(\"|\')?([^\"\']+)(\"|\')?/","",$img_tag);//filename삭제
 
-			foreach ($img_data_arr as $img_data) {
-				$file_name = img_save($img_data);
-				$file_name=str_replace("..", "/admin", $file_name);
-				$img_tag = '<img src='.$file_name.'>';
+				}
 				array_push($new_img_tag_arr, $img_tag);
 			}
 

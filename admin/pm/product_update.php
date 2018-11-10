@@ -24,6 +24,7 @@
 		$content = $_POST["content_val"];
 		
 		$new_content = editor_conv($content);
+		$new_content = str_replace('"', "'", $new_content);
 
 		$date_time = date("Y-m-d h:i:s");
 		$user_name = $_SESSION['user_name'];		
@@ -58,7 +59,7 @@
 		}
 		$query.= ' fd_option = "'.$option.'", fk_admin = "'.$user_name.'" where pk_no ='.$no;
 
-		//echo $query;
+		echo $query;
 		query_send_non_return($query);
 		header("location:".$_SERVER["HTTP_REFERER"]);
 

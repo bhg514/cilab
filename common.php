@@ -446,7 +446,7 @@
 	}
 
 	function user_order_list($id){
-		$query = "select o.fd_date, p.fd_name, o.fd_price, o.fd_del_fee, o.fd_status,o.pk_no from tb_order o join tb_product p on o.fd_product_no = p.pk_no where fd_order_id='".$id."' ";
+		$query = "select o.fd_date, p.fd_name, o.fd_price, o.fd_del_fee, o.fd_status,o.pk_no,o.fd_invoice_number from tb_order o join tb_product p on o.fd_product_no = p.pk_no where fd_order_id='".$id."' ";
 		$result = query_send($query);		
 		return $result;
 	}

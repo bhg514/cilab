@@ -160,8 +160,8 @@
 </body>
 </html>
 <?php
-	echo "<script> 
-			$('#summernote').summernote();
-			$('.note-editable').html('".$info['fd_content']."');
-		</script>";
+	echo '<script> 
+			$(\'#summernote\').summernote();
+			$(\'.note-editable\').html("'.$info['fd_content'].'");
+		</script>';
 ?>

@@ -56,7 +56,7 @@
 					</div>
 
 					<div class="mt20 ar">
-						<a href="/" class="btn type05">취소</a>
+						<a class="btn type05" onclick="self.close()">취소</a>
 						<input type="submit" value="완료" class="btn type05" onclick="form_data();">
 					</div>
 					<input type="hidden" id="pre_option">

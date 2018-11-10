@@ -43,6 +43,7 @@
 							<th scope="col">상품명</th>
 							<th scope="col">총액</th>
 							<th scope="col">상태</th>
+							<th scope="col">송장번호</th>
 							<th scope="col">배송조회</th>
 							<th scope="col">반품신청</th>
 							<th scope="col">환불신청</th>
@@ -71,10 +72,24 @@
 									elseif($r['fd_status']==8) echo "반품";
 								?>
 							</td>
-							<td><a href="#a" class="btn type05">배송조회</a></td>
-							<td><a href="#a" class="btn type05">반품신청</a></td>
-							<td><a href="#a" class="btn type05">환불신청</a></td>
-							<td><a href="#a" class="btn type05">구매확정</a></td>							
+							<td><?=$r['fd_invoice_number']?></td>
+							<td>
+								<?php if($r['fd_status']==3||$r['fd_status']==4) echo '<a onclick="del_lookup(\'http://service.epost.go.kr/trace.RetrieveRegiPrclDeliv.postal?sid1='.$r['fd_invoice_number'].'\')" class="btn type05">배송조회</a>';
+								?>
+							</td>
+							<td>
+								<?php if($r['fd_status']==4) echo '<a href="#a" class="btn type05">반품신청</a>';
+								?>								
+							</td>
+							<td>
+								<?php if($r['fd_status']<5) echo '<a href="#a" class="btn type05">환불신청</a>';
+								?>
+							</td>
+							<td>
+								<?php if($r['fd_status']==4) echo '<a href="#a" class="btn type05">구매확정</a>';
+								?>
+								
+							</td>							
 						</tr>
 						<?php
 							}

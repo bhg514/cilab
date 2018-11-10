@@ -12,7 +12,7 @@ $(document).ready(function() {
 			    arr : chk_arr,
 			    type : "start"
 			},
-			dataType: "json",
+			dataType: "text",
 			success: function(data) {   	        	
 			    location.reload();
 			}
@@ -30,7 +30,7 @@ $(document).ready(function() {
 			    arr : chk_arr,
 			    type : "stop"
 			},
-			dataType: "json",
+			dataType: "text",
 			success: function(data) {   	        	
 			    location.reload();
 			    
@@ -49,7 +49,7 @@ $(document).ready(function() {
 			data: { 
 			    arr : chk_arr			    
 			},
-			dataType: "json",
+			dataType: "text",
 			success: function(data) {   	        	
 			    location.reload();
 			    
@@ -70,7 +70,7 @@ $(document).ready(function() {
 				    arr : chk_arr,
 				    type : type
 				},
-				dataType: "json",
+				dataType: "text",
 				success: function(data) {   	        	
 				    location.reload();
 				}
@@ -190,7 +190,7 @@ $(document).ready(function() {
 			    no_arr : chk_no_arr,			    
 			    invoice_arr : invoice_arr
 			},
-			dataType: "json",
+			dataType: "text",
 
 			success: function(data) {   	        	
 			    location.reload();
@@ -401,6 +401,12 @@ $(document).ready(function() {
 
     });
 
+
+
+	$('#btnFoldWrap').click(function(){
+		$('#daum_juso_pagemb_zip').hide()
+	})
+
 });
 
 
@@ -419,7 +425,7 @@ function addNewStyle(newStyle) {
 
 
 function mk_chk_no_arr(){
-	var chk_count = $('.list_chk').size();
+	var chk_count = $('.list_chk').length;
 	var chk_arr = []
 	for(var i=0; i<chk_count; i++){
 		if($('.list_chk')[i].checked){
@@ -431,7 +437,7 @@ function mk_chk_no_arr(){
 }
 
 function mk_chk_arr(){
-	var chk_count = $('.list_chk').size();
+	var chk_count = $('.list_chk').length;
 	var chk_arr = []
 	for(var i=0; i<chk_count; i++){
 		if($('.list_chk')[i].checked){

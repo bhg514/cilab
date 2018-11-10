@@ -182,6 +182,11 @@ $(document).ready(function(){
 
 
 	})
+	$('#btnFoldWrap').click(function(){
+    	$('#daum_juso_pagemb_zip').hide()
+    })
+
+
 });
 
 // mouse Hover
@@ -219,3 +224,7 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+
+function del_lookup(url){
+	window.open(url,'childForm','width=800, height=500,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');
+}
