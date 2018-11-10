@@ -51,7 +51,7 @@
 				</table>
 				<div class="mt20 ar">
 					<input type="submit" value="등록" id="qna_btn" class="btn type07 st2">
-					<a href="#a" class="btn type06 st2">취소</a>
+					<a href="./list.php?type=4" class="btn type06 st2">취소</a>
 				</div>				
 			</form>
 		</div>
