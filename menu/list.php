@@ -43,32 +43,40 @@
 			<table class="tblType01 listView">
 				<caption><?=$head?></caption>
 				<colgroup>
-					<col style="width:70px;" class="mhide">
+				<col style="width:70px;" class="mhide">
 					<col>
-					<col class="noticeDate">
-					<col class="noticeCount">
+				<?php
+						if($type==1||$type==2){
+				?>
+					<col class="listDate">
+					<col class="listCount">
+				<?php
+						}else if($type==4){
+				?>
+					<col class="listWriter">
+					<col class="listDate">
+					<col class="listFile">
+				<?php
+						}
+				?>
 				</colgroup>
 				<thead>
 					<tr>
 						<th scope="col" class="mhide">번호</th>
 						<?php
-							if($type==1||$type==2){
-						?>
-								<th scope="col">제목</th>
-						<?php
-								if($type==1) echo '<th scope="col">날짜</th>';
-								elseif($type==2) echo '<th scope="col">버전</th>';
-						?>
-						
-								<th scope="col">조회수</th>
-						<?php
+							if($type==1) {
+                                echo '<th scope="col">제목</th>
+                                <th scope="col">날짜</th>
+                                <th scope="col">조회수</th>';
+							}elseif($type==2) {
+							    echo '<th scope="col">S/W명</th>
+                                <th scope="col">버전</th>
+                                <th scope="col">다운로드</th>';
 							}else if($type==4){
-						?>
-								<th scope="col">문의제목</th>
+								echo '<th scope="col">문의제목</th>
 								<th scope="col">작성자</th>
 								<th scope="col">작성일</th>
-								<th scope="col">첨부파일</th>
-						<?php
+								<th scope="col">첨부파일</th>';
 							}
 						?>
 					</tr>
