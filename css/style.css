@@ -1038,3 +1038,13 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	font-size: 20px;
 	float: right;
 }
+
+.req_label{
+	color: red;
+	display: none;
+
+}
+
+.order_input{
+	width: 40%;
+}

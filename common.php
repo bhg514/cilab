@@ -164,10 +164,12 @@
 	function while_get_order_list($start_num,$order_number,$order_name,$order_no,$status){
 		$start_num = ($start_num-1)*10;		
 		if($order_no == null){
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* FROM tb_order o, (SELECT @ROWNUM := 0) R where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and fd_status like "%'.$status.'%" order by row desc limit '.$start_num.', 10 ';					
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM (SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and o.fd_status like "%'.$status.'%" order by row desc limit '.$start_num.', 10 ';					
 		}else{
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* FROM tb_order o, (SELECT @ROWNUM := 0) R where o.pk_no in ('.$order_no.') order by row desc limit '.$start_num.', 10';					
-		}		
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM (SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where o.pk_no in ('.$order_no.') order by row desc limit '.$start_num.', 10';					
+		}				
+
+		echo $query;
 		$result = query_send($query);		
 		return $result;
 	}
@@ -175,9 +177,9 @@
 	function while_get_order_list_date($start_num,$order_number,$order_name,$order_no,$status,$date){
 		$start_num = ($start_num-1)*10;		
 		if($order_no == null){
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* FROM tb_order o, (SELECT @ROWNUM := 0) R where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and fd_status like "%'.$status.'%" and fd_date="'.$date.'" order by row desc limit '.$start_num.', 10 ';					
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM(SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and o.fd_status like "%'.$status.'%" and fd_date="'.$date.'" order by row desc limit '.$start_num.', 10 ';					
 		}else{
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* FROM tb_order o, (SELECT @ROWNUM := 0) R where o.pk_no in ('.$order_no.') order by row desc limit '.$start_num.', 10';					
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM(SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where o.pk_no in ('.$order_no.') order by row desc limit '.$start_num.', 10';					
 		}		
 		$result = query_send($query);		
 		return $result;
@@ -446,6 +448,12 @@
 		$info = mysqli_fetch_array($result);
 
 		return $info;
+	}
+
+	function user_order_list($id){
+		$query = "select o.fd_date, p.fd_name, o.fd_price, o.fd_del_fee, o.fd_status,o.pk_no from tb_order o join tb_product p on o.fd_product_no = p.pk_no where fd_order_id='".$id."' ";
+		$result = query_send($query);		
+		return $result;
 	}
 
 ?>

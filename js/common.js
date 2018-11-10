@@ -133,6 +133,55 @@ $(document).ready(function(){
 			return false;
 		}
 	})
+	$('#store_pur_btn').click(function(){
+		var return_chk=0
+		if($('#order_name').val()==""){
+			return_chk = 1
+			$('#label_order_name').show()
+		}else
+			$('#label_order_name').hide()
+
+		if($('#order_hp').val()==""){
+			return_chk = 1
+			$('#label_order_hp').show()
+		}else
+			$('#label_order_hp').hide()
+
+		if($('#order_mail').val()==""){
+			return_chk = 1
+			$('#label_order_mail').show()
+		}else
+			$('#label_order_mail').hide()
+
+		if($('#del_name').val()==""){
+			return_chk = 1
+			$('#label_name').show()
+		}else
+			$('#label_name').hide()
+
+		if($('#add_zip').val()=="" || $('#addr1').val()=="" || $('#addr2').val()==""){
+			return_chk = 1
+			$('#label_addr').show()
+		}else
+			$('#label_addr').hide()
+
+		if($('#del_hp').val()==""){
+			return_chk = 1
+			$('#label_hp').show()
+		}else
+			$('#label_hp').hide()
+
+		if($('#pur_chk').is(":checked")==false){
+			return_chk = 1
+			$('#label_chk').show()
+		}else
+			$('#label_chk').hide()
+		
+		if(return_chk==1)
+			return false;
+
+
+	})
 });
 
 // mouse Hover

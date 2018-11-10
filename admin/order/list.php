@@ -138,7 +138,7 @@
 				<td class="tbody_td"><?= $r['row']?></td>
 				<td class="tbody_td"><?= $r['fd_date']?></td>
 				<td class="tbody_td"><a href="detail.php?type=<?=$type?>&no=<?=$r['pk_no']?>"><?= $r['fk_order_number']?></a></td>
-				<td class="tbody_td"><?=$r['fd_product_count']?></td>
+				<td class="tbody_td"><?=$r['fd_name']?></td>
 				<td class="tbody_td"><?=$r['fd_order_name']?></td>
 				<td class="tbody_td"><?=$r['fd_price']?></td>
 				<?php
