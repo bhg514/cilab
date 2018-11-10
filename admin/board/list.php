@@ -86,7 +86,12 @@
 					if($type==1 || $type==2){
 				?>
 				<td class="tbody_td"><?=$r['fd_count']?></td>
-				<td class="tbody_td"><?php if($r['fd_file']!=null) echo '<img src="/images/icon/save.png" class="save_img">';?></td>
+				<td class="tbody_td">
+					<?php if($r['fd_file']!=null) 
+						echo "<a href='zip_down.php?zip=".$r["fd_title"]."&new_file=".$r['fd_new_file']."&file=".$r['fd_file']."'><img src='/images/icon/icon_file.png' class='save_img'></a>";
+
+					?>					
+				</td>
 				<?php
 					}elseif ($type==4) {
 						if($r['fd_reply']!=null)

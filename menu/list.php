@@ -2,7 +2,6 @@
 	header ( "content-type:text/html; charset=utf-8" );
 	include '../header.php';
 	include_once('../common.php');	
-	include_once('zip_down.php');	
 	$type= $_GET['type'] ?? 1;
 	$page = $_GET['page'] ?? 1;		
 
@@ -72,7 +71,7 @@
 							}elseif($type==2) {
 							    echo '<th scope="col">S/W명</th>
                                 <th scope="col">버전</th>
-                                <th scope="col">조회수</th>';
+                                <th scope="col">다운로드</th>';
 							}else if($type==4){
 								echo '<th scope="col">문의제목</th>
 								<th scope="col">작성자</th>
@@ -90,15 +89,23 @@
 					<tr>
 						<td class="mhide"><?=$r['row']?></td>
 						<?php
-							if($type==1||$type==2){
+							if($type==1){
 								echo '<td class="title"><a href="detail.php?type='.$type.'&no='.$r["pk_no"].'">'.$r["fd_title"].'</a></td>';
 								echo "<td>".$r['fd_date']."</td>";
 								echo "<td>".$r['fd_count']."</td>";						
+							}else if($type==2){
+								echo '<td class="title"><a href="detail.php?type='.$type.'&no='.$r["pk_no"].'">'.$r["fd_title"].'</a></td>';
+								echo "<td>".$r['fd_date']."</td>";
+								if($r['fd_new_file']!=""){
+									echo "<td><a href='./zip_down.php?zip=".$r["fd_title"]."&new_file=".$r['fd_new_file']."&file=".$r['fd_file']."'><img src='/images/icon/icon_file.png' class='save_img'></a></td>";	
+								}
 							}else if($type==4){
 								echo '<td class="title"><a href="qna_chk_pw.php?no='.$r["pk_no"].'">'.$r["fd_title"].'</a></td>';
 								echo "<td>".$r['fd_name']."</td>";
 								echo "<td>".$r['fd_date']."</td>";
-								echo "<td>".$r['fd_file']."</td>";
+								if($r['fd_new_file']!=""){
+									echo "<td><a href='./zip_down.php?zip=".$r["fd_title"]."&new_file=".$r['fd_new_file']."&file=".$r['fd_file']."'><img src='/images/icon/icon_file.png' class='save_img'></a></td>";	
+								}
 							}
 						?>
 					</tr>

@@ -15,7 +15,9 @@
 	$info = board_get_info($no,$type);
 	if($type!=3){
 		if($info["fd_file"]!=null)
-			$fd_file=explode('||',$info["fd_file"]);
+			$files=explode('||',$info["fd_file"]);
+		if($info["fd_new_file"]!=null)
+			$new_files=explode('||',$info["fd_new_file"]);
 	}
 
 	if($type==1) $head = '공지사항';
@@ -79,8 +81,8 @@
 								<td id="files_td" colspan="3">
 									<?php 
 										if($info['fd_file']!=""){
-											foreach ($fd_file as $file) {
-												echo '<img src="/images/icon/save.png" class="save_img"><label>'.$file.'</label><br/>';
+											for($i=0;$i<count($files);$i++){
+												echo '<a href="file_down.php?file='.$new_files[$i].'&name='.$files[$i].'" class="view_file_download"><img src="/images/icon/save.png" class="save_img"><label>'.$files[$i].'</label></a><br/>';
 											}
 											echo '<a id="old_file_remove">전체 삭제</a>';
 										}else{ 
