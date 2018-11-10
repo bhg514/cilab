@@ -420,7 +420,7 @@
 		}		
 		$query .=' order by pk_no desc limit '.$start_num.', 9';
 		$result = query_send($query);
-
+		
 		return $result;
 
 	}

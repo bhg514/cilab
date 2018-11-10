@@ -238,10 +238,11 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 /* bbs */
 .imgType01 {
 	font-size:0;
-	margin-left:-20px;
+	/*margin-left:-20px;*/
 }
 .imgType01 > ul {
-	text-align:center;
+	margin-left: 5%;
+	/* text-align:center; */
 }
 .imgType01 > ul > li {
 	position:relative;

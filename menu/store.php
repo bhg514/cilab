@@ -62,11 +62,9 @@
     	<div class="category_content">
             <div class="imgType01">
                 <ul>
-                    <?php
-                                
-                        $result = while_product_list($page,$type,$search);   
+                    <?php                                
+                        $result = while_product_list($page,$type,$search);  
                         while ($r = mysqli_fetch_array($result)) {
-
                     ?>
                     <li>
                         <a href="./store_view.php?no=<?=$r['pk_no']?>">
@@ -105,5 +103,9 @@
 </section>
 
 <?php
+    echo "<script>
+    if($('.category_content .imgType01 ul li').length==0)
+        $('.category_content .imgType01 ul').html('<a style=\"font-size: 20px;\">등록된 상품이 없습니다.</a>')
+    </script>";
 	include '../footer.php'
 ?>
