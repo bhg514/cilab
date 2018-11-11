@@ -18,12 +18,6 @@ h4 {
 	color: #1788d0 !important;
 }
 
-.btn.type05:hover, .btn.type05:focus, .btn.type05.focus {
-	color: #333;
-	text-decoration: none;
-	background: #ddd;
-}
-
 .admin_header h1 {
 	padding: 5px 0 !important;
 }
@@ -31,11 +25,13 @@ h4 {
 .admin_menu {
 	margin: auto;
 	width: 95%;
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 }
 
 .admin_menu ul {
 	height: 30px;
+	margin-bottom: 0;
+	border-bottom: 1px solid #333;
 }
 
 .admin_menu li {
@@ -60,6 +56,8 @@ h4 {
 
 .admin_menu li.selected {
 	background-color: #d2eeff;
+	border-bottom: 0;
+	border-top: 2px solid #3892cb;
 }
 
 .tab-view {
@@ -308,7 +306,7 @@ table caption {
 	border-bottom: 1px solid #e8e8e8;
 }
 
-.product_reg_tb tr th{
+.product_reg_tb tr th {
 	width: 170px;
 }
 
