@@ -98,6 +98,8 @@
 								echo "<td>".$r['fd_date']."</td>";
 								if($r['fd_new_file']!=""){
 									echo "<td><a href='./zip_down.php?zip=".$r["fd_title"]."&new_file=".$r['fd_new_file']."&file=".$r['fd_file']."'><img src='/images/icon/icon_file.png' class='save_img'></a></td>";	
+								}else{
+								    echo "<td></td>";
 								}
 							}else if($type==4){
 								echo '<td class="title"><a href="qna_chk_pw.php?no='.$r["pk_no"].'">'.$r["fd_title"].'</a></td>';
@@ -105,6 +107,8 @@
 								echo "<td>".$r['fd_date']."</td>";
 								if($r['fd_new_file']!=""){
 									echo "<td><a href='./zip_down.php?zip=".$r["fd_title"]."&new_file=".$r['fd_new_file']."&file=".$r['fd_file']."'><img src='/images/icon/icon_file.png' class='save_img'></a></td>";	
+								}else{
+								    echo "<td></td>";
 								}
 							}
 						?>
