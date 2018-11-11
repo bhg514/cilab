@@ -16,9 +16,8 @@
 
 <script type="text/javascript" src="../js/admin.js"></script>
 <section class="container">	
-	
 
-	<div class="contents">
+	<div class="">
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="new_insert" action="new_insert.php" method="post">
 				<fieldset>
@@ -29,11 +28,11 @@
 						</div>
 						<hr class="garo" style="display: block;"> 
 						<div class="mt20 ar">
-							<input type="submit" value="등록" id="notice_save_btn" class="btn type07 st2">				
-							<a href="/" class="btn type07">취소</a>
+							<input type="submit" value="등록" id="notice_save_btn" class="btn type05">				
+							<a href="/" class="btn type05">취소</a>
 
 						</div>
-						<h3>■ <?=$title?></h3>
+						<h4>■ <?=$title?></h4>
 						<caption><?=$title?></caption>
 						<colgroup>
 							<col style="width:170px;">
@@ -49,7 +48,6 @@
 							</tr>
 							<?php
 								if($type==1 || $type==2){
-
 							?>					
 							<tr>
 								<th scope="row">첨부파일</th>
@@ -69,7 +67,6 @@
 									</div>
 								</td>
 							</tr>
-											
 						</tbody>
 					</table>
 				</fieldset>
