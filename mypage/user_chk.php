@@ -1,6 +1,9 @@
 <?php
 	header ( "content-type:text/html; charset=utf-8" );
-	include '../header.php'
+	include '../header.php';
+	if(!isset($id) || $_SESSION['user_type']=="a"){
+		header("location:http://".$http_host."/index.php");
+	}
 ?>
 <section class="container">
 	<div class="visual etc">
