@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS `tb_admin` (
 -- 테이블 데이터 cilab.tb_admin:2 rows 내보내기
 /*!40000 ALTER TABLE `tb_admin` DISABLE KEYS */;
 INSERT INTO `tb_admin` (`pk_no`, `fd_id`, `fd_pw`, `fd_name`, `fd_group`, `fd_position`, `fd_hp`, `fd_connect`, `fd_type`) VALUES
-	(1, 'admin', '$1$770.CR..$1KAprMYQKHX35aJgxjeBq0', '김관리', 'bs', '대리', '010-3124-6767', '2018-10-13', 'a'),
-	(4, 'admin2', '$1$1v...B4.$VCo0HwezEXEknMDKzaTkV0', '이관리', 'bs', '과장', '010-1234-5678', NULL, 'a');
+	(1, 'admin', '$1$770.CR..$1KAprMYQKHX35aJgxjeBq0', '김관리', 'bs', '대리', '010-3124-6767', '2018-11-11', 'a'),
+	(4, 'admin2', '$1$770.CR..$1KAprMYQKHX35aJgxjeBq0', '이관리', 'bs', '과장', '010-1234-5678', '2018-11-10', 'a');
 /*!40000 ALTER TABLE `tb_admin` ENABLE KEYS */;
 
 -- 테이블 cilab.tb_contents 구조 내보내기
@@ -64,12 +64,13 @@ CREATE TABLE IF NOT EXISTS `tb_notice` (
   `fd_new_file` varchar(50) DEFAULT NULL,
   `fd_content` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`pk_no`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 cilab.tb_notice:1 rows 내보내기
+-- 테이블 데이터 cilab.tb_notice:2 rows 내보내기
 /*!40000 ALTER TABLE `tb_notice` DISABLE KEYS */;
 INSERT INTO `tb_notice` (`pk_no`, `fd_title`, `fd_name`, `fd_date`, `fd_count`, `fd_file`, `fd_new_file`, `fd_content`) VALUES
-	(7, '공지요2', '김관리', '2018-11-09', 0, 'test.png||test1.png', '5be5cdea301f7.png||5be5cdea307aa.png', '공지오');
+	(8, '공지도 한번테스트', '김관리', '2018-11-10', 3, 'test.png', '5be71a8ec2a75.png', 'ㅌㅌㅌ'),
+	(7, '공지요2', '김관리', '2018-11-09', 1, 'test.png||test1.png', '5be5cdea301f7.png||5be5cdea307aa.png', '공지오');
 /*!40000 ALTER TABLE `tb_notice` ENABLE KEYS */;
 
 -- 테이블 cilab.tb_option 구조 내보내기
@@ -110,16 +111,17 @@ CREATE TABLE IF NOT EXISTS `tb_order` (
   `fd_status` varchar(50) DEFAULT '1',
   `fd_status_msg` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`pk_no`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='\r\n';
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COMMENT='\r\n';
 
 -- 테이블 데이터 cilab.tb_order:6 rows 내보내기
 /*!40000 ALTER TABLE `tb_order` DISABLE KEYS */;
 INSERT INTO `tb_order` (`pk_no`, `fk_order_number`, `fd_date`, `fd_product_no`, `fd_order_id`, `fd_order_hp`, `fd_order_name`, `fd_order_mail`, `fd_del_name`, `fd_del_zip`, `fd_del_address1`, `fd_del_address2`, `fd_del_hp`, `fd_del_comment`, `fd_price`, `fd_del_fee`, `fd_payment`, `fd_paynum`, `fd_invoice_number`, `fd_status`, `fd_status_msg`) VALUES
 	(21, '181110001', '2018-11-10', 1, 'bhg514', '010-3389-3333', '배현길', 'bhk514@hanmail.net', '배현길', '06364', '서울 강남구 자곡동 210', '상세어딘가', '010-3389-3333', '빨리주숑', 2500, 2000, NULL, NULL, NULL, '1', NULL),
 	(22, '181110002', '2018-11-10', 2, 'bhg514', '010-3389-3333', '배현길', 'bhk514@hanmail.net', '배현길', '06364', '서울 강남구 자곡동 210', '상세어딘가', '010-3389-3333', '빨리주숑', 2500, 2000, NULL, NULL, NULL, '1', NULL),
-	(23, '181110003', '2018-11-10', 1, 'bhg514', '010-3389-3333', '배현길', 'bhk514@hanmail.net', '배현길', '06364', '서울 강남구 자곡동 210', '상세어딘가', '010-3389-3333', '빨리주숑', 2500, 2000, NULL, NULL, NULL, '1', NULL),
-	(24, '181110004', '2018-11-10', 1, 'bhg514', '010-3389-3333', '배현길', 'bhk514@hanmail.net', '배현길', '06364', '서울 강남구 자곡동 210', '상세어딘가', '010-3389-3333', '빨리주숑', 2500, 2000, NULL, NULL, NULL, '1', NULL),
-	(25, '181110005', '2018-11-10', 1, 'bhg514', '010-3389-3333', '배현길', 'bhk514@hanmail.net', '배현길', '06364', '서울 강남구 자곡동 210', '상세어딘가', '010-3389-3333', '빨리주숑', 2500, 2000, NULL, NULL, NULL, '1', NULL);
+	(23, '181110003', '2018-11-10', 1, 'bhg514', '010-3389-3333', '배현길', 'bhk514@hanmail.net', '배현길', '06364', '서울 강남구 자곡동 210', '상세어딘가', '010-3389-3333', '빨리주숑', 2500, 2000, NULL, NULL, NULL, '2', NULL),
+	(24, '181110004', '2018-11-10', 1, 'bhg514', '010-3389-3333', '배현길', 'bhk514@hanmail.net', '배현길', '06364', '서울 강남구 자곡동 210', '상세어딘가', '010-3389-3333', '빨리주숑', 2500, 2000, NULL, NULL, '6075051734329', '3', NULL),
+	(25, '181110005', '2018-11-10', 1, 'bhg514', '010-3389-3333', '배현길', 'bhk514@hanmail.net', '배현길', '06364', '서울 강남구 자곡동 210', '상세어딘가', '010-3389-3333', '빨리주숑', 2500, 2000, NULL, NULL, '6075051734329', '4', NULL),
+	(26, '181110005', '2018-11-10', 1, 'bhg514', '010-3389-3333', '배현길', 'bhk514@hanmail.net', '배현길', '06364', '서울 강남구 자곡동 210', '상세어딘가', '010-3389-3333', '빨리주숑', 2500, 2000, NULL, NULL, '6075051734329', '5', NULL);
 /*!40000 ALTER TABLE `tb_order` ENABLE KEYS */;
 
 -- 테이블 cilab.tb_order_detail 구조 내보내기
@@ -156,13 +158,14 @@ CREATE TABLE IF NOT EXISTS `tb_product` (
   PRIMARY KEY (`pk_no`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 cilab.tb_product:4 rows 내보내기
+-- 테이블 데이터 cilab.tb_product:5 rows 내보내기
 /*!40000 ALTER TABLE `tb_product` DISABLE KEYS */;
 INSERT INTO `tb_product` (`pk_no`, `fd_name`, `fd_price`, `fd_category`, `fd_content`, `fd_stock`, `fd_date`, `fd_status`, `fd_delivery`, `fd_made`, `fd_main_img`, `fd_new_main_img`, `fd_sub_img`, `fd_new_sub_img`, `fd_option`, `fk_admin`) VALUES
 	(1, '선', 2500, '2', '<p><img src=/admin/img/upload_image/5be5c9cb8fb34.png><br></p>', 6000, '2018-11-09 05:54:19', '판매중', 2000, '대한민국', 'test.png', '5be5c93fd0247.png', 'test1.png', '5be5c93fcf990.png', '굵은거^10000||얇은거^2000', '김관리'),
 	(2, '선2', 2500, '2', '<p><img src=/admin/img/upload_image/5be5c9cb8fb34.png><br></p>', 6000, '2018-11-09 05:54:19', '판매중', 2000, '대한민국', 'test.png', '5be5c93fd0247.png', 'test1.png', '5be5c93fcf990.png', '굵은거^10000||얇은거^2000', '김관리'),
 	(3, '선', 2500, '2', '<p><img src=/admin/img/upload_image/5be5c9cb8fb34.png><br></p>', 6000, '2018-11-09 05:54:19', '판매중', 2000, '대한민국', 'test.png', '5be5c93fd0247.png', 'test1.png', '5be5c93fcf990.png', '굵은거^10000||얇은거^2000', '김관리'),
-	(4, '선', 2500, '2', '<p><img src=/admin/img/upload_image/5be5c9cb8fb34.png><br></p>', 6000, '2018-11-09 05:54:19', '판매중', 2000, '대한민국', 'test.png', '5be5c93fd0247.png', 'test1.png', '5be5c93fcf990.png', '굵은거^10000||얇은거^2000', '김관리');
+	(4, '선', 2500, '2', '<p><img src=/admin/img/upload_image/5be5c9cb8fb34.png><br></p>', 6000, '2018-11-09 05:54:19', '판매중', 2000, '대한민국', 'test.png', '5be5c93fd0247.png', 'test1.png', '5be5c93fcf990.png', '굵은거^10000||얇은거^2000', '김관리'),
+	(5, '이것은 WD3', 5000000, '1', '<p><img style=\'width: 50%;\'src=/admin/img/upload_image/5be709d9d7473.png></p><p><img style=\'width: 25%;\' src=\'/admin/img/upload_image/5be6f25fe7da5.png\'><br></p>', 333, '2018-11-10 04:39:53', '판매중', 0, '대한민국', '', '', '', '', '', '김관리');
 /*!40000 ALTER TABLE `tb_product` ENABLE KEYS */;
 
 -- 테이블 cilab.tb_qna 구조 내보내기
@@ -189,7 +192,7 @@ INSERT INTO `tb_qna` (`pk_no`, `fd_title`, `fd_content`, `fd_file`, `fd_new_file
 	(14, '333', '333', 'test.png', '5be5b6135299f.png', '$1$wU..3b5.$fwvmpYPr5OQ5EjKkT28rk/', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', NULL),
 	(13, '333', '333', 'test.png', '5be5b5f5de9e8.png', '$1$C...jc5.$ojuZIHIH0/SSmLnRvjaJZ/', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', NULL),
 	(12, '1111', '222', 'test.png', '5be5b5c1d6f1d.png', '$1$Eg2.7M..$KLVVbvj.yMyPVYZRWNJDi.', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', NULL),
-	(11, '궁금하오', '궁금쓰', 'test.png', '5be5b300838a9.png', '$1$0b..HD5.$4EG8akkiRUluQsZQh1q3h0', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', NULL),
+	(11, '궁금하오', '궁금쓰', 'test.png', '5be71a6637a4d.png', '$1$0b..HD5.$4EG8akkiRUluQsZQh1q3h0', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', NULL),
 	(10, '문의요', '문', '', '', '$1$YW2.BM/.$caiBQkX1UfCx1.5cR/oYl/', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', NULL),
 	(15, '333', '333', 'test.png', '5be5b6d694021.png', '$1$pG0.8R5.$om16o.MjSuaLg4HlbkiL81', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', NULL),
 	(16, '333', '333', 'test.png', '5be5b70085c0e.png', '$1$Ow..9d..$DmdujCYFwCqlGuhiv.OSH0', '배현길', '2018-11-09', '010-3389-3333', 'bhk514@hanmail.net', NULL),
@@ -330,12 +333,18 @@ CREATE TABLE IF NOT EXISTS `tb_sw` (
   `fd_new_file` varchar(50) DEFAULT NULL,
   `fd_content` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`pk_no`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
--- 테이블 데이터 cilab.tb_sw:1 rows 내보내기
+-- 테이블 데이터 cilab.tb_sw:7 rows 내보내기
 /*!40000 ALTER TABLE `tb_sw` DISABLE KEYS */;
 INSERT INTO `tb_sw` (`pk_no`, `fd_title`, `fd_name`, `fd_date`, `fd_count`, `fd_file`, `fd_new_file`, `fd_content`) VALUES
-	(4, 'sw제목이오', '김관리', '2018-11-09', 0, 'test.png', '5be5cf1c98839.png', '');
+	(4, 'sw제목이오', '김관리', '2018-11-09', 1, 'test.png', '5be5cf1c98839.png', ''),
+	(5, '첨부파일이요', '김관리', '2018-11-10', 0, 'test1.png', '5be718b5253ba.png', '첨부하나있소'),
+	(6, '테스트합니다', '김관리', '2018-11-10', 0, 'test1.png', '5be71934b7184.png', '테스트'),
+	(7, '경로수정했으', '김관리', '2018-11-10', 0, 'test1.png', '5be71a2c84e43.png', '해쓰요'),
+	(8, '나참ㅋㅋ', '김관리', '2018-11-10', 0, 'test1.png', '5be71a57a9e7b.png', '골아파'),
+	(9, '나참ㅋㅋ', '김관리', '2018-11-10', 3, 'test1.png', '5be71a6637a4d.png', '골아파'),
+	(10, '2개', '김관리', '2018-11-10', 1, 'test.png||test1.png', '5be7239d40881.png||5be7239d4100c.png', '2개');
 /*!40000 ALTER TABLE `tb_sw` ENABLE KEYS */;
 
 -- 테이블 cilab.tb_user 구조 내보내기

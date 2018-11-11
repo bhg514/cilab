@@ -2,7 +2,7 @@
 	header ( "content-type:text/html; charset=utf-8" );
 	include '../header.php';
 	$id = $_SESSION['user_id'];
-	if(!isset($id)){
+	if(!isset($id) || $_SESSION['user_type']=="a"){
 		header("location:http://".$http_host."/index.php");
 	}
 
