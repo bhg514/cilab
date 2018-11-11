@@ -194,7 +194,6 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 .btn {
 	display: inline-block;
 	line-height: 1.2;
-	border-radius: 4px;
 	cursor: pointer;
 }
 
@@ -252,6 +251,7 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	color: #fff;
 	vertical-align: middle;
 	border: 1px solid #0074bd;
+	border-radius: 4px;
 	background: #0074bd;
 }
 
