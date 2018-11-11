@@ -294,7 +294,7 @@
 	function while_get_board_list($start_num,$search,$type){
 		$table = table_name($type);
 		$start_num = ($start_num-1)*10;	
-		$query = 'select @ROWNUM := @ROWNUM + 1 AS row, n.* from '.$table.' n, (SELECT @ROWNUM := 0) R where fd_title like "%'.$search.'%" order by pk_no desc limit '.$start_num.', 10';	
+		$query = 'select @ROWNUM := @ROWNUM + 1 AS row, n.* from '.$table.' n, (SELECT @ROWNUM := 0) R where fd_title like "%'.$search.'%" order by row desc limit '.$start_num.', 10';	
 		$result = query_send($query);		
 		return $result;
 	}
