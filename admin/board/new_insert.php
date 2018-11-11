@@ -37,8 +37,12 @@
 		$table = table_name($type);
 		if($type==3)
 			$query = 'insert into '.$table.' (fd_title,fd_name,fd_date,fd_content) values("'.$title.'","'.$_SESSION['user_name'].'","'.date("Y-m-d").'","'.$new_content.'")';
-		else
-				$query = 'insert into '.$table.' (fd_title,fd_name,fd_date,fd_file,fd_new_file,fd_content) values("'.$title.'","'.$_SESSION['user_name'].'","'.date("Y-m-d").'","'.$file_name.'","'.$new_file_name.'","'.$new_content.'")';
+		else if($type==1)
+			$query = 'insert into '.$table.' (fd_title,fd_name,fd_date,fd_file,fd_new_file,fd_content) values("'.$title.'","'.$_SESSION['user_name'].'","'.date("Y-m-d").'","'.$file_name.'","'.$new_file_name.'","'.$new_content.'")';
+		elseif($type==2){
+			$version = $_POST['sw_ver'];
+			$query = 'insert into '.$table.' (fd_title,fd_name,fd_date,fd_file,fd_new_file,fd_content,fd_version) values("'.$title.'","'.$_SESSION['user_name'].'","'.date("Y-m-d").'","'.$file_name.'","'.$new_file_name.'","'.$new_content.'","'.$version.'")';
+		}
 		query_send_non_return($query);
 		
 		header("location:http://".$http_host."/admin/board/list.php?type=".$type);

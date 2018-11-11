@@ -37,14 +37,19 @@
 
 		$table = table_name($type);
 		$query = 'update '.$table.' set fd_title = "'.$title.'",';
+		if($type==2){
+			$vesion = $_POST['sw_version'];
+			$query .= ' fd_version = "'.$vesion.'",';
+		}
 		if($new_file_name!=""){
-			$query .=  ' fd_file = "'.$file_name.'", fd_new_file = "'.$new_file_name.'",' ;	
+			$query .= ' fd_file = "'.$file_name.'", fd_new_file = "'.$new_file_name.'",' ;	
 		}
 		$query.= ' fd_content = "'.$new_content.'" where pk_no ='.$no;
 
 		
 		query_send_non_return($query);
-		header("location:".$_SERVER["HTTP_REFERER"]);
+		header("location:http://".$http_host."/admin/board/list.php?type=".$type);
+		
 
 
 	} catch(Exception $e){

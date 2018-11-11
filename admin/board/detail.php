@@ -76,6 +76,18 @@
 								<th scope="row">조회수</th>
 								<td><?=$info['fd_count']?></td>
 							</tr>
+							<?php
+								if($type==2){
+							?>
+							<tr>
+								<th scope="row">버전</th>
+								<td colspan="3">
+									<input type="text" name="sw_version" value="<?=$info['fd_version']?>">
+								</td>
+							</tr>
+							<?php
+								}
+							?>
 							<tr>
 								<th scope="row">첨부파일</th>
 								<td id="files_td" colspan="3">

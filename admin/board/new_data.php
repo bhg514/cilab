@@ -48,7 +48,17 @@
 							</tr>
 							<?php
 								if($type==1 || $type==2){
-							?>					
+									if($type==2){
+							?>
+							<tr>
+								<th scope="row">버전</th>
+								<td id="files_td" colspan="3">
+									<input type="text" name="sw_ver" id="sw_ver" value="">
+								</td>
+							</tr>	
+							<?php
+									}
+							?>				
 							<tr>
 								<th scope="row">첨부파일</th>
 								<td id="files_td" colspan="3">
