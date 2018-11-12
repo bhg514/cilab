@@ -57,6 +57,11 @@ header h1 a {
 	background: url('../images/common/icon_sitemap.png') no-repeat 0 3px;
 }
 
+.gnb p {
+    display: inline-block;
+    margin: 5px;
+}
+
 .lnb {
 	border-top: 1px solid #a8a8a8;
 }
