@@ -107,7 +107,7 @@ $(document).ready(function(){
 			var total = numberWithCommas(select_price*select_count +del_fee);
 			$('#total_price').text(total);
 		}
-	})
+	});
 
 	$('#select_count').change(function(){
 		var select_price = $('#select_title').val();
@@ -118,8 +118,23 @@ $(document).ready(function(){
 			var total = numberWithCommas(select_price*select_count +del_fee);
 			$('#total_price').text(total);
 		}
-
-	})
+	});
+	
+	/*수량 +/-*/
+	$('.bt_up').click(function(){ 
+	    var n = $('.bt_up').index(this);
+	    var num = $("#select_count:eq("+n+")").val();
+	    num = $("#select_count:eq("+n+")").val(num*1+1); 
+	    $('#select_count').change();
+	  });
+	  $('.bt_down').click(function(){ 
+	    var n = $('.bt_down').index(this);
+	    var num = $("#select_count:eq("+n+")").val();
+	    if(num > 1){
+	    	num = $("#select_count:eq("+n+")").val(num*1-1);
+	    	$('#select_count').change();
+	    }
+	  });
 
 	$('.pro_detail_sub').click(function(e){
 		var click_img = e.target.src;		

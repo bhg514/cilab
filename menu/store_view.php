@@ -33,7 +33,6 @@
 						for($i=0; $i<count($sub_arr);$i++){
 							echo '<li class="mhide"><img class="pro_detail_sub" src="/admin/img/upload_image/'.$sub_arr[$i].'" alt="이미지 설명 입력란"></li>';
 						}
-
 					?>					
 				</ul>
 			</div>
@@ -41,14 +40,11 @@
 				<form id='store_purchase' action="./store_purchase.php" method="post">
 					<p class="title"><?=$info['fd_name']?></p>
 					<input type="hidden" name="no" value="<?=$info['pk_no']?>">
-					<div class="itemViewInputNumber">
-						<input type="number" value="0" id="select_count" name="select_count">
-					</div>
 					<div class="grayBox post">
 					<?php
 						if($info['fd_option']!=null){
 					?>
-						옵션
+						<label for="option_select">옵션</label>
 						<input type="hidden" name="select_name" id="select_name" value="">
 						<input type="hidden" name="select_price" id="select_price" value="">
 						<select id=option_select>
@@ -57,9 +53,7 @@
 								for($i=0; $i<count($option_arr); $i++){
 									$option_info = ex_option($option_arr[$i]);
 									echo '<option value="'.$option_info[1].'" name="'.$option_info[0].'">'.$option_info[0].' / '.$option_info[1].'</option>';
-									
 								}
-							
 							?>
 						</select>
 					<?php
@@ -69,11 +63,17 @@
 					?>
 					</div>
 					<div class="grayBox post">
-						배송비
+						<label for="select_count">수량</label>
+						<input type="button" class="bt_up" value="+">
+						<input type="number" value="1" min="1"  id="select_count" name="select_count">
+						<input type="button" class="bt_down" value="-">
+					</div>
+					<div class="grayBox post">
+						<label for="del_fee">배송비</label>
 						<span class="priceSpan" id="del_fee"><?=$info['fd_delivery']?></span>
 					</div>				
 					<div class="priceBox" >
-						총 상품금액					
+						<label for="total_price">총 상품금액</label>					
 						<span class="priceSpan" id="total_price">0</span>
 					</div>
 

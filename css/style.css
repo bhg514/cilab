@@ -1287,6 +1287,24 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	float: right;
 }
 
+#select_count {
+	float: right;
+	width: 50px;
+	padding: 0 2px;
+	text-align: center;
+}
+
+#select_count::-webkit-outer-spin-button,
+#select_count::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.bt_up, .bt_down {
+	float: right;
+	width: 20px;
+}
+
 .req_label {
 	color: red;
 	display: none;
