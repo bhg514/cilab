@@ -40,7 +40,11 @@
 	width: 100%;
 }
 .loginBox .saveID {margin: 10px 0 0 0;}
-.loginBox .loginInput input {width: 235px;}
+.loginBox .loginInput input {
+	width: 235px !important;
+	height: 50px;
+	position: relative;
+}
 
 .sitemapAreaWrap {margin: 0;}
 .sitemapArea {
