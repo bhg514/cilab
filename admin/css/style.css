@@ -24,8 +24,9 @@ h4 {
 
 .admin_menu {
 	margin: auto;
-	width: 95%;
+	width: 100%;
 	margin-bottom: 40px;
+	padding: 0 30px;
 }
 
 .admin_menu ul {
@@ -71,10 +72,11 @@ h4 {
 
 /*사이드 메뉴*/
 .sidenav {
-	width: 120px;
+	width: 130px;
 	position: relative;
 	z-index: 1;
 	margin-left: 30px;
+	margin-bottom :30px;
 	overflow-x: hidden;
 	float: left;
 }
@@ -106,12 +108,21 @@ h4 {
 	padding: 0 30px 30px 10px !important;
 }
 
-@media screen and (max-height: 450px) {
+@media screen and (max-width: 450px) {
 	.sidenav {
 		padding-top: 15px;
 	}
 	.sidenav a {
-		font-size: 18px;
+		font-size: 15px;
+	}
+	.container {
+		width: auto !important;
+	}
+	.admin_menu {
+	    padding: 0 15px;
+	}
+	.admin_menu ul {
+    	border-bottom: none;
 	}
 }
 
@@ -120,7 +131,7 @@ h4 {
 }
 
 .side_title {
-	font-size: 19px;
+	font-size: 20px;
 	text-align: center;
 	font-weight: 500;
 	color: #1571c9;
