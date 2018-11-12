@@ -8,7 +8,7 @@
 		$_SESSION['pre_url']=$_SERVER["HTTP_REFERER"];
 	}
 ?>
-<script type="text/javascript" src="../js/member.js"></script>
+<script type="text/javascript" src="../js/login.js"></script>
 <section class="container">
 	<div class="visual etc">
 		<p class="subTitle">로그인</p>

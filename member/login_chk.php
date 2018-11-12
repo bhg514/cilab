@@ -18,16 +18,12 @@
 			$query = "update tb_admin set fd_connect='".date('Y-m-d')."' where fd_id='".$chk_info['fd_id']."'";
 			query_send_non_return($query);
 			header("Location: http://".$http_host."/admin/pm/list.php");
-
 		}else{
-			if($pre_url !="http://".$http_host."/member/change_pw.php" )	{
+			if($pre_url !="http://".$http_host."/member/change_pw.php" ){
 				header("Location: ".$pre_url);
 			}else{
 				header("Location: http://".$http_host."/");
 			}
 		}
-		
-		
 	}
-
 ?>
