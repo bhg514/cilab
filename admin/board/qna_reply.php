@@ -10,7 +10,7 @@
 		$query = "update tb_qna set fd_reply = '".$reply."' where pk_no=".$no;
 
 		query_send_non_return($query);
-		header("location:http://".$http_host."admin/board/list.php?type=4");
+		header("location:http://".$http_host."/admin/board/list.php?type=4");
 
 
 	} catch(Exception $e){

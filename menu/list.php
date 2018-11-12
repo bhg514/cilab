@@ -3,11 +3,24 @@
 	include '../header.php';
 	include_once('../common.php');	
 	$type= $_GET['type'] ?? 1;
-	$start_num = 1;
 	$page = $_GET['page'] ?? 1;		
+
+	
 	if($type==1) $head = "공지사항";
 	elseif($type==2) $head = "S/W다운로드";
 	elseif($type==4) $head = "문의하기";
+	$query_string = $_SERVER['QUERY_STRING']; 
+    $query_arr = explode('&', $query_string);
+    
+    $query_string ="";
+
+    foreach ($query_arr as $query) {
+        $query_sp = explode('=', $query);
+        
+        if($query_sp[0]!='page'){
+            $query_string .= $query."&";
+        }
+    }
 ?>
 <section class="container">
 	<div class="visual support">
@@ -30,57 +43,74 @@
 			<table class="tblType01 listView">
 				<caption><?=$head?></caption>
 				<colgroup>
-					<col style="width:70px;" class="mhide">
+				<col style="width:70px;" class="mhide">
 					<col>
-					<col class="noticeDate">
-					<col class="noticeCount">
+				<?php
+						if($type==1||$type==2){
+				?>
+					<col class="listDate">
+					<col class="listCount">
+				<?php
+						}else if($type==4){
+				?>
+					<col class="listWriter">
+					<col class="listDate">
+					<col class="listFile">
+				<?php
+						}
+				?>
 				</colgroup>
 				<thead>
 					<tr>
-						<th scope="col">번호</th>
+						<th scope="col" class="mhide">번호</th>
 						<?php
-							if($type==1||$type==2){
-						?>
-								<th scope="col">제목</th>
-						<?php
-								if($type==1) echo '<th scope="col">날짜</th>';
-								elseif($type==2) echo '<th scope="col">버전</th>';
-						?>
-						
-								<th scope="col">조회수</th>
-						<?php
+							if($type==1) {
+                                echo '<th scope="col">제목</th>
+                                <th scope="col">날짜</th>
+                                <th scope="col">조회수</th>';
+							}elseif($type==2) {
+							    echo '<th scope="col">S/W명</th>
+                                <th scope="col">버전</th>
+                                <th scope="col">다운로드</th>';
 							}else if($type==4){
-
-						?>
-								<th scope="col">문의제목</th>
+								echo '<th scope="col">문의제목</th>
 								<th scope="col">작성자</th>
 								<th scope="col">작성일</th>
-								<th scope="col">첨부파일</th>
-						<?php
+								<th scope="col">첨부파일</th>';
 							}
 						?>
 					</tr>
 				</thead>
 				<tbody>
 					<?php
-									
 						$result = while_get_board_list($page,null,$type);		
 						while ($r = mysqli_fetch_array($result)) {
 					?>
 					<tr>
 						<td class="mhide"><?=$r['row']?></td>
 						<?php
-							if($type==1||$type==2){
+							if($type==1){
 								echo '<td class="title"><a href="detail.php?type='.$type.'&no='.$r["pk_no"].'">'.$r["fd_title"].'</a></td>';
 								echo "<td>".$r['fd_date']."</td>";
 								echo "<td>".$r['fd_count']."</td>";						
+							}else if($type==2){
+								echo '<td class="title"><a href="detail.php?type='.$type.'&no='.$r["pk_no"].'">'.$r["fd_title"].'</a></td>';
+								echo "<td>".$r['fd_version']."</td>";
+								if($r['fd_new_file']!=""){
+									echo "<td><a href='./zip_down.php?zip=".$r["fd_title"]."&new_file=".$r['fd_new_file']."&file=".$r['fd_file']."'><img src='/images/icon/icon_file.png' class='save_img'></a></td>";	
+								}else{
+								    echo "<td></td>";
+								}
 							}else if($type==4){
 								echo '<td class="title"><a href="qna_chk_pw.php?no='.$r["pk_no"].'">'.$r["fd_title"].'</a></td>';
 								echo "<td>".$r['fd_name']."</td>";
 								echo "<td>".$r['fd_date']."</td>";
-								echo "<td>".$r['fd_file']."</td>";
+								if($r['fd_new_file']!=""){
+									echo "<td><a href='./zip_down.php?zip=".$r["fd_title"]."&new_file=".$r['fd_new_file']."&file=".$r['fd_file']."'><img src='/images/icon/icon_file.png' class='save_img'></a></td>";	
+								}else{
+								    echo "<td></td>";
+								}
 							}
-
 						?>
 					</tr>
 					<?php
@@ -97,32 +127,12 @@
 				</a>
 				<?php
 					$total_count = board_count($type, null);
-					$total_count = $total_count[0];
-					if($total_count == 0 ) $total_count = 1;
-					
-					$end_num = 10;
-					$total_page = ceil($total_count/10);
-					if($end_num>$total_page){
-						$for_end = $total_page;
-					}else{
-						$for_end = $end_num;
-					};
-					for($i=$start_num; $i<=$for_end;$i++){			
-						if ($page ==$i){
-							echo "<a class = 'page_num on'>".$i."</a>";
-						}else{
-							echo "<a href='?".$query_string."page=".$i."' class = 'page_nav_btn page_num'>".$i."</a>";
-							
-						}
-					}
-
-					
-
+					$page_info = make_page($page,$total_count,$query_string,10);
 				?>
-				<a href="?<?=$query_string?>page=<?php if($page<$for_end){ echo $page+1;}else{ echo $for_end;} ?>">
+				<a href="?<?=$query_string?>page=<?php if($page<$page_info[0]){ echo $page+1;}else{ echo $page_info[1];} ?>">
 					<img src="/images/icon/btn_next.png" alt="pre" id="next_img" class="page_nav_btn">
 				</a>
-				<a href="?<?=$query_string?>page=<?=$for_end?>">
+				<a href="?<?=$query_string?>page=<?=$page_info[0]?>">
 					<img src="/images/icon/btn_last.png" alt="pre" id="last_img" class="page_nav_btn">
 				</a>
 			</div>				

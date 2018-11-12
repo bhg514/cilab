@@ -2,6 +2,6 @@
 
 <?php
 	
-	echo crypt(1);
+	echo date("ymd");
 
 ?>

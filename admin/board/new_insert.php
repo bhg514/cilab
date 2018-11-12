@@ -26,7 +26,7 @@
 
 		foreach ($file_arr as $file) {
 			if($file['name']!=null){
-				$new_file_name .= file_save($file)."||";
+				$new_file_name .= file_save($file,'../files/')."||";
 				$file_name .= $file['name']."||";
 			}
 		}
@@ -35,10 +35,16 @@
 		$file_name = substr($file_name, 0, -2);
 
 		$table = table_name($type);
-		
-		$query = 'insert into '.$table.' (fd_title,fd_name,fd_date,fd_file,fd_new_file,fd_content) values("'.$title.'","'.$_SESSION['user_name'].'","'.date("Y-m-d").'","'.$file_name.'","'.$new_file_name.'","'.$new_content.'")';
+		if($type==3)
+			$query = 'insert into '.$table.' (fd_title,fd_name,fd_date,fd_content) values("'.$title.'","'.$_SESSION['user_name'].'","'.date("Y-m-d").'","'.$new_content.'")';
+		else if($type==1)
+			$query = 'insert into '.$table.' (fd_title,fd_name,fd_date,fd_file,fd_new_file,fd_content) values("'.$title.'","'.$_SESSION['user_name'].'","'.date("Y-m-d").'","'.$file_name.'","'.$new_file_name.'","'.$new_content.'")';
+		elseif($type==2){
+			$version = $_POST['sw_ver'];
+			$query = 'insert into '.$table.' (fd_title,fd_name,fd_date,fd_file,fd_new_file,fd_content,fd_version) values("'.$title.'","'.$_SESSION['user_name'].'","'.date("Y-m-d").'","'.$file_name.'","'.$new_file_name.'","'.$new_content.'","'.$version.'")';
+		}
 		query_send_non_return($query);
-
+		
 		header("location:http://".$http_host."/admin/board/list.php?type=".$type);
 
 

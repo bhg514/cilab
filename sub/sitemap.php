@@ -16,11 +16,11 @@
 			<div class="sitemapAreaWrap">
 				<div class="sitemapArea">
 					<div class="img"><img src="../images/common/sitemap_01.png" alt="회원정보 변경 이미지"></div>
-					<a href="#a" class="btn type07 st2">회원정보 변경</a>
+					<a href="../mypage/user_chk.php" class="btn type07 st2">회원정보 변경</a>
 				</div>
 				<div class="sitemapArea">
 					<div class="img"><img src="../images/common/sitemap_02.png" alt="주문/배송 조회"></div>
-					<a href="#a" class="btn type07 st2">주문/배송 조회</a>
+					<a href="../mypage/order.php" class="btn type07 st2">주문/배송 조회</a>
 				</div>
 			</div>
 		</div>

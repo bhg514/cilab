@@ -21,14 +21,14 @@
                 <a href="./list.php?type=2" >S/W 다운로드</a>
 				<a href="./list.php?type=4" class="on">문의하기</a>
 			</div>
-			<table class="tblType02">
-				<caption>문의하기</caption>
-				<colgroup>
-					<col style="width:170px;">
-					<col>
-				</colgroup>
-				<tbody>
-					<form enctype='multipart/form-data' id="product_form" action="./product_form.php" method="post">
+			<form enctype='multipart/form-data' id="qna_form" action="./qna_form.php" method="post">
+				<table class="tblType02">
+					<caption>문의하기</caption>
+					<colgroup>
+						<col style="width:170px;">
+						<col>
+					</colgroup>
+					<tbody>
 						<tr>
 							<th scope="row">제목</th>
 							<td><input type="text" class="inTbl" name="title" style="width:100%;"></td>
@@ -47,13 +47,13 @@
 							<th scope="row">비밀번호</th>
 							<td><input type="password" class="inTbl" name=pw></td>
 						</tr>
-					</form>
-				</tbody>
-			</table>
-			<div class="mt20 ar">
-				<a href="#a" class="btn type06">등록</a>
-				<a href="#a" class="btn type06 st2">취소</a>
-			</div>				
+					</tbody>
+				</table>
+				<div class="mt20 ar">
+					<input type="submit" value="등록" id="qna_btn" class="btn type07 st2">
+					<a href="./list.php?type=4" class="btn type06 st2">취소</a>
+				</div>				
+			</form>
 		</div>
 	</div>
 </section>

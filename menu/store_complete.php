@@ -19,8 +19,8 @@
 					<p class="txt1">상품구매를 진심으로 감사드립니다.</p>
 					<p class="txt2">* 주문/배송현황은 주문/배송조회 메뉴에서 확인 가능합니다.</p>
 					<div class="btnArea">
-						<a href="#a" class="btn type06">주문/배송현황</a>
-						<a href="#a" class="btn type06 st2">홈으로</a>
+						<a href="../mypage/order.php" class="btn type06">주문/배송현황</a>
+						<a href="../index.php" class="btn type06 st2">홈으로</a>
 					</div>
 				</div>
 			</div>

@@ -5,11 +5,10 @@
 	include './side.php';
 	include_once("../../common.php");
 	$type = $_GET['type'];
+	if($type==1) $title = "공지사항";
+	elseif($type==2) $title = "SW다운로드";
+	elseif($type==3) $title = "콘텐츠관리";
 ?>
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
@@ -17,24 +16,24 @@
 
 <script type="text/javascript" src="../js/admin.js"></script>
 <section class="container">	
-	
 
-	<div class="contents">
+	<div class="">
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="new_insert" action="new_insert.php" method="post">
 				<fieldset>
-					<table class="product_reg_tb">
+					<table>
 						<div>
-							<div>공지사항</div>
-							<div>Home  » 게시판/콘텐츠 관리 » 공지사항</div>
+							<div class="admin_title"><?=$title?></div>
+							<div class="admin_position">Home  » 게시판/콘텐츠 관리 » <?=$title?></div>
 						</div>
 						<hr class="garo" style="display: block;"> 
-						<div>
-							<a class="btn type07">등록</a>
-							<a class="btn type07">취소</a>
+						<div class="mt20 ar">
+							<input type="submit" value="등록" id="notice_save_btn" class="btn type05">				
+							<a href="/" class="btn type05">취소</a>
+
 						</div>
-						<h3>■ 공지사항</h3>
-						<caption>공지사항</caption>
+						<h4>■ <?=$title?></h4>
+						<caption><?=$title?></caption>
 						<colgroup>
 							<col style="width:170px;">
 							<col>
@@ -49,8 +48,17 @@
 							</tr>
 							<?php
 								if($type==1 || $type==2){
-
-							?>					
+									if($type==2){
+							?>
+							<tr>
+								<th scope="row">버전</th>
+								<td id="files_td" colspan="3">
+									<input type="text" name="sw_ver" id="sw_ver" value="">
+								</td>
+							</tr>	
+							<?php
+									}
+							?>				
 							<tr>
 								<th scope="row">첨부파일</th>
 								<td id="files_td" colspan="3">
@@ -69,29 +77,18 @@
 									</div>
 								</td>
 							</tr>
-											
 						</tbody>
 					</table>
-					<div class="mt20 ar">
-						<input type="submit" value="수정" id="notice_save_btn" class="btn type07 st2">						
-						<a href="/" class="btn type07">취소</a>
-					</div>
 				</fieldset>
 			</form>
 		</div>
 	</div>
 
 </section>
-
+</body>
+</html>
 <?php
-	include '../admin_footer.php';
-	
-
 	echo "<script> 
 			$('#summernote').summernote();
-			$('.note-editable').html('".$info['fd_content']."');
 		</script>";
-
-
-
 ?>

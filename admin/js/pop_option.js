@@ -37,13 +37,7 @@ function add_option_btn(){
 					'<input type="button" value="-" onClick="remove_option_btn(this)">'+
 					'</td>'+
 					'<td>'+
-					'<table>'+
-					'<tr>'+
-					'<td>'+
 					'<input type="text" class="option_price">원'+					
-					'</td>'+
-					'</tr>'+
-					'</table>'+
 					'</td>'+
 					'</tr>';
 

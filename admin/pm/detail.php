@@ -8,13 +8,7 @@
 	$info = product_info($no);
 
 	$sub_arr=explode('||',$info['fd_sub_img']);
-	
-
 ?>
-<!-- include libraries(jQuery, bootstrap) -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
@@ -25,27 +19,23 @@
 <section class="container">	
 	
 
-	<div class="contents">
+	<div class="">
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="product_update" action="product_update.php" method="post">
 				<fieldset>
+					<div>
+						<div class="admin_title">상품관리</div>
+						<div class="admin_position">Home  » 상품 관리 » 상품 관리</div>
+					</div>
+					<hr class="garo" style="display: block;"> 
+					<div class="btn_div">
+						<input type="submit" value="수정" id="product_reg_btn" class="btn type05">
+						<a id="info_del" class="btn type05">삭제</a>
+						<a href="/admin/pm/list.php" class="btn type05">목록</a>
+					</div>
+					<h4>■ 상품정보</h4>
 					<table class="product_reg_tb">
-						<div>
-							<div class="admin_title">상품관리</div>
-							<div class="admin_position">Home  » 상품 관리 » 상품 등록</div>
-						</div>
-						<hr class="garo" style="display: block;"> 
-						<div>
-							<input type="submit" value="수정" id="product_reg_btn" class="btn type07 st2">
-							<a id="info_del" class="btn type07">삭제</a>
-							<a href="/admin/pm/list.php" class="btn type07">목록</a>
-						</div>
-						<h3>■ 상품정보</h3>
-						<caption>상품 등록</caption>
-						<colgroup>
-							<col style="width:170px;">
-							<col>
-						</colgroup>
+						<caption class="readHide">상품 수정</caption>
 						<tbody>
 							<tr>						
 								<th scope="row">상태</th>						
@@ -102,7 +92,7 @@
 								</td>
 							</tr>		
 							<tr>
-								<th scope="row">대표이미지(썸네일이미지)</th>
+								<th scope="row">대표이미지(썸네일)</th>
 								<td>									
 									<input type="file" name="main_img" id="main_img" style="display:none;"/>
 									<input type="hidden" name="old_main_img" value="<?= $info['fd_main_img'] ?>">
@@ -113,25 +103,16 @@
 							<tr>
 								<th scope="row">추가이미지</th>
 								<td>
-									
+									<?php
+										foreach ($sub_arr as $sub) {
+									?>
 									<input type="file" name="sub_img1" id="sub_img1" style="display:none;"/>
-									<input type="hidden" name="old_sub_img1" value="<?php if($sub_arr[0]!=null){ echo $sub_arr[0];}?>">
-									<label for="sub_img1" id="sub_img1_label"><?php if($sub_arr[0]!=null){ echo $sub_arr[0];}else{ echo '클릭하여 이미지 파일을 올려주세요';}?> </label>
+									<input type="hidden" name="old_sub_img1" value="<?php if($sub!=null){ echo $sub;}?>">
+									<label for="sub_img1" id="sub_img1_label"><?php if($sub!=null){ echo $sub;}else{ echo '클릭하여 이미지 파일을 올려주세요';}?> </label>
 									<br/>
-
-									<input type="file" name="sub_img2" id="sub_img2" style="display:none;"/>
-									<input type="hidden" name="old_sub_img2" value="<?php if($sub_arr[1]!=null){ echo $sub_arr[1];}?>">
-									<label for="sub_img2" id="sub_img2_label"><?php if($sub_arr[1]!=null){ echo $sub_arr[1];}else{ echo '클릭하여 이미지 파일을 올려주세요';}?></label>
-									<br/>
-
-									<input type="file" name="sub_img3" id="sub_img3" style="display:none;"/>
-									<input type="hidden" name="old_sub_img3" value="<?php if($sub_arr[2]!=null){ echo $sub_arr[2];}?>">
-									<label for="sub_img3" id="sub_img3_label"><?php if($sub_arr[2]!=null){ echo $sub_arr[2];}else{ echo '클릭하여 이미지 파일을 올려주세요';}?></label>
-									<br/>
-
-									<input type="file" name="sub_img4" id="sub_img4" style="display:none;"/>
-									<input type="hidden" name="old_sub_img4" value="<?php if($sub_arr[3]!=null){ echo $sub_arr[3];}?>">
-									<label for="sub_img4" id="sub_img4_label"><?php if($sub_arr[3]!=null){ echo $sub_arr[3];}else{ echo '클릭하여 이미지 파일을 올려주세요';}?></label>
+									<?php
+										}
+									?>
 								</td>
 							</tr>					
 							<tr>
@@ -139,15 +120,14 @@
 								<td>
 									<label><input type="radio" name="option" value="y" onclick="pop_option();" <?php if($info['fd_option']!=""){ echo "checked";}?> > 옵션 설정</label>
 									<label><input type="radio" name="option" value="n" <?php if($info['fd_option']==""){ echo "checked";}?> > 옵션 미설정</label>				
-									<input type="text" id="option_input" name="option_input" value="<?=$info['fd_option']?>">												
+									<input type="hidden" id="option_input" name="option_input" value="<?=$info['fd_option']?>">												
 								</td>
 							</tr>	
 							<tr>
 								<th scope="row">상세내용</th>
 								<td>
 									<input type="hidden" name="content_val" id="content_hidden">
-									<div id="summernote">										
-									</div>
+									<div id="summernote"></div>
 								</td>
 							</tr>
 							<tr>
@@ -160,25 +140,17 @@
 							</tr>				
 						</tbody>
 					</table>
-					<div class="mt20 ar">
-						
-					</div>
 				</fieldset>
 			</form>
 		</div>
 	</div>
 
 </section>
-
+</body>
+</html>
 <?php
-	include '../admin_footer.php';
-	
-
-	echo "<script> 
-			$('#summernote').summernote();
-			$('.note-editable').html('".$info['fd_content']."');
-		</script>";
-
-
-
+	echo '<script> 
+			$(\'#summernote\').summernote();
+			$(\'.note-editable\').html("'.$info['fd_content'].'");
+		</script>';
 ?>

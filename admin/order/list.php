@@ -11,11 +11,9 @@
 	$start_num = 1;
 	$date = $_GET['date'] ?? '';
 
-	$order_no = 0; //임의 선언
-	if($product_name!=null){
-	    $order_no = order_get_order_no($product_name);
-	}
-	$total_count = order_get_count($order_number,$order_name,$order_no,$type);	
+	
+	$total_count = order_get_count($order_number,$order_name,$product_name,$type);	
+
 	if($type==1){
 		$type_text = '신규 주문';
 		$list_text = '결제';
@@ -99,7 +97,7 @@
 		?>
 		<a class="btn type05" id="list_del">삭제</a>
 	</div>
-	<table>
+	<table class="list-table">
 		<caption class="readHide">주문 관리</caption>
 		<thead class="admin_list">
 			<tr>
@@ -124,9 +122,9 @@
 		<tbody>
 				<?php	
 					if ($type == 5){
-						$result = while_get_order_list_date($page,$order_number,$order_name,$order_no,$type,$date);
+						$result = while_get_order_list_date($page,$order_number,$order_name,$product_name,$type,$date);
 					}else{
-						$result = while_get_order_list($page,$order_number,$order_name,$order_no,$type);
+						$result = while_get_order_list($page,$order_number,$order_name,$product_name,$type);
 					}			
 					while ($r = mysqli_fetch_array($result)) {
 				?>
@@ -138,7 +136,7 @@
 				<td class="tbody_td"><?= $r['row']?></td>
 				<td class="tbody_td"><?= $r['fd_date']?></td>
 				<td class="tbody_td"><a href="detail.php?type=<?=$type?>&no=<?=$r['pk_no']?>"><?= $r['fk_order_number']?></a></td>
-				<td class="tbody_td"><?=$r['fd_product_count']?></td>
+				<td class="tbody_td"><?=$r['fd_name']?></td>
 				<td class="tbody_td"><?=$r['fd_order_name']?></td>
 				<td class="tbody_td"><?=$r['fd_price']?></td>
 				<?php
@@ -172,30 +170,15 @@
 		</a>
 		<?php
 			
-			$end_num = 10;
-			$total_page = ceil($total_count[0]/10);
-			
-			if($end_num>$total_page){
-				$for_end = $total_page;
-			}else{
-				$for_end = $end_num;
-			};
-			for($i=$start_num; $i<=$for_end;$i++){			
-				if ($page ==$i){
-					echo "<span class = 'page_num page_select'>".$i."</span>";
-				}else{
-					echo "<a href='?".$query_string."page=".$i."' class = 'page_nav_btn page_num'>".$i."</a>";
-					
-				}
-			}
+			$page_info = make_page($page,$total_count,$query_string,10);
 
 			
 
 		?>
-		<a href="?<?=$query_string?>page=<?php if($page<$for_end){ echo $page+1;}else{ echo $for_end;} ?>">
+		<a href="?<?=$query_string?>page=<?php if($page<$page_info[0]){ echo $page+1;}else{ echo $page_info[1];} ?>">
 			<img src="/images/icon/btn_next.png" alt="pre" id="next_img" class="page_nav_btn">
 		</a>
-		<a href="?<?=$query_string?>page=<?=$for_end?>">
+		<a href="?<?=$query_string?>page=<?=$page_info[0]?>">
 			<img src="/images/icon/btn_last.png" alt="pre" id="last_img" class="page_nav_btn">
 		</a>
 	</div>	
@@ -204,8 +187,32 @@
 	    <div><img src="/images/icon/loading.gif" /></div>
 	</div>  
 
-
-
-
 </section>
+
+<?php
+echo '<script>
+var url_string = window.location.href
+var url = new URL(url_string);
+var order_number = url.searchParams.get("order_number");
+var product_name = url.searchParams.get("product_name");
+var order_name = url.searchParams.get("order_name");
+
+
+
+	if(order_number!=null){
+		$("#search_input").val(order_number)
+		$("#search_select").val("order_number").attr("selected","true");
+	}else if(product_name!=null){
+		$("#search_input").val(product_name)
+		$("#search_select").val("product_name").attr("selected","true");
+	}else if(order_name!=null){
+		$("#search_input").val(order_name)
+		$("#search_select").val("order_name").attr("selected","true");
+	}
+
+</script>';
+?>
+
+</body>
+</html>
 

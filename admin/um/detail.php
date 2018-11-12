@@ -10,28 +10,27 @@
 	};
 
 	$info = user_get_info($no,"tb_user");
-
 ?>
+
 <script type="text/javascript" src="../js/admin.js"></script>
 <section class="container">	
 	
-
-	<div class="contents">
+	<div class="">
 		<div class="tabletInner">
 			<form enctype='multipart/form-data' id="user_update" action="user_update.php" method="post">
 				<fieldset>
-					<table class="product_reg_tb">
+					<table>
 						<div>
-							<div>회원관리</div>
-							<div>Home  » 회원관리 » 회원관리</div>
+							<div class="admin_title">회원관리</div>
+							<div class="admin_position">Home  » 회원관리 » 회원관리</div>
 						</div>
 						<hr class="garo" style="display: block;"> 
 						<div class="mt20 ar">
-							<input type="submit" value="등록" id="save_btn" class="btn type07 st2">
-							<a id="info_del" class="btn type07">삭제</a>
-							<a href="/admin/um/list.php" class="btn type07">목록</a>
+							<input type="submit" value="등록" id="save_btn" class="btn type05">
+							<a id="info_del" class="btn type05">삭제</a>
+							<a href="/admin/um/list.php" class="btn type05">목록</a>
 						</div>
-						<h3>■ 회원관리</h3>
+						<h4>■ 회원관리</h4>
 						<caption>회원관리</caption>
 						<colgroup>
 							<col style="width:170px;">
@@ -83,9 +82,6 @@
 			</form>
 		</div>
 	</div>
-
 </section>
-
-<?php
-	include '../admin_footer.php';
-?>
+</body>
+</html>

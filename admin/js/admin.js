@@ -12,7 +12,7 @@ $(document).ready(function() {
 			    arr : chk_arr,
 			    type : "start"
 			},
-			dataType: "json",
+			dataType: "text",
 			success: function(data) {   	        	
 			    location.reload();
 			}
@@ -30,7 +30,7 @@ $(document).ready(function() {
 			    arr : chk_arr,
 			    type : "stop"
 			},
-			dataType: "json",
+			dataType: "text",
 			success: function(data) {   	        	
 			    location.reload();
 			    
@@ -49,7 +49,7 @@ $(document).ready(function() {
 			data: { 
 			    arr : chk_arr			    
 			},
-			dataType: "json",
+			dataType: "text",
 			success: function(data) {   	        	
 			    location.reload();
 			    
@@ -58,24 +58,25 @@ $(document).ready(function() {
 	})
 
    	$('#list_del').click(function(){	   	
-		var chk_arr = mk_chk_no_arr();	
-   		if(mk_chk_no_arr.length !=0){
-			if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-				var type = window.location.href.split('?')[0].split('admin')[1].split('/')[1]
-				$.ajax({
-					type: "POST",
-					url: "../ajax/list_dell.php",
-					cache: false,
-					async: false,
-					data: { 
-					    arr : chk_arr,
-					    type : type
-					},
-					dataType: "json",
-					success: function(data) {   	        	
-					    location.reload();
-					}
-				});
+
+		if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+			var chk_arr = mk_chk_no_arr();	
+			var type = window.location.href.split('?')[0].split('admin')[1].split('/')[1]
+			$.ajax({
+				type: "POST",
+				url: "../ajax/list_dell.php",
+				cache: false,
+				async: false,
+				data: { 
+				    arr : chk_arr,
+				    type : type
+				},
+				dataType: "text",
+				success: function(data) {   	        	
+				    location.reload();
+				}
+			});
+
 
 			}else{   //취소
 				return;
@@ -102,11 +103,16 @@ $(document).ready(function() {
    		var select = document.getElementById("search_select");
    		var select_val = select.options[select.selectedIndex].value;
    		var input_val = $('#search_input').val();   		
-   		
-   		if(input_val!=""){
-   			location.href="?"+select_val+"="+input_val;   			
-   		}else{
-   			location.href="?";
+   		if(select_val=="category"){   			
+   			select = document.getElementById("cate_sel");
+   			var cate_sel = select.options[select.selectedIndex].value;	
+   			location.href="?"+select_val+"="+cate_sel;
+   		}else{   			
+	   		if(input_val!=""){
+	   			location.href="?"+select_val+"="+input_val;   			
+	   		}else{
+	   			location.href="?";
+	   		}
    		}
 
     });
@@ -170,9 +176,8 @@ $(document).ready(function() {
     
     $('#day_search_btn, #month_search_btn').click(function(e){
     	var start_date = $(e.target).siblings()[0].value;
-    	var end_date = $(e.target).siblings()[1].value;
-    	
-    	location.href="?start_date="+start_date+"&end_date="+end_date;
+    	var end_date = $(e.target).siblings()[2].value;    	
+    	location.href="?type=5&start_date="+start_date+"&end_date="+end_date;
     })
 
     $('#input_invoice').click(function(){
@@ -190,7 +195,7 @@ $(document).ready(function() {
 			    no_arr : chk_no_arr,			    
 			    invoice_arr : invoice_arr
 			},
-			dataType: "json",
+			dataType: "text",
 
 			success: function(data) {   	        	
 			    location.reload();
@@ -255,8 +260,6 @@ $(document).ready(function() {
     		},
 			success: function(data) {   	        					
 			    location.href ="http:\/\/"+window.location.host+"/admin/order/list.php?type=1"
-
-			    
 			}
 		});
 
@@ -401,6 +404,12 @@ $(document).ready(function() {
 
     });
 
+
+
+	$('#btnFoldWrap').click(function(){
+		$('#daum_juso_pagemb_zip').hide()
+	})
+
 });
 
 
@@ -419,7 +428,7 @@ function addNewStyle(newStyle) {
 
 
 function mk_chk_no_arr(){
-	var chk_count = $('.list_chk').size();
+	var chk_count = $('.list_chk').length;
 	var chk_arr = []
 	for(var i=0; i<chk_count; i++){
 		if($('.list_chk')[i].checked){
@@ -431,7 +440,7 @@ function mk_chk_no_arr(){
 }
 
 function mk_chk_arr(){
-	var chk_count = $('.list_chk').size();
+	var chk_count = $('.list_chk').length;
 	var chk_arr = []
 	for(var i=0; i<chk_count; i++){
 		if($('.list_chk')[i].checked){

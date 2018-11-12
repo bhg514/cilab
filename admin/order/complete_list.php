@@ -70,7 +70,7 @@
 	<div class="summary_div">
 		<span>주문수 총 <?=$info['total']?>건</span>/<span>판매금액 총 <?=$info['price']?>원</span>/<span>배송비 총 <?=$info['del']?>원</span>
 	</div>
-	<table>
+	<table class="list-table">
 		<caption class="readHide">판매완료</caption>
 		<thead class="admin_list">
 			<tr>
@@ -111,33 +111,12 @@
 		</a>
 		<?php
 			$total_count = complete_count($start_date,$end_date);
-			$total_count = $total_count[0];
-			if($total_count == 0 ) $total_count = 1;
-			
-			
-			$end_num = 10;
-			$total_page = ceil($total_count/10);
-			if($end_num>$total_page){
-				$for_end = $total_page;
-			}else{
-				$for_end = $end_num;
-			};
-			for($i=$start_num; $i<=$for_end;$i++){			
-				if ($page ==$i){
-					echo "<span class = 'page_num page_select'>".$i."</span>";
-				}else{
-					echo "<a href='?".$query_string."page=".$i."' class = 'page_nav_btn page_num'>".$i."</a>";
-					
-				}
-			}
-
-			
-
+			$page_info = make_page($page,$total_count,$query_string,10);
 		?>
-		<a href="?<?=$query_string?>page=<?php if($page<$for_end){ echo $page+1;}else{ echo $for_end;} ?>">
+		<a href="?<?=$query_string?>page=<?php if($page<$page_info[0]){ echo $page+1;}else{ echo $page_info[1];} ?>">
 			<img src="/images/icon/btn_next.png" alt="pre" id="next_img" class="page_nav_btn">
 		</a>
-		<a href="?<?=$query_string?>page=<?=$for_end?>">
+		<a href="?<?=$query_string?>page=<?=$page_info[0]?>">
 			<img src="/images/icon/btn_last.png" alt="pre" id="last_img" class="page_nav_btn">
 		</a>
 	</div>	
@@ -145,9 +124,25 @@
 	<div class="wrap-loading display-none">
 	    <div><img src="/images/icon/loading.gif" /></div>
 	</div>  
-
-
-
-
 </section>
+
+<?php
+echo '<script>
+	var url_string = window.location.href
+	var url = new URL(url_string);
+	var start_date = url.searchParams.get("start_date");
+	var end_date = url.searchParams.get("end_date");
+	if(start_date.split("-").length==2){
+		$("#search_select").val("2").attr("selected","true");
+	}else{
+		$("#search_select").val("1").attr("selected","true");
+	}
+	$("#datepicker1").val(start_date)
+	$("#datepicker2").val(end_date)
+
+</script>';
+?>
+
+</body>
+</html>
 

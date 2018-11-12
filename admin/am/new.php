@@ -9,23 +9,22 @@
 <script type="text/javascript" src="../js/admin.js"></script>
 <section class="container">	
 	
-
-	<div class="contents">
+	<div class="">
 		<div class="tabletInner">
-			<form enctype='multipart/form-data' id="user_update" action="user_update.php" method="post">
+			<form enctype='multipart/form-data' id="admin_insert" action="admin_insert.php" method="post">
 				<fieldset>
-					<table class="product_reg_tb">
+					<table>
 						<div>
-							<div>회원관리</div>
-							<div>Home  » 회원관리 » 회원관리</div>
+							<div class="admin_title">관리자관리</div>
+							<div class="admin_position">Home  » 관리자관리 » 관리자관리</div>
 						</div>
 						<hr class="garo" style="display: block;"> 
 						<div class="mt20 ar">
-							<input type="submit" value="등록" id="save_btn" class="btn type07 st2">
-							<a href="/" class="btn type07">취소</a>
+							<input type="submit" value="등록" id="save_btn" class="btn type05">
+							<a href="/" class="btn type05">취소</a>
 						</div>
-						<h3>■ 회원관리</h3>
-						<caption>회원관리</caption>
+						<h4>■ 관리자관리</h4>
+						<caption>관리자관리</caption>
 						<colgroup>
 							<col style="width:170px;">
 							<col>
@@ -37,8 +36,6 @@
 									<input type="text" name="id" value="">
 								</td>
 							</tr>
-											
-							
 							<tr>
 								<th scope="row">비밀번호</th>
 								<td colspan="3"><input id="pw" type="password" name="pw"></td>
@@ -49,7 +46,6 @@
 									<input id="pw_re" type="password" >
 									<span id="wrong_pw" class="fcR ml05 fs12 b hide">비밀번호가 일치하지 않습니다.</span>
 								</td>
-
 							</tr>
 							<tr>						
 								<th scope="row">이름</th>						
@@ -79,14 +75,11 @@
 							</tr>									
 						</tbody>
 					</table>
-					
 				</fieldset>
 			</form>
 		</div>
 	</div>
 
 </section>
-
-<?php
-	include '../admin_footer.php';
-?>
+</body>
+</html>

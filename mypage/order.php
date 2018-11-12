@@ -1,9 +1,11 @@
 <?php
 	header ( "content-type:text/html; charset=utf-8" );
 	include '../header.php';
-	if(!isset($_SESSION['user_id'])){
+	$id = $_SESSION['user_id'];
+	if(!isset($id) || $_SESSION['user_type']=="a"){
 		header("location:http://".$http_host."/index.php");
 	}
+
 ?>
 <section class="container">
 	<div class="visual store">
@@ -41,6 +43,7 @@
 							<th scope="col">상품명</th>
 							<th scope="col">총액</th>
 							<th scope="col">상태</th>
+							<th scope="col">송장번호</th>
 							<th scope="col">배송조회</th>
 							<th scope="col">반품신청</th>
 							<th scope="col">환불신청</th>
@@ -48,66 +51,55 @@
 						</tr>
 					</thead>
 					<tbody>
+						<?php
+										
+							$result = user_order_list($id);		
+							while ($r = mysqli_fetch_array($result)) {
+						?>
 						<tr>
-							<td>2017.09.02</td>
-							<td class="title">ROV1</td>
-							<td>255,000원</td>
-							<td>배송중</td>
-							<td><a href="#a" class="btn type05">배송조회</a></td>
-							<td><a href="#a" class="btn type05">반품신청</a></td>
-							<td><a href="#a" class="btn type05">환불신청</a></td>
-							<td><a href="#a" class="btn type05">구매확정</a></td>
+							<td><?=$r['fd_date']?></td>
+							<td><?=$r['fd_name']?></td>
+							<td><?=$r['fd_price']+$r['fd_del_fee']?></td>
+							<td>
+								<?php
+									if($r['fd_status']==1) echo "주문완료";
+									elseif($r['fd_status']==2) echo "상품준비중";
+									elseif($r['fd_status']==3) echo "배송중";
+									elseif($r['fd_status']==4) echo "배송완료";
+									elseif($r['fd_status']==5) echo "구매확정";
+									elseif($r['fd_status']==6) echo "주무문취소";
+									elseif($r['fd_status']==7) echo "교환";
+									elseif($r['fd_status']==8) echo "반품";
+								?>
+							</td>
+							<td><?=$r['fd_invoice_number']?></td>
+							<td>
+								<?php if($r['fd_status']==3||$r['fd_status']==4) echo '<a onclick="del_lookup(\'http://service.epost.go.kr/trace.RetrieveRegiPrclDeliv.postal?sid1='.$r['fd_invoice_number'].'\')" class="btn type05">배송조회</a>';
+								?>
+							</td>
+							<td>
+								<?php if($r['fd_status']==4) echo '<a href="#a" class="btn type05">반품신청</a>';
+								?>								
+							</td>
+							<td>
+								<?php if($r['fd_status']<5) echo '<a href="#a" class="btn type05">환불신청</a>';
+								?>
+							</td>
+							<td>
+								<?php if($r['fd_status']==4) echo '<a href="#a" class="btn type05">구매확정</a>';
+								?>
+								
+							</td>							
 						</tr>
-						<tr>
-							<td>2017.09.02</td>
-							<td class="title">ROV1</td>
-							<td>255,000원</td>
-							<td>배송중</td>
-							<td><a href="#a" class="btn type05">배송조회</a></td>
-							<td><a href="#a" class="btn type05">반품신청</a></td>
-							<td><a href="#a" class="btn type05">환불신청</a></td>
-							<td><a href="#a" class="btn type05">구매확정</a></td>
-						</tr>
-						<tr>
-							<td>2017.09.02</td>
-							<td class="title">ROV1</td>
-							<td>255,000원</td>
-							<td>배송중</td>
-							<td><a href="#a" class="btn type05">배송조회</a></td>
-							<td><a href="#a" class="btn type05">반품신청</a></td>
-							<td><a href="#a" class="btn type05">환불신청</a></td>
-							<td><a href="#a" class="btn type05">구매확정</a></td>
-						</tr>
-						<tr>
-							<td>2017.09.02</td>
-							<td class="title">ROV1</td>
-							<td>255,000원</td>
-							<td>배송중</td>
-							<td><a href="#a" class="btn type05">배송조회</a></td>
-							<td><a href="#a" class="btn type05">반품신청</a></td>
-							<td><a href="#a" class="btn type05">환불신청</a></td>
-							<td><a href="#a" class="btn type05">구매확정</a></td>
-						</tr>
-						<tr>
-							<td>2017.09.02</td>
-							<td class="title">ROV1</td>
-							<td>255,000원</td>
-							<td>배송중</td>
-							<td><a href="#a" class="btn type05">배송조회</a></td>
-							<td><a href="#a" class="btn type05">반품신청</a></td>
-							<td><a href="#a" class="btn type05">환불신청</a></td>
-							<td><a href="#a" class="btn type05">구매확정</a></td>
-						</tr>
+						<?php
+							}
+						?>	
+						
+					
 					</tbody>
 				</table>
 			</div>
-			<div class="mt20 fs15">
-				<label><input type="checkbox"> 상품구매에 동의합니다.</label>
-			</div>
-			<div class="mt20 ar">
-				<a href="#a" class="btn type06">상품구매</a>
-				<a href="#a" class="btn type06 st2">취소</a>
-			</div>
+			<div>
 		</div>
 	</div>
 </section>

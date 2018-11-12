@@ -43,10 +43,10 @@
 	</div>	
 	<div class="btn_div">
 		<?php if($type!=4)
-			echo '<a class="btn type05" href="new_data.php?type=<?=$type?>">등록</a>'
+			echo '<a class="btn type05" href="new_data.php?type='.$type.'">등록</a>'
 		?>		
 	</div>
-	<table>
+	<table class="list-table">
 		<caption class="readHide">상품 관리</caption>
 		<thead class="admin_list">
 			<tr>
@@ -56,7 +56,6 @@
 				<th scope="col" class="thead_th">작성일</th>
 				<?php
 					if($type==1 || $type==2){
-
 				?>
 				<th scope="col" class="thead_th">조회수</th>
 				<th scope="col" class="thead_th">첨부파일</th>
@@ -69,8 +68,7 @@
 		</thead>
 		<tbody>
 				<?php
-								
-					$result = while_get_board_list($start_num,$search,$type);		
+					$result = while_get_board_list($page,$search,$type);		
 					while ($r = mysqli_fetch_array($result)) {
 				?>
 			<tr>				
@@ -86,10 +84,14 @@
 				<td class="tbody_td"><?=$r['fd_date']?></td>
 				<?php
 					if($type==1 || $type==2){
-
 				?>
 				<td class="tbody_td"><?=$r['fd_count']?></td>
-				<td class="tbody_td"><?php if($r['fd_file']!=null) echo '<img src="/images/icon/save.png" class="save_img">';?></td>
+				<td class="tbody_td">
+					<?php if($r['fd_file']!=null) 
+						echo "<a href='zip_down.php?zip=".$r["fd_title"]."&new_file=".$r['fd_new_file']."&file=".$r['fd_file']."'><img src='/images/icon/icon_file.png' class='save_img'></a>";
+
+					?>					
+				</td>
 				<?php
 					}elseif ($type==4) {
 						if($r['fd_reply']!=null)
@@ -98,8 +100,6 @@
 					}	
 				?>				
 			</tr>
-			
-
 				<?php
 				}
 				?>
@@ -114,32 +114,12 @@
 		</a>
 		<?php
 			$total_count = board_count($type, $search);
-			$total_count = $total_count[0];
-			if($total_count == 0 ) $total_count = 1;
-			
-			$end_num = 10;
-			$total_page = ceil($total_count/10);
-			if($end_num>$total_page){
-				$for_end = $total_page;
-			}else{
-				$for_end = $end_num;
-			};
-			for($i=$start_num; $i<=$for_end;$i++){			
-				if ($page ==$i){
-					echo "<span class = 'page_num page_select'>".$i."</span>";
-				}else{
-					echo "<a href='?".$query_string."page=".$i."' class = 'page_nav_btn page_num'>".$i."</a>";
-					
-				}
-			}
-
-			
-
+			$page_info = make_page($page,$total_count,$query_string,10);
 		?>
-		<a href="?<?=$query_string?>page=<?php if($page<$for_end){ echo $page+1;}else{ echo $for_end;} ?>">
+		<a href="?<?=$query_string?>page=<?php if($page<$page_info[0]){ echo $page+1;}else{ echo $page_info[1];} ?>">
 			<img src="/images/icon/btn_next.png" alt="pre" id="next_img" class="page_nav_btn">
 		</a>
-		<a href="?<?=$query_string?>page=<?=$for_end?>">
+		<a href="?<?=$query_string?>page=<?=$page_info[0]?>">
 			<img src="/images/icon/btn_last.png" alt="pre" id="last_img" class="page_nav_btn">
 		</a>
 	</div>	
@@ -147,9 +127,6 @@
 	<div class="wrap-loading display-none">
 	    <div><img src="/images/icon/loading.gif" /></div>
 	</div>  
-
-
-
-
 </section>
-
+</body>
+</html>

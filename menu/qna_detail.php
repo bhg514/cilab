@@ -35,7 +35,7 @@
             <article id="bo_v">
                 <section id="bo_v_atc">
                     <h2 id="bo_v_atc_title">본문</h2>
-                    <table class="product_reg_tb">                        
+                    <table>                        
                         <tbody>
                             <tr>                        
                                 <th scope="row">문의 제목</th>                     
@@ -51,14 +51,10 @@
                                 <th scope="row">첨부파일</th>
                                 <td olspan="3">
                                     <?php 
-                                        if($info['fd_file']!=""){
-                                            foreach ($fd_file as $file) {
-                                                echo '<img src="/images/icon/save.png" class="save_img"><label>'.$file.'</label><br/>';
-                                            }                                           
+                                        if($info['fd_file']!=""){                                            
+                                            echo '<a href="file_down.php?file='.$info['fd_new_file'].'&name='.$info['fd_file'].'"><img src="../images/icon/icon_file.png" class="save_img"><label>'.$info['fd_file'].'</label><br/></a>';
                                         }
                                     ?>
-                                    
-                                    
                                 </td>
                                 <input type="hidden" name="file_count" id="file_count" value="">
                             </tr>                            

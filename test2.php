@@ -1,51 +1,51 @@
 <?php
-header('Content-Type:text/csv;charset=UTF-8;');
-include_once('common.php');
 
-$query = "select pk_no, fd_name, fd_price, fd_category, fd_stock, fd_date, fd_status, fd_delivery, fd_made, fk_admin, fd_option from tb_product order by pk_no";
-$result = query_send($query);
-// CSV 파일 최상단에 표기 할 내용입니다. 
-$csv_dump = "NO, 상품명, 가격, 카테고리, 재고, 날짜, 상태, 배송비, 제조국, 등록자, 옵션";
-$csv_dump .= "\r\n"; 
-
-while ($row = mysqli_fetch_array($result)) {
+$a='<img style="width: 50%;" src="data:image/png;base64,iVBORw0KGgoAA" data-filename="test.png">';
+$b='<img style="width: 50%;" src="data:image/png;base64,iVBORw0KGgoAA" data-filename="test.png">';
 
 
-// 행 값을 csv_dump 에 쓸어담습니다 -_-; 
-$csv_dump .= $row['pk_no'].","; 
-$csv_dump .= $row['fd_name'].","; 
-$csv_dump .= $row['fd_price'].","; 
+function img_save($data){
+    //$data = data:image/png;base64,iVBORw0KGgoAA
+    list($type, $imageData) = explode(';', $data); // data:image/png  , base64,iVBORw0KGgoAA
+    list(,$extension) = explode('/',$type);  //  data:image   ,   png
+    list(,$imageData) = explode(',', $imageData); // base64    ,    iVBORw0KGgoAA
+    $fileName = "../img/upload_image/".uniqid().'.'.$extension;
+    /*
+    $extension = png
+    $imageData = iVBORw0KGgoAA
 
-if($row['fd_category']==1) $csv_dump .= "Water Drones,";
-elseif($row['fd_category']==2) $csv_dump .= "Upgrade & Accessories,";
-elseif($row['fd_category']==3) $csv_dump .= "DIY & Parts,";
-elseif($row['fd_category']==4) $csv_dump .= "Water Education Kit,";
+    */
 
-$csv_dump .= $row['fd_stock'].","; 
-$csv_dump .= $row['fd_date'].","; 
+    //$imageData = base64_decode($imageData);
+    //file_put_contents($fileName, $imageData);       
+    return $fileName;
+}
 
-if($row['fd_status']==1) $csv_dump .= "판매중,";
-elseif($row['fd_status']==2) $csv_dump .= "판매중지,";
-
-$csv_dump .= $row['fd_delivery'].","; 
-$csv_dump .= $row['fd_made'].","; 
-$csv_dump .= $row['fk_admin'].","; 
-$csv_dump .= $row['fd_option']; 
-$csv_dump .= "\r\n"; 
-
-} // while문 종료 
-
-// CSV 파일로 저장합니다. 파일명을 날짜를 붙여 생성합니다. 
-$date = date("YmdHi"); 
-$filename = "csvoutput_".$date.".csv"; 
+preg_match_all("/<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>/i", $a, $matches);
 
 
 
-header("Content-Disposition: attachment; filename=$filename"); 
+if(count($matches[0]) >0){ // img가 있을 때 
+    
+    $img_data_arr = $matches[1];
+    $old_img_tag_arr = $matches[0];
+    $test = $old_img_tag_arr;
+    $new_img_tag_arr = array();         
 
-echo "\xEF\xBB\xBF"; 
+    for($i=0; $i<count($img_data_arr); $i++){
 
-echo $csv_dump; 
+        $file_name = img_save($img_data_arr[$i]); //이미지 저장
 
+        $file_name=str_replace("..", "/admin", $file_name); //path 설정
+        $img_tag=preg_replace("/ src=(\"|\')?([^\"\']+)(\"|\')?/","src=".$file_name,$old_img_tag_arr[$i]);
+        $img_tag = preg_replace("/ data-filename=(\"|\')?([^\"\']+)(\"|\')?/","",$img_tag);
 
-?> 
+        array_push($new_img_tag_arr, $img_tag);
+    }
+
+    for ($i=0; $i<count($old_img_tag_arr); $i++) {
+        $contents = str_replace($old_img_tag_arr[$i], $new_img_tag_arr[$i], $contents);
+    }
+}
+?>
+
