@@ -17,10 +17,12 @@
 		$zip = $_POST['mb_zip'];
 		$addr1 = $_POST['mb_addr1'];
 		$addr2 = $_POST['mb_addr2'];
+		$addr1 = $_POST['mb_addr3'];
+		$addr2 = $_POST['mb_addr4'];
 		$today = date("Y-m-d"); 
 		$mail_reception = $_POST['mail_reception'];
 
-		$sql = 'INSERT INTO tb_user (fd_id, fd_pw, fd_name, fd_hp, fd_mail, fd_zip, fd_address1, fd_address2, fd_reception, fd_date, fd_gender, fd_birthday) VALUES ("'.$id.'", "'.$pw.'", "'.$name.'","'.$hp.'","'.$mail.'", "'.$zip.'", "'.$addr1.'", "'.$addr2.'", "'.$mail_reception.'", "'.$today.'", "'.$gender.'", "'.$birthday.'")';
+		$sql = 'INSERT INTO tb_user (fd_id, fd_pw, fd_name, fd_hp, fd_mail, fd_zip, fd_address1, fd_address2, fd_address3, fd_address4, fd_reception, fd_date, fd_gender, fd_birthday) VALUES ("'.$id.'", "'.$pw.'", "'.$name.'","'.$hp.'","'.$mail.'", "'.$zip.'", "'.$addr1.'", "'.$addr2.'", "'.$addr3.'", "'.$addr4.'", "'.$mail_reception.'", "'.$today.'", "'.$gender.'", "'.$birthday.'")';
 		
 		query_send_non_return($sql);
 		$_SESSION['reg_user_id'] = $id;		

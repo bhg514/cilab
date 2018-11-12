@@ -75,12 +75,7 @@ $(document).ready(function() {
 				success: function(data) {   	        	
 				    location.reload();
 				}
-			});
-
-
-			}else{   //취소
-				return;
-			}
+			});			
 		}else{
 			alert("체크박스를 선택하세요.");
 		}
@@ -408,6 +403,22 @@ $(document).ready(function() {
 
 	$('#btnFoldWrap').click(function(){
 		$('#daum_juso_pagemb_zip').hide()
+	})
+
+
+	$('#chk_down_pm').click(function(){
+		var chk_arr = mk_chk_no_arr();
+		chk_arr = chk_arr.toString();
+		var url = "../data_download.php?type1=product&type2=2&chk_arr="+chk_arr
+		document.location = url
+		
+	})
+	$('#chk_down_order').click(function(){
+		var chk_arr = mk_chk_no_arr();
+		chk_arr = chk_arr.toString();
+		var url = "../data_download.php?type1=order&type2=2&chk_arr="+chk_arr
+		document.location = url
+		
 	})
 
 });

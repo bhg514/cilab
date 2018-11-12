@@ -50,8 +50,8 @@
 	</div>
 	
 	<div class="btn_div">
-		<a class="btn type05" id="all_down">전체 상품 엑셀 다운로드</a>
-		<a class="btn type05">엑셀 다운로드</a>
+		<a class="btn type05" href="../data_download.php?type1=product&type2=1">전체 상품 엑셀 다운로드</a>
+		<a class="btn type05" id="chk_down_pm">엑셀 다운로드</a>
 		<a class="btn type05" id="sell_start">판매시작</a>
 		<a class="btn type05" id="sell_stop">판매중지</a>
 		<a class="btn type05" id="list_del">삭제</a>
@@ -96,14 +96,7 @@
 				<td class="tbody_td"><?=$r['fd_stock']?></td>
 				<td class="tbody_td"><?=$r['fd_price']?></td>
 				<td class="tbody_td"><?=$r['fd_date']?></td>
-				<td class="tbody_td">
-					<?php 
-						if($r['fd_status']==1) echo "판매 중";
-						elseif($r['fd_status']==2) echo "판매 중지";						
-					?>
-					
-						
-				</td>
+				<td class="tbody_td"><?=$r['fd_status']?></td>
 			</tr>
 			
 

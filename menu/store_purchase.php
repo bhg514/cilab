@@ -136,7 +136,7 @@
 						<tr>
 							<th scope="row">주소</th>
 							<td>
-								<label for="reg_mb_zip" class="sound_only">우편번호</label>
+								<!-- <label for="reg_mb_zip" class="sound_only">우편번호</label>
 								<input type="text" name="mb_zip" value="<?=$user['fd_zip']?>" id="reg_mb_zip" class="inTbl frm_input required" size="5" maxlength="6" readonly >
 								<a href="javascript:win_zip('fregisterform', 'mb_zip', 'mb_addr1', 'mb_addr2', 'mb_addr3', 'mb_addr_jibeon');" class="btn type05 ml10">주소 검색</a><br/>
 								<div id="daum_juso_pagemb_zip" style="display:none; border:1px solid; left:0px; width:100%; height:267px; margin:5px 0px;position:relative;">
@@ -148,7 +148,17 @@
 								<label for="reg_mb_addr2">상세주소</label>
 								<br>							
 								<input type="hidden" name="mb_addr_jibeon" value="R">
-								<label class="req_label" id="label_addr">주소를 입력해주세요.</label>
+								<label class="req_label" id="label_addr">주소를 입력해주세요.</label> -->
+								<input type="text" name="mb_zip" value="<?=$user['fd_zip']?>" id="reg_mb_zip" class="inTbl frm_input required" size="5" maxlength="6" >
+								<label for="reg_mb_zip">우편번호</label><br/>
+								<input type="text" name="mb_addr4" value="<?=$user['fd_address4']?>" id="reg_mb_addr4"  class="inTbl frm_input required" size="50" >
+								<label for="reg_mb_addr4">상세주소</label><br/>
+								<input type="text" name="mb_addr3" value="<?=$user['fd_address3']?>" id="reg_mb_addr3"  class="inTbl frm_input required " size="50">
+								<label for="reg_mb_addr3">구</label><br/>
+								<input type="text" name="mb_addr2" value="<?=$user['fd_address2']?>" id="reg_mb_addr2"  class="inTbl frm_input required " size="50">
+								<label for="reg_mb_addr2">시</label><br/>
+								<input type="text" name="mb_addr1" value="<?=$user['fd_address1']?>" id="reg_mb_addr1"  class="inTbl frm_input required " size="50">
+								<label for="reg_mb_addr1">국가</label>
 							</td>
 						</tr>
 						<tr>

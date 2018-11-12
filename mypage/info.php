@@ -146,7 +146,7 @@
 							</tr>
 							<tr>
 								<th scope="row">주소</th>
-								<td>
+								<!-- <td>
 									<label for="reg_mb_zip" class="sound_only">우편번호</label>
 									<input type="text" name="mb_zip" value="<?=$user_info['fd_zip']?>" id="reg_mb_zip" class="inTbl frm_input required" size="5" maxlength="6" readonly >
 									<a href="javascript:win_zip('fregisterform', 'mb_zip', 'mb_addr1', 'mb_addr2', 'mb_addr3', 'mb_addr_jibeon');" class="btn type05 ml10">주소 검색</a>
@@ -160,13 +160,25 @@
 									<label for="reg_mb_addr2">상세주소</label>
 									<br>							
 									<input type="hidden" name="mb_addr_jibeon" value="R">
+								</td> -->
+								<td>
+									<input type="text" name="mb_zip" value="<?=$user_info['fd_zip']?>" id="reg_mb_zip" class="inTbl frm_input required" size="5" maxlength="6" >
+									<label for="reg_mb_zip">우편번호</label><br/>
+									<input type="text" name="mb_addr4" value="<?=$user_info['fd_address4']?>" id="reg_mb_addr4"  class="inTbl frm_input required" size="50" >
+									<label for="reg_mb_addr4">상세주소</label><br/>
+									<input type="text" name="mb_addr3" value="<?=$user_info['fd_address3']?>" id="reg_mb_addr3"  class="inTbl frm_input required " size="50">
+									<label for="reg_mb_addr3">구</label><br/>
+									<input type="text" name="mb_addr2" value="<?=$user_info['fd_address2']?>" id="reg_mb_addr2"  class="inTbl frm_input required " size="50">
+									<label for="reg_mb_addr2">시</label><br/>
+									<input type="text" name="mb_addr1" value="<?=$user_info['fd_address1']?>" id="reg_mb_addr1"  class="inTbl frm_input required " size="50">
+									<label for="reg_mb_addr1">국가</label>									
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">메일수신여부</th>
 								<td>
-									<label><input type="radio" name="mail_reception" value="y" <?php if($user_info['fd_reception']=="y"){ echo "checked";}?>> 동의함</label>
-									<label><input type="radio" name="mail_reception" value="n"<?php if($user_info['fd_reception']=="n"){ echo "checked";}?>> 동의하지 않음</label>
+									<label><input type="radio" name="mail_reception" value="y" <?php if($user_info['fd_reception']=="o"){ echo "checked";}?>> 동의함</label>
+									<label><input type="radio" name="mail_reception" value="n"<?php if($user_info['fd_reception']=="x"){ echo "checked";}?>> 동의하지 않음</label>
 									<span id="wrong_mail_reception" class="fcR ml05 fs12 b hide">메일 수신 여부를 선택하세요</span>										
 								</td>
 							</tr>					

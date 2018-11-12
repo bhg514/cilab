@@ -86,9 +86,7 @@
 							<tr>
 								<th scope="row">제조국</th>
 								<td>
-									<select name="made">
-										<option value="대한민국">대한민국</option>
-									</select>
+									<input type="type" name="made" value="<?=$info['fd_made']?>">									
 								</td>
 							</tr>		
 							<tr>

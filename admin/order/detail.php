@@ -28,7 +28,7 @@
 					</div>
 					<hr class="garo" style="display: block;"> 
 					<div class="btn_div">
-						<a class="btn type05">엑셀 다운로드</a>
+						<a class="btn type05" href="../data_download.php?type1=order&type2=3&no=<?=$no?>">엑셀 다운로드</a>
 						<?php 
 							if($type==1) echo '<a class="btn type05" id="detail_order_chk">주문확인</a>';
 							elseif ($type==2) echo '<a class="btn type05">송장입력</a>';

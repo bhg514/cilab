@@ -87,8 +87,8 @@
 	</div>
 	
 	<div class="btn_div">
-		<a class="btn type05">전체 상품 엑셀 다운로드</a>
-		<a class="btn type05">엑셀 다운로드</a>
+		<a class="btn type05" href="../data_download.php?type1=order&type2=1">전체 상품 엑셀 다운로드</a>
+		<a class="btn type05" id="chk_down_order">엑셀 다운로드</a>
 		<?php 
 			if($type==1) echo '<a class="btn type05" id="order_chk">주문확인</a>';
 			elseif($type==2) echo '<a class="btn type05" id="input_invoice">송장입력 확인</a>';
