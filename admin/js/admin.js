@@ -58,26 +58,30 @@ $(document).ready(function() {
 	})
 
    	$('#list_del').click(function(){	   	
-		if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-			var chk_arr = mk_chk_no_arr();	
-			var type = window.location.href.split('?')[0].split('admin')[1].split('/')[1]
-			$.ajax({
-				type: "POST",
-				url: "../ajax/list_dell.php",
-				cache: false,
-				async: false,
-				data: { 
-				    arr : chk_arr,
-				    type : type
-				},
-				dataType: "json",
-				success: function(data) {   	        	
-				    location.reload();
-				}
-			});
+		var chk_arr = mk_chk_no_arr();	
+   		if(mk_chk_no_arr.length !=0){
+			if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+				var type = window.location.href.split('?')[0].split('admin')[1].split('/')[1]
+				$.ajax({
+					type: "POST",
+					url: "../ajax/list_dell.php",
+					cache: false,
+					async: false,
+					data: { 
+					    arr : chk_arr,
+					    type : type
+					},
+					dataType: "json",
+					success: function(data) {   	        	
+					    location.reload();
+					}
+				});
 
-		}else{   //취소
-			return;
+			}else{   //취소
+				return;
+			}
+		}else{
+			alert("체크박스를 선택하세요.");
 		}
 	});
 

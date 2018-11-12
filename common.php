@@ -28,7 +28,7 @@
 	}
 
 	function query_send($query){
-		global $mysqli;
+		global $mysqli;		
 		return mysqli_query($mysqli, $query);
 	}
 
@@ -57,6 +57,7 @@
 	function get_all_info_to_id($id){
 		$query = 'select * from (select fd_id, fd_pw, fd_type, fd_name from tb_admin where fd_id="'.$id.'" union select fd_id, fd_pw, fd_type ,fd_name from tb_user where fd_id="'.$id.'") a';
 		$result = query_send($query);
+
 		$info = mysqli_fetch_array($result);
 		return $info;
 	}
