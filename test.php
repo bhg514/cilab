@@ -2,6 +2,6 @@
 
 <?php
 	
-	echo date("ymd");
+	echo date("Y-m-d H:i:s");
 
 ?>

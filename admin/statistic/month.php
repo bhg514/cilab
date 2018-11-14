@@ -27,7 +27,7 @@
 		</select>
 	</div>	
 	<div class="btn_div">
-		<a class="btn type05" href="#">엑셀다운로드</a>	
+		<a class="btn type05" href="../data_download.php?type1=statistic&type2=1&year=<?=$year?>">엑셀다운로드</a>	
 	</div>
 	<table class="list-table">
 		<caption class="readHide">월별통계</caption>

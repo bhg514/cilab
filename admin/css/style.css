@@ -336,3 +336,9 @@ table caption {
 	display: none;
 	margin: 0 5px;
 }
+
+.file_upload_notice{
+	font-size: 15px;
+    color: #f90606;
+     margin: 0;
+}

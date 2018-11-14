@@ -3,7 +3,7 @@ header('Content-Type:text/csv;charset=UTF-8;');
 include_once('../common.php');
 
 $type1 = $_GET['type1']; //다운 table 
-$type2 = $_GET['type2']; // 전체 or 부분
+$type2 = $_GET['type2'] ?? 1; // 전체 or 부분
 
 
 $date = date("YmdHi"); 
@@ -149,6 +149,61 @@ if($type1=="product"){//상품 다운
 	}
 
 }elseif ($type1=="statistic") {
+	if ($type2 == 1){ //년
+		$year = $_GET['year'];
+		$filename = "statistic_".$year."y_".$date.".csv"; 
+		$query = "select * from tb_admin";
+		$result = query_send($query);
+		$result = while_get_month_list($year);
+		$count = 0;
+		$csv_dump = "년,월,주문수,판매금액";
+		$csv_dump .="\r\n"; 
+		$order_count = 0;
+		$order_price = 0;
+		while ($row = mysqli_fetch_array($result)) {
+			$order_count =$order_count +(int)$row['count'];
+			$order_price =$order_price +(int)$row['total'];
+			if($count ==0 ){
+				$csv_dump .= $year."년";
+				$count++;
+			}
+			$csv_dump .= ",";
+			$csv_dump .= $row['month'].'월,';		
+			$csv_dump .= $row['count'].',';
+			$csv_dump .= '"'.number_format($row['total']).'"';
+			$csv_dump .= "\r\n"; 
+		}
+		$csv_dump .=",총계,".$order_count.',"'.number_format($order_price).'"';	
+
+	}else{ //월
+		$year = $_GET['year'];
+		$month = $_GET['month'];
+		$filename = "statistic_".$year."/".$month."_".$date.".csv"; 
+		$result = while_get_day_list($year,$month);
+		$count = 0;
+		$csv_dump = "년,월,일,주문수,판매금액";
+		$csv_dump .="\r\n"; 
+		$order_count = 0;
+		$order_price = 0;
+		while ($row = mysqli_fetch_array($result)) {
+			$order_count =$order_count +(int)$row['count'];
+			$order_price =$order_price +(int)$row['total'];
+			if($count ==0 ){
+				$csv_dump .= $year."년,";
+				$csv_dump .= $month."월,";
+				$count++;
+			}else{
+				$csv_dump .= ",,";
+				
+			}
+			$csv_dump .= $row['day'].'일,';		
+			$csv_dump .= $row['count'].',';
+			$csv_dump .= '"'.number_format($row['total']).'"';
+			$csv_dump .= "\r\n"; 
+		
+		}
+		$csv_dump .=",,총계,".$order_count.',"'.number_format($order_price).'"';	
+	}
 	
 }
 
