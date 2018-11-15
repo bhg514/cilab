@@ -58,7 +58,7 @@
 						</select>
 					<?php
 						}else{
-							echo '가격 <span class=priceSpan id=pro_price>'.$info["fd_price"].'</span>';
+							echo '가격 <span class=priceSpan id=pro_price>'.number_format($info["fd_price"]).'</span>';
 						}
 					?>
 					</div>
@@ -70,7 +70,7 @@
 					</div>
 					<div class="grayBox post">
 						<label for="del_fee">배송비</label>
-						<span class="priceSpan" id="del_fee"><?=$info['fd_delivery']?></span>
+						<span class="priceSpan" id="del_fee"><?=number_format($info['fd_delivery'])?></span>
 					</div>				
 					<div class="priceBox" >
 						<label for="total_price">총 상품금액</label>					

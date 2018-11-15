@@ -97,7 +97,7 @@ $(document).ready(function(){
 		var select_val = $('#option_select option:selected').attr('name');
 		var select_price = $('#option_select option:selected').val();
 		var select_count = $('#select_count').val();
-		var del_fee = Number($('#del_fee').text());
+		var del_fee = Number(uncomma($('#del_fee').text()));
 		$('#select_title').prop("selected", true);
 		$('#select_title').val(select_price);
 		$('#select_name').val(select_val);
@@ -111,9 +111,9 @@ $(document).ready(function(){
 
 	$('#select_count').change(function(){
 		var select_price = $('#select_title').val();
-		if (select_price==null) select_price = Number($('#pro_price').text())
+		if (select_price==null) select_price = Number(uncomma($('#pro_price').text()))
 		var select_count = $('#select_count').val();
-		var del_fee = Number($('#del_fee').text());
+		var del_fee = Number(uncomma($('#del_fee').text()));
 		if(select_price!=0){
 			var total = numberWithCommas(select_price*select_count +del_fee);
 			$('#total_price').text(total);
@@ -242,4 +242,10 @@ function numberWithCommas(x) {
 
 function del_lookup(url){
 	window.open(url,'childForm','width=800, height=500,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');
+}
+
+//금액 콤마 제거
+function uncomma(str) {
+    str = String(str);
+    return str.replace(/[^\d]+/g, '');
 }
