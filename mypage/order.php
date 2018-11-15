@@ -58,7 +58,7 @@
 						?>
 						<tr>
 							<td><?=$r['fd_date']?></td>
-							<td><?=$r['fd_name']?></td>
+							<td onclick="pop_order(<?=$r['pk_no']?>,'order');"><?=$r['fd_name']?></td>
 							<td><?=$r['fd_price']+$r['fd_del_fee']?></td>
 							<td>
 								<?php
@@ -78,11 +78,11 @@
 								?>
 							</td>
 							<td>
-								<?php if($r['fd_status']==4) echo '<a href="#a" class="btn type05">반품신청</a>';
+								<?php if($r['fd_status']==4) echo '<a onclick=pop_order('.$r['pk_no'].',"exchange"); class="btn type05">반품신청</a>';
 								?>								
 							</td>
 							<td>
-								<?php if($r['fd_status']<5) echo '<a href="#a" class="btn type05">환불신청</a>';
+								<?php if($r['fd_status']<5) echo '<a onclick=pop_order('.$r['pk_no'].',"refund"); class="btn type05">환불신청</a>';
 								?>
 							</td>
 							<td>

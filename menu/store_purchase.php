@@ -65,8 +65,12 @@
 						<tbody>
 							<tr>
 								<td><?=$info['fd_name']?></td>
-								<td><?=$option_name?></td>
-								<td><?=$count?></td>
+								<td name="product_option"><?=$option_name?></td>
+								<td name="product_count"><?=$count?></td>
+								<input type="hidden" name="product_name" value="<?=$info['fd_name']?>">
+								<input type="hidden" name="product_option" value="<?=$option_name?>">
+								<input type="hidden" name="product_count" value="<?=$count?>">
+								
 								<td>
 								<?php 
 									if($option_price!=null) echo number_format($option_price*$count);

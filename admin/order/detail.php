@@ -45,24 +45,18 @@
 								<td><?=$info['fk_order_number']?></td>
 								<th>주문일</th>
 								<td><?=$info['fd_date']?></td>								
-							</tr>
-							<?php
-								$result = while_get_order_product($no);
-								while ($r = mysqli_fetch_array($result)) {
-							?>
+							</tr>							
 							<tr>
 								<th>주문상품</th>
-								<td><?=$r['fd_product_name']?></td>
+								<td><?=$info['fd_product_name']?></td>
 								<th>수량</th>
-								<td><?=$r['fd_count']?></td>								
+								<td><?=$info['fd_product_count']?></td>								
 							</tr>
 							<tr>
 								<th>주문옵션</th>
-								<td colspan="3"><?=$r['fd_option']?></td>
+								<td colspan="3"><?=$info['fd_product_option']?></td>
 							</tr>
-							<?php
-								}
-							?>
+							
 							<tr>
 								<th>주문자</th>
 								<td><?=$info['fd_order_name']?></td>

@@ -249,3 +249,15 @@ function uncomma(str) {
     str = String(str);
     return str.replace(/[^\d]+/g, '');
 }
+
+
+function pop_order(no,type){
+	window.name = "parentForm";	
+	if(type == "order")
+		open_win = window.open('./pop_order.php?no='+no,'childForm','width=730, height=730,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
+	else if(type=="exchange")
+		open_win = window.open('./pop_exchange.php?no='+no,'childForm','width=730, height=730,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
+	else if(type=="refund")
+		open_win = window.open('./pop_refund.php?no='+no,'childForm','width=730, height=730,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
+
+}
