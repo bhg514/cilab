@@ -28,6 +28,9 @@
 ?>
 <script type="text/javascript" src="../js/register.js"></script><!-- 우편 --> 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script><!-- 우편 --> 
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<!-- iamport.payment.js -->
 <section class="container">
 	<div class="visual store">
 		<p class="subTitle">STORE</p>
@@ -67,9 +70,9 @@
 								<td><?=$info['fd_name']?></td>
 								<td name="product_option"><?=$option_name?></td>
 								<td name="product_count"><?=$count?></td>
-								<input type="hidden" name="product_name" value="<?=$info['fd_name']?>">
-								<input type="hidden" name="product_option" value="<?=$option_name?>">
-								<input type="hidden" name="product_count" value="<?=$count?>">
+								<input type="hidden" name="product_name" id="product_name" value="<?=$info['fd_name']?>">
+								<input type="hidden" name="product_option" id="product_option" value="<?=$option_name?>">
+								<input type="hidden" name="product_count" id="product_count" value="<?=$count?>">
 								
 								<td>
 								<?php 
@@ -83,9 +86,15 @@
 										if($option_price!=null) echo number_format($option_price*$count+$info['fd_delivery']);
 										else echo number_format($info['fd_price']*$count+$info['fd_delivery']);
 									?>
-									<input type="hidden" name="del_fee" value="<?=$info['fd_delivery']?>">
-									<input type="hidden" name="price" value="<?=$info['fd_price']?>">
-									<input type="hidden" name="no" value="<?=$info['pk_no']?>">
+									<input type="hidden" name="del_fee" id="del_fee" value="<?=$info['fd_delivery']?>">
+									<input type="hidden" name="price" id="price" value=
+									<?php 
+										if($option_price!=null) echo ($option_price*$count);
+										else echo ($info['fd_price']*$count);
+									?>
+									>
+									<input type="hidden" name="no" id="no" value="<?=$info['pk_no']?>">
+
 								</td>
 							</tr>
 						</tbody>

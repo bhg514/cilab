@@ -1,10 +1,11 @@
 <?php
 require_once(dirname(__DIR__).'/config/iamport.php');
-
+include_once("../common.php");
 $iamport = new Iamport('3711648782051850', 'njUZPJD8vJha87TYkVvwL6xoIlYCk9mHshGh0jpv3GFcNzb8vHEgNbFvwE8QNuygLexLyXhCEWPsw0B1');
 
 $imp_uid = $_POST['imp_uid'];
 $merchant_uid = $_POST['merchant_uid'];
+$product_info = $_POST['product_info'];
 
 #1. imp_uid 로 주문정보 찾기(아임포트에서 생성된 거래고유번호)
 $result = $iamport->findByImpUID($imp_uid); //IamportResult 를 반환(success, data, error)
@@ -33,8 +34,20 @@ if ( $result->success ) {
 	echo 'Custom Data :'	. $payment_data->getCustomData('my_key');
 
 	# 내부적으로 결제완료 처리하시기 위해서는 (1) 결제완료 여부 (2) 금액이 일치하는지 확인을 해주셔야 합니다.
-	$amount_should_be_paid = 100;
-	if ( $payment_data->status === 'paid' && $payment_data->amount === $amount_should_be_paid ) {
+
+	$query = "select fd_option,fd_delivery from tb_product where pk_no = '".$product_info['no']."'";
+	$info = query_send($query);	
+	
+    $options = explode('||',$info['fd_option']);
+
+    for($i=0; $i<count($options);$i++){
+        $option = explode('^', $options[$i]);
+        if($option[0]==$product_info['option']){
+            $option_price = $option[1];
+        }
+    }
+    $amount_paid = $option_price * $product_info['count'] + $info['fd_delivery'];
+	if ( $payment_data->status === 'paid' && $payment_data->amount === $amount_paid ) {
 		//TODO : 결제성공 처리
 		echo '{ status: "success", message: "일반 결제 성공" }';
 	}

@@ -194,6 +194,62 @@ $(document).ready(function(){
 		
 		if(return_chk==1)
 			return false;
+		product_name = $('#product_name').val()
+		amount = Number($('#del_fee').val()) + Number($('#price').val())
+		buyer_name = $('#order_name').val()
+		buyer_mail = $('#order_mail').val()
+		buyer_tel = $('#order_hp').val()
+		buyer_addr = $('#reg_mb_addr1').val()+$('#reg_mb_addr2').val()+$('#reg_mb_addr3').val()+$('#reg_mb_addr4').val()
+		buyer_postcode = $('#reg_mb_zip').val()
+		no = $('#no').val()
+		count = $('#product_count').val()
+		option_name = $('#product_option').val()
+
+		product_info={"no":no,"count":count,"option":option_name,"amount":amount}
+		var IMP = window.IMP; // 생략해도 괜찮습니다.
+		IMP.init("imp66859917"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
+
+	    // IMP.request_pay(param, callback) 호출
+	    IMP.request_pay({ // param
+	        pg: "html5_inicis",
+	        pay_method: "card",
+	        merchant_uid: "181116001",
+	        name: product_name,
+	        amount: amount,
+	        buyer_email: buyer_mail,
+	        buyer_name: buyer_name,
+	        buyer_tel: buyer_tel,
+	        buyer_addr: buyer_addr,
+	        buyer_postcode: buyer_postcode
+	    }, function (rsp) { // callback
+	        if (rsp.success) {
+	            jQuery.ajax({
+		            url: "../ajax/pay_chk.php", // 가맹점 서버
+		            method: "POST",
+		            headers: { "Content-Type": "application/json" },
+		            data: {
+		                imp_uid: rsp.imp_uid,
+		                merchant_uid: rsp.merchant_uid,
+		                product_info: product_info
+		            }
+		        }).done(function (data) {
+					switch(data.status) {
+		                case "vbankIssued":
+		                    alert('가상계좌!!');
+		                    break;
+		                case "success":
+		                    alert('결제 완료!!');
+		                    break;
+		            }
+		        })
+	        } else {
+	        	alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+	        }
+	    });
+
+
+
+
 
 
 	})
