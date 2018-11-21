@@ -70,9 +70,7 @@
 								<td><?=$info['fd_name']?></td>
 								<td name="product_option"><?=$option_name?></td>
 								<td name="product_count"><?=$count?></td>
-								<input type="hidden" name="product_name" id="product_name" value="<?=$info['fd_name']?>">
-								<input type="hidden" name="product_option" id="product_option" value="<?=$option_name?>">
-								<input type="hidden" name="product_count" id="product_count" value="<?=$count?>">
+								
 								
 								<td>
 								<?php 
@@ -86,14 +84,17 @@
 										if($option_price!=null) echo number_format($option_price*$count+$info['fd_delivery']);
 										else echo number_format($info['fd_price']*$count+$info['fd_delivery']);
 									?>
+									<input type="hidden" name="product_name" id="product_name" value="<?=$info['fd_name']?>">
+									<input type="hidden" name="product_option" id="product_option" value="<?=$option_name?>">
+									<input type="hidden" name="product_count" id="product_count" value="200">
 									<input type="hidden" name="del_fee" id="del_fee" value="<?=$info['fd_delivery']?>">
+									<input type="hidden" name="no" id="no" value="<?=$info['pk_no']?>">
 									<input type="hidden" name="price" id="price" value=
 									<?php 
 										if($option_price!=null) echo ($option_price*$count);
 										else echo ($info['fd_price']*$count);
 									?>
 									>
-									<input type="hidden" name="no" id="no" value="<?=$info['pk_no']?>">
 
 								</td>
 							</tr>
@@ -245,7 +246,8 @@
 					<label class="req_label" id="label_chk">구매에 동의해주세요.</label>
 				</div>
 				<div class="mt20 ar">
-					<input type="submit" value="상품구매" id="store_pur_btn" class="btn type06">
+					<input type="" id="store_pur_btn" class="btn type06" value="상품구매">
+					<!-- <a id="store_pur_btn" class="btn type06">상품구매</a> -->
 					<a href="#a" class="btn type06 st2">취소</a>
 				</div>
 			</form>
