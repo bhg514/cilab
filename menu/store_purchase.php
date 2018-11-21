@@ -86,7 +86,7 @@
 									?>
 									<input type="hidden" name="product_name" id="product_name" value="<?=$info['fd_name']?>">
 									<input type="hidden" name="product_option" id="product_option" value="<?=$option_name?>">
-									<input type="hidden" name="product_count" id="product_count" value="200">
+									<input type="hidden" name="product_count" id="product_count" value="<?=$count?>">
 									<input type="hidden" name="del_fee" id="del_fee" value="<?=$info['fd_delivery']?>">
 									<input type="hidden" name="no" id="no" value="<?=$info['pk_no']?>">
 									<input type="hidden" name="price" id="price" value=

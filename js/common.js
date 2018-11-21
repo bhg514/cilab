@@ -308,11 +308,10 @@ function pay_pop(){
 	                product_info: product_info
 	            }
 	        }).done(function (data) {
-	        	if(data.status=="success"){
-					location.href="./store_complete.php";
-	        		
+	        	if(data=="success"){
+					location.href="./store_complete.php";	        		
 	        	}else{
-	        		alert("결제에 실패하였습니다. 에러 내용: " +  data.message);
+	        		alert("결제에 실패하였습니다. 에러 내용: " +  data);
 	        	}
 	        })
         } else {
