@@ -7,8 +7,10 @@
 					<p class="tel">(TEL)055-785-0710</p>
 					<p class="fax">(FAX)055-785-0711</p>
 					<p class="email">(e-mail)mmx001@cilab.kr</p>
-					<select onclick="perinfo()">
-						<option value="">개인정보처리방침</option>
+					<select id="terms_sel">
+						<option value="0" hidden>약관보기</option>
+						<option value="1">개인정보처리방침</option>
+						<option value="2">이용약관</option>
 					</select>
 				</div>
 				<div>

@@ -84,6 +84,8 @@
 										if($option_price!=null) echo number_format($option_price*$count+$info['fd_delivery']);
 										else echo number_format($info['fd_price']*$count+$info['fd_delivery']);
 									?>
+									<input type="hidden" name="imp_uid" id="imp_uid" value="">
+									<input type="hidden" name="merchant_uid" id="merchant_uid" value="">
 									<input type="hidden" name="product_name" id="product_name" value="<?=$info['fd_name']?>">
 									<input type="hidden" name="product_option" id="product_option" value="<?=$option_name?>">
 									<input type="hidden" name="product_count" id="product_count" value="<?=$count?>">

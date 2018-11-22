@@ -13,8 +13,8 @@ function requestPay() {
     // IMP.request_pay(param, callback) 호출
     IMP.request_pay({ // param
         pg: "html5_inicis",
-        pay_method: "card",
-        merchant_uid: "181116001",
+        pay_method: "vbank",
+        merchant_uid: "1811160011",
         name: "결제테스트",
         amount: 100,
         buyer_email: "bhk514@hanmail.net",

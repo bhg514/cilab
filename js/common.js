@@ -109,6 +109,7 @@ $(document).ready(function(){
 		}
 	});
 
+
 	$('#select_count').change(function(){
 		var select_price = $('#select_title').val();
 		if (select_price==null) select_price = Number(uncomma($('#pro_price').text()))
@@ -195,16 +196,20 @@ $(document).ready(function(){
 		if(return_chk==1)
 			return false;
 		pay_pop()
-
-
-
-
-
-
 	})
 	$('#btnFoldWrap').click(function(){
     	$('#daum_juso_pagemb_zip').hide()
     })
+	$('#terms_sel').change(function(){
+		var select_terms = $('#terms_sel option:selected').val();
+		if(select_terms ==1){
+			window.open('/privacy.html','index','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');
+		}else{
+			window.open('/TOS.html','index','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');
+		}
+		$('#terms_sel').val('0').prop('selected', true)
+	})
+
 
 
 });
@@ -234,10 +239,10 @@ function popup(url,id,width,height) {
 	window.open(url,id,"toolbar=no,location=no,status=no,menubar=no,scrollbars=no,left=0, top=0, resizable=no,width=" + width + "px,height=" + height + "px");
 }
 
-// 개인정보처리방침 팝업
+/*// 개인정보처리방침 팝업
 function perinfo(){
-	window.open('/privacy.html','index','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');
-}
+	window.open('/TOS.html','index','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');
+}*/
 
 //숫자 콤마
 function numberWithCommas(x) {
@@ -308,10 +313,20 @@ function pay_pop(){
 	                product_info: product_info
 	            }
 	        }).done(function (data) {
-	        	if(data=="success"){
-					location.href="./store_complete.php";	        		
-	        	}else{
-	        		alert("결제에 실패하였습니다. 에러 내용: " +  data);
+	        	data = JSON.parse(data)
+	        	if(data.msg=="success"){
+	        		$('#imp_uid').val(data.imp_uid)
+	        		$('#merchant_uid').val(data.merchant_uid)
+	        		
+	        		document.forms["sotre_form"].submit()						        		
+	        	}else if(data.msg=="forgery"){
+	        		alert("결제에 실패하였습니다. 에러 내용: 결제금액 위조가 감지되었습니다.");
+	        	}else if(data.msg=="forgery_error"){
+	        		alert("결제에 실패하였습니다. 에러 내용: 결제금액 위조가 감지되었습니다.\n관리자 확인 후 결제 취소처리 될 예정입니다.");
+	        		$('#imp_uid').val(data.imp_uid)
+	        		$('#merchant_uid').val(data.merchant_uid)
+
+	        		document.forms["sotre_form"].submit()
 	        	}
 	        })
         } else {

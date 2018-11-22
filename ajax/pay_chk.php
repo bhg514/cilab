@@ -51,21 +51,26 @@ if ( $result->success ) {
 	}else{
 		$amount_paid = $info['fd_price'] * $product_info['count'] + $info['fd_delivery'];
 	}
+	$return_val=new stdClass();
 	if ( $payment_data->status === 'paid' && $payment_data->amount === $amount_paid ) {
 		//TODO : 결제성공 처리
-		echo 'success';
+		$return_val->msg = 'success';
+		$return_val->imp_uid = $imp_uid;
+		$return_val->merchant_uid = $merchant_uid;
+		
 	}else{
 		$result = $iamport->cancel(array(
 			'imp_uid'		=> $imp_uid, 		//merchant_uid에 우선한다
 			'merchant_uid'	=> $merchant_uid, 	//imp_uid 또는 merchant_uid가 지정되어야 함
 			'amount' 		=> 0,					//amount가 생략되거나 0이면 전액취소. 금액지정이면 부분취소(PG사 정책별, 결제수단별로 부분취소가 불가능한 경우도 있음)
-			'reason'		=> '결제 금액 불일치',				//취소사유
+			'reason'		=> '결제 금액 위조',				//취소사유
 		));
 		if ( $result->success ) {
-			echo 'error';
+			$return_val->msg = 'forgery';			
 		}else{
-			error_log($result->error['code']);
-			error_log($result->error['message']);
+			$return_val->msg = 'forgery_error';
+			$return_val->imp_uid = $imp_uid;
+			$return_val->merchant_uid = $merchant_uid;
 		}
 
 	}
@@ -73,3 +78,5 @@ if ( $result->success ) {
 	error_log($result->error['code']);
 	error_log($result->error['message']);
 }
+
+echo json_encode($return_val);
