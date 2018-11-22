@@ -210,8 +210,6 @@ $(document).ready(function(){
 		$('#terms_sel').val('0').prop('selected', true)
 	})
 
-
-
 });
 
 // mouse Hover

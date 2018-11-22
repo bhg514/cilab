@@ -177,8 +177,8 @@
 							<tr>
 								<th scope="row">메일수신여부</th>
 								<td>
-									<label><input type="radio" name="mail_reception" value="y" <?php if($user_info['fd_reception']=="o"){ echo "checked";}?>> 동의함</label>
-									<label><input type="radio" name="mail_reception" value="n"<?php if($user_info['fd_reception']=="x"){ echo "checked";}?>> 동의하지 않음</label>
+									<label><input type="radio" name="mail_reception" value="y" <?php if($user_info['fd_reception']=="y"){ echo "checked";}?>> 동의함</label>
+									<label><input type="radio" name="mail_reception" value="n"<?php if($user_info['fd_reception']=="n"){ echo "checked";}?>> 동의하지 않음</label>
 									<span id="wrong_mail_reception" class="fcR ml05 fs12 b hide">메일 수신 여부를 선택하세요</span>										
 								</td>
 							</tr>					

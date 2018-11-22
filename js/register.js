@@ -28,7 +28,7 @@ $(document).ready(function(){
     //비밀번호 합부판정
 	$('#reg_mb_password').change(function(){
 		var pw = $('#reg_mb_password').val();
-		var re = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{9,}$/;
+		var re = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{9,}$/;
 
 		if(re.test(pw)){
             $("#pw_chk").val(1);

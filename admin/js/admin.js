@@ -340,7 +340,7 @@ $(document).ready(function() {
     $('#save_btn').click(function(){
     	var pw = $('#pw').val();
     	var pw_re = $('#pw_re').val();
-    	if(pw!=pw_re){
+    	if(pw!=pw_re || pw==""){
     		$('#wrong_pw').show();
     		return false;
     	}

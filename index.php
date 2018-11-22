@@ -3,6 +3,9 @@
 	include 'header.php';
 	$info = cur_notice();
 ?>
+<script type="text/javascript">
+	popup('test_popup.html',null,400,200)
+</script>
 <section class="container">
 	<div class="mainVisual">
 		<p class="mainText">

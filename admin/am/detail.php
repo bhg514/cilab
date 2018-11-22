@@ -54,7 +54,7 @@
 								<th scope="row">비밀번호 확인</th>
 								<td colspan="3">
 									<input type="password" id="pw_re">
-									<span id="wrong_pw" class="fcR ml05 fs12 b hide">비밀번호가 일치하지 않습니다.</span>
+									<span id="wrong_pw" class="fcR ml05 b" style="display: none;">비밀번호가 일치하지 않습니다.</span>
 								</td>
 							</tr>
 							<tr>						

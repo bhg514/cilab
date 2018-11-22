@@ -17,8 +17,8 @@
 		$zip = $_POST['mb_zip'];
 		$addr1 = $_POST['mb_addr1'];
 		$addr2 = $_POST['mb_addr2'];
-		$addr1 = $_POST['mb_addr3'];
-		$addr2 = $_POST['mb_addr4'];
+		$addr3 = $_POST['mb_addr3'];
+		$addr4 = $_POST['mb_addr4'];
 		$today = date("Y-m-d"); 
 		$mail_reception = $_POST['mail_reception'];
 
