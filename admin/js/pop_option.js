@@ -29,7 +29,7 @@ function insert_val(arr,for_count){
 	if(arr[for_count][1]!=null) $('#tbody').children().eq(for_count).children().eq(1).find('.option_price')[0].value=arr[for_count][1];
 }
 function add_option_btn(){
-	if($('#tbody').children().length<3){
+	if($('#tbody').children().length<5){
 		var html =  '<tr >'+
 					'<td scope="row">'+
 					'<input type="text" class="option_name" placeholder="색상">'+
@@ -44,7 +44,7 @@ function add_option_btn(){
 
 		$('#tbody').append(html);
 	}else{
-		alert("옵션은 최대 3개까지 입니다.");
+		alert("옵션은 최대 5개까지 입니다.");
 	}
 }
 

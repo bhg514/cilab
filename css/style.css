@@ -1322,3 +1322,5 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 .listCount, .listFile {
 	width: 120px;
 }
+
+.product_li{width: 30%;}

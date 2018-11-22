@@ -96,6 +96,7 @@ $(document).ready(function(){
 	$('#option_select').change(function(){
 		var select_val = $('#option_select option:selected').attr('name');
 		var select_price = $('#option_select option:selected').val();
+		var product_price = $('#product_price').val()
 		var select_count = $('#select_count').val();
 		var del_fee = Number(uncomma($('#del_fee').text()));
 		$('#select_title').prop("selected", true);
@@ -104,20 +105,25 @@ $(document).ready(function(){
 		$('#select_price').val(select_price);		
 		$('#select_title').text(select_val);
 		if(select_count!=0){
-			var total = numberWithCommas(select_price*select_count +del_fee);
+			var total = numberWithCommas(Number(product_price)+select_price*select_count +del_fee);
 			$('#total_price').text(total);
 		}
 	});
 
 
 	$('#select_count').change(function(){
-		var select_price = $('#select_title').val();
-		if (select_price==null) select_price = Number(uncomma($('#pro_price').text()))
-		var select_count = $('#select_count').val();
-		var del_fee = Number(uncomma($('#del_fee').text()));
-		if(select_price!=0){
-			var total = numberWithCommas(select_price*select_count +del_fee);
-			$('#total_price').text(total);
+		if ($('#option_select option:selected').val() != "옵션을 선택하세요"){
+			var select_price = $('#select_title').val();
+			var product_price = $('#product_price').val()
+			if (select_price==null) select_price = Number(product_price)
+			else select_price = Number(product_price)+Number(select_price)
+			var select_count = $('#select_count').val();
+			var del_fee = Number(uncomma($('#del_fee').text()));
+			if(select_price!=0){
+				var total = numberWithCommas(select_price*select_count +del_fee);
+				$('#total_price').text(total);
+			}
+			
 		}
 	});
 	
@@ -255,7 +261,7 @@ function del_lookup(url){
 //금액 콤마 제거
 function uncomma(str) {
     str = String(str);
-    return str.replace(/[^\d]+/g, '');
+    return str.replace(/,/gi, '');
 }
 
 

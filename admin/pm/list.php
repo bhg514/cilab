@@ -58,8 +58,20 @@
 	</div>
 	<table class="list-table">
 		<caption class="readHide">상품 관리</caption>
+		
+		<colgroup>
+			<col width="4%">
+			<col width="5%">
+			<col width="17%">
+			<col width="37%">
+			<col width="5%">
+			<col width="9%">
+			<col width="15%">
+			<col width="8%">
+		</colgroup>
 		<thead class="admin_list">
 			<tr>
+
 				<th class="thead_th"> 
 					<input type="checkbox" id="chk_all">
 				</th>
@@ -74,15 +86,18 @@
 		</thead>
 		<tbody>
 				<?php
+					$count = product_get_count_admin($page,$name,$category,$status);					
+					$count = $count-($page-1)*10;					
 					$result = while_get_production_list($page,$name,$category,$status);
 					while ($r = mysqli_fetch_array($result)) {
+
 				?>
 			<tr>
 				<td class="tbody_td"> 
 					<input type="checkbox" class="list_chk">
 					<input type="hidden" name="pk_no" value="<?= $r['pk_no']?>">
 				</td>
-				<td class="tbody_td"><?= $r['row']?></td>
+				<td class="tbody_td"><?= $count?></td>
 				<td class="tbody_td">
 					<?php 
 						if($r['fd_category']==1) echo "Water Drones";
@@ -101,6 +116,7 @@
 			
 
 				<?php
+					$count=$count-1;
 					}
 				?>
 		</tbody>

@@ -29,9 +29,11 @@
 				<div class="image"><img src="/admin/img/upload_image/<?=$info['fd_new_main_img']?>" alt="이미지 설명 입력란" id="pd_main_img"></div>
 				<ul>
 					<li class="mhide"><img class="pro_detail_sub" src="/admin/img/upload_image/<?=$info['fd_new_main_img']?>" alt="이미지 설명 입력란"></li>
-					<?php 
-						for($i=0; $i<count($sub_arr);$i++){
-							echo '<li class="mhide"><img class="pro_detail_sub" src="/admin/img/upload_image/'.$sub_arr[$i].'" alt="이미지 설명 입력란"></li>';
+					<?php 						
+						if($info['fd_new_sub_img']!=""){
+							for($i=0; $i<count($sub_arr);$i++){
+								echo '<li class="mhide"><img class="pro_detail_sub" src="/admin/img/upload_image/'.$sub_arr[$i].'" alt="이미지 설명 입력란"></li>';
+							}
 						}
 					?>					
 				</ul>
@@ -41,18 +43,23 @@
 					<p class="title"><?=$info['fd_name']?></p>
 					<input type="hidden" name="no" value="<?=$info['pk_no']?>">
 					<div class="grayBox post">
+					<input type="hidden" name="product_price" id="product_price" value="<?=$info['fd_price']?>">
 					<?php
 						if($info['fd_option']!=null){
 					?>
 						<label for="option_select">옵션</label>
 						<input type="hidden" name="select_name" id="select_name" value="">
-						<input type="hidden" name="select_price" id="select_price" value="">
+						<input type="hidden" name="select_price" id="select_price" value="">						
 						<select id=option_select>
-							<option selected hidden id="select_title" value="0">옵션을 선택하세요</option>
+							<option hidden id="select_title">옵션을 선택하세요</option>
 							<?php
 								for($i=0; $i<count($option_arr); $i++){
 									$option_info = ex_option($option_arr[$i]);
-									echo '<option value="'.$option_info[1].'" name="'.$option_info[0].'">'.$option_info[0].' / '.$option_info[1].'</option>';
+									if ($option_info[1]==0){
+										echo '<option value="'.$option_info[1].'" name="'.$option_info[0].'">'.$option_info[0].'</option>';
+									}else{
+										echo '<option value="'.$option_info[1].'" name="'.$option_info[0].'">'.$option_info[0].' / '.number_format($option_info[1]).'won</option>';										
+									}
 								}
 							?>
 						</select>

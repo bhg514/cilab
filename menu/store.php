@@ -37,6 +37,7 @@
 						<a href="?type=5" class="">Total</a>
 					</div>
 				</li>
+<!-- 
 				<li class="ui-menu-item">
 					<div id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
 						<a href="?type=1">Water Drones</a>
@@ -57,6 +58,17 @@
 						<a href="?type=4">Water Education kit</a>
 					</div>
 				</li>
+                 -->
+                 <li class="ui-menu-item">
+                    <div id="ui-id-4" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+                        <a href="?type=2">Water Drones &amp; Accessories</a>
+                    </div>
+                </li>  
+                <li class="ui-menu-item">
+                    <div id="ui-id-5" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+                        <a href="?type=3">DIY &amp; Parts</a>
+                    </div>
+                </li>
 			</ul>
 		</div>
     	<div class="category_content">
@@ -64,16 +76,21 @@
                 <ul>
                     <?php                                
                         $result = while_product_list($page,$type,$search);  
-                        while ($r = mysqli_fetch_array($result)) {
+                        $count = 0;
+                        while ($r = mysqli_fetch_array($result)) {                            
+                            if($count%3==0 && $count!=0){
+                                echo '</ul><ul>';
+                            }
                     ?>
-                    <li>
+                    <li class="product_li">
                         <a href="./store_view.php?no=<?=$r['pk_no']?>">
                             <div class="image"><img src="/admin/img/upload_image/<?=$r['fd_new_main_img']?>" alt="상품 이미지" class="pd_img"></div>
-                            <p class="name"><?=$r['fd_name']?></p>
+                            <p class="name"><?=mb_strimwidth($r['fd_name'], '0', '24', '...', 'utf-8');?></p>
                             <p class="price"><span class="redbox">판매가</span> <?=number_format($r['fd_price'])?></p>
                         </a>
                     </li>
-                    <?php
+                    <?php                        
+                        $count=$count+1;
                         }
                     ?>
 
@@ -90,6 +107,9 @@
                 <?php
                     $total_count = product_get_count($search,$type,1);
                     $page_info = make_page($page,$total_count,$query_string,9);
+
+
+
                 ?>
                 <a href="?<?=$query_string?>page=<?php if($page<$page_info[0]){ echo $page+1;}else{ echo $page_info[1];} ?>">
                     <img src="/images/icon/btn_next.png" alt="pre" id="next_img" class="page_nav_btn">

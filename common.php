@@ -32,6 +32,7 @@
 		if($total_count == 0 ) $total_count = 1;
 		
 		$page_size = $count+$start_num-1;
+
 		$total_page = ceil($total_count/$count);
 
 		if($page_size>$total_page){
@@ -48,6 +49,8 @@
 				
 			}
 		}
+		
+
 		return [$total_page,$for_end];
 
     }
@@ -113,14 +116,24 @@
 
 	function while_get_production_list($start_num,$name,$category,$status){
 		$start_num = ($start_num-1)*10;		
-		$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.* FROM tb_product p, (SELECT @ROWNUM := 0) R where p.fd_name like "%'.$name.'%"';
-		if($category!=5) $query .= ' and p.fd_category = "'.$category.'"';
-		if($status!=3) $query .= ' and p.fd_status ="'.$status.'"';
-		$query .= ' order by row desc limit '.$start_num.', 10 ';		
-
+		$query = 'select * from tb_product where fd_name like "%'.$name.'%"';
+		if($category!=5) $query .= ' and fd_category = "'.$category.'"';
+		if($status!=3) $query .= ' and fd_status ="'.$status.'"';
+		$query .= ' order by fd_category desc limit '.$start_num.', 10 ';		
 		$result = query_send($query);		
 		return $result;
 	}
+
+	function product_get_count_admin($start_num,$name,$category,$status){
+		$query = 'select count(*) from tb_product where fd_name like "%'.$name.'%"';
+		if($category!=5) $query .= ' and fd_category = "'.$category.'"';
+		if($status!=3) $query .= ' and fd_status ="'.$status.'"';	
+		$result = query_send($query);		
+		$info = mysqli_fetch_array($result);
+		return $info[0];
+
+	}
+
 
 	function arr_sell_status($arr,$type){
 		$arr2str = implode(",", $arr);		
@@ -134,15 +147,7 @@
 
 	}
 
-	/*function product_get_count($name,$category,$status){
-		$query = 'select count(*) from tb_product where fd_name like "%'.$name.'%" and fd_category like "%'.$category.'%" and fd_status like "%'.$status.'%"';
-		
-		$result = query_send($query);
-		$count = mysqli_fetch_array($result);
-
-		return $count;
-
-	}*/
+	
 
 	function list_dell($arr,$table){
 		$arr2str = implode(',', $arr);
@@ -416,6 +421,9 @@
 		if ($type!=5){
 			$query .= ' and fd_category='.$type;
 		}		
+		if ($type==2){
+			$query .= ' or fd_category=1';
+		}
 		$query .=' order by pk_no desc limit '.$start_num.', 9';
 		$result = query_send($query);
 		
@@ -429,10 +437,14 @@
 			$query .= ' and fd_category="'.$category.'"';
 		}	
 		if ($status!=3){
-			$query .= ' and fd_status="'.$status.'"';
+			if($status==1)
+				$query .= ' and fd_status="판매중"';
+			elseif($status==2)
+				$query .= ' and fd_status="판매중지"';
 		}		
 		$result = query_send($query);
 		$count = mysqli_fetch_array($result);
+
 
 		return $count;
 
