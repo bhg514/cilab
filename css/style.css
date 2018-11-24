@@ -144,7 +144,7 @@ header h1 a {
 }
 
 .contents {
-	padding: 45px 0 100px;
+	padding: 45px 10px 100px;
 	margin: 0 auto;
 	width: 1000px;
 }
@@ -1266,11 +1266,15 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	text-decoration: none;
 }
 
+.image {
+	padding: 10px;
+}
+
 /*스토어 구매*/
 .pd_img {
 	width: 200px;
 	height: 122px;
-}
+} 
 
 .pro_detail_sub {
 	width: 75px;

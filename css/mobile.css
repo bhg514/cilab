@@ -397,3 +397,8 @@ a.btn_admin:focus, a.btn_admin:hover {text-decoration:none}
     display: block;
     margin: 5px;
 }
+
+/*스토어*/
+.product_li {
+    width: auto;
+ }
