@@ -59,7 +59,7 @@
 						<tr>
 							<td><?=$r['fd_date']?></td>
 							<td onclick="pop_order(<?=$r['pk_no']?>,'order');"><?=$r['fd_name']?></td>
-							<td><?=$r['fd_price']+$r['fd_del_fee']?></td>
+							<td><?=number_format($r['fd_price']+$r['fd_del_fee'])?></td>
 							<td>
 								<?php
 									if($r['fd_status']==1) echo "주문완료";
@@ -86,7 +86,7 @@
 								?>
 							</td>
 							<td>
-								<?php if($r['fd_status']==4) echo '<a href="#a" class="btn type05">구매확정</a>';
+								<?php if($r['fd_status']==4) echo '<input type="button" onclick=purchase_conf('.$r['pk_no'].') class="btn type05" value="구매확정">';
 								?>
 								
 							</td>							

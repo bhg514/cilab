@@ -338,3 +338,26 @@ function pay_pop(){
         }
     });
 }
+
+function purchase_conf(no){
+	if (confirm("구매 확정 하시겠습니까??\n구매확정하시면 되돌리 수 없습니다.") == true){
+		
+		$.ajax({
+			type: "POST",
+			url: "../ajax/purchase_conf.php",
+			cache: false,
+			async: false,
+			data: { 			    
+			    no : no
+			},
+			dataType: "text",
+			success: function(data) {   	        	
+			    location.reload();			    
+			}
+		});
+
+	}else{
+		return;
+	}
+
+}

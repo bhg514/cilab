@@ -18,7 +18,7 @@
 	<div class="">
 		<div class="tabletInner">
 			<fieldset>			
-				<div>◎ 교환 / 환불 사유 입력</div>
+				<div>◎ 환불 사유</div>
 				<div>
 					<input type="text" name="">
 				</div>
@@ -26,14 +26,9 @@
 				<div>
 					<input type="text" name="">
 				</div>
-				<div>◎ 환불받을 계좌번호</div>
 				<div>
-					<input type="text" name="">
-				</div>
-
-				
-					
-												
+					<a onclick="" class="btn type05">신청하기</a>
+				</div>												
 			</fieldset>
 		</div>
 	</div>

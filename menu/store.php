@@ -85,7 +85,7 @@
                     <li class="product_li">
                         <a href="./store_view.php?no=<?=$r['pk_no']?>">
                             <div class="image"><img src="/admin/img/upload_image/<?=$r['fd_new_main_img']?>" alt="상품 이미지" class="pd_img"></div>
-                            <p class="name"><?=mb_strimwidth($r['fd_name'], '0', '24', '...', 'utf-8');?></p>
+                            <p class="name"><?=mb_strimwidth($r['fd_name'], '0', '20', '...', 'utf-8');?></p>
                             <p class="price"><span class="redbox">판매가</span> <?=number_format($r['fd_price'])?></p>
                         </a>
                     </li>
