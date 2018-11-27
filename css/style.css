@@ -1273,25 +1273,10 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	text-align: center;
 }
 
-.page_nav
->
-a
-:hover
-:not
- 
-(
-.page_num
- 
-)
-{
-text-decoration
-:
- 
-none
-;
-
-
+.page_nav>a:not(.page_num ):hover {
+	text-decoration: none;
 }
+
 .image {
 	padding: 10px;
 }
