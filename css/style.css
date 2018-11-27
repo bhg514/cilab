@@ -321,6 +321,8 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 }
 
 .imgType01 .name {
+	clear: both;
+	width: 100%;
 	padding: 5px 15px;
 	margin-bottom: 15px;
 	font-size: 16px;
@@ -334,7 +336,6 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	display: -webkit-box;
 	height: 42px;
 	line-height: 1.2;
-	width: calc(100% - 30px);
 	box-sizing: border-box;
 	word-break: break-all;
 }
@@ -1273,7 +1274,7 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	text-align: center;
 }
 
-.page_nav>a:not(.page_num ):hover {
+.page_nav>a:not (.page_num ):hover {
 	text-decoration: none;
 }
 
