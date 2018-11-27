@@ -5,7 +5,7 @@
 	$user_name = $_SESSION['user_name'];
 	$type = $_SESSION['user_type'];
 	if($type!="a"){
-		header("location:http://".$http_host."/member/login.php");
+		header("location:https://".$http_host."/member/login.php");
 	}
 ?>
 <!DOCTYPE html>
@@ -23,9 +23,9 @@
 	<link rel="stylesheet" media="screen and (max-width:999px)" type="text/css" href="/css/tablet.css">
 	<link rel="stylesheet" media="screen and (max-width:480px)" type="text/css" href="/css/mobile.css">
 	<!-- include libraries(jQuery, bootstrap) -->
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
 	<!--[if lt IE 9]>
 		<script src="../js/respond.js"></script>

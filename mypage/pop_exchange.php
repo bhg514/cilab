@@ -14,17 +14,18 @@
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../css/popup.css">
+<script type="text/javascript" src="../js/common.js"></script>
 <section class="container">	
 	<div class="">
 		<div class="tabletInner">
 			<fieldset>			
 				<div>◎ 반품 사유</div>
 				<div>
-					<input type="text" name="">
+					<input type="text" id="ex_reason">
 				</div>
 				<div>◎ 전화번호</div>
 				<div>
-					<input type="text" name="">
+					<input type="text" id="ex_phone">
 				</div>
 				<div>
 					<a onclick="" class="btn type05">신청하기</a>

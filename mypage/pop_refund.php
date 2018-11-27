@@ -14,6 +14,7 @@
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../css/popup.css">
+<script type="text/javascript" src="../js/common.js"></script>
 <section class="container">	
 	<div class="">
 		<div class="tabletInner">

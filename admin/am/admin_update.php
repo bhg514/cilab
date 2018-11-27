@@ -17,7 +17,7 @@
 		$query = "update tb_admin set fd_pw = '".$pw."', fd_name = '".$name."', fd_group = '".$group."', fd_position = '".$position."', fd_hp = '".$hp."' where pk_no=".$no;
 		
 		query_send_non_return($query);
-		header("location:http://".$http_host."/admin/am/list.php");
+		header("location:https://".$http_host."/admin/am/list.php");
 
 
 	} catch(Exception $e){

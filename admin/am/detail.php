@@ -6,7 +6,7 @@
 	include_once("../../common.php");
 	$no = $_GET['no'];
 	if($no==null){
-		header("location:http://".$http_host."/admin/um/list.php");		
+		header("location:https://".$http_host."/admin/um/list.php");		
 	}
 
 	$info = user_get_info($no,"tb_admin");

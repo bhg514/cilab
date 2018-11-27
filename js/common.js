@@ -361,3 +361,9 @@ function purchase_conf(no){
 	}
 
 }
+
+function exchange(no){
+	var reason = $('#ex_reason').val
+	var phone = $('#ex_phone').val
+
+}

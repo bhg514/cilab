@@ -18,7 +18,7 @@
 
 		query_send_non_return($query);
 		echo $query;
-		header("location:http://".$http_host."/admin/am/list.php");
+		header("location:https://".$http_host."/admin/am/list.php");
 
 
 	} catch(Exception $e){
