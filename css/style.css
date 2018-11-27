@@ -58,8 +58,8 @@ header h1 a {
 }
 
 .gnb p {
-    display: inline-block;
-    margin: 5px;
+	display: inline-block;
+	margin: 5px;
 }
 
 .lnb {
@@ -321,23 +321,34 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 }
 
 .imgType01 .name {
-	padding: 38px 15px 15px 15px;
-	font-size: 17px;
+	padding: 5px 15px;
+	margin-bottom: 15px;
+	font-size: 16px;
 	color: #333333;
 	text-align: left;
 	font-weight: bold;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+	height: 42px;
+	line-height: 1.2;
+	width: calc(100% - 30px);
+	box-sizing: border-box;
+	word-break: break-all;
 }
 
 .imgType01 .price {
-	position: absolute;
-	bottom: 42px;
-	right: 10px;
-	font-size: 15px;
+	position: relative;
+	right: 15px;
+	font-size: 16px;
+	float: right;
 }
 
 .imgType01 .price .redbox {
 	display: inline-block;
-	padding: 3px 6px;
+	padding: 2px 6px;
 	color: #fff;
 	font-size: 11px;
 	border-radius: 3px;
@@ -1262,10 +1273,25 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	text-align: center;
 }
 
-.page_nav>a:hover:not (.page_num ) {
-	text-decoration: none;
-}
+.page_nav
+>
+a
+:hover
+:not
+ 
+(
+.page_num
+ 
+)
+{
+text-decoration
+:
+ 
+none
+;
 
+
+}
 .image {
 	padding: 10px;
 }
@@ -1274,7 +1300,7 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 .pd_img {
 	width: 200px;
 	height: 122px;
-} 
+}
 
 .pro_detail_sub {
 	width: 75px;
@@ -1298,10 +1324,10 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	text-align: center;
 }
 
-#select_count::-webkit-outer-spin-button,
-#select_count::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+#select_count::-webkit-outer-spin-button, #select_count::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 .bt_up, .bt_down {
@@ -1327,4 +1353,6 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	width: 120px;
 }
 
-.product_li{width: 30%;}
+.product_li {
+	width: 30%;
+}
