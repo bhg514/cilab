@@ -6,7 +6,8 @@
 }
 
 body {
-	font-family: "Lato", sans-serif, "맑은 고딕", font-size : 0.75em;
+	font-family: 'Noto Sans KR', sans-serif, "맑은 고딕";
+	font-size : 0.75em;
 	color: #333
 }
 
