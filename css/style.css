@@ -1280,8 +1280,12 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	text-align: center;
 }
 
-.page_nav>a:not (.page_num ):hover {
+.page_nav>a:hover {
 	text-decoration: none;
+}
+
+.page_nav_btn.page_num:hover {
+	text-decoration: underline !important;
 }
 
 .image {
