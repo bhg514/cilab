@@ -42,7 +42,7 @@
 	</div>
 	<div class="contents">
 		<div class="tabletInner">
-			<form id="sotre_form" action="./store_form.php" method="post">
+			<form id="store_form" action="./store_form.php" method="post">
 				<p class="blt01 mt00">주문정보</p>
 				<div class="tblType01Wrap">
 					<table class="tblType01">

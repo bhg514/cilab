@@ -322,7 +322,7 @@ function pay_pop(){
 	        		$('#imp_uid').val(data.imp_uid)
 	        		$('#merchant_uid').val(data.merchant_uid)
 	        		
-	        		document.forms["sotre_form"].submit()						        		
+	        		document.forms["store_form"].submit()						        		
 	        	}else if(data.msg=="forgery"){
 	        		alert("결제에 실패하였습니다. 에러 내용: 결제금액 위조가 감지되었습니다.");
 	        	}else if(data.msg=="forgery_error"){
@@ -330,7 +330,7 @@ function pay_pop(){
 	        		$('#imp_uid').val(data.imp_uid)
 	        		$('#merchant_uid').val(data.merchant_uid)
 
-	        		document.forms["sotre_form"].submit()
+	        		document.forms["store_form"].submit()
 	        	}
 	        })
         } else {
