@@ -51,7 +51,7 @@
 		$list_text2 = '반품승인';
 		$list_text3 = '반려';
 	} 
-
+	
 
 	$query_string = $_SERVER['QUERY_STRING']; 
 	$query_arr = explode('&', $query_string);
@@ -147,8 +147,8 @@
 				}else if($type ==3 || $type ==4 || $type == 5){
 					echo '<td class="tbody_td">'.$r['fd_invoice_number'].'</td>';
 				}else if($type>=6){
-					echo '<td><a class="btn type05" id="show_msg">보기</a><input type="hidden" id="status_msg" value="'.$r['fd_status_msg'].'"></td>';
-					echo '<td><a class="btn type05" id="conf_cancel">승인</a></td>';
+					echo '<td><a class="btn type05 show_msg" >보기</a><input type="hidden" id="status_msg" value="'.$r['fd_status_msg'].'"></td>';
+					echo '<td><a class="btn type05 conf_cancel" value="'.$type.'" >승인</a></td>';
 					echo '<td><a class="btn type05" id="refuse_cancel">반려</a></td>';
 
 				}

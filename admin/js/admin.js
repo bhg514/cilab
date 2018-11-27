@@ -260,11 +260,44 @@ $(document).ready(function() {
 
     });
 
-    $('#show_msg').click(function(e){
+    $('.show_msg').click(function(e){
     	window.name = "parentForm";			
     	var no = $(e.target).parent().siblings()[0].children[1].value
 		open_win = window.open('./pop_cancel_reason.php?no='+no,'childForm','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
 
+    })
+
+    $('.conf_cancel').click(function(e){
+    	var no = $(e.target).parent().siblings()[0].children[1].value
+    	var type = $(e.target).attr('value')
+    	var msg =""
+    	if (type=='6'){
+    		msg = "취소승인 하시겠습니까??"
+    	}else if(type=='7'){
+    		msg = "교환승인 하시겠습니까??"
+    	}else if(type=='8'){
+    		msg = "반품승인 하시겠습니까??"
+    	}
+    	if (confirm(msg) == true){
+		
+			$.ajax({
+				type: "POST",
+				url: "../ajax/conf_cancel.php",
+				cache: false,
+				async: false,
+				data: { 			    
+				    no : no,
+				    type : type,
+				},
+				dataType: "text",
+				success: function(data) {   	        	
+				    location.reload();			    
+				}
+			});
+
+		}else{
+			return;
+		}
     })
 
     $('#refuse_cancel').click(function(e){

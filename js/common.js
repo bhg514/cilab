@@ -363,7 +363,29 @@ function purchase_conf(no){
 }
 
 function exchange(no){
-	var reason = $('#ex_reason').val
-	var phone = $('#ex_phone').val
+	var reason = $('#ex_reason').val()
+	var phone = $('#ex_phone').val()
+
+	if (confirm("반품신청 하시겠습니까??") == true){
+		
+		$.ajax({
+			type: "POST",
+			url: "../ajax/exchange.php",
+			cache: false,
+			async: false,
+			data: { 			    
+			    reason : reason,
+			    phone : phone,
+			    no : no,
+			},
+			dataType: "text",
+			success: function(data) {   	        	
+			    location.reload();			    
+			}
+		});
+
+	}else{
+		return;
+	}
 
 }
