@@ -13,4 +13,8 @@
 	<a href="./list.php?type=6" class="<?php if($_GET["type"] ==6 ) echo 'selected' ; ?>"><span class="menu_title">주문취소</span><span class="menu_point">&gt;</span></a>
 	<a href="./list.php?type=7" class="<?php if($_GET["type"] ==7 ) echo 'selected' ; ?>"><span class="menu_title">교환신청</span><span class="menu_point">&gt;</span></a>
 	<a href="./list.php?type=8" class="<?php if($_GET["type"] ==8 ) echo 'selected' ; ?>"><span class="menu_title">반품신청</span><span class="menu_point">&gt;</span></a>
+	<a href="./list.php?type=9" class="<?php if($_GET["type"] ==9 ) echo 'selected' ; ?>"><span class="menu_title">교환승인</span><span class="menu_point">&gt;</span></a>
+	<a href="./list.php?type=10" class="<?php if($_GET["type"] ==10 ) echo 'selected' ; ?>"><span class="menu_title">반품승인</span><span class="menu_point">&gt;</span></a>
+	<a href="./list.php?type=11" class="<?php if($_GET["type"] ==11 ) echo 'selected' ; ?>"><span class="menu_title">교환반려</span><span class="menu_point">&gt;</span></a>
+	<a href="./list.php?type=12" class="<?php if($_GET["type"] ==12 ) echo 'selected' ; ?>"><span class="menu_title">반품반려</span><span class="menu_point">&gt;</span></a>
 </div>

@@ -216,8 +216,15 @@ $(document).ready(function(){
 		$('#terms_sel').val('0').prop('selected', true)
 	})
 
-});
+	
+       
 
+
+
+});
+function close_pop(flag) {
+	$('#exchange_modal').hide();
+};
 // mouse Hover
 function mmover(obj) {
 	obj.src = obj.src.replace(".png","on.png");
@@ -267,13 +274,28 @@ function uncomma(str) {
 
 function pop_order(no,type){
 	window.name = "parentForm";	
-	if(type == "order")
+		
+	if(type == "order"){
 		open_win = window.open('./pop_order.php?no='+no,'childForm','width=730, height=730,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
-	else if(type=="exchange")
-		open_win = window.open('./pop_exchange.php?no='+no,'childForm','width=730, height=730,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
-	else if(type=="refund")
-		open_win = window.open('./pop_refund.php?no='+no,'childForm','width=730, height=730,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
-
+	}else{ 
+		$('#modal_textarea').val("")
+		$('#modal_hp1').val("")
+		$('#modal_hp2').val("")
+		$('#modal_hp3').val("")
+		$('#modal_no').val(no);
+		$('#modal_type').val(type);
+		if(type=="exchange"){
+			$('#exchange_modal').show();
+		}else if(type=="refund"){
+			$('#exchange_modal').show();
+		}else if(type=="exchange_reason"){
+			open_win = window.open('./pop_reason.php?no='+no,'childForm','width=1050, height=300,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
+			
+		}else if(type=="refund_reason"){
+			open_win = window.open('./pop_reason.php?no='+no,'childForm','width=1050, height=300,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
+			
+		}
+	}
 }
 
 function pay_pop(){
@@ -362,30 +384,49 @@ function purchase_conf(no){
 
 }
 
-function exchange(no){
-	var reason = $('#ex_reason').val()
-	var phone = $('#ex_phone').val()
+function exchange(){
+	var reason = $('#modal_textarea').val()
+	var hp1 = $('#modal_hp1').val()
+	var hp2 = $('#modal_hp2').val()
+	var hp3 = $('#modal_hp3').val()
 
-	if (confirm("반품신청 하시겠습니까??") == true){
-		
-		$.ajax({
-			type: "POST",
-			url: "../ajax/exchange.php",
-			cache: false,
-			async: false,
-			data: { 			    
-			    reason : reason,
-			    phone : phone,
-			    no : no,
-			},
-			dataType: "text",
-			success: function(data) {   	        	
-			    location.reload();			    
-			}
-		});
+	var no = $('#modal_no').val()
+	var modal_type = $('#modal_type').val()
 
+	if(reason!="" && hp1!="" && hp2!="" && hp3!=""){
+		if(modal_type=="exchange"){
+			msg = "교환신청 하시겠습니까??"
+		}else if(modal_type=="refund"){
+			msg = "반품신청 하시겠습니까??"
+		}
+		if (confirm(msg) == true){
+			
+			$.ajax({
+				type: "POST",
+				url: "../ajax/exchange.php",
+				cache: false,
+				async: false,
+				data: { 			    
+				    reason : reason,
+				    phone : hp1+"-"+hp2+"-"+hp3,
+				    no : no,
+				    modal_type : modal_type,
+				},
+				dataType: "text",
+				success: function(data) {   	        	
+				    location.reload();			    
+				}
+			});
+
+		}else{
+			return;
+		}
 	}else{
-		return;
+		if(reason==""){
+			alert("사유를 작성해주세요.")
+		}else{
+			alert("연락처를 적어주세요.")
+		}
 	}
 
 }

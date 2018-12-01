@@ -8,7 +8,7 @@
 		<div class="location">
 			<img src="../images/common/icon_home.png" alt="Home">
 			<span>&gt;</span>
-			<span>기업소개</span>
+			<span>Company Introduction</span>
 			<span>&gt;</span>
 			<span>History</span>
 		</div>
@@ -16,9 +16,9 @@
 	<div class="contents">
 		<div class="tabletInner">
 			<div class="btnTab">
-				<a href="./introCilab.php">소개</a>
+				<a href="./introCilab.php">Introduction</a>
 				<a href="./introCilab2.php" class="on">History</a>
-				<a href="./introCilab3.php">찾아오시는 길</a>
+				<a href="./introCilab3.php">Directions</a>
 			</div>
 			<div class="oraganization">
 					<img src="../images/history/history2017.jpg" alt="Histoy2017" border="1"><br>

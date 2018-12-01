@@ -15,21 +15,21 @@
 <link rel="stylesheet" type="text/css" href="../css/board_view.css">
 <section class="container">
     <div class="visual support">
-        <p class="subTitle">문의하기</p>
+        <p class="subTitle">Q&A</p>
         <div class="location">
             <img alt="Home" src="/images/common/icon_home.png">
             <span>&gt;</span>
             <span>SUPPORT</span>
             <span>&gt;</span>
-            <span>문의하기</span>
+            <span>Q&A</span>
         </div>
     </div>
     <div class="contents">
         <div class="tabletInner">
             <div class="btnTab">
-                <a href="./list.php?type=1" >공지사항</a>
-                <a href="./list.php?type=2" >S/W 다운로드</a>
-                <a href="./list.php?type=4" class="on" >문의하기</a>
+                <a href="./list.php?type=1" >Notice</a>
+                <a href="./list.php?type=2" >S/W download</a>
+                <a href="./list.php?type=4" class="on" >Q&A</a>
             </div>            
 
             <article id="bo_v">

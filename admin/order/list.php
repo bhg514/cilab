@@ -51,6 +51,23 @@
 		$list_text2 = '반품승인';
 		$list_text3 = '반려';
 	} 
+	else if($type==9){
+		$type_text = '교환승인';	
+		$list_text = '교환사유';
+	} 
+	else if($type==10){
+		$type_text = '반품승인';	
+		$list_text = '반품사유';
+		$list_text2 = '결제환불';
+	} 
+	else if($type==11){
+		$type_text = '교환반려';	
+		$list_text = '교환사유';
+	}
+	else if($type==12){
+		$type_text = '반품반려';	
+		$list_text = '반품사유';
+	}
 	
 
 	$query_string = $_SERVER['QUERY_STRING']; 
@@ -112,9 +129,10 @@
 				<th scope="col" class="thead_th">결제금액</th>
 				<th scope="col" class="thead_th"><?=$list_text?></th>
 				<?php 
-					if($type==6 || $type==7 || $type==8){
+					if($type==6 || $type==7 || $type==8 || $type==10){
 						echo '<th scope="col" class="thead_th">'.$list_text2.'</th>';	
-						echo '<th scope="col" class="thead_th">'.$list_text3.'</th>';	
+						if ($type!=10)
+							echo '<th scope="col" class="thead_th">'.$list_text3.'</th>';	
 					} 				
 				?>
 			</tr>
@@ -146,11 +164,16 @@
 					echo '<td class="tbody_td"><input type="text" class="input_invoice"></td>';
 				}else if($type ==3 || $type ==4 || $type == 5){
 					echo '<td class="tbody_td">'.$r['fd_invoice_number'].'</td>';
-				}else if($type>=6){
+				}else if($type>=6 && $type<9){
 					echo '<td><a class="btn type05 show_msg" >보기</a><input type="hidden" id="status_msg" value="'.$r['fd_status_msg'].'"></td>';
 					echo '<td><a class="btn type05 conf_cancel" value="'.$type.'" >승인</a></td>';
-					echo '<td><a class="btn type05" id="refuse_cancel">반려</a></td>';
+					echo '<td><a class="btn type05 refuse_cancel" value="'.$type.'">반려</a></td>';
 
+				}elseif ($type>=9 && $type!=10) {
+					echo '<td><a class="btn type05 show_msg" >보기</a><input type="hidden" id="status_msg" value="'.$r['fd_status_msg'].'"></td>';
+				}elseif ($type==10) { #반품승인
+					echo '<td><a class="btn type05 show_msg" >보기</a><input type="hidden" id="status_msg" value="'.$r['fd_status_msg'].'"></td>';
+					echo '<td><a class="btn type05 pay_cancel" value="'.$type.'" >승인</a></td>';
 				}
 				?>
 			</tr>

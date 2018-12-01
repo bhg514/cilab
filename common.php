@@ -270,8 +270,15 @@
 
 	}
 
-	function refuse_msg($no, $input_msg){
-		$query='UPDATE tb_order SET fd_status = "9" , fd_status_msg="'.$input_msg.'" where pk_no ='.$no;		
+	function refuse_msg($no, $input_msg, $type){
+		if($type==7){
+			$next_type_num = "11";
+
+		}elseif ($type==8) {
+			$next_type_num = "12";
+		}
+		$query='UPDATE tb_order SET fd_status = "'.$next_type_num.'" , fd_status_msg=CONCAT(fd_status_msg, "||'.$input_msg.'") where pk_no ='.$no;	
+		echo $query;	
 		query_send_non_return($query);
 
 	}

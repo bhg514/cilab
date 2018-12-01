@@ -263,7 +263,7 @@ $(document).ready(function() {
     $('.show_msg').click(function(e){
     	window.name = "parentForm";			
     	var no = $(e.target).parent().siblings()[0].children[1].value
-		open_win = window.open('./pop_cancel_reason.php?no='+no,'childForm','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
+		open_win = window.open('./pop_cancel_reason.php?no='+no,'childForm','width=1040, height=250,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
 
     })
 
@@ -300,11 +300,40 @@ $(document).ready(function() {
 		}
     })
 
-    $('#refuse_cancel').click(function(e){
-
-    	window.name = "parentForm";			
+    $('.pay_cancel').click(function(e){
     	var no = $(e.target).parent().siblings()[0].children[1].value
-		open_win = window.open('./pop_refuse_cancel.php?no='+no,'childForm','width=1060, height=700,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
+    	var msg = "결제를 환불처리 하시겠습니까?\n승인하면 취소할 수 없습니다."
+    	if (confirm(msg) == true){		
+			$.ajax({
+				type: "POST",
+				url: "../ajax/pay_cancel.php",
+				cache: false,
+				async: false,
+				data: { 			    
+				    no : no,
+				},
+				dataType: "text",
+				success: function(data) { 
+					if(data=="success"){
+						alert("취소완료")  	        	
+				    	location.reload();
+				    }else if(data=="error"){
+				    	alert('취소실패')
+				    }			    
+				}
+			});
+
+		}else{
+			return;
+		}
+    })
+
+    $('.refuse_cancel').click(function(e){
+
+    	window.name = "parentForm";	
+    	var type = $(e.target).attr('value')		
+    	var no = $(e.target).parent().siblings()[0].children[1].value
+		open_win = window.open('./pop_refuse_cancel.php?no='+no+'&type='+type,'childForm','width=1040, height=350,toobar=no,scrollbars=yes,menubar=no,status=no,directories=no');	
     })
 
     $('#search_select').change(function() {

@@ -340,5 +340,18 @@ table caption {
 .file_upload_notice{
 	font-size: 15px;
     color: #f90606;
-     margin: 0;
+    margin: 0;
+}
+
+.pop_table{
+	width: 100%;
+}
+
+.pop_btn{
+	float: right;
+}
+
+.pop_textarea{
+	width: 100%;
+	height: 80px;
 }

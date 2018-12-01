@@ -12,7 +12,6 @@
 	}else if($type==8){//반품
 		$query = 'update tb_order set fd_status="10" where pk_no = "'.$no.'"';
 	}
-	echo $query;
 	query_send_non_return($query);	
 
 ?>

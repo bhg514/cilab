@@ -2,9 +2,12 @@ $(document).ready(function() {
 
 
 	$('#send_msg').click(function(){
-		var input_msg = $('#input_msg').val()
+		var input_msg = $('#pop_input_text').val()
 		var no = $('#no').val()
+		var type = $('#type').val()
+
 		if(input_msg==""){
+			alert("내용을 입력해주세요")
 			return false;
 		}
 		$.ajax({
@@ -14,7 +17,8 @@ $(document).ready(function() {
 			async: false,
 			data: { 
 			    input_msg : input_msg,
-			    no : no			    
+			    no : no,
+			    type : type,			    
 			},
 			dataType: "text",
 			error : function(request,status,error) {

@@ -32,10 +32,10 @@
 						<tr>
 							<th><?=$info['fd_product_name']?></th>
 							<td><?=$info['fd_product_option']?></td>
-							<td><?=$info['fd_product_count']?></td>
-							<td><?=$info['fd_price']?></td>								
-							<td><?=$info['fd_del_fee']?></td>								
-							<td><?=$info['fd_price']?>+<?=$info['fd_del_fee']?></td>								
+							<td><?=number_format($info['fd_product_count'])?></td>
+							<td><?=number_format($info['fd_price'])?></td>								
+							<td><?=number_format($info['fd_del_fee'])?></td>								
+							<td><?=number_format($info['fd_price']+$info['fd_del_fee'])?></td>								
 						</tr>
 					</tbody>
 				</table>	

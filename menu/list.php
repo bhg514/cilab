@@ -6,9 +6,9 @@
 	$page = $_GET['page'] ?? 1;		
 
 	
-	if($type==1) $head = "공지사항";
-	elseif($type==2) $head = "S/W다운로드";
-	elseif($type==4) $head = "문의하기";
+	if($type==1) $head = "Notice";
+	elseif($type==2) $head = "S/W download";
+	elseif($type==4) $head = "Q&A";
 	$query_string = $_SERVER['QUERY_STRING']; 
     $query_arr = explode('&', $query_string);
     
@@ -36,9 +36,9 @@
 	<div class="contents">
 		<div class="tabletInner">
 			<div class="btnTab">
-				<a href="./list.php?type=1" class='<?php if($type==1) echo "on"?>' >공지사항</a>
-                <a href="./list.php?type=2" class="<?php if($type==2) echo "on"?>">S/W 다운로드</a>
-				<a href="./list.php?type=4" class="<?php if($type==4) echo "on"?>">문의하기</a>
+				<a href="./list.php?type=1" class='<?php if($type==1) echo "on"?>'>Notice</a>
+                <a href="./list.php?type=2" class="<?php if($type==2) echo "on"?>">S/W download</a>
+				<a href="./list.php?type=4" class="<?php if($type==4) echo "on"?>">Q&A</a>
 			</div>
 			<table class="tblType01 listView">
 				<caption><?=$head?></caption>
@@ -62,21 +62,21 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th scope="col" class="mhide">번호</th>
+						<th scope="col" class="mhide">No</th>
 						<?php
 							if($type==1) {
-                                echo '<th scope="col">제목</th>
-                                <th scope="col">날짜</th>
-                                <th scope="col">조회수</th>';
+                                echo '<th scope="col">Title</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Views</th>';
 							}elseif($type==2) {
-							    echo '<th scope="col">S/W명</th>
-                                <th scope="col">버전</th>
-                                <th scope="col">다운로드</th>';
+							    echo '<th scope="col">S/W</th>
+                                <th scope="col">Version</th>
+                                <th scope="col">Download</th>';
 							}else if($type==4){
-								echo '<th scope="col">문의제목</th>
-								<th scope="col">작성자</th>
-								<th scope="col">작성일</th>
-								<th scope="col">첨부파일</th>';
+								echo '<th scope="col">Title</th>
+								<th scope="col">Writer</th>
+								<th scope="col">Date</th>
+								<th scope="col">Attach</th>';
 							}
 						?>
 					</tr>
@@ -137,7 +137,7 @@
 				</a>
 			</div>				
 			<div>
-				<?php if($type==4) echo '<a href="qna.php" class="btn type07">문의하기</a>';?>
+				<?php if($type==4) echo '<a href="qna.php" class="btn type07">Contact us</a>';?>
 			</div>
 		</div>
 	</div>

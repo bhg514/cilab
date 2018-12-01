@@ -7,8 +7,8 @@
     count_up($type,$no);
     $info = get_board_info($no,$type);
 
-    if($type==1) $head = "공지사항";
-    elseif($type==2) $head = "S/W다운로드";    
+    if($type==1) $head = "Notice";
+    elseif($type==2) $head = "S/W download";    
 
     
 
@@ -29,9 +29,9 @@
     <div class="contents">
         <div class="tabletInner">
             <div class="btnTab">
-                <a href="./list.php?type=1" class="<?php if($type==1) echo "on"?>" >공지사항</a>
-                <a href="./list.php?type=2" class="<?php if($type==2) echo "on"?>" >S/W 다운로드</a>
-                <a href="./list.php?type=4" class="<?php if($type==4) echo "on"?>" >문의하기</a>
+                <a href="./list.php?type=1" class="<?php if($type==1) echo "on"?>" >Notice</a>
+                <a href="./list.php?type=2" class="<?php if($type==2) echo "on"?>" >S/W download</a>
+                <a href="./list.php?type=4" class="<?php if($type==4) echo "on"?>" >Q&A</a>
             </div>            
 
             <article id="bo_v">
