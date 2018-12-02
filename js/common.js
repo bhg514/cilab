@@ -105,7 +105,7 @@ $(document).ready(function(){
 		$('#select_price').val(select_price);		
 		$('#select_title').text(select_val);
 		if(select_count!=0){
-			var total = numberWithCommas(Number(product_price)+select_price*select_count +del_fee);
+			var total = numberWithCommas(uncomma(select_price)*select_count +del_fee);
 			$('#total_price').text(total);
 		}
 	});
@@ -115,12 +115,12 @@ $(document).ready(function(){
 		if ($('#option_select option:selected').val() != "옵션을 선택하세요"){
 			var select_price = $('#select_title').val();
 			var product_price = $('#product_price').val()
-			if (select_price==null) select_price = Number(product_price)
-			else select_price = Number(product_price)+Number(select_price)
+			if (select_price==null) 
+				select_price = Number(product_price)
 			var select_count = $('#select_count').val();
 			var del_fee = Number(uncomma($('#del_fee').text()));
 			if(select_price!=0){
-				var total = numberWithCommas(select_price*select_count +del_fee);
+				var total = numberWithCommas(uncomma(select_price)*select_count +del_fee);
 				$('#total_price').text(total);
 			}
 			

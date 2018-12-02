@@ -56,9 +56,9 @@
 								for($i=0; $i<count($option_arr); $i++){
 									$option_info = ex_option($option_arr[$i]);
 									if ($option_info[1]==0){
-										echo '<option value="'.$option_info[1].'" name="'.$option_info[0].'">'.$option_info[0].'</option>';
+										echo '<option value="'.number_format($info["fd_price"]).'" name="'.$option_info[0].'">'.$option_info[0].' / '.number_format($info["fd_price"]).'won</option>';
 									}else{
-										echo '<option value="'.$option_info[1].'" name="'.$option_info[0].'">'.$option_info[0].' / '.number_format($option_info[1]).'won</option>';										
+										echo '<option value="'.number_format($info["fd_price"]+$option_info[1]).'" name="'.$option_info[0].'">'.$option_info[0].' / '.number_format($info["fd_price"]+$option_info[1]).'won</option>';										
 									}
 								}
 							?>

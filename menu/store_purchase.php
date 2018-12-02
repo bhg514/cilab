@@ -8,6 +8,7 @@
 	$no = $_POST['no'];
 	$option_name = $_POST['select_name'] ?? null;
 	$option_price = $_POST['select_price'] ?? null;
+	$option_price = str_replace(",","",$option_price);
 	$count = $_POST['select_count'];
 	if($no==null){
 		header("location:http://".$http_host."/menu/store.php?type=5");		

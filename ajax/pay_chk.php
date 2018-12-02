@@ -39,15 +39,17 @@ if ( $result->success ) {
 	$result = query_send($query);	
     $info = mysqli_fetch_array($result);
     if($product_info['option']!=""){
+    	#무게(160g~169g)^-1000||무게(170g~179g)^0||무게(180g~189g...
 	    $options = explode('||',$info['fd_option']);
 	    for($i=0; $i<count($options);$i++){
+	    	#무게(160g~169g)^-1000
 	        $option = explode('^', $options[$i]);
-	        echo $option[0];
 	        if($option[0]==$product_info['option']){
+	        	#-1000
 	            $option_price = $option[1];
 	        }
 	    }
-	    $amount_paid = $option_price * $product_info['count'] + $info['fd_delivery'];
+	    $amount_paid = ($info['fd_price'] + $option_price) * $product_info['count'] + $info['fd_delivery'];
 	}else{
 		$amount_paid = $info['fd_price'] * $product_info['count'] + $info['fd_delivery'];
 	}
