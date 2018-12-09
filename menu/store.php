@@ -37,7 +37,7 @@
 						<a href="?type=5" class="">Total</a>
 					</div>
 				</li>
-<!-- 
+
 				<li class="ui-menu-item">
 					<div id="ui-id-3" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
 						<a href="?type=1">Water Drones</a>
@@ -58,8 +58,8 @@
 						<a href="?type=4">Water Education kit</a>
 					</div>
 				</li>
-                 -->
-                 <li class="ui-menu-item">
+                
+                 <!-- <li class="ui-menu-item">
                     <div id="ui-id-4" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
                         <a href="?type=2">Water Drones &amp; Accessories</a>
                     </div>
@@ -68,7 +68,7 @@
                     <div id="ui-id-5" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
                         <a href="?type=3">DIY &amp; Parts</a>
                     </div>
-                </li>
+                </li> -->
 			</ul>
 		</div>
     	<div class="category_content">

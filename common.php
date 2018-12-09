@@ -428,9 +428,6 @@
 		if ($type!=5){
 			$query .= ' and fd_category='.$type;
 		}		
-		if ($type==2){
-			$query .= ' or fd_category=1';
-		}
 		$query .=' order by pk_no desc limit '.$start_num.', 9';
 		$result = query_send($query);
 		

@@ -112,6 +112,11 @@ $(document).ready(function(){
 
 
 	$('#select_count').change(function(){
+		var max = Number($('#select_count')[0].max)
+	    var num = Number($("#select_count").val());
+		if(num>max){
+			$("#select_count").val(max);
+		}
 		if ($('#option_select option:selected').val() != "옵션을 선택하세요"){
 			var select_price = $('#select_title').val();
 			var product_price = $('#product_price').val()

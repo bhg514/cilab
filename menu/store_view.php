@@ -72,7 +72,7 @@
 					<div class="grayBox post">
 						<label for="select_count">수량</label>
 						<input type="button" class="bt_up" value="+">
-						<input type="number" value="0" min="1"  id="select_count" name="select_count">
+						<input type="number" value="0" min="1" max="<?=$info['fd_stock']?>" id="select_count" name="select_count">
 						<input type="button" class="bt_down" value="-">
 					</div>
 					<div class="grayBox post">
