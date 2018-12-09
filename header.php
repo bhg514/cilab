@@ -32,22 +32,22 @@
 				<?php 
 					if(!isset($_SESSION['user_id'])){
 				?>
-				<a href="../member/login.php" class="gnb_login">로그인</a>
-				<a href="../register/agree.php" class="gnb_join">회원가입</a>
+				<a href="../member/login.php" class="gnb_login">Login</a>
+				<a href="../register/agree.php" class="gnb_join">Register</a>
 				<?php 
 					}else{
-						echo "<p>".$_SESSION['user_name']."님 환영합니다</p>";
+						echo "<p>Welcome to ".$_SESSION['user_name']."</p>";
 				?>				
-				<a href="../member/logout.php" class="gnb_login">로그아웃</a>
+				<a href="../member/logout.php" class="gnb_login">Logout</a>
 				
 				<?php
 						if($_SESSION['user_type']=='u')
-							echo '<a href="../mypage/order.php" class="gnb_join">마이페이지</a>';
+							echo '<a href="../mypage/order.php" class="gnb_join">MyPage</a>';
 						else 
-							echo '<a href="../admin/pm/list.php" class="gnb_join">관리자페이지</a>';
+							echo '<a href="../admin/pm/list.php" class="gnb_join">Admin</a>';
 					}
 				?>
-				<a href="../sub/sitemap.php" class="gnb_sitemap">사이트맵</a>
+				<a href="../sub/sitemap.php" class="gnb_sitemap">Sitemap</a>
 			</div>
 		</div>
 		<div id="cssmenu">
