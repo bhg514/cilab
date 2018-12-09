@@ -22,15 +22,14 @@
 	}
 	if($type==1) $head = '공지사항';
 	elseif($type==2) $head = 'SW다운로드';
-	elseif($type==3) $head = '콘텐츠관리';
-	elseif($type==4) $head = '1:1 문의';
+	elseif($type==3) $head = '1:1 문의';
 
 ?>
 <script type="text/javascript" src="../js/admin.js"></script>
 <section class="container">			
 	<div>
 		<div class="admin_title"><?=$head?></div>		
-		<div class="admin_position">Home  » 게시판/콘텐츠관리 » <?=$head?></div>			
+		<div class="admin_position">Home  » 게시판관리 » <?=$head?></div>			
 		<hr class="garo" style="display: block;"> 
 	</div>
 	<div class="search_div">
@@ -42,7 +41,7 @@
 
 	</div>	
 	<div class="btn_div">
-		<?php if($type!=4)
+		<?php if($type!=3)
 			echo '<a class="btn type05" href="new_data.php?type='.$type.'">등록</a>'
 		?>		
 	</div>
@@ -60,7 +59,7 @@
 				<th scope="col" class="thead_th">조회수</th>
 				<th scope="col" class="thead_th">첨부파일</th>
 				<?php
-					}elseif ($type==4) {
+					}elseif ($type==3) {
 						echo '<th scope="col" class="thead_th">답변여부</th>';
 					}	
 				?>				
@@ -74,7 +73,7 @@
 			<tr>				
 				<td class="tbody_td"><?= $r['row']?></td>
 				<?php
-					if($type!=4){
+					if($type!=3){
 						echo '<td class="tbody_td"><a href="detail.php?type='.$type.'&no='.$r["pk_no"].'">'.$r["fd_title"].'</a></td>';
 					}else{
 						echo '<td class="tbody_td"><a href="qna.php?type='.$type.'&no='.$r["pk_no"].'">'.$r["fd_title"].'</a></td>';
@@ -93,7 +92,7 @@
 					?>					
 				</td>
 				<?php
-					}elseif ($type==4) {
+					}elseif ($type==3) {
 						if($r['fd_reply']!=null)
 							echo '<td class="tbody_td">답변완료</td>';
 						else echo '<td class="tbody_td">미답변</td>';				

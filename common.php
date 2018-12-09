@@ -333,8 +333,7 @@
 	function table_name($type){
 		if($type==1) $table="tb_notice";
 		elseif ($type==2) $table ="tb_sw";
-		elseif ($type==3) $table ="tb_contents";
-		elseif ($type==4) $table ="tb_qna";
+		elseif ($type==3) $table ="tb_qna";
 		return $table;
 	}
 
