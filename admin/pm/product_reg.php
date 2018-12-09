@@ -108,7 +108,7 @@
 								<th scope="row">옵션</th>
 								<td>
 									<label><input type="radio" name="option" value="y" onclick="pop_option();"> 옵션 설정</label>
-									<label><input type="radio" name="option" value="n" checked> 옵션 미설정</label>				
+									<label><input type="radio" name="option" value="n" onclick="remove_option();" checked> 옵션 미설정</label>				
 									<input type="text" id="option_input" name="option_input">												
 								</td>
 							</tr>	

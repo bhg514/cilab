@@ -52,10 +52,11 @@
                     <h2>첨부파일</h2>
                     <ul>
                         <?php
-                            $file_arr = explode('||', $info['fd_file']);
-                            $new_file_arr = explode('||', $info['fd_new_file']);
-                            if(count($file_arr)>=1){ 
-                                for ($i=0;$i< count($file_arr);$i++) {
+                            if($info['fd_file']!=""){
+                                $file_arr = explode('||', $info['fd_file']);
+                                $new_file_arr = explode('||', $info['fd_new_file']);
+                                if(count($file_arr)>=1){ 
+                                    for ($i=0;$i< count($file_arr);$i++) {
                         ?>    
                             
                         <li>
@@ -65,6 +66,7 @@
                             </a>                            
                         </li>
                         <?php
+                                    }
                                 }
                             }
                         ?>

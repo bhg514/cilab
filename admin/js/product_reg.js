@@ -11,6 +11,7 @@ $(document).ready(function() {
     	$('#'+e.target.id+'_label').text(file_name);
 
     })
+
 });
 
 function del_free(){
@@ -20,7 +21,9 @@ function del_non_free(){
 	$('#free_chk').prop('checked',false);
 }
 
-
+function remove_option(){
+	$('#option_input').val('')
+}
 
 function pop_option(){
 	window.name = "parentForm";
