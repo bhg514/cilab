@@ -24,7 +24,7 @@
 					<table>
 						<div>
 							<div class="admin_title"><?=$title?></div>
-							<div class="admin_position">Home  » 게시판/콘텐츠 관리 » <?=$title?></div>
+							<div class="admin_position">Home  » 게시판 관리 » <?=$title?></div>
 						</div>
 						<hr class="garo" style="display: block;"> 
 						<div class="mt20 ar">

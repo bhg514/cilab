@@ -46,7 +46,7 @@
 			<ul>				
 				<li class="<?php if($uri_arr[2] == 'pm') echo 'selected' ; ?>"><a href="../pm/list.php">상품 관리</a></li>
 				<li class="<?php if($uri_arr[2] == 'order') echo 'selected' ; ?>"><a href="../order/list.php?type=1">주문/배송 관리</a></li>
-				<li class="<?php if($uri_arr[2] == 'board') echo 'selected' ; ?>"><a href="../board/list.php?type=1">게시판/콘텐츠 관리</a></li>
+				<li class="<?php if($uri_arr[2] == 'board') echo 'selected' ; ?>"><a href="../board/list.php?type=1">게시판 관리</a></li>
 				<li class="<?php if($uri_arr[2] == 'um') echo 'selected' ; ?>"><a href="../um/list.php">회원 관리</a></li>
 				<li class="<?php if($uri_arr[2] == 'am') echo 'selected' ; ?>"><a href="../am/list.php">관리자 관리</a></li>
 				<li class="<?php if($uri_arr[2] == 'statistic') echo 'selected' ; ?>"><a href="../statistic/month.php">통계 관리</a></li>
