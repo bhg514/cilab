@@ -249,8 +249,7 @@
 					<label class="req_label" id="label_chk">구매에 동의해주세요.</label>
 				</div>
 				<div class="mt20 ar">
-					<input type="" id="store_pur_btn" class="btn type06" value="상품구매">
-					<!-- <a id="store_pur_btn" class="btn type06">상품구매</a> -->
+					<input type="button" id="store_pur_btn" class="btn type06" value="상품구매">
 					<a href="#a" class="btn type06 st2">취소</a>
 				</div>
 			</form>
