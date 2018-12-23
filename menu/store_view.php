@@ -106,6 +106,9 @@
 							<span>$</span>
 							<span class="bracket">)</span>
 						</p>
+						<p class="pay_ment">
+							<span>(수수료 관련 안내)</span>
+						</p>
 					</div>
 
 					<div class="mt20 ar">

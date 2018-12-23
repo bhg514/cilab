@@ -1394,6 +1394,13 @@ select {
     top: 50px;
     right: 5px;
 }
+.pay_ment {
+    position: absolute;
+    margin-left: 5px;
+    color: #999;
+    top: 72px;
+    right: 5px;
+}
 
 .dollar {
 	margin-left: 3px;
