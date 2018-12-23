@@ -11,6 +11,8 @@
 	}elseif ($modal_type == "refund") {
 		$type_num = "8";
 	}
+	$query = 'update tb_order set fd_pre_status=fd_status where pk_no = "'.$no.'"';
+	query_send_non_return($query);	
 	$query = 'update tb_order set fd_del_hp = "'.$phone.'", fd_status_msg="'.$reason.'", fd_status="'.$type_num.'" where pk_no = "'.$no.'"';
 	query_send_non_return($query);	
 

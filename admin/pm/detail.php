@@ -3,7 +3,7 @@
 	include '../admin_header.php';
 	include './side.php';
 	include_once("../../common.php");
-	$no = $_GET['no'] ?? header("location:http://".$http_host."/admin/pm/list.php");
+	$no = $_GET['no'] ?? header("location:https://".$http_host."/admin/pm/list.php");
 
 	$info = product_info($no);
 
@@ -117,7 +117,7 @@
 								<th scope="row">옵션</th>
 								<td>
 									<label><input type="radio" name="option" value="y" onclick="pop_option();" <?php if($info['fd_option']!=""){ echo "checked";}?> > 옵션 설정</label>
-									<label><input type="radio" name="option" value="n" <?php if($info['fd_option']==""){ echo "checked";}?> > 옵션 미설정</label>				
+									<label><input type="radio" name="option" value="n" onclick="remove_option();" <?php if($info['fd_option']==""){ echo "checked";}?> > 옵션 미설정</label>				
 									<input type="hidden" id="option_input" name="option_input" value="<?=$info['fd_option']?>">												
 								</td>
 							</tr>	

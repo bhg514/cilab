@@ -202,42 +202,6 @@ $(document).ready(function() {
 
     });
 
-    $('#del_chk').click(function(){
-		$('.wrap-loading').removeClass('display-none');
-    	$.ajax({
-			type: "POST",
-			url: "../ajax/del_chk.php",
-			cache: false,
-							
-			error : function(request,status,error) {
-			    alert("Error!");
-    		},
-			success: function(data) {   	        	
-		        $('.wrap-loading').addClass('display-none');
-			    location.reload();
-			}
-		});
-    });
-
-
-    $('#del_finish_chk').click(function(){
-		$('.wrap-loading').removeClass('display-none');
-    	$.ajax({
-			type: "POST",
-			url: "../ajax/del_finish_chk.php",
-			cache: false,
-							
-			error : function(request,status,error) {
-			    alert("Error!");
-    		},
-			success: function(data) {   	        	
-		        $('.wrap-loading').addClass('display-none');
-			    location.reload();
-			}
-		});
-    });
-
-    
 
     $('#detail_order_chk').click(function(){
     	var no = $('#no').val();

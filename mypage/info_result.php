@@ -3,11 +3,10 @@
 	include '../header.php';
 	include_once('../common.php');
 	if(!isset($_SESSION['user_id'])|| $_SESSION['user_type']=="a"){
-		header("location:http://".$http_host."/index.php");
+		header("location:https://".$http_host."/index.php");
 	}
 
 ?>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="../js/additional-methods.min.js"></script>
@@ -15,24 +14,24 @@
 
 <section class="container">
 	<div class="visual etc">
-		<p class="subTitle">정보수정</p>
+		<p class="subTitle">Modify information</p>
 		<div class="location">
-			<img src="http://cilab.kr/images/common/icon_home.png" alt="Home">
+			<img src="https://cilab.kr/images/common/icon_home.png" alt="Home">
 			<span>&gt;</span>
-			<span>마이페이지</span>
+			<span>My page</span>
 			<span>&gt;</span>
-			<span>정보수정</span>
+			<span>Modify information</span>
 		</div>
 	</div>
 	<div class="contents">
 		<div class="tabletInner">
 			<div class="completeJoin">
-				<p class="txt1">수정완료</p>
-				<p class="txt2">정보 수정이 완료 되었습니다.</p>
+				<p class="txt1">Modifications completed</p>
+				<p class="txt2">Your information has been modified.</p>
 			</div>
 			<div class="mt20 ar">
-				<a href="/" class="btn type07 st2">홈으로</a>
-				<a href="./order.php" class="btn type07">마이페이지</a>
+				<a href="/" class="btn type07 st2">Home</a>
+				<a href="./order.php" class="btn type07">Mypage</a>
 			</div>
 		</div>
 	</div>

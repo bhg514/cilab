@@ -6,10 +6,10 @@
     $no = $_POST['post_no'];
 
     if( $no==null){        
-        alert('잘못된 접속입니다.','list.php?type=4');
+        alert('잘못된 접속입니다.','list.php?type=3');
     }
 
-    $info = get_board_info($no,4);
+    $info = get_board_info($no,3);
 
 ?>
 <link rel="stylesheet" type="text/css" href="../css/board_view.css">
@@ -29,7 +29,7 @@
             <div class="btnTab">
                 <a href="./list.php?type=1" >Notice</a>
                 <a href="./list.php?type=2" >S/W download</a>
-                <a href="./list.php?type=4" class="on" >Q&A</a>
+                <a href="./list.php?type=3" class="on" >Q&A</a>
             </div>            
 
             <article id="bo_v">
@@ -76,7 +76,7 @@
                     </table>                    
                 </section>
                 <div class="mt20 ar">               
-                    <a href="list.php?type=4" class="btn type07">홈으로</a>
+                    <a href="list.php?type=3" class="btn type07">홈으로</a>
                 </div>
             </article>
         </div>

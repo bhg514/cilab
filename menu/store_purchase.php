@@ -2,7 +2,7 @@
 	header ( "content-type:text/html; charset=utf-8" );
 	include '../header.php';
 	if(!isset($_SESSION['user_id'])){
-		alert('로그인 후 이용해주세요.','http://'.$http_host.'/member/login.php');
+		alert('로그인 후 이용해주세요.','https://'.$http_host.'/member/login.php');
 	}
 
 	$no = $_POST['no'];
@@ -11,24 +11,23 @@
 	$option_price = str_replace(",","",$option_price);
 	$count = $_POST['select_count'];
 	if($no==null){
-		header("location:http://".$http_host."/menu/store.php?type=5");		
+		header("location:https://".$http_host."/menu/store.php?type=5");		
 	}elseif($count==null||$count==0){		
-		header("location:http://".$http_host."/menu/store_view.php?no=".$no);		
+		header("location:https://".$http_host."/menu/store_view.php?no=".$no);		
 	}
 	$info = product_info($no);
 	if($option_name==null&&$option_price==null){// 옵션 없는 상품
 		if($info['fd_option']!=null){//db에서 진짜 없는지 확인 
-			header("location:http://".$http_host."/menu/store_view.php?no=".$no);		
+			header("location:https://".$http_host."/menu/store_view.php?no=".$no);		
 		}
 
 	}elseif($option_name==null||$option_price==null){
-		header("location:http://".$http_host."/menu/store_view.php?no=".$no);	
+		header("location:https://".$http_host."/menu/store_view.php?no=".$no);	
 	}
 
 	$user = get_user_info_to_id($_SESSION['user_id'])
 ?>
 <script type="text/javascript" src="../js/register.js"></script><!-- 우편 --> 
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script><!-- 우편 --> 
 <!-- iamport.payment.js -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <!-- iamport.payment.js -->

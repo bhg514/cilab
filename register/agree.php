@@ -2,23 +2,23 @@
 header("content-type:text/html; charset=utf-8");
 include '../header.php';
 if (isset($_SESSION['user_id'])) {
-    header("location:http://" . $http_host . "/index.php");
+    header("location:https://" . $http_host . "/index.php");
 }
 ?>
 <section class="container">
 	<div class="visual etc">
-		<p class="subTitle">회원가입</p>
+		<p class="subTitle">Sing up</p>
 		<div class="location">
 			<img src="../images/common/icon_home.png" alt="Home"> <span>&gt;</span>
-			<span>회원가입</span>
+			<span>Membership</span>
 		</div>
 	</div>
 	<div class="contents">
 		<div class="tabletInner">
 			<form action="form.php" method="post">
-				<p class="blt01">회원가입 약관</p>
+				<p class="blt01">Terms of Membership</p>
 				<p class="fs14 avt">
-					<span class="fcR">(필수)</span>사이트 이용약관
+					<span class="fcR">(Required)</span>Site Terms and Conditions
 				</p>
 				<textarea class="term">전자상거래(인터넷사이버몰) 표준약관
 
@@ -78,9 +78,9 @@ if (isset($_SESSION['user_id'])) {
 
   ③ 사업종목의 전환, 사업의 포기, 업체 간의 통합 등의 이유로 서비스를 제공할 수 없게 되는 경우에는 “몰”은 제8조에 정한 방법으로 이용자에게 통지하고 당초 “몰”에서 제시한 조건에 따라 소비자에게 보상합니다. 다만, “몰”이 보상기준 등을 고지하지 아니한 경우에는 이용자들의 마일리지 또는 적립금 등을 “몰”에서 통용되는 통화가치에 상응하는 현물 또는 현금으로 이용자에게 지급합니다.
 
-제6조(회원가입) 
+제6조(Sing up) 
 
-  ① 이용자는 “몰”이 정한 가입 양식에 따라 회원정보를 기입한 후 이 약관에 동의한다는 의사표시를 함으로서 회원가입을 신청합니다.
+  ① 이용자는 “몰”이 정한 가입 양식에 따라 회원정보를 기입한 후 이 약관에 동의한다는 의사표시를 함으로서 Sing up을 신청합니다.
 
   ② “몰”은 제1항과 같이 회원으로 가입할 것을 신청한 이용자 중 다음 각 호에 해당하지 않는 한 회원으로 등록합니다.
 
@@ -88,9 +88,9 @@ if (isset($_SESSION['user_id'])) {
     2. 등록 내용에 허위, 기재누락, 오기가 있는 경우
     3. 기타 회원으로 등록하는 것이 “몰”의 기술상 현저히 지장이 있다고 판단되는 경우
 
-  ③ 회원가입계약의 성립 시기는 “몰”의 승낙이 회원에게 도달한 시점으로 합니다.
+  ③ Sing up계약의 성립 시기는 “몰”의 승낙이 회원에게 도달한 시점으로 합니다.
 
-  ④ 회원은 회원가입 시 등록한 사항에 변경이 있는 경우, 상당한 기간 이내에 “몰”에 대하여 회원정보 수정 등의 방법으로 그 변경사항을 알려야 합니다.
+  ④ 회원은 Sing up 시 등록한 사항에 변경이 있는 경우, 상당한 기간 이내에 “몰”에 대하여 회원정보 수정 등의 방법으로 그 변경사항을 알려야 합니다.
 
 제7조(회원 탈퇴 및 자격 상실 등) 
 
@@ -196,7 +196,7 @@ if (isset($_SESSION['user_id'])) {
 
   ① “몰”은 이용자의 개인정보 수집시 서비스제공을 위하여 필요한 범위에서 최소한의 개인정보를 수집합니다. 
 
-  ② “몰”은 회원가입시 구매계약이행에 필요한 정보를 미리 수집하지 않습니다. 다만, 관련 법령상 의무이행을 위하여 구매계약 이전에 본인확인이 필요한 경우로서 최소한의 특정 개인정보를 수집하는 경우에는 그러하지 아니합니다.
+  ② “몰”은 Sing up시 구매계약이행에 필요한 정보를 미리 수집하지 않습니다. 다만, 관련 법령상 의무이행을 위하여 구매계약 이전에 본인확인이 필요한 경우로서 최소한의 특정 개인정보를 수집하는 경우에는 그러하지 아니합니다.
 
   ③ “몰”은 이용자의 개인정보를 수집·이용하는 때에는 당해 이용자에게 그 목적을 고지하고 동의를 받습니다. 
 
@@ -210,7 +210,7 @@ if (isset($_SESSION['user_id'])) {
 
   ⑧ “몰” 또는 그로부터 개인정보를 제공받은 제3자는 개인정보의 수집목적 또는 제공받은 목적을 달성한 때에는 당해 개인정보를 지체 없이 파기합니다.
 
-  ⑨ “몰”은 개인정보의 수집·이용·제공에 관한 동의 란을 미리 선택한 것으로 설정해두지 않습니다. 또한 개인정보의 수집·이용·제공에 관한 이용자의 동의거절시 제한되는 서비스를 구체적으로 명시하고, 필수수집항목이 아닌 개인정보의 수집·이용·제공에 관한 이용자의 동의 거절을 이유로 회원가입 등 서비스 제공을 제한하거나 거절하지 않습니다.
+  ⑨ “몰”은 개인정보의 수집·이용·제공에 관한 동의 란을 미리 선택한 것으로 설정해두지 않습니다. 또한 개인정보의 수집·이용·제공에 관한 이용자의 동의거절시 제한되는 서비스를 구체적으로 명시하고, 필수수집항목이 아닌 개인정보의 수집·이용·제공에 관한 이용자의 동의 거절을 이유로 Sing up 등 서비스 제공을 제한하거나 거절하지 않습니다.
 
 제18조(“몰“의 의무)
 
@@ -269,14 +269,14 @@ if (isset($_SESSION['user_id'])) {
   ② “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.</textarea>
 				<div class="agreeArea">
 					<div class="radio_chk">
-						<label class="fs14"><input type="radio" name="agree1" value="y">동의함</label>
+						<label class="fs14"><input type="radio" name="agree1" value="y"> Agree</label>
 						<label class="fs14 ml10"><input type="radio" name="agree1"
-							value="n">동의안함</label>
+							value="n"> Disagree</label>
 					</div>
 				</div>
-				<p class="blt01">개인정보보호법 제15조, 제24조에 의한 수집ㆍ이용에 동의</p>
+				<p class="blt01">Consent to the collection and use of articles 15 and 24 of the Personal Information Protection Act</p>
 				<p class="fs14 avt">
-					<span class="fcR">(필수)</span>개인정보 수집 이용동의
+					<span class="fcR">(Required)</span>Collection of personal information
 				</p>
 				<textarea class="term">1. 개인정보의 처리 목적 (‘cilab.kr’이하 ‘cilab.kr’) 은(는) 다음의 목적을 위하여 개인정보를 처리하고 있으며, 다음의 목적 이외의 용도로는 이용하지 않습니다.
 - 고객 가입의사 확인, 고객에 대한 서비스 제공에 따른 본인 식별.인증, 회원자격 유지.관리, 물품 또는 서비스 공급에 따른 금액 결제, 물품 또는 서비스의 공급.배송 등
@@ -288,7 +288,7 @@ if (isset($_SESSION['user_id'])) {
 
 ② 구체적인 개인정보 처리 및 보유 기간은 다음과 같습니다.
 ☞ 아래 예시를 참고하여 개인정보 처리업무와 개인정보 처리업무에 대한 보유기간 및 관련 법령, 근거 등을 기재합니다.
-(예시)- 고객 가입 및 관리 : 서비스 이용계약 또는 회원가입 해지시까지, 다만 채권․채무관계 잔존시에는 해당 채권․채무관계 정산시까지
+(예시)- 고객 가입 및 관리 : 서비스 이용계약 또는 Sing up 해지시까지, 다만 채권․채무관계 잔존시에는 해당 채권․채무관계 정산시까지
 - 전자상거래에서의 계약․청약철회, 대금결제, 재화 등 공급기록 : 5년
 
 
@@ -413,16 +413,16 @@ if (isset($_SESSION['user_id'])) {
 개인정보를 보관하고 있는 물리적 보관 장소를 별도로 두고 이에 대해 출입통제 절차를 수립, 운영하고 있습니다.</textarea>
 				<div class="agreeArea">
 					<div class="radio_chk">
-						<label class="fs14"><input type="radio" name="agree2" value="y">동의함</label>
+						<label class="fs14"><input type="radio" name="agree2" value="y"> Agree</label>
 						<label class="fs14 ml10"><input type="radio" name="agree2"
-							value="n">동의안함</label>
+							value="n"> Disagree</label>
 					</div>
 				</div>
 				<div class="mt20 ar">
 					<input type="submit" name="submit"
-						class="btn_submit btn type07 st2" value="회원가입"
+						class="btn_submit btn type07 st2" value="Membership"
 						OnClick="return fregister_submit()"> <a href="/"
-						class="btn type07">취소</a>
+						class="btn type07">Cancel</a>
 				</div>
 			</form>
 		</div>
@@ -436,10 +436,10 @@ if (isset($_SESSION['user_id'])) {
     	if(agree1_val == 'y' && agree2_val == 'y'){
     		return true;
     	}else if(agree1_val != 'y'){
-    		alert("회원가입약관의 내용에 동의하셔야 회원가입 하실 수 있습니다.");							
+    		alert("You have to agree the terms of membership to sign up the membership.");							
     		return false;
     	}else if(agree2_val != 'y'){
-    		alert("개인정보수집 이용동의 내용에 동의하셔야 회원가입 하실 수 있습니다.");
+    		alert("You have to agree the privacy policy to sign up the membership.");
     		return false;
     	}
         

@@ -31,5 +31,5 @@ for ($i=1; $i<count($lines);$i++){
 	query_send_non_return($query);
 }
 
-header("location:http://".$http_host."/admin/pm/list.php");
+header("location:https://".$http_host."/admin/pm/list.php");
 

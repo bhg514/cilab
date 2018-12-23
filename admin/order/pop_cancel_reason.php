@@ -32,8 +32,8 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><?=$info['fd_order_name']?></td>
-							<td><?=$info['fd_order_hp']?></td>
+							<td><?=$info['fd_del_name']?></td>
+							<td><?=$info['fd_del_hp']?></td>
 							<td colspan="2"><?=$info['fd_status_msg']?></td>
 						</tr>						
 					</tbody>

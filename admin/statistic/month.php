@@ -50,7 +50,7 @@
 						$count++;
 					}
 					echo '<td class="tbody_td">'.$r['month'].'월</td>';		
-					echo '<td class="tbody_td">'.$r['count'].'</td>';
+					echo '<td class="tbody_td">'.number_format($r['count']).'</td>';
 					echo '<td class="tbody_td">'.number_format($r['total']).'</td>';						
 
 					echo '</tr>';
@@ -59,8 +59,8 @@
 			?>
 			<tr>
 				<td colspan="2">총계</td>
-				<td><?=$year_total['count']?></td>
-				<td><?=$year_total['total']?></td>
+				<td><?=number_format($year_total['count'])?></td>
+				<td><?=number_format($year_total['total'])?></td>
 			</tr>
 		</tbody>
 	</table>	

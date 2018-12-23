@@ -16,15 +16,15 @@
 <script type="text/javascript" src="../js/admin.js"></script>
 <section class="container">			
 	<div>
-		<div class="admin_title">월별통계</div>		
-		<div class="admin_position">Home  » 통계관리 » 월별통계</div>			
+		<div class="admin_title">일별통계</div>		
+		<div class="admin_position">Home  » 통계관리 » 일별통계</div>			
 		<hr class="garo" style="display: block;"> 
 	</div>
 	<div class="search_div">
 		<select id="period_select">
 			<?php
-				for($i=2018; $i<$year+10;$i++){
-					for($k=1; $k<12; $k++){
+				for($i=2018; $i<$year+40;$i++){
+					for($k=1; $k<=12; $k++){
 						if ($year==$i && $month == $k)
 							echo '<option value="'.$i.'/'.$k.'" selected>'.$i.'년 '.$k.'월</option>';
 						else 
@@ -60,7 +60,7 @@
 						$count++;
 					}
 					echo '<td class="tbody_td">'.$r['day'].'일</td>';		
-					echo '<td class="tbody_td">'.$r['count'].'</td>';
+					echo '<td class="tbody_td">'.number_format($r['count']).'</td>';
 					echo '<td class="tbody_td">'.number_format($r['total']).'</td>';						
 
 					echo '</tr>';
@@ -69,8 +69,8 @@
 			?>
 			<tr>
 				<td colspan="3">총계</td>
-				<td><?=$month_total['count']?></td>
-				<td><?=$month_total['total']?></td>
+				<td><?=number_format($month_total['count'])?></td>
+				<td><?=number_format($month_total['total'])?></td>
 			</tr>
 		</tbody>
 	</table>	

@@ -6,7 +6,7 @@
 	$no = $_GET['no'];
 
 	if($no==null){
-		header("location:http://".$http_host."/");
+		header("location:https://".$http_host."/");
 	};
 
 

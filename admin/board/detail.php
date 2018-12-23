@@ -7,9 +7,9 @@
 	$no = $_GET['no'];
 	$type = $_GET['type'];
 	if($no==null && $type!=null){
-		header("location:http://".$http_host."/admin/board/list.php?type=".$type);		
+		header("location:https://".$http_host."/admin/board/list.php?type=".$type);		
 	}else if($no==null && $type==null){
-		header("location:http://".$http_host."/admin/board/list.php?type=1");
+		header("location:https://".$http_host."/admin/board/list.php?type=1");
 	};
 
 	$info = board_get_info($no,$type);

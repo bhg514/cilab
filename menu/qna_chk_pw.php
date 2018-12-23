@@ -31,7 +31,7 @@
 				</div>
 			</div>
 			<div class="mt20 ar">				
-				<a href="list.php?type=4" class="btn type07">홈으로</a>
+				<a href="list.php?type=3" class="btn type07">홈으로</a>
 			</div>
 		</div>
 	</div>

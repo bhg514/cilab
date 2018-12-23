@@ -10,6 +10,16 @@
     
     $query_string ="";
 
+    $exchange_url="http://free.currencyconverterapi.com/api/v6/convert?q=USD_KRW&compact=y";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $exchange_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1000);
+    $rt = curl_exec($ch);
+    curl_close($ch);
+    $hwan_api = json_decode($rt);
+    $hwan_krw = $hwan_api->USD_KRW->val;
+
     foreach ($query_arr as $query) {
         $query_sp = explode('=', $query);
         
@@ -17,6 +27,7 @@
             $query_string .= $query."&";
         }
     }
+
 
 ?>
 <section class="container">
@@ -74,7 +85,9 @@
     	<div class="category_content">
             <div class="imgType01">
                 <ul>
-                    <?php                                
+                    <?php    
+                                 
+
                         $result = while_product_list($page,$type,$search);  
                         $count = 0;
                         while ($r = mysqli_fetch_array($result)) {                            
@@ -84,8 +97,12 @@
                     ?>
                     <li class="product_li">
                         <a href="./store_view.php?no=<?=$r['pk_no']?>">
-                            <div class="image"><img src="/admin/img/upload_image/<?=$r['fd_new_main_img']?>" alt="상품 이미지" class="pd_img"></div>
-                            <p class="price"><span class="redbox">판매가</span> <?=number_format($r['fd_price'])?></p>
+                            <div class="image"><img src="/admin/img/upload_image/<?=$r['fd_new_main_img']?>" alt="product image" class="pd_img"></div>
+                            <p class="price">
+                                <span class="redbox">price</span>
+                                
+                                <?=number_format($r['fd_price'])?>원(<?=number_format($r['fd_price']/$hwan_krw,2)?>$)
+                            </p>
                             <p class="name"><?=$r['fd_name']?></p>
                             
                         </a>
@@ -106,6 +123,7 @@
                     <img src="/images/icon/btn_prev.png" alt="pre" id="prev_img" class="page_nav_btn" >
                 </a>
                 <?php
+                
                     $total_count = product_get_count($search,$type,1);
                     $page_info = make_page($page,$total_count,$query_string,9);
 
@@ -126,7 +144,7 @@
 <?php
     echo "<script>
     if($('.category_content .imgType01 ul li').length==0)
-        $('.category_content .imgType01 ul').html('<a style=\"font-size: 20px;\">등록된 상품이 없습니다.</a>')
+        $('.category_content .imgType01 ul').html('<a style=\"font-size: 20px;\">There is no registered product.</a>')
     </script>";
 	include '../footer.php'
 ?>

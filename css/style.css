@@ -60,6 +60,8 @@ header h1 a {
 .gnb p {
 	display: inline-block;
 	margin: 5px;
+	font-weight: bold;
+	font-size: 14px;
 }
 
 .lnb {
@@ -168,6 +170,7 @@ footer {
 
 .text_footer {
 	float: left;
+	width: calc(100% - 95px);
 	margin-left: 20px;
 }
 
@@ -179,14 +182,23 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	color: #808080;
 }
 
+footer address {
+	display: block;
+}
+
 .footerFloor1 {
 	padding: 0 0 3px 0;
+}
+
+.footerFloor3 {
+	text-align: center;
 }
 
 .f_name {
 	display: inline-block;
 	color: #808080;
 	padding-right: 5px;
+	font-weight: bold;
 }
 
 .f_char {
@@ -349,7 +361,7 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 
 .imgType01 .price .redbox {
 	display: inline-block;
-	padding: 2px 6px;
+	padding: 2px 6px 4px;
 	color: #fff;
 	font-size: 11px;
 	border-radius: 3px;
@@ -717,6 +729,7 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	font-size: 15px;
 	color: #333333;
 	font-weight: bold;
+	border-radius: 5px;
 }
 
 .grayBox.post .priceSpan {
@@ -726,7 +739,7 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 
 .priceBox {
 	position: relative;
-	padding: 20px 5px;
+	padding: 20px 5px 30px 5px;
 	border-bottom: 1px solid #bdbdbd;
 	font-size: 15px;
 	font-weight: bold;
@@ -812,7 +825,7 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 }
 
 .tblType01 th {
-	padding: 13px 0;
+	padding: 15px 10px;
 	font-size: 15px;
 	color: #333333;
 	border-bottom: 1px solid #e8e8e8;
@@ -884,8 +897,14 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 
 .inTbl {
 	display: inline-block;
-	padding: 7px 10px;
+	padding: 7px 5px;
 	border: 1px solid #d4d4d4;
+	height: 35px;
+}
+
+select {
+	display: inline-block;
+	height: 35px;
 }
 
 .inTbl.long {
@@ -1010,7 +1029,7 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	padding-left: 30px;
 	padding-bottom: 10px;
 	color: #333333;
-	font-size: 32px;
+	font-size: 24px;
 	font-weight: bold;
 	text-align: left;
 }
@@ -1059,9 +1078,10 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 
 .loginBox .loginBtn.pwSt {
 	width: 123px;
-	height: 33px;
+	height: 36px;
 	line-height: 1rem;
 	font-weight: normal;
+	cursor: pointer;
 }
 
 .loginBox .loginInput input {
@@ -1119,7 +1139,7 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	bottom: 100px;
 	left: 50%;
 	font-size: 0;
-	margin-left: -150px;
+	margin-left: -275px;
 }
 
 .mainMenu li {
@@ -1133,6 +1153,25 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 
 .mainMenu li a {
 	display: inline-block;
+	padding: 10px 15px;
+	width: 135px;
+	box-sizing: border-box;
+	background: #a6ce39;
+	text-align: center;
+	text-decoration: none;
+}
+
+.mainMenu li a p {
+	text-align: center;
+	color: #fff;
+	background: #a6ce39;
+	padding-top: 7px;
+	box-sizing: border-box;
+	height: 40px;
+}
+
+.mainMenu li:nth-child(3) a p {
+	padding-top: 2px;
 }
 
 .mainNoti {
@@ -1195,7 +1234,14 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 }
 
 .completeJoin {
+	padding: 80px 0;
 	text-align: center;
+	/* border-radius:10px; */
+	/* border: 1px solid #333; */
+}
+
+#terms_sel {
+	height: auto;
 }
 
 .completeJoin .txt1 {
@@ -1311,6 +1357,7 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 #option_select {
 	font-size: 16px;
 	float: right;
+	height: auto;
 }
 
 #select_count {
@@ -1340,6 +1387,18 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	width: 40%;
 }
 
+.usd_price {
+    position: absolute;
+    margin-left: 5px;
+    color: #999;
+    top: 50px;
+    right: 5px;
+}
+
+.dollar {
+	margin-left: 3px;
+}
+
 /*게시판*/
 .listDate, .listWriter {
 	width: 100px;
@@ -1353,50 +1412,50 @@ footer address, footer .tel, footer .fax, footer .email, footer .copyright
 	width: 30%;
 }
 
-.img_wd{
+.img_wd {
 	width: 100%;
 }
 
- /* The Modal (background) */
+/* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 20%; /* Could be more or less, depending on screen size */                          
+.order_modal-content {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 20%; /* Could be more or less, depending on screen size */
 }
 
-.modal_btn{
-    margin-top: 30px;
-    float: right;
+.modal_btn {
+	margin-top: 30px;
+	float: right;
 }
 
-.modal_hp_input{
+.modal_hp_input {
 	width: 70px;
 }
 
-.modal_hp{
+.modal_hp {
 	margin-top: 10px;
 }
 
-.modal_textarea{
+.modal_textarea {
 	height: 100px;
 }
 
-.pop_btn{
+.pop_btn {
 	float: right;
 }

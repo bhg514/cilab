@@ -27,7 +27,8 @@
 					We are supplying our customers with multi-purpose underwater robots that can improve the performance of products and apply them to various fields through technological development. We also develop H / W, S / W, and controller of underwater robot, sensor by our own technology.<br>
 					We are also developing and operating educational and leisure underwater robots in accordance with the 4th Industrial Revolution. Through this, we will grow into a global leader in underwater robots.<br>
 				</p>
-				<p><img src="../images/common/cilabinfo.jpg" width="1024px"></p>
+				<!-- <p><img src="../images/common/cilabinfo.jpg" width="1024px"></p> -->
+				<p><img src="../images/common/cilabinfo2.png" width="1024px"></p>
 			</div>
 		</div>
 	</div>

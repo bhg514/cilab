@@ -105,8 +105,7 @@ $(document).ready(function(){
 		$('#select_price').val(select_price);		
 		$('#select_title').text(select_val);
 		if(select_count!=0){
-			var total = numberWithCommas(uncomma(select_price)*select_count +del_fee);
-			$('#total_price').text(total);
+			price_update(select_price,select_count,del_fee);
 		}
 	});
 
@@ -125,8 +124,7 @@ $(document).ready(function(){
 			var select_count = $('#select_count').val();
 			var del_fee = Number(uncomma($('#del_fee').text()));
 			if(select_price!=0){
-				var total = numberWithCommas(uncomma(select_price)*select_count +del_fee);
-				$('#total_price').text(total);
+				price_update(select_price,select_count,del_fee);
 			}
 			
 		}
@@ -434,4 +432,11 @@ function exchange(){
 		}
 	}
 
+}
+
+function price_update(select_price,select_count,del_fee){
+	var ex_rate = $('#ex_rate').val();
+	var total = uncomma(select_price)*select_count +del_fee;	
+	$('#dollar').text(numberWithCommas((total/ex_rate).toFixed(2)));			
+	$('#total_price').text(numberWithCommas(total));
 }

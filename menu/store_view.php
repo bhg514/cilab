@@ -12,6 +12,17 @@
 	function ex_option($option){
 		return explode('^', $option);
 	}
+
+    $exchange_url="http://free.currencyconverterapi.com/api/v6/convert?q=USD_KRW&compact=y";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $exchange_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1000);
+    $rt = curl_exec($ch);
+    curl_close($ch);
+    $ex_api = json_decode($rt);
+    $ex_rate = $ex_api->USD_KRW->val;
+
 ?>
 
 <section class="container">
@@ -43,49 +54,62 @@
 					<p class="title"><?=$info['fd_name']?></p>
 					<input type="hidden" name="no" value="<?=$info['pk_no']?>">
 					<div class="grayBox post">
-					<input type="hidden" name="product_price" id="product_price" value="<?=$info['fd_price']?>">
-					<?php
-						if($info['fd_option']!=null){
-					?>
-						<label for="option_select">옵션</label>
-						<input type="hidden" name="select_name" id="select_name" value="">
-						<input type="hidden" name="select_price" id="select_price" value="">						
-						<select id=option_select>
-							<option hidden id="select_title">옵션을 선택하세요</option>
-							<?php
-								for($i=0; $i<count($option_arr); $i++){
-									$option_info = ex_option($option_arr[$i]);
-									if ($option_info[1]==0){
-										echo '<option value="'.number_format($info["fd_price"]).'" name="'.$option_info[0].'">'.$option_info[0].' / '.number_format($info["fd_price"]).'won</option>';
-									}else{
-										echo '<option value="'.number_format($info["fd_price"]+$option_info[1]).'" name="'.$option_info[0].'">'.$option_info[0].' / '.number_format($info["fd_price"]+$option_info[1]).'won</option>';										
+						<input type="hidden" name="product_price" id="product_price" value="<?=$info['fd_price']?>">
+						<input type="hidden" id="ex_rate" value=<?=$ex_rate?> >	
+						<?php
+							if($info['fd_option']!=null){
+						?>
+							<label for="option_select">Option</label>
+							<input type="hidden" name="select_name" id="select_name" value="">
+							<input type="hidden" name="select_price" id="select_price" value="">	
+											
+							<select id=option_select>
+								<option hidden value=0 id="select_title">Choose the option.</option>
+								<?php
+									for($i=0; $i<count($option_arr); $i++){
+										$option_info = ex_option($option_arr[$i]);
+										if ($option_info[1]==0){
+											echo '<option value="'.number_format($info["fd_price"]).'" name="'.$option_info[0].'">'.$option_info[0].' / '.number_format($info["fd_price"]).'won</option>';
+										}else{
+											echo '<option value="'.number_format($info["fd_price"]+$option_info[1]).'" name="'.$option_info[0].'">'.$option_info[0].' / '.number_format($info["fd_price"]+$option_info[1]).'won</option>';										
+										}
 									}
-								}
-							?>
-						</select>
-					<?php
-						}else{
-							echo '가격 <span class=priceSpan id=pro_price>'.number_format($info["fd_price"]).'</span>';
-						}
-					?>
+								?>
+							</select>
+						<?php
+							}else{
+								echo 'Price <span class=priceSpan id=pro_price>'.number_format($info["fd_price"]).'</span>';
+							}
+						?>
 					</div>
 					<div class="grayBox post">
-						<label for="select_count">수량</label>
+						<label for="select_count">Quantity</label>
 						<input type="button" class="bt_up" value="+">
 						<input type="number" value="0" min="1" max="<?=$info['fd_stock']?>" id="select_count" name="select_count">
 						<input type="button" class="bt_down" value="-">
 					</div>
 					<div class="grayBox post">
-						<label for="del_fee">배송비</label>
+						<label for="del_fee">Delivery Charge</label>
 						<span class="priceSpan" id="del_fee"><?=number_format($info['fd_delivery'])?></span>
 					</div>				
 					<div class="priceBox" >
-						<label for="total_price">총 상품금액</label>					
-						<span class="priceSpan" id="total_price">0</span>
+						<label for="total_price">Amount</label>					
+						<p class="priceSpan" >
+							<span id="total_price">0</span>
+							<span>원</span>			
+
+						</p>
+
+						<p class="usd_price">
+							<span class="bracket">(</span>
+							<span class="dollar" id="dollar"></span>
+							<span>$</span>
+							<span class="bracket">)</span>
+						</p>
 					</div>
 
 					<div class="mt20 ar">
-						<input type="submit" id="buy_btn" class="btn type02" value="구매하기">
+						<input type="submit" id="buy_btn" class="btn type02" value="Buy">
 					</div>
 				</form>
 			</div>
@@ -97,6 +121,6 @@
 	</div>
 </section>
 <?php
-	include '../footer.php'
+	include '../footer.php';
 ?>
 

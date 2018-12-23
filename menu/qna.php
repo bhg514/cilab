@@ -1,6 +1,9 @@
 <?php
 	header ( "content-type:text/html; charset=utf-8" );
-	include '../header.php'
+	include '../header.php';
+	if(!isset($_SESSION['user_id'])){
+		alert('로그인 후 이용해주세요.','https://'.$http_host.'/member/login.php');
+	};
 	
 ?>
 <section class="container">
@@ -19,7 +22,7 @@
 			<div class="btnTab">
 				<a href="./list.php?type=1" >Notice</a>
                 <a href="./list.php?type=2" >S/W download</a>
-				<a href="./list.php?type=4" class="on">Q&A</a>
+				<a href="./list.php?type=3" class="on">Q&A</a>
 			</div>
 			<form enctype='multipart/form-data' id="qna_form" action="./qna_form.php" method="post">
 				<table class="tblType02">
@@ -51,7 +54,7 @@
 				</table>
 				<div class="mt20 ar">
 					<input type="submit" value="Write" id="qna_btn" class="btn type07 st2">
-					<a href="./list.php?type=4" class="btn type06 st2">Cancel</a>
+					<a href="./list.php?type=3" class="btn type06 st2">Cancel</a>
 				</div>				
 			</form>
 		</div>

@@ -38,7 +38,7 @@
 			<div class="btnTab">
 				<a href="./list.php?type=1" class='<?php if($type==1) echo "on"?>'>Notice</a>
                 <a href="./list.php?type=2" class="<?php if($type==2) echo "on"?>">S/W download</a>
-				<a href="./list.php?type=4" class="<?php if($type==4) echo "on"?>">Q&A</a>
+				<a href="./list.php?type=3" class="<?php if($type==3) echo "on"?>">Q&A</a>
 			</div>
 			<table class="tblType01 listView">
 				<caption><?=$head?></caption>
@@ -51,7 +51,7 @@
 					<col class="listDate">
 					<col class="listCount">
 				<?php
-						}else if($type==4){
+						}else if($type==3){
 				?>
 					<col class="listWriter">
 					<col class="listDate">
@@ -72,7 +72,7 @@
 							    echo '<th scope="col">S/W</th>
                                 <th scope="col">Version</th>
                                 <th scope="col">Download</th>';
-							}else if($type==4){
+							}else if($type==3){
 								echo '<th scope="col">Title</th>
 								<th scope="col">Writer</th>
 								<th scope="col">Date</th>
@@ -101,7 +101,7 @@
 								}else{
 								    echo "<td></td>";
 								}
-							}else if($type==4){
+							}else if($type==3){
 								echo '<td class="title"><a href="qna_chk_pw.php?no='.$r["pk_no"].'">'.$r["fd_title"].'</a></td>';
 								echo "<td>".$r['fd_name']."</td>";
 								echo "<td>".$r['fd_date']."</td>";
@@ -137,7 +137,7 @@
 				</a>
 			</div>				
 			<div>
-				<?php if($type==4) echo '<a href="qna.php" class="btn type07">Contact us</a>';?>
+				<?php if($type==3) echo '<a href="qna.php" class="btn type07">Contact us</a>';?>
 			</div>
 		</div>
 	</div>

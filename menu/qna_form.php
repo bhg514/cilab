@@ -22,7 +22,7 @@
 		$query = 'INSERT INTO tb_qna (fd_title, fd_content, fd_pw, fd_new_file, fd_file, fd_date, fd_name, fd_hp, fd_mail) select "'.$title.'", "'.$content.'", "'.$pw.'", "'.$new_file_name.'", "'.$file_name.'", "'.$date_time.'" ,fd_name, fd_hp, fd_mail from tb_user where fd_id ="'.$_SESSION['user_id'].'"';
 		query_send_non_return($query);
 		
-		header("location:http://".$http_host."/menu/list.php?type=4");
+		header("location:https://".$http_host."/menu/list.php?type=3");
 
 
 	} catch(Exception $e){

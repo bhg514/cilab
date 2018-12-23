@@ -90,7 +90,6 @@
 	function get_all_info_to_id($id){
 		$query = 'select * from (select fd_id, fd_pw, fd_type, fd_name from tb_admin where fd_id="'.$id.'" union select fd_id, fd_pw, fd_type ,fd_name from tb_user where fd_id="'.$id.'") a';
 		$result = query_send($query);
-
 		$info = mysqli_fetch_array($result);
 		return $info;
 	}
@@ -166,11 +165,10 @@
 	function while_get_order_list($start_num,$order_number,$order_name,$product_name,$status){
 		$start_num = ($start_num-1)*10;		
 		if($product_name == null){
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM (SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and o.fd_status like "%'.$status.'%" order by row desc limit '.$start_num.', 10 ';					
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM (SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and o.fd_status ="'.$status.'" order by row desc limit '.$start_num.', 10 ';					
 		}else{
 			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM (SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where p.fd_name like "%'.$product_name.'%" order by row desc limit '.$start_num.', 10';					
 		}				
-
 		$result = query_send($query);		
 		return $result;
 	}
@@ -178,11 +176,11 @@
 	function while_get_order_list_date($start_num,$order_number,$order_name,$product_name,$status,$date){
 		$start_num = ($start_num-1)*10;		
 		if($product_name == null){
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM(SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and o.fd_status like "%'.$status.'%" and fd_date="'.$date.'" order by row desc limit '.$start_num.', 10 ';					
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM(SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and o.fd_status like "%'.$status.'%" and o.fd_date="'.$date.'" order by row desc limit '.$start_num.', 10 ';					
 		}else{
 			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM(SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where p.fd_name like "%'.$product_name.'%" order by row desc limit '.$start_num.', 10';					
 		}		
-		$result = query_send($query);		
+		$result = query_send($query);	
 		return $result;
 	}
 
@@ -254,22 +252,6 @@
 		return $result;
 	}
 
-	function del_chk($no, $status){
-		$query = 'update tb_order set fd_status='.$status.' where pk_no = '.$no;
-		query_send_non_return($query);	
-	}
-
-
-	function del_finish_chk(){
-		$query = 'SELECT pk_no FROM tb_order WHERE date(fd_date) <= date(subdate(now(), INTERVAL 14 DAY)) and fd_status=4';
-		$results = query_send($query);			
-		while ($info = mysqli_fetch_array($results)) {
-			del_chk($info['pk_no'],5);
-		}
-		
-
-	}
-
 	function refuse_msg($no, $input_msg, $type){
 		if($type==7){
 			$next_type_num = "11";
@@ -277,8 +259,9 @@
 		}elseif ($type==8) {
 			$next_type_num = "12";
 		}
-		$query='UPDATE tb_order SET fd_status = "'.$next_type_num.'" , fd_status_msg=CONCAT(fd_status_msg, "||'.$input_msg.'") where pk_no ='.$no;	
-		echo $query;	
+		$query='UPDATE tb_order SET fd_status = fd_pre_status where pk_no ='.$no;	
+		query_send_non_return($query);
+		$query='UPDATE tb_order SET fd_pre_status = "'.$next_type_num.'" , fd_status_msg=CONCAT(fd_status_msg, "||'.$input_msg.'") where pk_no ='.$no;	
 		query_send_non_return($query);
 
 	}
@@ -297,9 +280,9 @@
 
 	}
 	function complete_sum_info($start_date,$end_date){
-		$query = 'select count(*) total, sum(fd_price) price, sum(fd_del_fee) del from tb_order where fd_date between "'.$start_date.'" and "'.$end_date.'"';
+		$query = 'select count(*) total, sum(fd_price) price, sum(fd_del_fee) del from tb_order where fd_date between "'.$start_date.'" and "'.$end_date.'" and fd_status=5';
 		$result = query_send($query);
-		$info = mysqli_fetch_array($result);
+		$info = mysqli_fetch_array($result);		
 		return $info;
 
 	}
@@ -307,7 +290,7 @@
 	function while_get_board_list($start_num,$search,$type){
 		$table = table_name($type);
 		$start_num = ($start_num-1)*10;	
-		$query = 'select @ROWNUM := @ROWNUM + 1 AS row, n.* from '.$table.' n, (SELECT @ROWNUM := 0) R where fd_title like "%'.$search.'%" order by row desc limit '.$start_num.', 10';	
+		$query = 'select @ROWNUM := @ROWNUM - 1 AS row, n.* from (select * from '.$table.' order by pk_no asc) n, (SELECT @ROWNUM := (select count(pk_no) from '.$table.')+1) R where fd_title like "%'.$search.'%" limit '.$start_num.', 10';
 		$result = query_send($query);		
 		return $result;
 	}
@@ -322,9 +305,7 @@
 
 	function board_count($type, $search){
 		$table = table_name($type);
-
 		$query = "select count(*) from ".$table." where fd_title like '%".$search."%' ";
-
 		$result = query_send($query);
 		$count = mysqli_fetch_array($result);
 		return $count;
@@ -422,14 +403,13 @@
 	}
 
 	function while_product_list($start_num,$type,$name){
-		$start_num = ($start_num-1)*10;
+		$start_num = ($start_num-1)*9;
 		$query = 'select pk_no,fd_name, fd_price, fd_new_main_img from tb_product where fd_status="판매중" and fd_name like "%'.$name.'%"';
 		if ($type!=5){
 			$query .= ' and fd_category='.$type;
 		}		
 		$query .=' order by pk_no desc limit '.$start_num.', 9';
 		$result = query_send($query);
-		
 		return $result;
 
 	}
@@ -462,7 +442,7 @@
 	}
 
 	function user_order_list($id){
-		$query = "select o.fd_date, p.fd_name, o.fd_price, o.fd_del_fee, o.fd_status,o.pk_no,o.fd_invoice_number from tb_order o join tb_product p on o.fd_product_no = p.pk_no where fd_order_id='".$id."' ";
+		$query = "select o.fd_date, p.fd_name, o.fd_price, o.fd_del_fee, o.fd_status, o.fd_pre_status, o.pk_no, o.fd_invoice_number from tb_order o join tb_product p on o.fd_product_no = p.pk_no where fd_order_id='".$id."' ";
 		$result = query_send($query);		
 		return $result;
 	}

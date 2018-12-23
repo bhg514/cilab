@@ -24,11 +24,7 @@
 	else if($type==3){
 		$type_text = '배송중';	
 		$list_text = '송장번호';
-	} 
-	else if($type==4){
-		$type_text = '배송완료';	
-		$list_text = '송장번호';
-	} 
+	} 	
 	else if($type==5){
 		$type_text = '판매완료';	
 		$list_text = '송장번호';
@@ -109,8 +105,6 @@
 		<?php 
 			if($type==1) echo '<a class="btn type05" id="order_chk">주문확인</a>';
 			elseif($type==2) echo '<a class="btn type05" id="input_invoice">송장입력 확인</a>';
-			elseif ($type==3) echo '<a class="btn type05" id="del_chk">배송체크</a>';
-			elseif ($type==4) echo '<a class="btn type05" id="del_finish_chk">배송체크</a>';
 		?>
 		<a class="btn type05" id="list_del">삭제</a>
 	</div>
@@ -156,13 +150,13 @@
 				<td class="tbody_td"><a href="detail.php?type=<?=$type?>&no=<?=$r['pk_no']?>"><?= $r['fk_order_number']?></a></td>
 				<td class="tbody_td"><?=$r['fd_name']?></td>
 				<td class="tbody_td"><?=$r['fd_order_name']?></td>
-				<td class="tbody_td"><?=$r['fd_price']?></td>
+				<td class="tbody_td"><?=number_format($r['fd_price'])?></td>
 				<?php
 				if($type ==1){
 					echo '<td class="tbody_td">'.$r["fd_payment"].'</td>';
 				}else if($type ==2){
 					echo '<td class="tbody_td"><input type="text" class="input_invoice"></td>';
-				}else if($type ==3 || $type ==4 || $type == 5){
+				}else if($type ==3 || $type == 5){
 					echo '<td class="tbody_td">'.$r['fd_invoice_number'].'</td>';
 				}else if($type>=6 && $type<9){
 					echo '<td><a class="btn type05 show_msg" >보기</a><input type="hidden" id="status_msg" value="'.$r['fd_status_msg'].'"></td>';

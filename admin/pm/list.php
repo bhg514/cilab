@@ -108,8 +108,8 @@
 					
 				</td>
 				<td class="tbody_td"><a href="detail.php?no=<?=$r['pk_no']?>"><?= $r['fd_name']?></a></td>
-				<td class="tbody_td"><?=$r['fd_stock']?></td>
-				<td class="tbody_td"><?=$r['fd_price']?></td>
+				<td class="tbody_td"><?=number_format($r['fd_stock'])?></td>
+				<td class="tbody_td"><?=number_format($r['fd_price'])?></td>
 				<td class="tbody_td"><?=$r['fd_date']?></td>
 				<td class="tbody_td"><?=$r['fd_status']?></td>
 			</tr>

@@ -12,7 +12,7 @@
 		$end_date .="-".date('t', strtotime($end_date)); //월의 마지막 날짜 
 		$start_date .="-01"; //월의 첫날 
 	}
-	$info = complete_sum_info($start_date,$end_date);
+	$info = complete_sum_info($start_date,$end_date);	
 	$query_string = $_SERVER['QUERY_STRING']; 
 	$query_arr = explode('&', $query_string);
 	
@@ -68,7 +68,7 @@
 		<a class="btn type05" id="list_del">삭제</a>
 	</div>
 	<div class="summary_div">
-		<span>주문수 총 <?=$info['total']?>건</span>/<span>판매금액 총 <?=$info['price']?>원</span>/<span>배송비 총 <?=$info['del']?>원</span>
+		<span>주문수 총 <?=$info['total']?>건</span>/<span>판매금액 총 <?php if($info['price']==null) echo 0; else echo number_format($info['price']);?>원</span>/<span>배송비 총 <?php if($info['del']==null) echo 0; else echo number_format($info['del']);?>원</span>
 	</div>
 	<table class="list-table">
 		<caption class="readHide">판매완료</caption>
@@ -90,10 +90,10 @@
 			<tr>				
 				<td class="tbody_td"><?= $r['row']?></td>
 				<td class="tbody_td"><?= $r['fd_date']?></td>
-				<td class="tbody_td"><a href="list.php?type=5&date=<?=$r['fd_date']?>"><?= $r['count']?>건</a></td>
-				<td class="tbody_td"><?=$r['price']?></td>
-				<td class="tbody_td"><?=$r['del_fee']?></td>
-				<td class="tbody_td"><?=$r['total']?></td>				
+				<td class="tbody_td"><a href="list.php?type=5&date=<?=$r['fd_date']?>"><?= number_format($r['count'])?>건</a></td>
+				<td class="tbody_td"><?=number_format($r['price'])?></td>
+				<td class="tbody_td"><?=number_format($r['del_fee'])?></td>
+				<td class="tbody_td"><?=number_format($r['total'])?></td>				
 			</tr>
 			
 
@@ -132,10 +132,12 @@ echo '<script>
 	var url = new URL(url_string);
 	var start_date = url.searchParams.get("start_date");
 	var end_date = url.searchParams.get("end_date");
-	if(start_date.split("-").length==2){
-		$("#search_select").val("2").attr("selected","true");
-	}else{
-		$("#search_select").val("1").attr("selected","true");
+	if(start_date!=null){
+		if(start_date.split("-").length==2){
+			$("#search_select").val("2").attr("selected","true");
+		}else{
+			$("#search_select").val("1").attr("selected","true");
+		}
 	}
 	$("#datepicker1").val(start_date)
 	$("#datepicker2").val(end_date)

@@ -7,7 +7,7 @@
 	$no = $_GET['no'];
 	$type = $_GET['type'];
 	if($no==null){
-		header("location:http://".$http_host."/admin/order/list.php?type=1");
+		header("location:https://".$http_host."/admin/order/list.php?type=1");
 	};
 	$info = order_detail($no);
 

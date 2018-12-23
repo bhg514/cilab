@@ -45,7 +45,7 @@
 		}
 		query_send_non_return($query);
 		
-		header("location:http://".$http_host."/admin/board/list.php?type=".$type);
+		header("location:https://".$http_host."/admin/board/list.php?type=".$type);
 
 
 	} catch(Exception $e){

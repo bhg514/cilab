@@ -6,7 +6,7 @@
 	$no = $_GET['no'];
 
 	if($no==null){
-		header("location:http://".$http_host."/");
+		header("location:https://".$http_host."/");
 	};
 	$query = "select fd_status_msg from tb_order where pk_no=".$no;
 	$result = query_send($query);
@@ -38,7 +38,7 @@
 					</tbody>
 				</table>				
 				<div class="pop_btn">
-					<a class="btn type05"  onclick="window.close();">닫기</a>
+					<a class="pop_cancel_close btn type05"  onclick="window.close();">닫기</a>
 				</div>				
 			</div>
 		</div>

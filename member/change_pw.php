@@ -7,7 +7,7 @@
 		$sql = "UPDATE tb_user set fd_pw='".$new_pw."' where pk_no='".$pk_no."'";
 		query_send_non_return($sql);		
 	}catch(Exception $e){
-		alert('비밀전호 변경 중 에러가 발생하였습니다\n 잠시 후 다시 시도해주세요.',"http://".$http_host."/member/find_pw_confirm_form.php");
+		alert('비밀전호 변경 중 에러가 발생하였습니다\n 잠시 후 다시 시도해주세요.',"https://".$http_host."/member/find_pw_confirm_form.php");
 	}
-	alert("정상적으로 변경되었습니다. 다시 로그인 해주세요.","http://".$http_host."/member/login.php");
+	alert("정상적으로 변경되었습니다. 다시 로그인 해주세요.","httsp://".$http_host."/member/login.php");
 ?>

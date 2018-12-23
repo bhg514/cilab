@@ -36,7 +36,7 @@
 				<a href="../register/agree.php" class="gnb_join">Register</a>
 				<?php 
 					}else{
-						echo "<p>Welcome to ".$_SESSION['user_name']."</p>";
+						echo "<p>Welcome ".$_SESSION['user_name']."</p>";
 				?>				
 				<a href="../member/logout.php" class="gnb_login">Logout</a>
 				
@@ -46,8 +46,7 @@
 						else 
 							echo '<a href="../admin/pm/list.php" class="gnb_join">Admin</a>';
 					}
-				?>
-				<a href="../sub/sitemap.php" class="gnb_sitemap">Sitemap</a>
+				?>				
 			</div>
 		</div>
 		<div id="cssmenu">

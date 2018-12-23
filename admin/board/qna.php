@@ -7,9 +7,9 @@
 	$no = $_GET['no'];
 	$type = $_GET['type'];
 	if($no==null && $type!=null){
-		header("location:http://".$http_host."/admin/board/list.php?type=".$type);		
+		header("location:https://".$http_host."/admin/board/list.php?type=".$type);		
 	}else if($no==null && $type==null){
-		header("location:http://".$http_host."/admin/board/list.php?type=1");
+		header("location:https://".$http_host."/admin/board/list.php?type=1");
 	};
 
 	$info = board_get_info($no,$type);
@@ -67,13 +67,12 @@
 							<tr>
 								<th scope="row">첨부파일</th>
 								<td olspan="3">
-									<?php 
-										if($info['fd_file']!=""){
-											foreach ($fd_file as $file) {
-												echo '<img src="/images/icon/save.png" class="save_img"><label>'.$file.'</label><br/>';
-											}											
-										}
-									?>
+                                    <?php 
+                                        if($info['fd_file']!=""){                                            
+                                            echo '<a href="file_down.php?file='.$info['fd_new_file'].'&name='.$info['fd_file'].'"><img src="/images/icon/save.png" class="save_img"><label>'.$info['fd_file'].'</label><br/></a>';
+                                        }
+                                    ?>
+									
 								</td>
 								<input type="hidden" name="file_count" id="file_count" value="">
 							</tr>

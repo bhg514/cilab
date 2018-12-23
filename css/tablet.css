@@ -10,6 +10,7 @@
 .gnbInner {padding-right:10px;}
 .contents {
 	width:100%;
+	box-sizing: border-box;
 }
 .colImg1 > img {
 	width:100%;
@@ -28,6 +29,10 @@
 }
 .text_footer {
 	float: none;
+	width: 100%;
+	margin-left: 0;
+	padding: 0 10px;
+	box-sizing: border-box;
 }
 .footerFloor1 {
 	text-align: right;
