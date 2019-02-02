@@ -96,7 +96,7 @@
 						<label for="total_price">Amount</label>					
 						<p class="priceSpan" >
 							<span id="total_price">0</span>
-							<span>원</span>			
+							<span>KRW</span>			
 
 						</p>
 
@@ -107,7 +107,7 @@
 							<span class="bracket">)</span>
 						</p>
 						<p class="pay_ment">
-							<span>(수수료 관련 안내)</span>
+							<span>A small card service fee will be added due to overseas KRW settlement.(Fees may vary by  card company.)</span>
 						</p>
 					</div>
 

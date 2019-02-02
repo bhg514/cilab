@@ -118,7 +118,7 @@
 		$query = 'select * from tb_product where fd_name like "%'.$name.'%"';
 		if($category!=5) $query .= ' and fd_category = "'.$category.'"';
 		if($status!=3) $query .= ' and fd_status ="'.$status.'"';
-		$query .= ' order by fd_category desc limit '.$start_num.', 10 ';		
+		$query .= ' order by fd_category desc, fd_date desc limit '.$start_num.', 10 ';		
 		$result = query_send($query);		
 		return $result;
 	}
@@ -452,6 +452,12 @@
 		$query = "update ".$table_name." set fd_count=fd_count+1 where pk_no=".$no;
 		query_send_non_return($query);
 
+	}
+
+	function while_get_del_fee(){
+		$query = 'select * from tb_del_fee';
+		$result = query_send($query);		
+		return $result;
 	}
 
 	

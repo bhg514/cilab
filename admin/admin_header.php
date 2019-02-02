@@ -50,6 +50,7 @@
 				<li class="<?php if($uri_arr[2] == 'um') echo 'selected' ; ?>"><a href="../um/list.php">회원 관리</a></li>
 				<li class="<?php if($uri_arr[2] == 'am') echo 'selected' ; ?>"><a href="../am/list.php">관리자 관리</a></li>
 				<li class="<?php if($uri_arr[2] == 'statistic') echo 'selected' ; ?>"><a href="../statistic/month.php">통계 관리</a></li>
+				<li class="<?php if($uri_arr[2] == 'del_set') echo 'selected' ; ?>"><a href="../del_set/del_set.php">배송비 관리</a></li>
 			</ul>
 		</div>
 

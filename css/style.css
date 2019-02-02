@@ -1466,3 +1466,32 @@ select {
 .pop_btn {
 	float: right;
 }
+
+
+/*Q&A table*/
+.qna_answer_tb {
+	border-top: 2px solid #3fa2d5;
+	border-left: 1px solid #e8e8e8;
+	border-right: 1px solid #e8e8e8;
+}
+
+.qna_answer_tb th {
+	padding: 13px 20px;
+	font-size: 15px;
+	text-align: left;
+	color: #333333;
+	border-bottom: 1px solid #e8e8e8;
+	background: #f7f7f7;
+}
+
+.qna_answer_tb td {
+	padding: 13px 23px;
+	font-size: 14px;
+	color: #333333;
+	border-bottom: 1px solid #e8e8e8;
+	border-right: 1px solid #e8e8e8;
+}
+
+.qna_answer_tb tr th {
+	width: 100px;
+}

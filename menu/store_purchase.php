@@ -2,7 +2,7 @@
 	header ( "content-type:text/html; charset=utf-8" );
 	include '../header.php';
 	if(!isset($_SESSION['user_id'])){
-		alert('로그인 후 이용해주세요.','https://'.$http_host.'/member/login.php');
+		alert('Please try again after login.','https://'.$http_host.'/member/login.php');
 	}
 
 	$no = $_POST['no'];
@@ -43,10 +43,10 @@
 	<div class="contents">
 		<div class="tabletInner">
 			<form id="store_form" action="./store_form.php" method="post">
-				<p class="blt01 mt00">주문정보</p>
+				<p class="blt01 mt00">Order information</p>
 				<div class="tblType01Wrap">
 					<table class="tblType01">
-						<caption>주문정보</caption>
+						<caption>Order information</caption>
 						<colgroup>
 							<col>
 							<col>
@@ -57,12 +57,12 @@
 						</colgroup>
 						<thead>
 							<tr>
-								<th scope="col">상품명</th>
-								<th scope="col">주문옵션</th>
-								<th scope="col">수량</th>
-								<th scope="col">가격</th>
-								<th scope="col">배송비</th>
-								<th scope="col">총액</th>
+								<th scope="col">Product name</th>
+								<th scope="col">Option</th>
+								<th scope="col">Quantity</th>
+								<th scope="col">Price</th>
+								<th scope="col">Delivery Charge</th>
+								<th scope="col">Order total</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -103,54 +103,54 @@
 						</tbody>
 					</table>
 				</div>
-				<p class="blt01">구매자정보</p>
+				<p class="blt01">Purchaser information</p>
 				<table class="tblType02">
-					<caption>구매자정보</caption>
+					<caption>Purchaser information</caption>
 					<colgroup>
 						<col style="width:170px;">
 						<col>
 					</colgroup>
 					<tbody>
 						<tr>
-							<th scope="row">이름</th>
+							<th scope="row">Name</th>
 							<td>
 								<input type="text" name="order_name" id="order_name" class="order_input" value=<?=$user['fd_name']?>>
-								<label class="req_label" id="label_order_name">이름을 입력해주세요.</label>
+								<label class="req_label" id="label_order_name">Please enter your name</label>
 							</td>
 						</tr>
 						<tr>
-							<th scope="row">전화번호</th>
+							<th scope="row">Phone Number</th>
 							<td>
 								<input type="text" name="order_hp" id="order_hp" class="order_input" value=<?=$user['fd_hp']?>>
-								<label class="req_label" id="label_order_hp">연락처를 입력해주세요.</label>
+								<label class="req_label" id="label_order_hp">Please enter your phone number.</label>
 							</td>
 						</tr>
 						<tr>
-							<th scope="row">이메일</th>
+							<th scope="row">E-mail</th>
 							<td>
 								<input type="text" name="order_mail" id="order_mail" class="order_input" value="<?=$user['fd_mail']?>">
-								<label class="req_label" id="label_order_mail">메일을 입력해주세요.</label>
+								<label class="req_label" id="label_order_mail">Please enter your E-mail.</label>
 							</td>
 						</tr>
 					</tbody>
 				</table>
-				<p class="blt01">배송지정보</p>			
+				<p class="blt01">Shipping information</p>			
 				<table class="tblType02">
-					<caption>배송지정보</caption>
+					<caption>Shipping information</caption>
 					<colgroup>
 						<col style="width:170px;">
 						<col>
 					</colgroup>
 					<tbody>
 						<tr>
-							<th scope="row">받는사람</th>
+							<th scope="row">Recipient</th>
 							<td>
 								<input type="text" class="inTbl" placeholder="이름" name="del_name" id="del_name" value="<?=$user['fd_name']?>">
-								<label class="req_label" id="label_name">이름을 입력해주세요.</label>
+								<label class="req_label" id="label_name">Please enter the recipient.</label>
 							</td>
 						</tr>
 						<tr>
-							<th scope="row">주소</th>
+							<th scope="row">Address</th>
 							<td>
 								<!-- <label for="reg_mb_zip" class="sound_only">우편번호</label>
 								<input type="text" name="mb_zip" value="<?=$user['fd_zip']?>" id="reg_mb_zip" class="inTbl frm_input required" size="5" maxlength="6" readonly >
@@ -166,51 +166,37 @@
 								<input type="hidden" name="mb_addr_jibeon" value="R">
 								<label class="req_label" id="label_addr">주소를 입력해주세요.</label> -->
 								<input type="text" name="mb_zip" value="<?=$user['fd_zip']?>" id="reg_mb_zip" class="inTbl frm_input required" size="5" maxlength="6" >
-								<label for="reg_mb_zip">우편번호</label><br/>
+								<label for="reg_mb_zip">zip</label><br/>
 								<input type="text" name="mb_addr4" value="<?=$user['fd_address4']?>" id="reg_mb_addr4"  class="inTbl frm_input required" size="50" >
-								<label for="reg_mb_addr4">상세주소</label><br/>
+								<label for="reg_mb_addr4">Address line</label><br/>
 								<input type="text" name="mb_addr3" value="<?=$user['fd_address3']?>" id="reg_mb_addr3"  class="inTbl frm_input required " size="50">
-								<label for="reg_mb_addr3">구</label><br/>
+								<label for="reg_mb_addr3">City</label><br/>
 								<input type="text" name="mb_addr2" value="<?=$user['fd_address2']?>" id="reg_mb_addr2"  class="inTbl frm_input required " size="50">
-								<label for="reg_mb_addr2">시</label><br/>
+								<label for="reg_mb_addr2">State</label><br/>
 								<input type="text" name="mb_addr1" value="<?=$user['fd_address1']?>" id="reg_mb_addr1"  class="inTbl frm_input required " size="50">
-								<label for="reg_mb_addr1">국가</label>
+								<label for="reg_mb_addr1">Country</label>
 							</td>
 						</tr>
 						<tr>
-							<th scope="row">전화번호</th>
+							<th scope="row">Phone Number</th>
 							<td>
 								<input type="text" class="inTbl" name="del_hp" id="del_hp" value="<?=$user['fd_hp']?>">
-								<label class="req_label" id="label_hp">연락처를 입력해주세요.</label>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">배송시 요청사항</th>
-							<td>
-								<select class="inTbl" id="comment_sel" name="comment_sel" title="배송시 요청사항 선택">
-		    						<option>빠른 배송 부탁드립니다.</option>
-		    						<option>배송 전, 연락주세요.</option>
-		    						<option>부재 시, 휴대폰으로 연락주세요.</option>
-		    						<option>부재 시, 경비실에 맡겨주세요.</option>
-		    						<option>경비실이 없습니다. 배송 전, 연락주세요.</option>
-		    						<option>직접입력</option>
-								</select>
-								<input type="text" class="inTbl long" id="comment_input" name="comment_input" title="배송시 요청사항 기재" style="display: none;">
+								<label class="req_label" id="label_hp">Please enter the phone number.</label>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 
-				<p class="blt01">결제정보</p>
+				<p class="blt01">Payment information</p>
 				<table class="tblType02">
-					<caption>결제정보</caption>
+					<caption>Payment information</caption>
 					<colgroup>
 						<col style="width:170px;">
 						<col>
 					</colgroup>
 					<tbody>
 						<tr>
-							<th scope="row">총액</th>
+							<th scope="row">Order total</th>
 							<td>
 								<?php 
 									if($option_price!=null) echo number_format($option_price*$count+$info['fd_delivery']);
@@ -244,12 +230,12 @@
 					</tbody>
 				</table>
 				<div class="mt20 fs14">
-					<label><input type="checkbox" id="pur_chk"> 상품구매에 동의합니다.</label>
-					<label class="req_label" id="label_chk">구매에 동의해주세요.</label>
+					<label><input type="checkbox" id="pur_chk">Payment agree</label>
+					<label class="req_label" id="label_chk">Accept payment agreement.</label>
 				</div>
 				<div class="mt20 ar">
-					<input type="button" id="store_pur_btn" class="btn type06" value="상품구매">
-					<a href="#a" class="btn type06 st2">취소</a>
+					<input type="button" id="store_pur_btn" class="btn type06" value="proceed to checkout">
+					<a href="#a" class="btn type06 st2">Cancel</a>
 				</div>
 			</form>
 		</div>

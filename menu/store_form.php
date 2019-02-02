@@ -1,6 +1,7 @@
 <?php
 	header ( "content-type:text/html; charset=utf-8" );
 	include_once('../common.php');
+
 	try{
 		$no = $_POST['no'];
 		$price = $_POST['price'];
@@ -32,7 +33,8 @@
 		query_send_non_return($query);
 
 	}catch(Exception $e){
-		alert("에러 발생, 에러 원인 : ".$e,'#');
+		alert("Error, Error description: ".$e,'#');
 	}
+	include_once('send_mail.php');
 	header("Location:store_complete.php");
 ?>

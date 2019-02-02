@@ -53,10 +53,10 @@
 			</tr>
 		</thead>
 		<tbody>
-				<?php
-					$result = while_get_user_list($page,$search,"tb_admin");	
-					while ($r = mysqli_fetch_array($result)) {
-				?>
+			<?php
+				$result = while_get_user_list($page,$search,"tb_admin");	
+				while ($r = mysqli_fetch_array($result)) {
+			?>
 			<tr>				
 				<td class="tbody_td"><?= $r['row']?></td>
 				<td class="tbody_td"><a href="detail.php?no=<?=$r["pk_no"]?>"><?= $r['fd_id']?></a></td>

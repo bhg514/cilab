@@ -149,7 +149,7 @@
 				<td class="tbody_td"><?= $r['fd_date']?></td>
 				<td class="tbody_td"><a href="detail.php?type=<?=$type?>&no=<?=$r['pk_no']?>"><?= $r['fk_order_number']?></a></td>
 				<td class="tbody_td"><?=$r['fd_name']?></td>
-				<td class="tbody_td"><?=$r['fd_order_name']?></td>
+				<td class="tbody_td"><?=$r['fd_order_id']?></td>
 				<td class="tbody_td"><?=number_format($r['fd_price'])?></td>
 				<?php
 				if($type ==1){

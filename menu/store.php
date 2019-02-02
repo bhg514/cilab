@@ -69,6 +69,11 @@
 						<a href="?type=4">Water Education kit</a>
 					</div>
 				</li>
+                <li class="ui-menu-item">
+                    <div id="ui-id-6" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
+                        <a href="https://smartstore.naver.com/cilab" target="_blank">Korea store</a>
+                    </div>
+                </li>
                 
                  <!-- <li class="ui-menu-item">
                     <div id="ui-id-4" tabindex="-1" role="menuitem" class="ui-menu-item-wrapper">
@@ -101,7 +106,7 @@
                             <p class="price">
                                 <span class="redbox">price</span>
                                 
-                                <?=number_format($r['fd_price'])?>원(<?=number_format($r['fd_price']/$hwan_krw,2)?>$)
+                                <?=number_format($r['fd_price'])?>KRW(<?=number_format($r['fd_price']/$hwan_krw,2)?>$)
                             </p>
                             <p class="name"><?=$r['fd_name']?></p>
                             

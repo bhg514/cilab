@@ -22,16 +22,16 @@
 	<div class="">
 		<div class="tabletInner">
 			<fieldset>			
-				<div>◎ 반품 사유</div>
+				<div>◎ reason</div>
 				<div>
 					<input type="text" id="ex_reason">
 				</div>
-				<div>◎ 전화번호</div>
+				<div>◎ phone number</div>
 				<div>
 					<input type="text" id="ex_phone">
 				</div>
 				<div>
-					<a onclick="exchange(<?=$no?>)" class="btn type05">신청하기</a>
+					<a onclick="exchange(<?=$no?>)" class="btn type05">Request</a>
 				</div>
 			</fieldset>
 		</div>

@@ -27,7 +27,7 @@
 		query_send_non_return($sql);
 		$_SESSION['reg_user_id'] = $id;		
 	} catch (Exception $e) {
-	    alert('회원가입 중 에러가 발생하였습니다\n 잠시 후 다시 시도해주세요.','https://".$http_host."/register/agree.php');
+	    alert("An error occurred while trying to register \n Please try again later.",'https://".$http_host."/register/agree.php');
 	}
 	header("Location: https://".$http_host."/mypage/info_result.php");		
 

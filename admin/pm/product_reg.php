@@ -121,7 +121,7 @@
 							</tr>
 							<tr>
 								<th scope="row">최종수정일</th>
-								<td ><?=date("Y-m-d h:i:s")?></td>
+								<td ><?=date("Y-m-d H:i:s")?></td>
 							</tr>
 							<tr>
 								<th scope="row">최종등록자</th>

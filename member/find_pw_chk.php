@@ -25,16 +25,15 @@
 
 
 
-	$_id_mail_subject = "=?UTF-8?B?".base64_encode("인증번호 입니다.")."?="; 
+	$_id_mail_subject = "=?UTF-8?B?".base64_encode("[Cilab]Verification code")."?="; 
 	$_id_mail_body = "<table cellpadding=10 cellspacing=1 bgcolor='#f8f8f8' style='margin:10;' width='550'>
 			<tr>
 				<td>
-					<b>안녕하세요 CiLab입니다.</b><br>
-					<b>인증번호는 아래와 같습니다.</b><br>
+					<b>The verification code is as follows.</b><br>
 					<br>					
-					* 인증번호 : <b>".$code."</b><br><br>
+					* Verification code : <b>".$code."</b><br><br>
 
-					감사합니다.<br>
+					Thank you.<br>
 				</td>
 			</tr>
 		</table>";
@@ -49,7 +48,7 @@
 	$result = mail($to_mail, $_id_mail_subject, $_id_mail_body, $header, $from_mail);
 
 	if(!$result) {
-		alert("메일 전송을 실패했습니다. 잠시 후 다시 시도해주세요.", "https://".$http_host."/member/find_pw.php");
+		alert("Failed to send mail.\nPlease try again in a few minutes.", "https://".$http_host."/member/find_pw.php");
 
 	}else{
 		header("location:https://".$http_host."/member/find_pw_confirm.php");

@@ -14,23 +14,24 @@
 <!-- include summernote css/js -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../css/popup.css">
+<script type="text/javascript" src="../js/common.js"></script>
 <section class="container">	
 	<div class="">
 		<div class="tabletInner">
 			<fieldset>			
-				<h4>■ 주문정보</h4>
+				<h4>■ Order information</h4>
 				<table class="pop_table">
 					<tbody>
 						<tr>
-							<th>상품명</th>
-							<th>주문옵션</th>
-							<th>수량</th>
-							<th>가격</th>
-							<th>배송비</th>
-							<th>총액</th>															
+							<th>Product name</th>
+							<th>Option</th>
+							<th>Quantity</th>
+							<th>Price</th>
+							<th>Delivery Charge</th>
+							<th>Order total</th>															
 						</tr>							
 						<tr>
-							<th><?=$info['fd_product_name']?></th>
+							<td><?=$info['fd_product_name']?></td>
 							<td><?=$info['fd_product_option']?></td>
 							<td><?=number_format($info['fd_product_count'])?></td>
 							<td><?=number_format($info['fd_price'])?></td>								
@@ -39,75 +40,68 @@
 						</tr>
 					</tbody>
 				</table>	
-				<h4>■ 구매자 정보</h4>
+				<h4>■ Purchaser information</h4>
 				<table class="pop_table">
 					<tbody>
 						<tr>
-							<th>이름</th>
+							<th>Name</th>
 							<td colspan="3"><?=$info['fd_order_name']?></td>							
 						</tr>
 						<tr>
-							<th>전화번호</th>
+							<th>Phone Number</th>
 							<td colspan="3"><?=$info['fd_order_hp']?></td>							
 						</tr>
 						<tr>
-							<th>이메일</th>
+							<th>E-mail</th>
 							<td colspan="3"><?=$info['fd_order_mail']?></td>							
 						</tr>
 						<tr>
-							<th>주소</th>
+							<th>address</th>
 							<td colspan="3">[<?=$info['fd_del_zip']?>] <?=$info['fd_del_address1']?> <?=$info['fd_del_address2']?><?=$info['fd_del_address3']?><?=$info['fd_del_address4']?></td>							
 						</tr>												
 					</tbody>
 				</table>	
-				<h4>■ 배송 정보</h4>
-				<a href="/" class="btn type05" id="change_btn">배송지 변경</a>
+				<h4>■ Shipping information</h4>
 				<table class="pop_table">
 					<tbody>
 						<tr>
-							<th>받는 사람</th>
+							<th>Name</th>
 							<td colspan="3">
-								<input type="text" name="" value="<?=$info['fd_del_name']?>">																
+								<input type="text" name="" value="<?=$info['fd_del_name']?>">	
 							</td>
 						</tr>
 						<tr>
-							<th rowspan="5">주소</th>
+							<th rowspan="5">Address</th>
 							<td colspan="3">
-								<input type="text" name="" value="<?=$info['fd_del_zip']?>"><label>우편번호</label>
+								<input type="text" name="" value="<?=$info['fd_del_zip']?>"><label>zip</label>
 							</td>
 						</tr>	
 						<tr >
 							<td colspan="3">
-								<input type="text" name="" value="<?=$info['fd_del_address4']?>"><label>상세</label>
+								<input type="text" name="" value="<?=$info['fd_del_address4']?>"><label>Address line</label>
 							</td>
 						</tr>						
 						<tr>
 							<td colspan="3">
-								<input type="text" name="" value="<?=$info['fd_del_address3']?>"><label>동</label>
+								<input type="text" name="" value="<?=$info['fd_del_address3']?>"><label>City</label>
 							</td>
 						</tr>						
 						<tr>
 							<td colspan="3">
-								<input type="text" name="" value="<?=$info['fd_del_address2']?>"><label>시/구</label>
+								<input type="text" name="" value="<?=$info['fd_del_address2']?>"><label>State</label>
 							</td>
 						</tr>						
 						<tr>
 							<td colspan="3">
-								<input type="text" name="" value="<?=$info['fd_del_address1']?>"><label>나라</label>
+								<input type="text" name="" value="<?=$info['fd_del_address1']?>"><label>Country</label>
 							</td>
 						</tr>						
 						<tr>
-							<th>전화번호</th>
+							<th>Phone Number</th>
 							<td colspan="3">
 								<input type="text" name="" value="<?=$info['fd_del_hp']?>">
 							</td>
-						</tr>	
-						<tr>
-							<th>배송 요청사항</th>
-							<td colspan="3">
-								<input type="text" name="" value="<?=$info['fd_del_comment']?>">
-							</td>
-						</tr>	
+						</tr>		
 					</tbody>
 				</table>									
 			</fieldset>

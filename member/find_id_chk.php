@@ -42,7 +42,7 @@
 	$result = mail($input_mail, $_id_mail_subject, $_id_mail_body, $header, $from_mail);
 
 	if(!$result) {
-		alert("메일 전송을 실패했습니다. 잠시 후 다시 시도해주세요.", "https://".$http_host."/member/find_id.php");
+		alert("Failed to send mail.\nPlease try again in a few minutes.", "https://".$http_host."/member/find_id.php");
 
 	}else{
 		header("location:https://".$http_host."/member/find_id_confirm.php");

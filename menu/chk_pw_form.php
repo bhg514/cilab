@@ -6,7 +6,7 @@
 	$get_pw = get_qna_pw($no);	
 
 	if ($get_pw[0]==null || !check_password($pw, $get_pw[0])) {
-		alert('비밀번호가 틀립니다.',$_SERVER["HTTP_REFERER"]);		
+		alert('Please check your password.',$_SERVER["HTTP_REFERER"]);		
 	}
 
 ?>

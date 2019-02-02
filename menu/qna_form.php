@@ -26,7 +26,7 @@
 
 
 	} catch(Exception $e){
-		alert("에러 발생, 에러 원인 : ".$e,'#');
+		alert("Error, Error description : ".$e,'#');
 	}
 
 ?>

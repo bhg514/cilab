@@ -40,16 +40,15 @@
                 </header>
                 <section id="bo_v_info">
                     <h2>페이지 정보</h2>
-                    작성자 
+                    Writer 
                     <strong>
                         <span class="sv_member"><?=$info['fd_name']?></span>
                     </strong>
-                    <span class="sound_only">작성일</span>
-                    <strong><?=$info['fd_date']?></strong>
-                    조회<strong><?=$info['fd_count']?>회</strong>
+                    date created<strong class="sv_member"><?=$info['fd_date']?></strong>
+                    count <strong class="sv_member"><?=$info['fd_count']?></strong>
                 </section>
                 <section id="bo_v_file">
-                    <h2>첨부파일</h2>
+                    <h2>Attachments</h2>
                     <ul>
                         <?php
                             if($info['fd_file']!=""){
@@ -75,7 +74,7 @@
  
 
                 <section id="bo_v_atc">
-                    <h2 id="bo_v_atc_title">본문</h2>
+                    <h2 id="bo_v_atc_title"></h2>
                     <div id="bo_v_img">
                 </div>                    
 
@@ -84,7 +83,7 @@
                 </div>
                 </section>
                 <div class="mt20 ar">               
-                    <a href="list.php?type=<?=$type?>" class="btn type07">홈으로</a>
+                    <a href="list.php?type=<?=$type?>" class="btn type07">Menu</a>
                 </div>
             </article>
         </div>

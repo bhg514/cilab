@@ -4,34 +4,34 @@
 ?>
 <section class="container">
 	<div class="visual etc">
-		<p class="subTitle">문의하기</p>
+		<p class="subTitle">Q&amp;A</p>
 		<div class="location">
 			<img src="../images/common/icon_home.png" alt="Home">
 			<span>&gt;</span>
 			<span>SUPPORT</span>
 			<span>&gt;</span>
-			<span>문의하기</span>
+			<span>Q&amp;A</span>
 		</div>
 	</div>
 	<div class="contents">
 		<div class="tabletInner">
 			<div class="loginBox">
-				<div class="img"><img src="../images/common/img_idpw.png" alt="비밀번호찾기 이미지"></div>
+				<div class="img"><img src="../images/common/img_idpw.png" alt="find_pw_img"></div>
 				<div class="input">
-					<p class="login">문의글 비밀번호</p>
+					<p class="login">Password</p>
 					<form id="chk_pw_form" action="./chk_pw_form.php" method="post">
 						<div class="loginInput pwSt">
 							<div>
 								<input name="pw" type="password" placeholder="pw">								
 								<input name="no" type="hidden" value="<?=$_GET['no']?>">
 							</div>
-							<input type="submit" class="loginBtn pwSt" value="확인">
+							<input type="submit" class="loginBtn pwSt" value="next">
 						</div>
 					</form>
 				</div>
 			</div>
 			<div class="mt20 ar">				
-				<a href="list.php?type=3" class="btn type07">홈으로</a>
+				<a href="list.php?type=3" class="btn type07">Home</a>
 			</div>
 		</div>
 	</div>

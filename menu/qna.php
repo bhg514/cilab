@@ -2,19 +2,19 @@
 	header ( "content-type:text/html; charset=utf-8" );
 	include '../header.php';
 	if(!isset($_SESSION['user_id'])){
-		alert('로그인 후 이용해주세요.','https://'.$http_host.'/member/login.php');
+		alert('Please try again after login.','https://'.$http_host.'/member/login.php');
 	};
 	
 ?>
 <section class="container">
 	<div class="visual support">
-		<p class="subTitle">Q&A</p>
+		<p class="subTitle">Q&amp;A</p>
 		<div class="location">
 			<img src="../images/common/icon_home.png" alt="Home">
 			<span>&gt;</span>
 			<span>SUPPORT</span>
 			<span>&gt;</span>
-			<span>Q&A</span>
+			<span>Q&amp;A</span>
 		</div>
 	</div>
 	<div class="contents">
@@ -22,11 +22,11 @@
 			<div class="btnTab">
 				<a href="./list.php?type=1" >Notice</a>
                 <a href="./list.php?type=2" >S/W download</a>
-				<a href="./list.php?type=3" class="on">Q&A</a>
+				<a href="./list.php?type=3" class="on">Q&amp;A</a>
 			</div>
 			<form enctype='multipart/form-data' id="qna_form" action="./qna_form.php" method="post">
 				<table class="tblType02">
-					<caption>Q&A</caption>
+					<caption>Q&amp;A</caption>
 					<colgroup>
 						<col style="width:170px;">
 						<col>

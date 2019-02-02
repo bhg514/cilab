@@ -154,7 +154,7 @@ $(document).ready(function(){
 
 	$('#buy_btn').click(function(){
 		if($('#total_price').text()==0){
-			alert("수량 및 옵션을 선택해주세요.");
+			alert("Please select quantity and options.");
 			return false;
 		}
 	})
@@ -349,9 +349,9 @@ function pay_pop(){
 	        		
 	        		document.forms["store_form"].submit()						        		
 	        	}else if(data.msg=="forgery"){
-	        		alert("결제에 실패하였습니다. 에러 내용: 결제금액 위조가 감지되었습니다.");
+	        		alert("Payment failed. \nError description: Forged payment amount has been detected.");
 	        	}else if(data.msg=="forgery_error"){
-	        		alert("결제에 실패하였습니다. 에러 내용: 결제금액 위조가 감지되었습니다.\n관리자 확인 후 결제 취소처리 될 예정입니다.");
+	        		alert("Payment failed. \nError description: Forged payment amount has been detected.\nThe payment will canceled after the administrator has confirmed it.");
 	        		$('#imp_uid').val(data.imp_uid)
 	        		$('#merchant_uid').val(data.merchant_uid)
 
@@ -359,13 +359,13 @@ function pay_pop(){
 	        	}
 	        })
         } else {
-        	alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+        	alert("Payment failed. \nError description: " +  rsp.error_msg);
         }
     });
 }
 
 function purchase_conf(no){
-	if (confirm("구매확정 하시겠습니까??\n구매확정 후에는 교환/환불이 불가합니다.") == true){
+	if (confirm("Would you like to confirm your purchase?\nAfter purchase confirmation, exchange / refund is not possible.") == true){
 		
 		$.ajax({
 			type: "POST",
@@ -398,9 +398,9 @@ function exchange(){
 
 	if(reason!="" && hp1!="" && hp2!="" && hp3!=""){
 		if(modal_type=="exchange"){
-			msg = "교환신청 하시겠습니까??"
+			msg = "Would you really exchange it??"
 		}else if(modal_type=="refund"){
-			msg = "반품신청 하시겠습니까??"
+			msg = "Would you really refund it?"
 		}
 		if (confirm(msg) == true){
 			
@@ -426,9 +426,9 @@ function exchange(){
 		}
 	}else{
 		if(reason==""){
-			alert("사유를 작성해주세요.")
+			alert("Please enter the reason.")
 		}else{
-			alert("연락처를 적어주세요.")
+			alert("Please enter your phone number.")
 		}
 	}
 
