@@ -3,7 +3,7 @@
 	include_once("../../common.php");
 	$no = $_GET['no'];
 
-	$info = order_detail($no);
+	$info = order_info($no);
 ?>
 <!DOCTYPE html>
 <html lang="ko">

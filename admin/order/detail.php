@@ -9,12 +9,13 @@
 	if($no==null){
 		header("location:https://".$http_host."/admin/order/list.php?type=1");
 	};
-	$info = order_detail($no);
+	$info = order_info($no);
+
 
 ?>
 <!-- include summernote css/js -->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 
 <script type="text/javascript" src="../js/admin.js"></script>
 <section class="container">	
@@ -45,18 +46,26 @@
 								<td><?=$info['fk_order_number']?></td>
 								<th>주문일</th>
 								<td><?=$info['fd_date']?></td>								
-							</tr>							
-							<tr>
-								<th>주문상품</th>
-								<td><?=$info['fd_product_name']?></td>
-								<th>수량</th>
-								<td><?=$info['fd_product_count']?></td>								
 							</tr>
-							<tr>
-								<th>주문옵션</th>
-								<td colspan="3"><?=$info['fd_product_option']?></td>
-							</tr>
-							
+							<?php
+										
+							$result = order_detail($no);		
+							while ($detail = mysqli_fetch_array($result)) {
+							?>	
+
+								<tr>
+									<th>주문상품</th>
+									<td><?=$detail['fd_product_name']?></td>
+									<th>수량</th>
+									<td><?=$detail['fd_count']?></td>								
+								</tr>
+								<tr>
+									<th>주문옵션</th>
+									<td colspan="3"><?=$detail['fd_option']?></td>
+								</tr>
+							<?php
+								}
+							?>	
 							<tr>
 								<th>주문자</th>
 								<td><?=$info['fd_order_name']?></td>
@@ -98,11 +107,7 @@
 							<tr>
 								<th>연락처</th>
 								<td colspan="3"><?=$info['fd_del_hp']?></td>
-							</tr>	
-							<tr>
-								<th>배송 요청사항</th>
-								<td colspan="3"><?=$info['fd_del_comment']?></td>
-							</tr>	
+							</tr>		
 						</tbody>
 					</table>									
 				</fieldset>

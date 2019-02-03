@@ -435,6 +435,10 @@ $(document).ready(function() {
 	$('#chk_down_pm').click(function(){
 		var chk_arr = mk_chk_no_arr();
 		chk_arr = chk_arr.toString();
+		if(chk_arr==""){
+			alert("다운받을 리스트를 선택해주세요.")
+			return false;
+		}
 		var url = "../data_download.php?type1=product&type2=2&chk_arr="+chk_arr
 		document.location = url
 		
@@ -442,6 +446,10 @@ $(document).ready(function() {
 	$('#chk_down_order').click(function(){
 		var chk_arr = mk_chk_no_arr();
 		chk_arr = chk_arr.toString();
+		if(chk_arr==""){
+			alert("다운받을 리스트를 선택해주세요.")
+			return false;
+		}
 		var url = "../data_download.php?type1=order&type2=2&chk_arr="+chk_arr
 		document.location = url
 		

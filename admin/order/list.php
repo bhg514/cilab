@@ -13,7 +13,6 @@
 
 	
 	$total_count = order_get_count($order_number,$order_name,$product_name,$type);	
-
 	if($type==1){
 		$type_text = '신규 주문';
 		$list_text = '결제';
@@ -118,7 +117,7 @@
 				<th scope="col" class="thead_th">No.</th>
 				<th scope="col" class="thead_th">주문일</th>
 				<th scope="col" class="thead_th">주문번호</th>
-				<th scope="col" class="thead_th">주문상품</th>
+				<th scope="col" class="thead_th">주문상품개수</th>
 				<th scope="col" class="thead_th">주문자</th>
 				<th scope="col" class="thead_th">결제금액</th>
 				<th scope="col" class="thead_th"><?=$list_text?></th>
@@ -148,7 +147,7 @@
 				<td class="tbody_td"><?= $r['row']?></td>
 				<td class="tbody_td"><?= $r['fd_date']?></td>
 				<td class="tbody_td"><a href="detail.php?type=<?=$type?>&no=<?=$r['pk_no']?>"><?= $r['fk_order_number']?></a></td>
-				<td class="tbody_td"><?=$r['fd_name']?></td>
+				<td class="tbody_td"><?=$r['fd_product_count']?></td>
 				<td class="tbody_td"><?=$r['fd_order_id']?></td>
 				<td class="tbody_td"><?=number_format($r['fd_price'])?></td>
 				<?php

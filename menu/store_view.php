@@ -52,7 +52,7 @@
 			<div class="right">
 				<form id='store_purchase' action="./store_purchase.php" method="post">
 					<p class="title"><?=$info['fd_name']?></p>
-					<input type="hidden" name="no" value="<?=$info['pk_no']?>">
+					<input type="hidden" name="no" id="pro_no" value="<?=$info['pk_no']?>">
 					<div class="grayBox post">
 						<input type="hidden" name="product_price" id="product_price" value="<?=$info['fd_price']?>">
 						<input type="hidden" id="ex_rate" value=<?=$ex_rate?> >	
@@ -112,6 +112,7 @@
 					</div>
 
 					<div class="mt20 ar">
+						<a onclick="add_cart()" class="btn type07">Add to Cart</a>
 						<input type="submit" id="buy_btn" class="btn type02" value="Buy">
 					</div>
 				</form>

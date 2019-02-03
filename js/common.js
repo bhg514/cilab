@@ -204,7 +204,8 @@ $(document).ready(function(){
 		
 		if(return_chk==1)
 			return false;
-		pay_pop()
+		/*pay_pop()*/
+		document.forms["store_form"].submit()
 	})
 	$('#btnFoldWrap').click(function(){
     	$('#daum_juso_pagemb_zip').hide()
@@ -439,4 +440,35 @@ function price_update(select_price,select_count,del_fee){
 	var total = uncomma(select_price)*select_count +del_fee;	
 	$('#dollar').text(numberWithCommas((total/ex_rate).toFixed(2)));			
 	$('#total_price').text(numberWithCommas(total));
+}
+
+
+function add_cart(){
+	var count = $('#select_count').val();
+	var option = $('#select_name').val();
+	var total = uncomma($('#total_price').text());
+	var no = $('#pro_no').val();
+
+	if (total!=0){		
+		$.ajax({
+			type: "POST",
+			url: "../ajax/add_cart.php",
+			cache: false,
+			async: false,
+			data: { 			    
+			    no : no,
+			    count : count,
+			    option : option,
+			    total : total
+			},
+			dataType: "text",
+			success: function(data) {   	        	
+			    alert('success');			    
+			}
+		});
+
+	}else{
+		alert("Please select quantity or option and try again.");
+	}
+
 }

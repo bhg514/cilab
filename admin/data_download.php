@@ -52,24 +52,31 @@ if($type1=="product"){//상품 다운
 }elseif ($type1=="order") { //주문 배송 전체 
 	if($type2=="1"){ // 전체	
 		$filename = "all_order_".$date.".csv"; 
-		$query = "select group_concat(a.fd_product_name) name  ,b.* from tb_order b left join (select * from tb_order_detail) a on b.pk_no = a.fk_order_no group by pk_no";
+		$query = "SELECT o.*, group_concat(od.fd_product_name SEPARATOR '||') name, group_concat(od.fd_price SEPARATOR '||') price, group_concat(od.fd_count SEPARATOR '||') count, group_concat(od.fd_option SEPARATOR '||') option  FROM tb_order o LEFT JOIN tb_order_detail od on o.pk_no =od.fk_order_number GROUP BY o.pk_no";
 	}elseif ($type2=="2") {// 부분
 		$filename = "chk_order_".$date.".csv"; 
-		$chk_arr = $_GET['chk_arr'];		
-		$query = "select group_concat(a.fd_product_name) name  ,b.* from tb_order b left join (select * from tb_order_detail) a on b.pk_no = a.fk_order_no where b.pk_no in (".$chk_arr.") group by pk_no";
+		$chk_arr = $_GET['chk_arr'];
+
+		$query = "SELECT o.*, group_concat(od.fd_product_name SEPARATOR '||') name, group_concat(od.fd_price SEPARATOR '||') price, group_concat(od.fd_count SEPARATOR '||') count, group_concat(od.fd_option SEPARATOR '||') option  FROM tb_order o LEFT JOIN tb_order_detail od on o.pk_no =od.fk_order_number WHERE o.pk_no in(".$chk_arr.") GROUP BY o.pk_no";
+
+		
 	}elseif ($type2=="3") {
 		$filename = "one_order_".$date.".csv"; 
 		$pk_no = $_GET['no'];
 		$query = "select group_concat(a.fd_product_name) name  ,b.* from tb_order b left join (select * from tb_order_detail) a on b.pk_no = a.fk_order_no where b.pk_no=".$pk_no." group by pk_no";
 	}
 	$result = query_send($query);
-	$csv_dump = "NO, 주문번호, 주문날짜, 주문자ID, 주문자 연락처, 주문자 이름, 주문자 이메일, 배송지 이름, 배송지 우편번호, 배송지 주소1, 배송지 주소2, 배송지 주소3, 배송지 주소4, 배송지 연락처, 배송 요청사항, 결제금액, 배송비, 결제수단, 결제번호, 운송장번호, 상태, 상태 메세지";
+	$csv_dump = "NO, 주문번호, 주문날짜, 상품이름, 상품가격, 상품개수, 상품옵션, 주문자ID, 주문자 연락처, 주문자 이름, 주문자 이메일, 배송지 이름, 배송지 우편번호, 배송지 주소1, 배송지 주소2, 배송지 주소3, 배송지 주소4, 배송지 연락처, 결제금액, 배송비, 결제수단, 결제번호, 운송장번호, 상태, 상태 메세지";
 	$csv_dump .= "\r\n"; 
 
 	while ($row = mysqli_fetch_array($result)) {
 		$csv_dump .= $row['pk_no'].","; 
 		$csv_dump .= $row['fk_order_number'].","; 
 		$csv_dump .= $row['fd_date'].","; 
+		$csv_dump .= $row['name'].","; 
+		$csv_dump .= $row['price'].","; 
+		$csv_dump .= $row['count'].",";
+		$csv_dump .= $row['option'].","; 
 		$csv_dump .= $row['fd_order_id'].","; 
 		$csv_dump .= $row['fd_order_hp'].","; 
 		$csv_dump .= $row['fd_order_name'].","; 
@@ -82,7 +89,6 @@ if($type1=="product"){//상품 다운
 		$csv_dump .= $row['fd_del_address3'].","; 
 		$csv_dump .= $row['fd_del_address4'].","; 
 		$csv_dump .= $row['fd_del_hp'].","; 
-		$csv_dump .= $row['fd_del_comment'].","; 
 		$csv_dump .= $row['fd_price'].","; 
 		$csv_dump .= $row['fd_del_fee'].","; 
 		$csv_dump .= $row['fd_payment'].","; 

@@ -359,3 +359,8 @@ table caption {
 #chart{
 	margin-top: 50px;
 }
+
+/*배송비 관리*/
+#number_line {
+  	margin-bottom: 10px !important;
+}

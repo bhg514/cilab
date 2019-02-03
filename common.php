@@ -60,6 +60,11 @@
 		mysqli_query($mysqli, $query);
 	}
 
+	function insert_id(){
+		global $mysqli;
+		return mysqli_insert_id($mysqli);
+	}
+
 	function query_send($query){
 		global $mysqli;		
 		return mysqli_query($mysqli, $query);
@@ -165,9 +170,9 @@
 	function while_get_order_list($start_num,$order_number,$order_name,$product_name,$status){
 		$start_num = ($start_num-1)*10;		
 		if($product_name == null){
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM (SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and o.fd_status ="'.$status.'" order by row desc limit '.$start_num.', 10 ';					
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.fd_product_count, o.* FROM (SELECT @ROWNUM := 0) R, tb_order o where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and o.fd_status ="'.$status.'" order by row desc limit '.$start_num.', 10 ';					
 		}else{
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM (SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where p.fd_name like "%'.$product_name.'%" order by row desc limit '.$start_num.', 10';					
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.* from (SELECT @ROWNUM := 0) R, tb_order_detail od join tb_order o on od.fk_order_number=o.pk_no where od.fd_product_name like "%'.$product_name.'%" order by row desc limit '.$start_num.', 10';				
 		}				
 		$result = query_send($query);		
 		return $result;
@@ -176,7 +181,7 @@
 	function while_get_order_list_date($start_num,$order_number,$order_name,$product_name,$status,$date){
 		$start_num = ($start_num-1)*10;		
 		if($product_name == null){
-			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM(SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and o.fd_status like "%'.$status.'%" and o.fd_date="'.$date.'" order by row desc limit '.$start_num.', 10 ';					
+			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, o.fd_product_count, o.* FROM (SELECT @ROWNUM := 0) R, tb_order o where o.fk_order_number like "%'.$order_number.'%" and o.fd_order_name like "%'.$order_name.'%" and o.fd_status ="'.$status.'" and o.fd_date="'.$date.'" order by row desc limit '.$start_num.', 10 ';					
 		}else{
 			$query = 'SELECT @ROWNUM := @ROWNUM + 1 AS row, p.fd_name, o.* FROM(SELECT @ROWNUM := 0) R, tb_order o join tb_product p on o.fd_product_no= p.pk_no where p.fd_name like "%'.$product_name.'%" order by row desc limit '.$start_num.', 10';					
 		}		
@@ -186,9 +191,9 @@
 
 	function order_get_count($order_number,$order_name,$product_name,$status){
 		if($product_name == null){
-			$query = 'select count(*) from tb_order where fk_order_number like "%'.$order_number.'%" and fd_order_name like "%'.$order_name.'%" and fd_status like "%'.$status.'%"';
+			$query = 'SELECT count(*) from tb_order where fk_order_number like "%'.$order_number.'%" and fd_order_name like "%'.$order_name.'%" and fd_status ='.$status;
 		}else{
-			$query = 'select count(o.pk_no) from tb_order o join tb_product p on o.fd_product_no = p.pk_no where p.fd_name like "%'.$product_name.'%" and o.fd_status="'.$status.'"' ;
+			$query = 'SELECT count(o.pk_no) from tb_order_detail od join tb_order o on od.fk_order_number=o.pk_no where od.fd_product_name like "%'.$product_name.'%" and o.fd_status="'.$status.'"' ;
 		}		
 		$result = query_send($query);
 		$count = mysqli_fetch_array($result);
@@ -222,11 +227,18 @@
 		query_send_non_return($query);				
 	}
 
-	function order_detail($no){
+	function order_info($no){
 		$query = 'select * from tb_order where pk_no = '.$no;
 		$result = query_send($query);
 		$info = mysqli_fetch_array($result);
 		return $info;
+
+	}
+
+	function order_detail($no){
+		$query = 'select * from tb_order_detail where fk_order_number = '.$no;
+		$result = query_send($query);		
+		return $result;
 
 	}
 
@@ -442,7 +454,7 @@
 	}
 
 	function user_order_list($id){
-		$query = "select o.fd_date, p.fd_name, o.fd_price, o.fd_del_fee, o.fd_status, o.fd_pre_status, o.pk_no, o.fd_invoice_number from tb_order o join tb_product p on o.fd_product_no = p.pk_no where fd_order_id='".$id."' ";
+		$query = "select fd_date, fd_price, fd_del_fee, fd_status, fd_pre_status, pk_no, fd_invoice_number, fd_product_count from tb_order where fd_order_id='".$id."' order by fd_date desc";
 		$result = query_send($query);		
 		return $result;
 	}

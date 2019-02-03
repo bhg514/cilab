@@ -41,7 +41,7 @@
 					<thead>
 						<tr>
 							<th scope="col">Order date</th>
-							<th scope="col">Product name</th>
+							<th scope="col">Product count</th>
 							<th scope="col">Total amount</th>
 							<th scope="col">Condition</th>
 							<th scope="col">Invoice number</th>
@@ -59,7 +59,7 @@
 						?>
 						<tr>
 							<td><?=$r['fd_date']?></td>
-							<td onclick="pop_order(<?=$r['pk_no']?>,'order');"><?=$r['fd_name']?></td>
+							<td class="pointer" onclick="pop_order(<?=$r['pk_no']?>,'order');"><?=$r['fd_product_count']?></td>
 							<td><?=number_format($r['fd_price']+$r['fd_del_fee'])?></td>
 							<td>
 								<?php
