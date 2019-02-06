@@ -91,14 +91,12 @@
             <div class="imgType01">
                 <ul>
                     <?php    
-                                 
-
                         $result = while_product_list($page,$type,$search);  
                         $count = 0;
                         while ($r = mysqli_fetch_array($result)) {                            
-                            if($count%3==0 && $count!=0){
+                            /* if($count%3==0 && $count!=0){
                                 echo '</ul><ul>';
-                            }
+                            } */
                     ?>
                     <li class="product_li">
                         <a href="./store_view.php?no=<?=$r['pk_no']?>">
@@ -116,8 +114,6 @@
                         $count=$count+1;
                         }
                     ?>
-
-
                 </ul>
             </div>
     		<div class="page_nav">

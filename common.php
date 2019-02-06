@@ -472,6 +472,22 @@
 		return $result;
 	}
 
+	function while_cart_list($id){
+		$query = 'SELECT c.*, p.fd_new_main_img from tb_cart c join tb_product p on c.fd_product_no = p.pk_no where fd_user_id = "'.$id.'"';
+
+		$result = query_send($query);
+		return $result;
+
+	}
+
+	function while_del_fee(){
+		$query = 'SELECT * from tb_del_fee';
+
+		$result = query_send($query);
+		return $result;
+
+	}
+
 	
 
 ?>

@@ -148,13 +148,13 @@
 
 									<input type="text" name="mb_zip" value="" id="reg_mb_zip" class="inTbl frm_input required" size="5" maxlength="6" >
 									<label for="reg_mb_zip">Zipcode</label><span id="wrong_zip" class="fcR ml05 fs12 b hide">Please enter all postal address</span><br>
-									<input type="text" name="mb_addr4" value="" id="reg_mb_addr4"  class="inTbl frm_input required" size="50" >
+									<input type="text" name="mb_addr4" value="" id="reg_mb_addr4"  class="inTbl frm_input required" size="30" >
 									<label for="reg_mb_addr4">Detail</label><br/>
-									<input type="text" name="mb_addr3" value="" id="reg_mb_addr3"  class="inTbl frm_input required " size="50">
+									<input type="text" name="mb_addr3" value="" id="reg_mb_addr3"  class="inTbl frm_input required " size="30">
 									<label for="reg_mb_addr3">District</label><br/>
-									<input type="text" name="mb_addr2" value="" id="reg_mb_addr2"  class="inTbl frm_input required " size="50">
+									<input type="text" name="mb_addr2" value="" id="reg_mb_addr2"  class="inTbl frm_input required " size="30">
 									<label for="reg_mb_addr2">City</label><br/>
-									<input type="text" name="mb_addr1" value="" id="reg_mb_addr1"  class="inTbl frm_input required " size="50">
+									<input type="text" name="mb_addr1" value="" id="reg_mb_addr1"  class="inTbl frm_input required " size="30">
 									<label for="reg_mb_addr1">Country</label>	
 								</td>
 							</tr>

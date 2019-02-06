@@ -1,32 +1,42 @@
 @charset "utf-8";
 
-.thide {display:none !important}
+.thide {
+	display: none !important
+}
 
 .gnb {
 	position: static;
-	top:0px;
-	width:100%;
+	top: 0px;
+	width: 100%;
 }
-.gnbInner {padding-right:10px;}
+
+.gnbInner {
+	padding-right: 10px;
+}
+
 .contents {
-	width:100%;
+	width: 100%;
 	box-sizing: border-box;
 }
-.colImg1 > img {
-	width:100%;
+
+.colImg1>img {
+	width: 100%;
 }
-.colImg2 > img {
-	width:50%;
+
+.colImg2>img {
+	width: 50%;
 }
 
 .footerInner {
-	width:100%;
+	width: 100%;
 }
+
 .logo_footer {
 	float: none;
 	text-align: center;
 	padding-bottom: 10px;
 }
+
 .text_footer {
 	float: none;
 	width: 100%;
@@ -34,80 +44,150 @@
 	padding: 0 10px;
 	box-sizing: border-box;
 }
+
 .footerFloor1 {
 	text-align: right;
 }
-.footerFloor1 > p,
-.footerFloor1 > address {
-	display:block;
+
+.footerFloor1>p, .footerFloor1>address {
+	display: block;
 	padding: 2px 0;
 	box-sizing: border-box;
 	width: 100%;
 	text-align: center;
 }
-.footerFloor1 > select {
+
+.footerFloor1>select {
 	margin-top: 5px;
 	margin-right: 10px;
 	padding: 2px 0;
 }
+
 .footerFloor2 {
 	padding: 2px 0;
 	text-align: center;
 }
 
 .btnTab {
-	padding:0 0 35px 0;
+	padding: 0 0 35px 0;
 }
-.btnTab > a {
+
+.btnTab>a {
 	display: block;
 	margin: 0px 10px 5px 10px;
-	padding:10px 25px;
-	font-size:14px;
+	padding: 10px 25px;
+	font-size: 14px;
 }
 
-#cssmenu {margin:auto !important; width:auto !important;}
+#cssmenu {
+	margin: auto !important;
+	width: auto !important;
+}
 
-.imgView {padding:0 10px;}
-.imgView .left {float:none;}
-.imgView .left .image {width:100%; height:auto;}
-.imgView .left .image img {width:100%;}
-.imgView .right {float:none; width:100%; margin:30px 0 0 0;}
-.itemContentBox {margin-top:40px;}
-.imgView .right .title {font-size:30px; margin-bottom:10px;}
+.imgView {
+	padding: 0 10px;
+}
+
+.imgView .left {
+	float: none;
+}
+
+.imgView .left .image {
+	width: 100%;
+	height: auto;
+}
+
+.imgView .left .image img {
+	width: 100%;
+}
+
+.imgView .right {
+	float: none;
+	width: 100%;
+	margin: 30px 0 0 0;
+}
+
+.itemContentBox {
+	margin-top: 40px;
+}
+
+.imgView .right .title {
+	font-size: 30px;
+	margin-bottom: 10px;
+}
+
 .itemViewInputNumber {
-	text-align:right;
+	text-align: right;
 }
+
 .itemViewInputNumber input {
-	float:none;
-	margin:0 0 15px 0;
-	padding:2px 5px;
-	font-size:14px;
-	width:50px;
-	height:25px;
-	line-height:25px;
+	float: none;
+	margin: 0 0 15px 0;
+	padding: 2px 5px;
+	font-size: 14px;
+	width: 50px;
+	height: 25px;
+	line-height: 25px;
 }
 
-.tabletInner {padding:0 10px;}
-.saleCompleteArea .text {padding-left:0;}
+.tabletInner {
+	padding: 0 10px;
+}
 
-.cilab img {width: 100%;}
+.saleCompleteArea .text {
+	padding-left: 0;
+}
+
+.cilab img {
+	width: 100%;
+}
+
 .cilab .img {
 	height: 222px;
 	background: url('../images/common/logo_cilab_m.png') no-repeat 50% 0;
 	background-size: contain;
 }
+
 .mainVisual {
 	margin: 20px 0 0 0;
 }
+
 .mainNotiWrap {
 	width: 100%;
 	padding: 0 10px;
 	box-sizing: border-box;
 }
+
 .visual.store {
 	margin-top: 15px;
 }
 
-.tblType01Wrap {width:100%; overflow-x:scroll;}
-.tblType01 {width:100%;}
+.tblType01Wrap {
+	width: 100%;
+	overflow-x: scroll;
+}
 
+.tblType01 {
+	width: 100%;
+}
+
+/*store*/
+.pd_img {
+	width: 100% !important;
+}
+
+#category_menu {
+	width: 25% !important;
+}
+
+.category_content {
+	width: 75%;
+}
+
+.product_li {
+	width: 44%;
+}
+
+.imgType01>ul {
+	margin-left: 0 !important;
+}

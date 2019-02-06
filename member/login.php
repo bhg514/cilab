@@ -41,10 +41,10 @@
 
 				</div>
 			</div>
-			<div class="mt20">
-				<a href="../register/agree.php" class="btn type07">Sing Up</a>
+			<div class="mt20 login_btn">
+				<a href="../register/agree.php" class="btn type07 sign_up">Sign Up</a>
 			</div>
-			<div class="ar loginRightBtnArea">
+			<div class="ar loginRightBtnArea login_btn">
 				<a href="./find_id.php" class="btn type07 st2">Find ID</a>
 				<a href="./find_pw.php" class="btn type07 st2">Find Password</a>
 			</div>

@@ -25,7 +25,25 @@
 		header("location:https://".$http_host."/menu/store_view.php?no=".$no);	
 	}
 
-	$user = get_user_info_to_id($_SESSION['user_id'])
+	$user = get_user_info_to_id($_SESSION['user_id']);
+
+	if($option_price!=null) 
+		$total_price = $option_price*$count;
+	else 
+		$total_price = $info['fd_price']*$count;
+	//배송비 호출
+	$result = while_del_fee();
+	$del_arr = [];
+	while($re_val = mysqli_fetch_array($result)){
+		array_push($del_arr, $re_val);
+	}
+	$del_fee = 0 ;
+	foreach($del_arr as $del_fee_info){
+		if($del_fee_info[0]<=$total_price and $del_fee_info[1]>$total_price){
+			$del_fee = $del_fee_info[2];
+			break;
+		}
+	}
 ?>
 <script type="text/javascript" src="../js/register.js"></script><!-- 우편 --> 
 <!-- iamport.payment.js -->
@@ -70,34 +88,21 @@
 								<td><?=$info['fd_name']?></td>
 								<td name="product_option"><?=$option_name?></td>
 								<td name="product_count"><?=$count?></td>
-								
-								
-								<td>
-								<?php 
-									if($option_price!=null) echo number_format($option_price*$count);
-									else echo number_format($info['fd_price']*$count);
-								?>
+								<td><?=number_format($total_price)?>								
+								<input type="hidden" id="total_price" name="total_price" value="<?=$total_price?>">
 								</td>
-								<td><?=number_format($info['fd_delivery'])?></td>
-								<td>
-									<?php 
-										if($option_price!=null) echo number_format($option_price*$count+$info['fd_delivery']);
-										else echo number_format($info['fd_price']*$count+$info['fd_delivery']);
-									?>
+								<td><?=number_format($del_fee)?></td>
+								<input type="hidden" id="del_fee" name="del_fee" value="<?=$del_fee?>">
+								<td><?=number_format($total_price+$del_fee)?></td>
+								<td>									
 									<input type="hidden" name="imp_uid" id="imp_uid" value="">
 									<input type="hidden" name="merchant_uid" id="merchant_uid" value="">
-									<input type="hidden" name="product_name" id="product_name" value="<?=$info['fd_name']?>">
-									<input type="hidden" name="product_option" id="product_option" value="<?=$option_name?>">
-									<input type="hidden" name="product_count" id="product_count" value="<?=$count?>">
-									<input type="hidden" name="del_fee" id="del_fee" value="<?=$info['fd_delivery']?>">
-									<input type="hidden" name="no" id="no" value="<?=$info['pk_no']?>">
-									<input type="hidden" name="price" id="price" value=
-									<?php 
-										if($option_price!=null) echo ($option_price*$count);
-										else echo ($info['fd_price']*$count);
-									?>
-									>
 
+									<input type="hidden" name="infos" id="infos" value='<?php	
+									echo '{"id":["'.$info['pk_no'].'"],"option":["'.$option_name.'"],"count":["'.$count.'"],"price":["'.$total_price.'"],"name":["'.$info['fd_name'].'"]}'
+									?>
+									'>
+									<input type="hidden" name="order_type" value="store">
 								</td>
 							</tr>
 						</tbody>
@@ -197,36 +202,8 @@
 					<tbody>
 						<tr>
 							<th scope="row">Order total</th>
-							<td>
-								<?php 
-									if($option_price!=null) echo number_format($option_price*$count+$info['fd_delivery']);
-									else echo number_format($info['fd_price']*$count+$info['fd_delivery']);
-								?>
-							</td>
+							<td><?=number_format($total_price+$del_fee)?></td>
 						</tr>
-						<!-- <tr>
-							<th scope="row">결제방법</th>
-							<td>
-								<div>
-									<label><input type="radio" name="pay"> 신용카드</label>
-									<label><input type="radio" name="pay"> 무통장 입금</label>
-									<label><input type="radio" name="pay"> 핸드폰 결제</label>
-								</div>
-								<div class="mt05">
-									<select class="inTbl">
-										<option>카드사 선택</option>
-										<option>국민카드</option>
-										<option>삼성카드</option>
-										<option>현대카드</option>
-									</select>
-									<select class="inTbl">
-										<option>할부 선택</option>
-										<option>할부 선택</option>
-										<option>할부 선택</option>
-									</select>
-								</div>
-							</td>
-						</tr> -->
 					</tbody>
 				</table>
 				<div class="mt20 fs14">
@@ -235,21 +212,12 @@
 				</div>
 				<div class="mt20 ar">
 					<input type="button" id="store_pur_btn" class="btn type06" value="proceed to checkout">
-					<a href="#a" class="btn type06 st2">Cancel</a>
+					<a href="#" onclick="history.back()" class="btn type06 st2">Cancel</a>
 				</div>
 			</form>
 		</div>
 	</div>
 </section>
-<script type="text/javascript">
-	$("#comment_sel").change(function(){
-		if($("#comment_sel option:selected").val() == "직접입력"){
-			$("input[name='comment_input']").show();
-		}else{
-			$("input[name='comment_input']").hide();
-		}
-	});
-</script>
 <?php
 	include '../footer.php'
 ?>

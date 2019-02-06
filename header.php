@@ -41,10 +41,12 @@
 				<a href="../member/logout.php" class="gnb_login">Logout</a>
 				
 				<?php
-						if($_SESSION['user_type']=='u')
+						if($_SESSION['user_type']=='u'){
 							echo '<a href="../mypage/order.php" class="gnb_join">MyPage</a>';
-						else 
+							echo '<a href="../mypage/cart.php" class="gnb_cart">Cart</a>';
+						}else{
 							echo '<a href="../admin/pm/list.php" class="gnb_join">Admin</a>';
+						}
 					}
 				?>				
 			</div>

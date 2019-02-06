@@ -2,8 +2,20 @@
     header ( "content-type:text/html; charset=utf-8" );
     include '../header.php';
     $id = $_SESSION['user_id'];
-    /* $no = $_GET['no'];
-    $info = product_info($no) */
+    if(!$id){
+		header("location:https://".$http_host."/index.php");
+	}
+
+	$exchange_url="http://free.currencyconverterapi.com/api/v6/convert?q=USD_KRW&compact=y";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $exchange_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1000);
+    $rt = curl_exec($ch);
+    curl_close($ch);
+    $ex_api = json_decode($rt);
+    $ex_rate = $ex_api->USD_KRW->val;
+
 ?>
 
 <section class="container">
@@ -17,52 +29,94 @@
 			<span>Cart</span>
 		</div>
 	</div>
-	<div class="contents">
+	<div class="contents cart">
 		<div class="select_div">
 			<input type="checkbox" value="all" id="all_select">
-			<label for="all_select">select all</label>
+			<label for="all_select" class="pointer">select all</label>
 			<span>|</span>
-			<span id="del_select">delete selected items</span>
+			<span id="del_select" class="pointer">delete selected items</span>
 		</div>
-		<div>
-			<div id="items">
-				<div class="item">
-					<input type="checkbox" id="">
-					<p class="item_name">
-						<a href="/menu/store_view.php?no=22">BLDC waterproof motor module</a>
-					</p>
-					<div class="thumbnail">
-						<img src="/admin/img/upload_image/5c494456ebe50.jpg" alt="이미지 설명 입력란">
+		<div id="flex_div">
+			<div id="item_list">
+				<?php  
+					$result = while_del_fee();
+					$del_arr = [];
+					while($re_val = mysqli_fetch_array($result)){
+						array_push($del_arr, $re_val);
+					}
+					$_SESSION['del_arr'] = $del_arr;
+
+                    $result = while_cart_list($id);  
+                    while ($r = mysqli_fetch_array($result)) {                            
+                        
+                ?>
+					<div class="item">
+						<input type="checkbox" id="<?=$r['pk_no']?>" class="cart_checkbox">
+						<input type="hidden" class="product_no" value="<?=$r['fd_product_no']?>">
+						<div class="thumbnail">
+							<a href="/menu/store_view.php?no=<?=$r['fd_product_no']?>"><img src="/admin/img/upload_image/<?=$r['fd_new_main_img']?>" alt="BLDC waterproof motor module"></a>
+						</div>
+						<div class="item_name">
+							<a href="/menu/store_view.php?no=<?=$r['fd_product_no']?>" class="pro_name">BLDC waterproof motor module</a>
+						</div>
+						<div class="item_option">
+							<span>
+								Option : <span class="option" ><?=$r['fd_option']?></span>
+							</span>
+						</div>
+						<div class="item_count">
+							<span>
+								Quantity : <span class="count"><?=$r['fd_count']?></span>
+							</span>
+						</div>
+						<div class="total_price">
+							<p><label>price</label><span class="price product_price"><?=number_format($r['fd_price'])?></span>(<?=number_format($r['fd_price']/$ex_rate,2)?>$)</p>
+							<span>+</span>
+							<p>
+								<label>delivery</label><span class="price delivery">
+								<?php
+									$del_fee = 0 ;
+									foreach($del_arr as $del_fee_info){
+										if($del_fee_info[0]<=$r['fd_price'] and $del_fee_info[1]>$r['fd_price']){
+											$del_fee = $del_fee_info[2];
+											break;
+										}
+									}
+									echo number_format($del_fee);
+								?>
+								
+								</span>
+								<?php
+									echo "(".number_format($del_fee/$ex_rate,2)."$)"
+								?>
+							</p>
+							<span>=</span>
+							<p><label>total</label><span class="price total"><?=number_format($r['fd_price']+$del_fee)?></span>(<?=number_format(($r['fd_price']+$del_fee)/$ex_rate,2)?>$)</p>
+						</div>
 					</div>
-					<div class="item_count">
-						<input type="button" class="bt_up" value="+">
-						<input type="number" value="0" min="1" max="<?=$info['fd_stock']?>" id="select_count" name="select_count">
-						<input type="button" class="bt_down" value="-">	
-					</div>
-					<div>
-						<span class="item_price">$info["fd_price"]</span>
-					</div>
-					<hr>
-					<div>
-						<p><label>price</label><span class="price">66,000</span></p>
-						<span>+</span>
-						<p><label>delivery</label><span class="price delivery">2,500</span></p>
-						<span>=</span>
-						<p><label>total</label><span class="price total">68,500</span></p>
-					</div>
-				</div>
+				<?php
+					}
+				?>
+
 			</div>
+			
 			<div id="total_order">
-				<label>Order Info</label>
-				<hr>
-				<ul>
-					<li><label>Quantity</label><span class="price"></span></li>
-					<li><label>Price</label><span class="price"></span></li>
-					<li><labe>Delivery</labe><span class="price"></span></li>
+				<label for="order_info" id="total_order_label">Payment information</label>
+				<ul id="order_info">
+					<li><label>Quantity</label><span id ="chk_count" class="price">0</span></li>
+					<li><label>Price</label><span id ="chk_price" class="price">0</span></li>
+					<li><label>Delivery Charge</label><span id ="chk_del" class="price">0</span></li>
+					<li><label>Order total</label><span class="price" id="total_order_price">0</span></li>
 				</ul>
-				<label>Total Price</label><span class="price"></span>
-				<button id="order">Order</button>
+				<button id="order_btn">Order</button>
+				<form id='cart_order_form' action="./cart_order.php" method="post">
+					<input type="hidden" id="chk_info" name="chk_info">
+				</form>
 			</div>
 		</div>
 	</div>
 </section>
+<script type="text/javascript">
+	var del_arr = <?=json_encode($del_arr)?>;
+
+</script>

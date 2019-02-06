@@ -3,7 +3,7 @@
 	include '../header.php';
 	$no = $_GET['no'];
 	if($no==null){
-		header("location:http://".$http_host."/admin/pm/list.php");
+		header("location:http://".$http_host."/menu/store.php?type=5");
 	};
 	$info = product_info($no);
 
@@ -56,6 +56,7 @@
 					<div class="grayBox post">
 						<input type="hidden" name="product_price" id="product_price" value="<?=$info['fd_price']?>">
 						<input type="hidden" id="ex_rate" value=<?=$ex_rate?> >	
+						<input type="hidden" name="without_del" id="without_del" value="">
 						<?php
 							if($info['fd_option']!=null){
 						?>
@@ -112,7 +113,7 @@
 					</div>
 
 					<div class="mt20 ar">
-						<a onclick="add_cart()" class="btn type07">Add to Cart</a>
+						<a onclick="add_cart()" class="btn type08">Add to Cart</a>
 						<input type="submit" id="buy_btn" class="btn type02" value="Buy">
 					</div>
 				</form>

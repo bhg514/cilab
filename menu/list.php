@@ -8,7 +8,7 @@
 	
 	if($type==1) $head = "Notice";
 	elseif($type==2) $head = "S/W download";
-	elseif($type==4) $head = "Q&A";
+	elseif($type==3) $head = "Q&A";
 	$query_string = $_SERVER['QUERY_STRING']; 
     $query_arr = explode('&', $query_string);
     

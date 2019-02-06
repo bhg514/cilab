@@ -204,8 +204,8 @@ $(document).ready(function(){
 		
 		if(return_chk==1)
 			return false;
-		/*pay_pop()*/
-		document.forms["store_form"].submit()
+		pay_pop()
+		/*document.forms["store_form"].submit()*/
 	})
 	$('#btnFoldWrap').click(function(){
     	$('#daum_juso_pagemb_zip').hide()
@@ -220,10 +220,90 @@ $(document).ready(function(){
 		$('#terms_sel').val('0').prop('selected', true)
 	})
 
-	
-       
+	$("input[type=checkbox]").click(function(e){
+		if (e.target.id == 'all_select'){
+			if($("#all_select").prop("checked")) { 			
+				$("input[class=cart_checkbox]").prop("checked",true); 
+			} else {  
+				$("input[class=cart_checkbox]").prop("checked",false); 
+			}
+		}
+		var chk_arr = $('"input[class=cart_checkbox]":checked').siblings().find('.product_price');
+		var product_total = 0;	
+		for(var i=0; i< chk_arr.length; i++){
+			product_total = product_total + Number(uncomma($(chk_arr[i]).text()));
+		}
+		$('#chk_price').text(numberWithCommas(product_total));
+		$('#chk_del').text(0);
+		$('#total_order_price').text(0);
+		if(product_total>0){
+			for(var i=0; i<del_arr.length; i++){
+				if(del_arr[i][0]<=product_total && del_arr[i][1]>product_total){
+					$('#chk_del').text(numberWithCommas(del_arr[i][2]))
+					$('#total_order_price').text(numberWithCommas(product_total+Number(del_arr[i][2])))
+					break;
+				}
+			}
+		}
+		$('#chk_count').text(chk_arr.length);
 
+	})
 
+	$('#del_select').click(function(){
+		var checked = $('"input[class=cart_checkbox]":checked');
+		var chk_str = [];
+		if(checked.length>0){
+			for (var i=0; i<checked.length; i++){
+				chk_str.push('"'+checked[i].id+'"');
+			}
+			chk_str = chk_str.join(',');
+			$.ajax({
+				type: "POST",
+				url: "../ajax/cart_del.php",
+				cache: false,
+				async: false,
+				data: { 			    
+				    no : chk_str
+				},
+				dataType: "text",
+				success: function(data) {   	        	
+				    location.reload();			    
+				}
+			});
+		}else{
+			alert("Please check item to delete");
+		}
+
+	})
+
+	$('#order_btn').click(function(){
+		//$($('"input[class=cart_checkbox]":checked').siblings().find('.pro_name')[0]).text()
+		//$(chk.siblings().find('.pro_name')[0]).text()
+
+		var chk = $('"input[class=cart_checkbox]":checked');
+		var option = []
+		var count = []
+		var price = []
+		var name = []
+		var id = []
+		var product_no = []
+
+		for(var i=0; i<chk.length; i++){
+			option.push($(chk.siblings().find('.option')[i]).text());
+			count.push($(chk.siblings().find('.count')[i]).text());
+			price.push($(chk.siblings().find('.product_price')[i]).text());
+			name.push($(chk.siblings().find('.pro_name')[i]).text());
+			id.push($('"input[class=cart_checkbox]":checked')[i].id);
+			product_no.push($(chk.siblings('.product_no')[i]).val());
+
+		}
+		
+
+		var chk_info = {'id':id,'option':option, 'count':count, 'price':price, 'name':name, 'product_no':product_no};
+		$('#chk_info').val(JSON.stringify(chk_info));
+		document.forms["cart_order_form"].submit()
+
+	})
 
 });
 function close_pop(flag) {
@@ -304,7 +384,7 @@ function pop_order(no,type){
 
 function pay_pop(){
 	product_name = $('#product_name').val()
-	amount = Number($('#del_fee').val()) + Number($('#price').val())
+	amount = Number($('#del_fee').val()) + Number($('#total_price').val())
 	buyer_name = $('#order_name').val()
 	buyer_mail = $('#order_mail').val()
 	buyer_tel = $('#order_hp').val()
@@ -438,7 +518,8 @@ function exchange(){
 function price_update(select_price,select_count,del_fee){
 	var ex_rate = $('#ex_rate').val();
 	var total = uncomma(select_price)*select_count +del_fee;	
-	$('#dollar').text(numberWithCommas((total/ex_rate).toFixed(2)));			
+	$('#dollar').text(numberWithCommas((total/ex_rate).toFixed(2)));
+	$('#without_del').val(uncomma(select_price)*select_count);			
 	$('#total_price').text(numberWithCommas(total));
 }
 
@@ -446,7 +527,7 @@ function price_update(select_price,select_count,del_fee){
 function add_cart(){
 	var count = $('#select_count').val();
 	var option = $('#select_name').val();
-	var total = uncomma($('#total_price').text());
+	var total = $('#without_del').val();
 	var no = $('#pro_no').val();
 
 	if (total!=0){		

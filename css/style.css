@@ -57,6 +57,11 @@ header h1 a {
 	background: url('../images/common/icon_sitemap.png') no-repeat 0 3px;
 }
 
+.gnb a.gnb_cart {
+	padding-left: 20px;
+	background: url('../images/common/icon_cart.png') no-repeat 0 2px;
+}
+
 .gnb p {
 	display: inline-block;
 	margin: 5px;
@@ -313,6 +318,19 @@ footer address {
 	background: #536586;
 }
 
+.btn.type08 {
+	padding: 15px 30px;
+	box-sizing: border-box;
+	font-size: 18px;
+	color: #536586;
+	border: 2px solid #536586;
+	background: #fff;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
 /* bbs */
 .imgType01 {
 	font-size: 0;
@@ -337,7 +355,7 @@ footer address {
 	width: 100%;
 	padding: 5px 15px 0;
 	margin-bottom: 15px;
-	font-size: 16px;
+	font-size: 15px;
 	color: #333333;
 	text-align: left;
 	font-weight: bold;
@@ -354,8 +372,8 @@ footer address {
 
 .imgType01 .price {
 	position: relative;
-	right: 15px;
-	font-size: 16px;
+	margin: 0 15px;
+	font-size: 14px;
 	float: right;
 }
 
@@ -631,7 +649,7 @@ footer address {
 }
 
 #paging {
-	margin: 30px 0 0 0;
+	margin: 30px 0;
 	text-align: center;
 }
 
@@ -744,6 +762,7 @@ footer address {
 	font-size: 15px;
 	font-weight: bold;
 	color: #333333;
+	margin-bottom: 40px;
 }
 
 .priceBox .priceSpan {
@@ -1388,18 +1407,19 @@ select {
 }
 
 .usd_price {
-    position: absolute;
-    margin-left: 5px;
-    color: #999;
-    top: 50px;
-    right: 5px;
+	position: absolute;
+	margin-left: 5px;
+	color: #999;
+	top: 50px;
+	right: 5px;
 }
+
 .pay_ment {
-    position: absolute;
-    margin-left: 5px;
-    color: #999;
-    top: 72px;
-    right: 5px;
+	position: absolute;
+	margin-left: 5px;
+	color: #999;
+	top: 72px;
+	right: 5px;
 }
 
 .dollar {
@@ -1467,7 +1487,6 @@ select {
 	float: right;
 }
 
-
 /*Q&A table*/
 .qna_answer_tb {
 	border-top: 2px solid #3fa2d5;
@@ -1494,4 +1513,164 @@ select {
 
 .qna_answer_tb tr th {
 	width: 100px;
+}
+
+/*cart*/
+.cart .select_div {
+	font-size: 16px;
+	margin-bottom: 15px;
+	margin-left: 10px;
+}
+
+.cart .select_div label {
+	
+}
+
+.cart .select_div span {
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.cart .cart_checkbox {
+	width: 16px;
+	height: 16px;
+}
+
+.cart #all_select {
+	margin-right: 3px;
+	width: 16px;
+	height: 16px;
+}
+
+.cart #flex_div {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.cart #item_list {
+	-webkit-box-flex: 2;
+	-ms-flex: 2;
+	flex-grow: 2;
+}
+
+.cart .item {
+	border: 1px solid #ddd;
+	margin-bottom: 15px;
+}
+
+.cart .item_name {
+	margin: 10px;
+}
+
+.cart .item_name a {
+	font-size: 15px;
+}
+
+.cart .item .cart_checkbox {
+	display: inline-block;
+	float: left;
+	margin: 10px;
+}
+
+.cart .thumbnail {
+	float: left;
+	margin: 10px 10px 10px 0;
+}
+
+.cart .thumbnail img {
+	width: 125px;
+	height: 125px;
+}
+
+.cart .item_option, .cart .item_count, .cart .item_price {
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+
+.cart .total_price {
+	border-top: 1px solid #ddd;
+	background: #efefef;
+	clear: both;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.cart .total_price p {
+	display: inline-block;
+	padding: 15px 20px;
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex-grow: 1;
+	-ms-flex: 1;
+}
+
+.cart .total_price>span {
+	display: inline-block;
+	padding: 20px 0px;
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex-grow: 1;
+	font-size: 20px;
+}
+
+.cart .total_price p label {
+	display: block;
+}
+
+.cart #total_order {
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex-grow: 1;
+	margin-left: 30px;
+	border: 1px solid #0055a6;
+	padding: 10px;
+	height: fit-content;
+	background: #fbfbfb;
+}
+
+.cart #total_order_label {
+	display: block;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #0055a6;
+	font-size: 16px;
+	color: #0055a6;
+	font-weight: bold;
+}
+
+.cart #order_info li:last-child {
+	border-top: 1px solid #0055a6;
+}
+
+.cart #order_info li {
+	display: block;
+	width: 100%;
+	font-size: 14px;
+	padding: 10px 0 10px;
+	height: 25px;
+}
+
+.cart #order_info li label {
+	display: inline-block;
+	float: left;
+}
+
+.cart #order_info li .price {
+	display: inline-block;
+	float: right;
+}
+
+.cart .price {
+	font-weight: bold;
+	color: #0055a6;
+	font-size: 16px;
+}
+
+.cart #order_btn {
+	padding: 10px;
+	width: 100%;
+	background: #0055a6;
+	color: #fff;
+	font-size: 18px;
 }

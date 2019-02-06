@@ -46,6 +46,18 @@
 	position: relative;
 }
 
+.login_btn .btn {
+	font-size: 11px !important;
+}
+
+.loginRightBtnArea {
+	margin-top: 0 !important;
+}
+
+.login_btn .sign_up {
+	float: left;
+}
+
 .sitemapAreaWrap {margin: 0;}
 .sitemapArea {
 	width: 100%;
@@ -399,6 +411,48 @@ a.btn_admin:focus, a.btn_admin:hover {text-decoration:none}
 }
 
 /*스토어*/
+#category_menu {
+	width: 100% !important;
+	margin-bottom: 40px !important;
+}
+
+.category_content {
+    width: 100% !important;
+}
+
+.ui-menu .ui-menu-item {
+    margin-top: 0px !important;
+    display: inline-block;
+    width: 50%;
+    float: left;
+}
+
+.imgType01>ul {
+    margin-left: 0 !important;
+}
+
 .product_li {
-    width: auto;
+    width: 100% !important;
+    margin-left: 0 !important;
  }
+ 
+ .pd_img {
+    width: 100% !important;
+    height: auto !important;
+ }
+ 
+ .itemContentBox img {
+ 	width: 100% !important;
+ }
+ 
+ /*장바구니*/
+ .cart #flex_div {
+ 	display: block !important;
+ }
+ 
+ .cart #total_order {
+ 	margin-left: 0 !important;
+ }
+ 
+ 
+ 
