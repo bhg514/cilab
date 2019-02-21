@@ -1,6 +1,7 @@
 function numberlineMain(mode){
 	this.mode=typeof mode!=='undefined'?mode:'int';
 	h=150;
+	apart = 50
 	var s="";
 	s+='<div id="number_line" style="position:relative; width:100%; min-height:'+h+'px; border: none; border-radius: 20px; background-color: #def; margin:auto; display:block;">';
 	s+='<canvas id="canvasId" style="position: absolute; width:100%; height:'+h+'px; left: 0; top:; border: none;"></canvas>';
@@ -28,9 +29,10 @@ function numberlineMain(mode){
 	el.addEventListener("mousedown",onmouseDown,false);
 	el.addEventListener('touchstart',ontouchstart,false);
 	el.addEventListener('touchmove',ontouchmove,false);	
-	for(var i=0; i<$('#tbody').children().find('.end_val').length;i++){
-		marks.push(uncomma($($('#tbody').children().find('.end_val')[i]).text())/1000);		
+	for(var i=0; i<$('#tbody').children().find('.end_val').length-1;i++){
+		marks.push(uncomma($($('#tbody').children().find('.end_val')[i]).text())/apart);		
 	}
+	last_val = 0;
 	go();
 
 }
@@ -63,10 +65,10 @@ function onmouseDown(evt){
 	var index = marks.indexOf(m)
 	var input_tag = $('#tbody').children().find('input')
 	input_list =[]
-	for(var i=0; i<input_tag.length; i++){
+	for(var i=0; i<input_tag.length-1; i++){
 		input_list.push(input_tag[i].value)
 	}
-
+	last_val = input_tag[input_tag.length-1].value
 	if (index > -1) {
 	  marks.splice(index, 1);
 	  input_list.splice(index, 1);
@@ -90,15 +92,18 @@ function onmouseDown(evt){
 		mark_html+='<tr>'
 		if (i==0){
 			mark_html += '<td class="tbody_td start_val">0</td>'+
-						'<td class="tbody_td end_val">'+comma(marks[i]*1000).toString()+'</td>'+
+						'<td class="tbody_td end_val">'+comma(marks[i]*apart).toString()+'</td>'+
 						'<td class="tbody_td"><input value='+input_list[i]+'></td>'		
 		}else{
-			mark_html += '<td class="tbody_td start_val">'+comma(marks[i-1]*1000).toString()+'</td>'+
-						'<td class="tbody_td end_val">'+comma(marks[i]*1000).toString()+'</td>'+
+			mark_html += '<td class="tbody_td start_val">'+comma(marks[i-1]*apart).toString()+'</td>'+
+						'<td class="tbody_td end_val">'+comma(marks[i]*apart).toString()+'</td>'+
 						'<td class="tbody_td"><input value='+input_list[i]+'></td>'	
 		}
 		mark_html+='</tr>'
 	}	
+	mark_html += '<td class="tbody_td start_val">'+comma(marks[marks.length-1]*apart).toString()+'</td>'+
+						'<td class="tbody_td end_val"></td>'+
+						'<td class="tbody_td"><input value='+last_val+'></td>'
 	$('#tbody').html(mark_html)
 
 	if(evt.preventDefault){
@@ -130,7 +135,6 @@ function drawNumLine(x,y,wd,currX){
 
 	g.font='10px Arial';
 	g.fillStyle='black';
-	apart = 1000
 	max_val = 32000
 	for(var i=0;i<=max_val;i+=apart){ // 파란색 범위
 		var xp=x+i/apart*wd*this.scale;
@@ -150,7 +154,7 @@ function drawNumLine(x,y,wd,currX){
 		var m=marks[i];
 		if(m>=0&&m<=max_val){
 			xp=x+m*wd*this.scale;
-			g.fillText(comma(m*1000).toString(),xp,y-40);
+			g.fillText(comma(m*apart).toString(),xp,y-40);
 			g.beginPath();
 			g.moveTo(xp,y);
 			g.lineTo(xp,y-35);
@@ -165,7 +169,7 @@ function drawNumLine(x,y,wd,currX){
 		g.strokeStyle=g.fillStyle;
 		m=val2x(currX);
 		xp=x+m*wd*this.scale;
-		g.fillText(comma(m*1000).toString(),xp,y-40);
+		g.fillText(comma(m*apart).toString(),xp,y-40);
 		g.beginPath();
 		g.moveTo(xp,y);
 		g.lineTo(xp,y-35);
@@ -231,13 +235,14 @@ function comma(num){
  
 };
 
-function range_seve(){
+function range_save(){
 	var child = $('#tbody').children()
 	var del_data = []
-	for(var i=0; i<child.length;i++){
+	for(var i=0; i<child.length-1;i++){
 		del_data.push([uncomma($(child.find('.start_val')[i]).text()),uncomma($(child.find('.end_val')[i]).text()),uncomma($(child.find('input')[i]).val())])
 		//이상값, 미만값, 금액
 	}
+	del_data.push([uncomma($(child.find('.start_val')[child.length-1]).text()), uncomma(9999999),uncomma($(child.find('input')[child.length-1]).val())])
 	$.ajax({
 		type: "POST",
 		url: "../ajax/del_fee.php",

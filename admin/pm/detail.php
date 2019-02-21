@@ -11,8 +11,8 @@
 ?>
 
 <!-- include summernote css/js -->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 
 <script type="text/javascript" src="../js/product_reg.js"></script>
 <script type="text/javascript" src="../js/admin.js"></script>
@@ -75,14 +75,7 @@
 								<td>
 									<input type="number" name="count" value="<?=$info['fd_stock']?>">
 								</td>
-							</tr>
-							<tr>
-								<th scope="row">배송비</th>
-								<td>
-									<input type="number" name="delivery" id="delivery_input" onclick="del_non_free()" value="<?=$info['fd_delivery']?>">원
-									<label><input type="radio" id="free_chk" onclick="del_free();"> 배송비 무료</label>
-								</td>
-							</tr>
+							</tr>							
 							<tr>
 								<th scope="row">제조국</th>
 								<td>

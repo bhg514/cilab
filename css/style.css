@@ -1674,3 +1674,7 @@ select {
 	color: #fff;
 	font-size: 18px;
 }
+
+#ui-datepicker-div{ 
+	width: 230px; 
+}

@@ -14,13 +14,6 @@ $(document).ready(function() {
 
 });
 
-function del_free(){
-	$('#delivery_input').val(0);
-}
-function del_non_free(){
-	$('#free_chk').prop('checked',false);
-}
-
 function remove_option(){
 	$('#option_input').val('')
 }

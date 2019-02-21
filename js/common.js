@@ -221,6 +221,7 @@ $(document).ready(function(){
 	})
 
 	$("input[type=checkbox]").click(function(e){
+		var ex_rate = $('#ex_rate').val()
 		if (e.target.id == 'all_select'){
 			if($("#all_select").prop("checked")) { 			
 				$("input[class=cart_checkbox]").prop("checked",true); 
@@ -233,14 +234,14 @@ $(document).ready(function(){
 		for(var i=0; i< chk_arr.length; i++){
 			product_total = product_total + Number(uncomma($(chk_arr[i]).text()));
 		}
-		$('#chk_price').text(numberWithCommas(product_total));
+		$('#chk_price').text(numberWithCommas(product_total)+"("+numberWithCommas((product_total/ex_rate).toFixed(2))+"$)");
 		$('#chk_del').text(0);
 		$('#total_order_price').text(0);
 		if(product_total>0){
 			for(var i=0; i<del_arr.length; i++){
-				if(del_arr[i][0]<=product_total && del_arr[i][1]>product_total){
-					$('#chk_del').text(numberWithCommas(del_arr[i][2]))
-					$('#total_order_price').text(numberWithCommas(product_total+Number(del_arr[i][2])))
+				if(Math.floor(del_arr[i][0]*ex_rate)<product_total && Math.floor(del_arr[i][1]*ex_rate)>=product_total){
+					$('#chk_del').text(numberWithCommas(del_arr[i][2])+"("+numberWithCommas((del_arr[i][2]/ex_rate).toFixed(2))+"$)")
+					$('#total_order_price').text(numberWithCommas(product_total+Number(del_arr[i][2]))+"("+numberWithCommas(((product_total+Number(del_arr[i][2]))/ex_rate).toFixed(2))+"$)")
 					break;
 				}
 			}
@@ -390,11 +391,12 @@ function pay_pop(){
 	buyer_tel = $('#order_hp').val()
 	buyer_addr = $('#reg_mb_addr1').val()+$('#reg_mb_addr2').val()+$('#reg_mb_addr3').val()+$('#reg_mb_addr4').val()
 	buyer_postcode = $('#reg_mb_zip').val()
+/*
 	no = $('#no').val()
 	count = $('#product_count').val()
-	option_name = $('#product_option').val()
-
-	product_info={"no":no,"count":count,"option":option_name,"amount":amount}
+	option_name = $('#product_option').val()*/
+	/*product_info={"no":no,"count":count,"option":option_name,"amount":amount}*/
+	product_info = JSON.parse($('#infos').val())
 
 	var IMP = window.IMP; // 생략해도 괜찮습니다.
 	IMP.init("imp66859917"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
@@ -543,8 +545,12 @@ function add_cart(){
 			    total : total
 			},
 			dataType: "text",
-			success: function(data) {   	        	
-			    alert('success');			    
+			success: function(data) {   
+				if (data=="false"){
+					alert('Please try again after login.')
+				}else{
+			    	alert('success');			    
+				}        	
 			}
 		});
 

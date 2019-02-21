@@ -10,7 +10,6 @@
 		$category = $_POST["category"] ?? '';
 		$price = $_POST["price"] ?? 0; // int
 		$count = $_POST["count"] ?? 0; // int
-		$delivery = $_POST["delivery"] ?? 0; //int
 		$made = $_POST["made"] ?? '';
 		$main_img = $_FILES["main_img"];
 
@@ -50,7 +49,7 @@
 
 
 
-		$query = 'update tb_product set fd_name = "'.$product_name.'", fd_price = '.$price.', fd_category = "'.$category.'", fd_content = "'.$new_content.'", fd_stock = '.$count.', fd_date = "'.$date_time.'", fd_status = "'.$status.'", fd_delivery = "'.$delivery.'", fd_made = "'.$made.'",';
+		$query = 'update tb_product set fd_name = "'.$product_name.'", fd_price = '.$price.', fd_category = "'.$category.'", fd_content = "'.$new_content.'", fd_stock = '.$count.', fd_date = "'.$date_time.'", fd_status = "'.$status.'", fd_made = "'.$made.'",';
 		if($main_img['name']!=null){
 			$query .=' fd_main_img = "'.$main_img.'", fd_new_main_img = "'.$new_main_img.'",';
 		}

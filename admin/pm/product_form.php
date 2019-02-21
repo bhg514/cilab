@@ -9,7 +9,7 @@
 	    $category = $_POST["category"] ?? '';
 	    $price = $_POST["price"] ?? 0; // int
 	    $count = $_POST["count"] ?? 0; // int
-	    $delivery = $_POST["delivery"] ?? 0; //int
+
 	    $made = $_POST["made"] ?? '';
 	    $main_img = $_FILES["main_img"];
 		$sub_img_arr = array();
@@ -49,7 +49,7 @@
 		}
 
 
-		$query = 'INSERT INTO tb_product (pk_no, fd_name, fd_price, fd_category, fd_content, fd_stock, fd_date, fd_status, fd_delivery, fd_made, fd_main_img, fd_new_main_img, fd_sub_img, fd_new_sub_img, fd_option, fk_admin) VALUES ((select IFNULL(max(pk_no),0)+1 from tb_product a), "'.$product_name.'", '.$price.', "'.$category.'", "'.$new_content.'", '.$count.', "'.$date_time.'", "'.$status.'", '.$delivery.', "'.$made.'", "'.$main_img.'", "'.$new_main_img.'", "'.$sub_img.'", "'.$new_sub_img.'", "'.$option.'", "'.$user_name.'");';
+		$query = 'INSERT INTO tb_product (pk_no, fd_name, fd_price, fd_category, fd_content, fd_stock, fd_date, fd_status, fd_made, fd_main_img, fd_new_main_img, fd_sub_img, fd_new_sub_img, fd_option, fk_admin) VALUES ((select IFNULL(max(pk_no),0)+1 from tb_product a), "'.$product_name.'", '.$price.', "'.$category.'", "'.$new_content.'", '.$count.', "'.$date_time.'", "'.$status.'", "'.$made.'", "'.$main_img.'", "'.$new_main_img.'", "'.$sub_img.'", "'.$new_sub_img.'", "'.$option.'", "'.$user_name.'");';
 		query_send_non_return($query);
 		//echo $query;
 		header("location:https://".$http_host."/admin/pm/list.php");

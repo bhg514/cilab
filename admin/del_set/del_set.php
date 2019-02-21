@@ -14,7 +14,7 @@
 		<hr class="garo" style="display: block;"> 
 	</div>
 	<div class="btn_div">
-		<a class="btn type05" onclick="range_seve()">저장</a>		
+		<a class="btn type05" onclick="range_save()">저장</a>		
 	</div>
 	<div id=chart>
 	</div>
@@ -23,8 +23,8 @@
 		<caption class="readHide">배송비 관리</caption>
 		<thead class="admin_list">
 			<tr>
-				<th scope="col" class="thead_th">이상</th>
-				<th scope="col" class="thead_th">미만</th>
+				<th scope="col" class="thead_th">초과</th>
+				<th scope="col" class="thead_th">이하</th>
 				<th scope="col" class="thead_th">금액</th>				
 			</tr>
 		</thead>
@@ -35,7 +35,7 @@
 			?>
 			<tr>				
 				<td class="tbody_td start_val"><?= number_format($r['fd_start'])?></td>
-				<td class="tbody_td end_val"><?= number_format($r['fd_end'])?></td>
+				<td class="tbody_td end_val"><?php if($r['fd_end']!=9999999) echo number_format($r['fd_end']);?></td>
 				<td class="tbody_td"><input value=<?= number_format($r['fd_fee'])?>></td>					
 			</tr>
 			<?php 

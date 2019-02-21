@@ -19,7 +19,7 @@ $datetime = date("Y-m-d H:i:s");
 // 라인수 만큼 루프
 $query = "";
 for ($i=1; $i<count($lines);$i++){
-	$query = "insert into tb_product (fd_name, fd_price, fd_category, fd_stock, fd_status, fd_delivery, fd_made, fd_option, fk_admin,fd_date) values(";
+	$query = "insert into tb_product (fd_name, fd_price, fd_category, fd_stock, fd_status, fd_made, fd_option, fk_admin,fd_date) values(";
 	for ($k=0;$k<9;$k++){
 		if ($k==1||$k==3||$k==5){
 			$query .=$lines[$i][$k].",";

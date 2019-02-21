@@ -10,15 +10,7 @@
     
     $query_string ="";
 
-    $exchange_url="http://free.currencyconverterapi.com/api/v6/convert?q=USD_KRW&compact=y";
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $exchange_url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1000);
-    $rt = curl_exec($ch);
-    curl_close($ch);
-    $hwan_api = json_decode($rt);
-    $hwan_krw = $hwan_api->USD_KRW->val;
+    $ex_rate = ex_rate();
 
     foreach ($query_arr as $query) {
         $query_sp = explode('=', $query);
@@ -104,7 +96,7 @@
                             <p class="price">
                                 <span class="redbox">price</span>
                                 
-                                <?=number_format($r['fd_price'])?>KRW(<?=number_format($r['fd_price']/$hwan_krw,2)?>$)
+                                <?=number_format($r['fd_price'])?>KRW(<?=number_format($r['fd_price']/$ex_rate,2)?>$)
                             </p>
                             <p class="name"><?=$r['fd_name']?></p>
                             

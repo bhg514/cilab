@@ -473,19 +473,44 @@
 	}
 
 	function while_cart_list($id){
-		$query = 'SELECT c.*, p.fd_new_main_img from tb_cart c join tb_product p on c.fd_product_no = p.pk_no where fd_user_id = "'.$id.'"';
-
+		$query = 'SELECT c.*, p.fd_new_main_img, p.fd_name from tb_cart c join tb_product p on c.fd_product_no = p.pk_no where fd_user_id = "'.$id.'"';
 		$result = query_send($query);
 		return $result;
 
 	}
 
 	function while_del_fee(){
-		$query = 'SELECT * from tb_del_fee';
+		$query = 'SELECT fd_start, fd_end, fd_fee from tb_del_fee';
 
 		$result = query_send($query);
 		return $result;
 
+	}
+
+	function ex_rate(){
+
+		$exchange_url="https://api.manana.kr/exchange/rate/KRW/USD.json";
+	    $ch = curl_init($exchange_url);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	    $rt = curl_exec($ch);
+	    curl_close($ch);
+	    $ex_api = json_decode($rt, true);
+	    $ex_rate = $ex_api[0];
+	    $ex_rate = $ex_rate['rate'];
+	    return $ex_rate;
+	}
+
+	function hwan_krw(){
+		$exchange_url="https://free.currencyconverterapi.com/api/v6/convert?q=USD_KRW&compact=y";
+	    $ch = curl_init();
+	    curl_setopt($ch, CURLOPT_URL, $exchange_url);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1000);
+	    $rt = curl_exec($ch);
+	    curl_close($ch);
+	    $hwan_api = json_decode($rt);
+	    $hwan_krw = $hwan_api->USD_KRW->val;
+	    return $hwan_krw;
 	}
 
 	

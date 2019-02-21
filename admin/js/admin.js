@@ -218,7 +218,7 @@ $(document).ready(function() {
 			    alert("Error!");
     		},
 			success: function(data) {   	        					
-			    location.href ="http:\/\/"+window.location.host+"/admin/order/list.php?type=1"
+			    location.href ="https:\/\/"+window.location.host+"/admin/order/list.php?type=1"
 			}
 		});
 

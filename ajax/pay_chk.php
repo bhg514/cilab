@@ -1,6 +1,7 @@
 <?php
 require_once(dirname(__DIR__).'/config/iamport.php');
 include_once("../common.php");
+$ex_rate = ex_rate();
 $iamport = new Iamport('3711648782051850', 'njUZPJD8vJha87TYkVvwL6xoIlYCk9mHshGh0jpv3GFcNzb8vHEgNbFvwE8QNuygLexLyXhCEWPsw0B1');
 
 $imp_uid = $_GET['imp_uid'];
@@ -34,24 +35,36 @@ if ( $result->success ) {
 	#echo 'Custom Data :'	. $payment_data->getCustomData('my_key');
 
 	# 내부적으로 결제완료 처리하시기 위해서는 (1) 결제완료 여부 (2) 금액이 일치하는지 확인을 해주셔야 합니다.
-
-	$query = "select fd_option,fd_delivery,fd_price from tb_product where pk_no = '".$product_info['no']."'";
-	$result = query_send($query);	
-    $info = mysqli_fetch_array($result);
-    if($product_info['option']!=""){
-    	#무게(160g~169g)^-1000||무게(170g~179g)^0||무게(180g~189g...
-	    $options = explode('||',$info['fd_option']);
-	    for($i=0; $i<count($options);$i++){
-	    	#무게(160g~169g)^-1000
-	        $option = explode('^', $options[$i]);
-	        if($option[0]==$product_info['option']){
-	        	#-1000
-	            $option_price = $option[1];
-	        }
-	    }
-	    $amount_paid = ($info['fd_price'] + $option_price) * $product_info['count'] + $info['fd_delivery'];
-	}else{
-		$amount_paid = $info['fd_price'] * $product_info['count'] + $info['fd_delivery'];
+	$amount_paid = 0;
+	for($k=0; $k<count($product_info['product_no']); $k++){
+		$query = "select fd_option, fd_price from tb_product where pk_no = '".$product_info['product_no'][$k]."'";
+		$result = query_send($query);	
+	    $info = mysqli_fetch_array($result);
+	    if($product_info['option'][$k]!=""){
+	    	#무게(160g~169g)^-1000||무게(170g~179g)^0||무게(180g~189g...
+		    $options = explode('||',$info['fd_option']);
+		    for($i=0; $i<count($options);$i++){
+		    	#무게(160g~169g)^-1000
+		        $option = explode('^', $options[$i]);
+		        if($option[0]==$product_info['option'][$k]){
+		        	#-1000
+		            $option_price = $option[1];
+		        }
+		    }
+		    $tmp_paid = ($info['fd_price'] + $option_price) * $product_info['count'][$k] ;
+		}else{
+			$tmp_paid = $info['fd_price'] * $product_info['count'][$k] ;
+		}
+		$amount_paid = $amount_paid + $tmp_paid;
+	}
+	$query = 'SELECT fd_start, fd_end, fd_fee from tb_del_fee';
+	$del_arr = [];
+	$result = query_send($query);
+	while($re_val = mysqli_fetch_array($result)){			
+		if($amount_paid > $re_val['fd_start']*$ex_rate && $amount_paid <= $re_val['fd_end']*$ex_rate){
+			$amount_paid = $amount_paid + $re_val['fd_fee'];			
+			break;
+		}
 	}
 	$return_val=new stdClass();
 	if ( $payment_data->status === 'paid' && $payment_data->amount === $amount_paid ) {

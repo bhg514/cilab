@@ -31,15 +31,16 @@
 		$total_price = $option_price*$count;
 	else 
 		$total_price = $info['fd_price']*$count;
+	$ex_rate = ex_rate();
 	//배송비 호출
 	$result = while_del_fee();
 	$del_arr = [];
 	while($re_val = mysqli_fetch_array($result)){
 		array_push($del_arr, $re_val);
 	}
-	$del_fee = 0 ;
+	$del_fee = end($del_arr)[2] ;
 	foreach($del_arr as $del_fee_info){
-		if($del_fee_info[0]<=$total_price and $del_fee_info[1]>$total_price){
+		if(floor($del_fee_info[0]*$ex_rate)<$total_price and floor($del_fee_info[1]*$ex_rate)>=$total_price){
 			$del_fee = $del_fee_info[2];
 			break;
 		}
@@ -85,25 +86,26 @@
 						</thead>
 						<tbody>
 							<tr>
+								<input type="hidden" id="product_name" value="<?=$info['fd_name']?>">
 								<td><?=$info['fd_name']?></td>
 								<td name="product_option"><?=$option_name?></td>
 								<td name="product_count"><?=$count?></td>
-								<td><?=number_format($total_price)?>								
+								<td><?=number_format($total_price).'($'.number_format($total_price/$ex_rate,2).')'?>								
 								<input type="hidden" id="total_price" name="total_price" value="<?=$total_price?>">
 								</td>
-								<td><?=number_format($del_fee)?></td>
+								<td><?=number_format($del_fee).'($'.number_format($del_fee/$ex_rate,2).')'?></td>
 								<input type="hidden" id="del_fee" name="del_fee" value="<?=$del_fee?>">
-								<td><?=number_format($total_price+$del_fee)?></td>
-								<td>									
-									<input type="hidden" name="imp_uid" id="imp_uid" value="">
-									<input type="hidden" name="merchant_uid" id="merchant_uid" value="">
+								<td><?=number_format($total_price+$del_fee).'($'.number_format(($total_price+$del_fee)/$ex_rate,2).')'?></td>
+																	
+								<input type="hidden" name="imp_uid" id="imp_uid" value="">
+								<input type="hidden" name="merchant_uid" id="merchant_uid" value="">
 
-									<input type="hidden" name="infos" id="infos" value='<?php	
-									echo '{"id":["'.$info['pk_no'].'"],"option":["'.$option_name.'"],"count":["'.$count.'"],"price":["'.$total_price.'"],"name":["'.$info['fd_name'].'"]}'
-									?>
-									'>
-									<input type="hidden" name="order_type" value="store">
-								</td>
+								<input type="hidden" name="infos" id="infos" value='<?php	
+								echo '{"product_no":["'.$info['pk_no'].'"],"option":["'.$option_name.'"],"count":["'.$count.'"],"price":["'.$total_price.'"],"name":["'.$info['fd_name'].'"]}'
+								?>
+								'>
+								<input type="hidden" name="order_type" value="store">
+								
 							</tr>
 						</tbody>
 					</table>
@@ -202,7 +204,7 @@
 					<tbody>
 						<tr>
 							<th scope="row">Order total</th>
-							<td><?=number_format($total_price+$del_fee)?></td>
+							<td><?=number_format($total_price+$del_fee).'($'.number_format(($total_price+$del_fee)/$ex_rate,2).')'?></td>
 						</tr>
 					</tbody>
 				</table>

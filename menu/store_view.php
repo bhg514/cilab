@@ -3,7 +3,7 @@
 	include '../header.php';
 	$no = $_GET['no'];
 	if($no==null){
-		header("location:http://".$http_host."/menu/store.php?type=5");
+		header("location:https://".$http_host."/menu/store.php?type=5");
 	};
 	$info = product_info($no);
 
@@ -13,18 +13,10 @@
 		return explode('^', $option);
 	}
 
-    $exchange_url="http://free.currencyconverterapi.com/api/v6/convert?q=USD_KRW&compact=y";
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $exchange_url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1000);
-    $rt = curl_exec($ch);
-    curl_close($ch);
-    $ex_api = json_decode($rt);
-    $ex_rate = $ex_api->USD_KRW->val;
+    $ex_rate = ex_rate();
 
 ?>
-
+<link rel="stylesheet" type="text/css" href="../css/del_table.css">
 <section class="container">
 	<div class="visual store">
 		<p class="subTitle">STORE</p>
@@ -91,7 +83,33 @@
 					</div>
 					<div class="grayBox post">
 						<label for="del_fee">Delivery Charge</label>
-						<span class="priceSpan" id="del_fee"><?=number_format($info['fd_delivery'])?></span>
+						<table class="list-table">
+							<caption class="readHide">월별통계</caption>
+							<thead class="admin_list">
+								<tr>
+									<th scope="col" class="thead_th">Order total</th>
+									<th scope="col" class="thead_th">Charge</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+									$result = while_get_del_fee();	
+									while ($r = mysqli_fetch_array($result)) {
+								?>
+								<tr>
+									<td class="tbody_td"><?php 
+										if($r['fd_end']!=9999999) 
+											echo '$'.number_format($r['fd_start']).' ~ $'.number_format($r['fd_end']);
+										else 
+											echo 'Over $'.number_format($r['fd_start'])
+										?></td>
+									<td class="tbody_td"><?= '$'.number_format($r['fd_fee']/$ex_rate,2)?></td>
+								</tr>	
+								<?php 
+									}
+								?>					
+							</tbody>
+						</table>
 					</div>				
 					<div class="priceBox" >
 						<label for="total_price">Amount</label>					
@@ -119,6 +137,7 @@
 				</form>
 			</div>
 			<div class="cb"></div>
+			
 			<div class="itemContentBox">
 				<?=$info['fd_content']?>
 			</div>

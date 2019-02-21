@@ -12,18 +12,18 @@ if($type1=="product"){//상품 다운
 
 	if($type2=="1"){ // 전체
 		$filename = "all_product_".$date.".csv"; 
-		$query = "select pk_no, fd_name, fd_price, fd_category, fd_stock, fd_date, fd_status, fd_delivery, fd_made, fk_admin, fd_option from tb_product order by pk_no desc";
+		$query = "select pk_no, fd_name, fd_price, fd_category, fd_stock, fd_date, fd_status, fd_made, fk_admin, fd_option from tb_product order by pk_no desc";
 	}
 	elseif ($type2=="2"){//부분
 		$chk_arr = $_GET['chk_arr'];			
 		$filename = "chk_product_".$date.".csv"; 
-		$query = "select pk_no, fd_name, fd_price, fd_category, fd_stock, fd_date, fd_status, fd_delivery, fd_made, fk_admin, fd_option from tb_product where pk_no in (".$chk_arr.") order by pk_no desc";
+		$query = "select pk_no, fd_name, fd_price, fd_category, fd_stock, fd_date, fd_status, fd_made, fk_admin, fd_option from tb_product where pk_no in (".$chk_arr.") order by pk_no desc";
 	}
 		
 	
 
 	$result = query_send($query);
-	$csv_dump = "NO, 상품명, 가격, 카테고리, 재고, 날짜, 상태, 배송비, 제조국, 등록자, 옵션";
+	$csv_dump = "NO, 상품명, 가격, 카테고리, 재고, 날짜, 상태, 제조국, 등록자, 옵션";
 	$csv_dump .= "\r\n"; 
 
 	while ($row = mysqli_fetch_array($result)) {
@@ -43,7 +43,6 @@ if($type1=="product"){//상품 다운
 		if($row['fd_status']==1) $csv_dump .= "판매중,";
 		elseif($row['fd_status']==2) $csv_dump .= "판매중지,";
 
-		$csv_dump .= $row['fd_delivery'].","; 
 		$csv_dump .= $row['fd_made'].","; 
 		$csv_dump .= $row['fk_admin'].","; 
 		$csv_dump .= $row['fd_option']; 

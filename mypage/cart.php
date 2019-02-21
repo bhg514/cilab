@@ -6,15 +6,7 @@
 		header("location:https://".$http_host."/index.php");
 	}
 
-	$exchange_url="http://free.currencyconverterapi.com/api/v6/convert?q=USD_KRW&compact=y";
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $exchange_url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1000);
-    $rt = curl_exec($ch);
-    curl_close($ch);
-    $ex_api = json_decode($rt);
-    $ex_rate = $ex_api->USD_KRW->val;
+	$ex_rate = ex_rate();
 
 ?>
 
@@ -54,10 +46,10 @@
 						<input type="checkbox" id="<?=$r['pk_no']?>" class="cart_checkbox">
 						<input type="hidden" class="product_no" value="<?=$r['fd_product_no']?>">
 						<div class="thumbnail">
-							<a href="/menu/store_view.php?no=<?=$r['fd_product_no']?>"><img src="/admin/img/upload_image/<?=$r['fd_new_main_img']?>" alt="BLDC waterproof motor module"></a>
+							<a href="/menu/store_view.php?no=<?=$r['fd_product_no']?>"><img src="/admin/img/upload_image/<?=$r['fd_new_main_img']?>" alt="<?=$r['fd_name']?>"></a>
 						</div>
 						<div class="item_name">
-							<a href="/menu/store_view.php?no=<?=$r['fd_product_no']?>" class="pro_name">BLDC waterproof motor module</a>
+							<a href="/menu/store_view.php?no=<?=$r['fd_product_no']?>" class="pro_name"><?=$r['fd_name']?></a>
 						</div>
 						<div class="item_option">
 							<span>
@@ -75,9 +67,9 @@
 							<p>
 								<label>delivery</label><span class="price delivery">
 								<?php
-									$del_fee = 0 ;
+									$del_fee = end($del_arr)[2] ;
 									foreach($del_arr as $del_fee_info){
-										if($del_fee_info[0]<=$r['fd_price'] and $del_fee_info[1]>$r['fd_price']){
+										if(floor($del_fee_info[0]*$ex_rate)<$r['fd_price'] and floor($del_fee_info[1]*$ex_rate)>=$r['fd_price']){
 											$del_fee = $del_fee_info[2];
 											break;
 										}
@@ -111,6 +103,7 @@
 				<button id="order_btn">Order</button>
 				<form id='cart_order_form' action="./cart_order.php" method="post">
 					<input type="hidden" id="chk_info" name="chk_info">
+					<input type="hidden" id="ex_rate" value="<?=$ex_rate?>">
 				</form>
 			</div>
 		</div>

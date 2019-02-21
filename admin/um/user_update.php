@@ -9,7 +9,7 @@
 		$query = "update tb_user set fd_pw = '".$pw."' where pk_no=".$no;
 
 		query_send_non_return($query);
-		header("location:http://".$http_host."/admin/um/list.php");
+		header("location:https://".$http_host."/admin/um/list.php");
 
 
 	} catch(Exception $e){

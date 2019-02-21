@@ -12,7 +12,8 @@
 	while($re_val = mysqli_fetch_array($result)){
 		array_push($del_arr, $re_val);
 	}
-	$user = get_user_info_to_id($_SESSION['user_id'])
+	$user = get_user_info_to_id($_SESSION['user_id']);
+	$ex_rate = ex_rate();
 ?>
 <script type="text/javascript" src="../js/register.js"></script><!-- 우편 --> 
 <!-- iamport.payment.js -->
@@ -51,22 +52,30 @@
 							</tr>
 						</thead>
 
+						<tbody>
+						<input type="hidden" id="product_name" value="<?php
+							if(count($chk_infos['id'])>1){
+								echo $chk_infos['name'][0].' 외 '.count($chk_infos['id'][0]-1).'건';
+							}else{
+								echo $chk_infos['name'][0];
+							}
+						?>"
+						>
 						<?php 
 							$total_price = 0;
 							for($i=0; $i<count($chk_infos['id']); $i++){
 								$total_price = $total_price + str_replace(',','',$chk_infos['price'][$i]);
 						?>
-								<tbody>
 									<tr>
 										<td><?=$chk_infos['name'][$i]?></td>
 										<td name="product_option"><?=$chk_infos['option'][$i]?></td>
 										<td name="product_count"><?=$chk_infos['count'][$i]?></td>
-										<td><?=$chk_infos['price'][$i]?></td>
+										<td><?=$chk_infos['price'][$i]?>(<?=round(str_replace(',','',$chk_infos['price'][$i])/$ex_rate,2)?>$)</td>
 									</tr>
-								</tbody>
 						<?php
 							}
 						?>
+						</tbody>
 					</table>
 				</div>
 
@@ -87,20 +96,21 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td><?=number_format($total_price)?></td>
-								<input type="hidden" name="total_price" value="<?=$total_price?>">
+								<td><?=number_format($total_price)?>(<?=round($total_price/$ex_rate,2)?>$)</td>
+								<input type="hidden" name="total_price" id="total_price" value="<?=$total_price?>">
 								<?php
-									$del_fee = 0 ;
+									$del_fee = end($del_arr)[2] ;
 									foreach($del_arr as $del_fee_info){
-										if($del_fee_info[0]<=$total_price and $del_fee_info[1]>$total_price){
+										if(floor($del_fee_info[0]*$ex_rate)<$total_price and floor($del_fee_info[1]*$ex_rate)>=$total_price){
 											$del_fee = $del_fee_info[2];
 											break;
 										}
 									}
+
 								?>
-								<td><?=number_format($del_fee)?></td>
-								<input type="hidden" name="del_fee" value="<?=$del_fee?>">
-								<td name="product_count"><?=number_format($total_price+$del_fee)?></td>
+								<td><?=number_format($del_fee)?>(<?=round($del_fee/$ex_rate,2)?>$)</td>
+								<input type="hidden" name="del_fee" id="del_fee" value="<?=$del_fee?>">
+								<td name="product_count"><?=number_format($total_price+$del_fee)?>(<?=round(($total_price+$del_fee)/$ex_rate,2)?>$)</td>
 							</tr>
 						</tbody>
 					</table>
@@ -187,7 +197,7 @@
 						<tr>
 							<th scope="row">Order total</th>
 							<td>
-								<?=number_format($total_price+$del_fee)?>
+								<?=number_format($total_price+$del_fee)?>(<?=round(($total_price+$del_fee)/$ex_rate,2)?>$)
 							</td>
 						</tr>
 					</tbody>

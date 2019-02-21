@@ -6,445 +6,570 @@ if (isset($_SESSION['user_id'])) {
 }
 ?>
 <section class="container">
-	<div class="visual etc">
-		<p class="subTitle">Sing up</p>
-		<div class="location">
-			<img src="../images/common/icon_home.png" alt="Home"> <span>&gt;</span>
-			<span>Membership</span>
-		</div>
-	</div>
-	<div class="contents">
-		<div class="tabletInner">
-			<form action="form.php" method="post">
-				<p class="blt01">Terms of Membership</p>
-				<p class="fs14 avt">
-					<span class="fcR">(Required)</span>Site Terms and Conditions
-				</p>
-				<textarea class="term">전자상거래(인터넷사이버몰) 표준약관
+    <div class="visual etc">
+        <p class="subTitle">Sing up</p>
+        <div class="location">
+            <img src="../images/common/icon_home.png" alt="Home"> <span>&gt;</span>
+            <span>Membership</span>
+        </div>
+    </div>
+    <div class="contents">
+        <div class="tabletInner">
+            <form action="form.php" method="post">
+                <p class="blt01">Terms of Membership</p>
+                <p class="fs14 avt">
+                    <span class="fcR">(Required)</span>Site Terms and Conditions
+                </p>
+                <textarea class="term">Standard Clauses of E-Commerce (Internet Cybermall)
 
+Standard Clauses No. 10023 (Amended on June 26th, 2015)
 
-표준약관 제10023호
-(2015. 6. 26. 개정)
+Clause 1 (Purpose) The purpose of these clauses is to define rights, duties and responsibilities of the cybermall and its users for the use of the Internet-related services (to be referred to as “Services” from now on) provided by CILab Cybermall (to be referred to as “Mall” from now on) which is operated by CILab (the operator of e-commerce).
 
+* [These clauses are also applied to the type of e-commerce which is involved with PC and wireless communications as long as they are not against the properties.]
 
+Clause 2 (Definitions)
 
-제1조(목적) 이 약관은 CILAB 회사(전자상거래 사업자)가 운영하는 CILAB 사이버 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리․의무 및 책임사항을 규정함을 목적으로 합니다.
+1. “Mall” is the virtual place of business established by CILab with the goal of providing its users with goods or services (to be referred to as “Goods etc.”) in order to let them trade “Goods etc.”  by using such information and communication tools as computers. Also, it can represent the operator which runs the cybermall.
 
-  ※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다.」
+2. “Users” are the members or non-members that get themselves connected to “Mall” and receive the services provided by “Mall” according to these clauses.
 
-제2조(정의)
+3. “Members” are those that get themselves registered to “Mall” as members and can constantly use the services provided by “Mall”.
 
-  ① “몰”이란 CILAB 회사가 재화 또는 용역(이하 “재화 등”이라 함)을 이용자에게 제공하기 위하여 컴퓨터 등 정보통신설비를 이용하여 재화 등을 거래할 수 있도록 설정한 가상의 영업장을 말하며, 아울러 사이버몰을 운영하는 사업자의 의미로도 사용합니다.
+4. “Non-members” are those that use the services provided by “Mall” without getting themselves registered as members.
 
-  ② “이용자”란 “몰”에 접속하여 이 약관에 따라 “몰”이 제공하는 서비스를 받는 회원 및 비회원을 말합니다.
+Clause 3 (Specification, Description & Amendment of Clauses)
 
-  ③ ‘회원’이라 함은 “몰”에 회원등록을 한 자로서, 계속적으로 “몰”이 제공하는 서비스를 이용할 수 있는 자를 말합니다.
+1. “Mall” posts the contents of these clauses and such information as the name of the representative, the address of the place where the business office is located (including the address of the place that can handle consumers’ complaints), telephone number/fax number/e-mail address, business registration number, telemarketing business registration number and the manager in charge of personal information on the initial service screen (full-screen) of CILab Cybermall in order to let the users easily find them out. However, the contents of the clauses can be notified to the users through the connecting screen.
 
-  ④ ‘비회원’이라 함은 회원에 가입하지 않고 “몰”이 제공하는 서비스를 이용하는 자를 말합니다.
+2. “Mall” must have users’ confirmation by providing them with a separate connecting screen or a pop-up screen in order to help them understand such important contents as the withdrawal of agreements/the delivery responsibilities/the conditions for refunds among those specified in the clauses prior to their agreement to them.
 
-제3조 (약관 등의 명시와 설명 및 개정) 
+3. “Mall” can amend these clauses within the range that does not violate such related acts as [E-Commerce Consumer Protection Act], [Clause Regulation Act], [Electronic Document & E-Commerce Fundamental Act], [Electronic Financial Transaction Act], [Electronic Signature Act], [Information Network Use Promotion & Information Protection Act], [Call Sales Act] and [Consumer Framework Act].
 
-  ① “몰”은 이 약관의 내용과 상호 및 대표자 성명, 영업소 소재지 주소(소비자의 불만을 처리할 수 있는 곳의 주소를 포함), 전화번호․모사전송번호․전자우편주소, 사업자등록번호, 통신판매업 신고번호, 개인정보관리책임자등을 이용자가 쉽게 알 수 있도록 CILAB 사이버몰의 초기 서비스화면(전면)에 게시합니다. 다만, 약관의 내용은 이용자가 연결화면을 통하여 볼 수 있도록 할 수 있습니다.
+4. “Mall” specifies and posts the date of application and the reasons for the amendment of these clauses on the initial screen of “Mall” together with the current clauses from 7 days before the date of application to the day before. However, when the contents of the clauses are amended disadvantageously for the users, the information must be posted with the grace period of more than 30 days at least. In such a case, “Mall” must clearly compare the contents before and after the amendment and let the users easily find them out.
 
-  ② “몰은 이용자가 약관에 동의하기에 앞서 약관에 정하여져 있는 내용 중 청약철회․배송책임․환불조건 등과 같은 중요한 내용을 이용자가 이해할 수 있도록 별도의 연결화면 또는 팝업화면 등을 제공하여 이용자의 확인을 구하여야 합니다.
+5. When “Mall” amends the clauses, the amended clauses are only applied to the agreements which are concluded after the date of application. For the agreements concluded before, the terms and conditions of the clauses before the amendment are applied as they are. However, if the users that already have agreements want to be subject to the application of the amended clauses, they must let “Mall” know about their intention by sending it to “Mall” and getting its approval within the notice period for the amendment of the clauses based on Section 3. 
 
-  ③ “몰”은 「전자상거래 등에서의 소비자보호에 관한 법률」, 「약관의 규제에 관한 법률」, 「전자문서 및 전자거래기본법」, 「전자금융거래법」, 「전자서명법」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「방문판매 등에 관한 법률」, 「소비자기본법」 등 관련 법을 위배하지 않는 범위에서 이 약관을 개정할 수 있습니다.
+6. For anything that is not specified in these clauses and the interpretation of these clauses, it is required to follow such acts as [E-Commerce Consumer Protection Act], [Clause Regulation Act] and [E-Commerce Consumer Protection Guidelines] in addition to subordinate statutes and commercial practices.
 
-  ④ “몰”이 약관을 개정할 경우에는 적용일자 및 개정사유를 명시하여 현행약관과 함께 몰의 초기화면에 그 적용일자 7일 이전부터 적용일자 전일까지 공지합니다. 다만, 이용자에게 불리하게 약관내용을 변경하는 경우에는 최소한 30일 이상의 사전 유예기간을 두고 공지합니다.  이 경우 "몰“은 개정 전 내용과 개정 후 내용을 명확하게 비교하여 이용자가 알기 쉽도록 표시합니다. 
+Clause 4 (Provision & Change of Services)
 
-  ⑤ “몰”이 약관을 개정할 경우에는 그 개정약관은 그 적용일자 이후에 체결되는 계약에만 적용되고 그 이전에 이미 체결된 계약에 대해서는 개정 전의 약관조항이 그대로 적용됩니다. 다만 이미 계약을 체결한 이용자가 개정약관 조항의 적용을 받기를 원하는 뜻을 제3항에 의한 개정약관의 공지기간 내에 “몰”에 송신하여 “몰”의 동의를 받은 경우에는 개정약관 조항이 적용됩니다.
+1. “Mall” executes the following duties.
 
-  ⑥ 이 약관에서 정하지 아니한 사항과 이 약관의 해석에 관하여는 전자상거래 등에서의 소비자보호에 관한 법률, 약관의 규제 등에 관한 법률, 공정거래위원회가 정하는 전자상거래 등에서의 소비자 보호지침 및 관계법령 또는 상관례에 따릅니다.
+    <1> Provision of information about goods or services and conclusion of purchase agreements
+    <2> Delivery of goods or services related to the conclusion of purchase agreements
+    <3> Other duties set by “Mall”
 
-제4조(서비스의 제공 및 변경) 
+2. “Mall” can change the contents of goods or services which it provides based on the agreements to be concluded in the future when the quality of goods or services or technical specifications are changed. In such a case, the contents of the changed goods or services and the date of provision must be specified and immediately posted on the same place where the contents of the current goods or services are posted.
 
-  ① “몰”은 다음과 같은 업무를 수행합니다.
+3. When changing the contents of the services subject to the conclusion of the agreements with users based on such a reason as the change of the quality or technical specifications of goods or services, “Mall” must immediately notify the users of the reason through a possible address.
 
-    1. 재화 또는 용역에 대한 정보 제공 및 구매계약의 체결
-    2. 구매계약이 체결된 재화 또는 용역의 배송
-    3. 기타 “몰”이 정하는 업무
+4. Regarding the previous section, “Mall” must compensate users for any loss which consumers get from it. However, if “Mall” proves that there is no intention or negligence, there will be no need for such compensation.
 
-  ② “몰”은 재화 또는 용역의 품절 또는 기술적 사양의 변경 등의 경우에는 장차 체결되는 계약에 의해 제공할 재화 또는 용역의 내용을 변경할 수 있습니다. 이 경우에는 변경된 재화 또는 용역의 내용 및 제공일자를 명시하여 현재의 재화 또는 용역의 내용을 게시한 곳에 즉시 공지합니다.
+Clause 5 (Suspension of Services)
 
-  ③ “몰”이 제공하기로 이용자와 계약을 체결한 서비스의 내용을 재화등의 품절 또는 기술적 사양의 변경 등의 사유로 변경할 경우에는 그 사유를 이용자에게 통지 가능한 주소로 즉시 통지합니다.
+1. “Mall” can temporarily stop providing services in such cases as repair and maintenance, replacement and failure of information and communication tools and suspension of communication.
 
-  ④ 전항의 경우 “몰”은 이로 인하여 이용자가 입은 손해를 배상합니다. 다만, “몰”이 고의 또는 과실이 없음을 입증하는 경우에는 그러하지 아니합니다.
+2. “Mall” must compensate users or any third party for any loss which they get from the temporary suspension of services based on Section 1. However, if “Mall” proves that there is no intention of negligence, there will be no need for compensation.
 
-제5조(서비스의 중단) 
+3. When it is no longer possible to provide services due to such reasons as the change of business items, the abandonment of businesses and the integration of companies, “Mall” must notify users of such suspension of services based on the method set by Clause 8 and compensate consumers according to the terms and conditions set by “Mall” in the beginning. However, if “Mall” has not notified users of the standard for compensation, users’ mileage or saved money can be given to them in the form of goods which can be used as currency on “Mall” or cash.
 
-  ① “몰”은 컴퓨터 등 정보통신설비의 보수점검․교체 및 고장, 통신의 두절 등의 사유가 발생한 경우에는 서비스의 제공을 일시적으로 중단할 수 있습니다.
+Clause 6 (Membership Registration)
 
-  ② “몰”은 제1항의 사유로 서비스의 제공이 일시적으로 중단됨으로 인하여 이용자 또는 제3자가 입은 손해에 대하여 배상합니다. 단, “몰”이 고의 또는 과실이 없음을 입증하는 경우에는 그러하지 아니합니다.
+1. Users can apply for membership registration by filling in the information form based on the registration process and showing their approval for the clauses.
 
-  ③ 사업종목의 전환, 사업의 포기, 업체 간의 통합 등의 이유로 서비스를 제공할 수 없게 되는 경우에는 “몰”은 제8조에 정한 방법으로 이용자에게 통지하고 당초 “몰”에서 제시한 조건에 따라 소비자에게 보상합니다. 다만, “몰”이 보상기준 등을 고지하지 아니한 경우에는 이용자들의 마일리지 또는 적립금 등을 “몰”에서 통용되는 통화가치에 상응하는 현물 또는 현금으로 이용자에게 지급합니다.
+2. “Mall” register the users that apply for membership through the process mentioned in Section 1 as members unless they are subject to the following sections.
 
-제6조(Sing up) 
+    <1> When the users applying for membership have lost their membership before based on Section 3 of Clause 7 (However, those that are approved for their application for membership by “Mall” 3 years after losing their previous membership based on Section 3 of Clause 7 can be exempted.)
+    <2> When there are false information, omitted contents and miswriting about the contents of registration
 
-  ① 이용자는 “몰”이 정한 가입 양식에 따라 회원정보를 기입한 후 이 약관에 동의한다는 의사표시를 함으로서 Sing up을 신청합니다.
+    <3> When there are other reasons to believe that it is hard to carry out the membership registration process due to the noticeable technical problem experienced by “Mall” 
 
-  ② “몰”은 제1항과 같이 회원으로 가입할 것을 신청한 이용자 중 다음 각 호에 해당하지 않는 한 회원으로 등록합니다.
+3. The membership registration agreement is concluded when the approval of “Mall” reaches members.
 
-    1. 가입신청자가 이 약관 제7조제3항에 의하여 이전에 회원자격을 상실한 적이 있는 경우, 다만 제7조제3항에 의한 회원자격 상실 후 3년이 경과한 자로서 “몰”의 회원재가입 승낙을 얻은 경우에는 예외로 한다.
-    2. 등록 내용에 허위, 기재누락, 오기가 있는 경우
-    3. 기타 회원으로 등록하는 것이 “몰”의 기술상 현저히 지장이 있다고 판단되는 경우
+4. When there is any change to the contents registered for membership, members must notify “Mall” of such a change by correcting membership information within a reasonable period.
 
-  ③ Sing up계약의 성립 시기는 “몰”의 승낙이 회원에게 도달한 시점으로 합니다.
+Clause 7 (Membership Withdrawal & Disqualification)
 
-  ④ 회원은 Sing up 시 등록한 사항에 변경이 있는 경우, 상당한 기간 이내에 “몰”에 대하여 회원정보 수정 등의 방법으로 그 변경사항을 알려야 합니다.
+1. Members can provide “Mall” with their request for withdrawal at any time. “Mall” must immediately carry out such a request.
 
-제7조(회원 탈퇴 및 자격 상실 등) 
+2. When members are subject to one of the following cases, “Mall” can restrict and suspend membership.
 
-  ① 회원은 “몰”에 언제든지 탈퇴를 요청할 수 있으며 “몰”은 즉시 회원탈퇴를 처리합니다.
+    <1> When members write false contents during the membership registration process
+    <2> When members fail to make the payment for the goods which they buy from “Mall” or fulfill their financial obligations for the use of “Mall”
+    <3> When members threatens the e-commerce order by preventing others from using “Mall” or illegally using others’ information
+    <4> When members violate these clauses or any statute or good public order and customs by using “Mall”
 
-  ② 회원이 다음 각 호의 사유에 해당하는 경우, “몰”은 회원자격을 제한 및 정지시킬 수 있습니다.
+3. When the same action for the membership restriction or suspension is carried out more than twice or the cause of such restriction or suspension is not corrected within 30 days after “Mall” restricts or suspends membership, “Mall” can withdraw the membership.
 
-    1. 가입 신청 시에 허위 내용을 등록한 경우
-    2. “몰”을 이용하여 구입한 재화 등의 대금, 기타 “몰”이용에 관련하여 회원이 부담하는 채무를 기일에 지급하지 않는 경우
-    3. 다른 사람의 “몰” 이용을 방해하거나 그 정보를 도용하는 등 전자상거래 질서를 위협하는 경우
-    4. “몰”을 이용하여 법령 또는 이 약관이 금지하거나 공서양속에 반하는 행위를 하는 경우
+4. When “Mall” withdraws membership, the registration of membership is erased. In such a case, the membership withdrawal process must be notified to the subject members. Also, the members must be provided with their chances to defend themselves within the period of more than 30 days at least before the registration of membership is erased.
 
-  ③ “몰”이 회원 자격을 제한․정지 시킨 후, 동일한 행위가 2회 이상 반복되거나 30일 이내에 그 사유가 시정되지 아니하는 경우 “몰”은 회원자격을 상실시킬 수 있습니다.
+Clause 8 (Notices to Members)
 
-  ④ “몰”이 회원자격을 상실시키는 경우에는 회원등록을 말소합니다. 이 경우 회원에게 이를 통지하고, 회원등록 말소 전에 최소한 30일 이상의 기간을 정하여 소명할 기회를 부여합니다.
+1. When “Mall” sends notices to members, such notices can be sent to the e-mail addresses set in advance between members and “Mall” based on the agreement.
 
-제8조(회원에 대한 통지)
+2. In case of the notices to be sent to many unspecified members, “Mall” can post the notices on the noticeboard of “Mall” for more than 1 week instead of sending individual notices. However, regarding any matter that is important in relation to the agreement with members, “Mall” must send individual notices.
 
-  ① “몰”이 회원에 대한 통지를 하는 경우, 회원이 “몰”과 미리 약정하여 지정한 전자우편 주소로 할 수 있습니다.
+Clause 9 (Purchase Application & Approval for the Provision of Personal Information)
 
-  ② “몰”은 불특정다수 회원에 대한 통지의 경우 1주일이상 “몰” 게시판에 게시함으로서 개별 통지에 갈음할 수 있습니다. 다만, 회원 본인의 거래와 관련하여 중대한 영향을 미치는 사항에 대하여는 개별통지를 합니다.
+1. Users of “Mall” carry out the purchase application process by using the following methods or any other similar method on “Mall”, while “Mall” must help users to easily understand each method in the purchase application process.
 
-제9조(구매신청 및 개인정보 제공 동의 등) 
+    <1> Search and selection of goods
+    <2> Input of names, addresses, telephone numbers and e-mail addresses (or cellular phone numbers) for those who receive goods
+    <3> Confirmation of the contents of clauses, the services subject to the restriction of the right to withdrawal from the agreement and the contents related to the financial obligations such as delivery charges and installation fees
+    <4> Indication of the approval of these clauses or the confirmation or refusal of Section 3 (e.g., mouse clicks)
+    <5> Purchase application of goods and confirmation about the purchase application or approval for the confirmation by “Mall”
+    <6> Selection of the payment method
 
-  ① “몰”이용자는 “몰”상에서 다음 또는 이와 유사한 방법에 의하여 구매를 신청하며, “몰”은 이용자가 구매신청을 함에 있어서 다음의 각 내용을 알기 쉽게 제공하여야 합니다. 
-      1. 재화 등의 검색 및 선택
-      2. 받는 사람의 성명, 주소, 전화번호, 전자우편주소(또는 이동전화번호) 등의 입력
-      3. 약관내용, 청약철회권이 제한되는 서비스, 배송료․설치비 등의 비용부담과 관련한 내용에 대한 확인
-      4. 이 약관에 동의하고 위 3.호의 사항을 확인하거나 거부하는 표시
-         (예, 마우스 클릭)
-      5. 재화등의 구매신청 및 이에 관한 확인 또는 “몰”의 확인에 대한 동의
-      6. 결제방법의 선택
+2. When it is required for “Mall” to provide any third party with buyers’ personal information, (1) the party that receives the information, (2) the purpose of the party receiving the personal information for the use of such information, (3) the items of personal information provided, and (4) the period of possessing and using such personal information by the party that receives it must be notified to the purchasers and their approval must be obtained in advance. (The same thing is applied when the items subject to approval are changed.)
 
-  ② “몰”이 제3자에게 구매자 개인정보를 제공할 필요가 있는 경우 1) 개인정보를 제공받는 자, 2)개인정보를 제공받는 자의 개인정보 이용목적, 3) 제공하는 개인정보의 항목, 4) 개인정보를 제공받는 자의 개인정보 보유 및 이용기간을 구매자에게 알리고 동의를 받아야 합니다. (동의를 받은 사항이 변경되는 경우에도 같습니다.)
+3. When “Mall” consigns work to the third party to deal with buyers’ personal information, it is required to notify buyers of (1) the party to which the work to deal with personal information is consigned and (2) the contents of the work dealing with personal information and get their approval. (The same thing is applied when the items subject to approval are changed.) However, when it is necessary for the execution of the agreement related to the provision of services or when it is related to the improvement of buyers’ convenience, it is possible not to go through the notice procedure and get approval by notifying buyers through the method to deal with personal information set in [Information and Communication Network Use Facilitation & Information Protection Act].
 
+Clause 10 (Conclusion of Agreement)
 
-  ③ “몰”이 제3자에게 구매자의 개인정보를 취급할 수 있도록 업무를 위탁하는 경우에는 1) 개인정보 취급위탁을 받는 자, 2) 개인정보 취급위탁을 하는 업무의 내용을 구매자에게 알리고 동의를 받아야 합니다. (동의를 받은 사항이 변경되는 경우에도 같습니다.) 다만, 서비스제공에 관한 계약이행을 위해 필요하고 구매자의 편의증진과 관련된 경우에는 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」에서 정하고 있는 방법으로 개인정보 취급방침을 통해 알림으로써 고지절차와 동의절차를 거치지 않아도 됩니다.
+1. “Mall” may not consent to the purchase application mentioned in Clause 9 if it is subject to the following sections. However, when entering into agreements with minors, it is required to notify them of the fact that they or their legal representatives can cancel the agreements if they fail to obtain approval from their legal representatives.
 
+    <1> When there are false information, omitted contents and miswriting about the contents of application
+    <2> When minors purchase such goods and services as cigarettes and alcoholic beverages which are prohibited by Juvenile Protection Act
+    <3> When it is believed that to approve the purchase application could clearly interrupt “Mall” in a technical way
 
-제10조 (계약의 성립)
+2. It is thought that agreements are concluded when the approval of “Mall” reaches users in the notice form of receipt confirmation shown in Section 1 of Clause 12.
 
-  ①  “몰”은 제9조와 같은 구매신청에 대하여 다음 각 호에 해당하면 승낙하지 않을 수 있습니다. 다만, 미성년자와 계약을 체결하는 경우에는 법정대리인의 동의를 얻지 못하면 미성년자 본인 또는 법정대리인이 계약을 취소할 수 있다는 내용을 고지하여야 합니다.
+3. The indication of approval by “Mall” must include the information related to the confirmation of users’ purchase applications and the possibility for sales and the cancellation of purchase applications.
 
-    1. 신청 내용에 허위, 기재누락, 오기가 있는 경우
-    2. 미성년자가 담배, 주류 등 청소년보호법에서 금지하는 재화 및 용역을 구매하는 경우
-    3. 기타 구매신청에 승낙하는 것이 “몰” 기술상 현저히 지장이 있다고 판단하는 경우
+Clause 11 (Payment Method) The payment for any good or service purchased from “Mall” can be made through the following methods. However, “Mall” cannot add any commission for any reason to the payment to be made by users for the goods which they purchase.
 
-  ② “몰”의 승낙이 제12조제1항의 수신확인통지형태로 이용자에게 도달한 시점에 계약이 성립한 것으로 봅니다.
+    <1> Account transfers made through phone banking, Internet banking or e-mail banking
+    <2> Card settlements made through pre-paid cards, debit cards or credit cards
+    <3> Online deposit without a bankbook
+    <4> Settlements made with digital money
+    <5> Payments made on receipt
+    <6> Settlements made with mileage points given by “Mall”
+    <7> Settlements made with gift certificates which are approved by “Mall”
+    <8> Payments made with other electronic payment methods
 
-  ③ “몰”의 승낙의 의사표시에는 이용자의 구매 신청에 대한 확인 및 판매가능 여부, 구매신청의 정정 취소 등에 관한 정보 등을 포함하여야 합니다.
+Clause 12 (Receipt Confirmation Notice/Purchase Application, Change & Cancellation)
 
-제11조(지급방법) “몰”에서 구매한 재화 또는 용역에 대한 대금지급방법은 다음 각 호의 방법중 가용한 방법으로 할 수 있습니다. 단, “몰”은 이용자의 지급방법에 대하여 재화 등의 대금에 어떠한 명목의 수수료도  추가하여 징수할 수 없습니다.
+1. When there is a purchase application made by a user, “Mall” sends a receipt confirmation notice to the user.
 
-    1. 폰뱅킹, 인터넷뱅킹, 메일 뱅킹 등의 각종 계좌이체 
-    2. 선불카드, 직불카드, 신용카드 등의 각종 카드 결제
-    3. 온라인무통장입금
-    4. 전자화폐에 의한 결제
-    5. 수령 시 대금지급
-    6. 마일리지 등 “몰”이 지급한 포인트에 의한 결제
-    7. “몰”과 계약을 맺었거나 “몰”이 인정한 상품권에 의한 결제  
-    8. 기타 전자적 지급 방법에 의한 대금 지급 등
+2. If there is any nonconforming matter about the indication of his or her intention after having the receipt confirmation notice, the user can immediately change or cancel the purchase application. When there is a request from the user prior to the delivery, “Mall” must fulfill that request without any hesitation. However, if the payment has already been made, it is required to follow such a regulation as the one mentioned in Clause 15 about the withdrawal of agreements.
 
-제12조(수신확인통지․구매신청 변경 및 취소)
+Clause 13 (Provision of Goods)
 
-  ① “몰”은 이용자의 구매신청이 있는 경우 이용자에게 수신확인통지를 합니다.
+1. As long as there is no separate agreement with users regarding the time when goods must be provided, “Mall” executes every necessary process to manufacture and pack goods in order to deliver them within 7 days from the conclusion of the agreement with each user. However, if “Mall” has already received all or some of the payment for the goods, it is required to carry out the delivery process within 3 business days from the day when all or some of the payment is made. In such a case, “Mall” must help users to check on the delivery procedure of goods.
 
-  ② 수신확인통지를 받은 이용자는 의사표시의 불일치 등이 있는 경우에는 수신확인통지를 받은 후 즉시 구매신청 변경 및 취소를 요청할 수 있고 “몰”은 배송 전에 이용자의 요청이 있는 경우에는 지체 없이 그 요청에 따라 처리하여야 합니다. 다만 이미 대금을 지불한 경우에는 제15조의 청약철회 등에 관한 규정에 따릅니다.
+2. “Mall” must specify the delivery method for the goods purchased by users, the party responsible for the delivery charge made in each method and the delivery period required for each method. If “Mall” fails to deliver goods within the promised delivery period, it is required to compensate users for any loss which they are faced with. However, if “Mall” can prove that there is no intention or negligence, there is no need for such a compensation.
 
-제13조(재화 등의 공급)
+Clause 14 (Refund) If it is impossible to deliver or provide the goods subject to users’ purchase applications because they are out of stock, “Mall” must notify users of such a reason without any hesitation. If the payment for such goods has already been made, it is required to refund the money or execute every necessary process within 3 days from the day when the payment is made.
 
-  ① “몰”은 이용자와 재화 등의 공급시기에 관하여 별도의 약정이 없는 이상, 이용자가 청약을 한 날부터 7일 이내에 재화 등을 배송할 수 있도록 주문제작, 포장 등 기타의 필요한 조치를 취합니다. 다만, “몰”이 이미 재화 등의 대금의 전부 또는 일부를 받은 경우에는 대금의 전부 또는 일부를 받은 날부터 3영업일 이내에 조치를 취합니다.  이때 “몰”은 이용자가 재화 등의 공급 절차 및 진행 사항을 확인할 수 있도록 적절한 조치를 합니다.
+Clause 15 (Withdrawal of Agreements)
 
-  ② “몰”은 이용자가 구매한 재화에 대해 배송수단, 수단별 배송비용 부담자, 수단별 배송기간 등을 명시합니다. 만약 “몰”이 약정 배송기간을 초과한 경우에는 그로 인한 이용자의 손해를 배상하여야 합니다. 다만 “몰”이 고의․과실이 없음을 입증한 경우에는 그러하지 아니합니다.
+1. The users who have entered into agreements with “Mall” for the purchase of goods can withdraw their agreements within 7 days from the day when they receive documents about the contents of the agreements (or the day when goods are delivered or leave “Mall” in the case of the delivery of goods being made later than the day of receiving documents) based on Section 2 of Clause 13 in [E-Commerce Consumer Protection Act]. However, if there is any other regulation related to the withdrawal of agreements in [E-Commerce Consumer Protection Act], it is required to follow it.
 
-제14조(환급) “몰”은 이용자가 구매신청한 재화 등이 품절 등의 사유로 인도 또는 제공을 할 수 없을 때에는 지체 없이 그 사유를 이용자에게 통지하고 사전에 재화 등의 대금을 받은 경우에는 대금을 받은 날부터 3영업일 이내에 환급하거나 환급에 필요한 조치를 취합니다.
+2. After receiving goods, users cannot ask for the return or change of those goods in the following cases.
 
-제15조(청약철회 등)
+    <1> When goods are destroyed or damaged by users (however, in the case of damaging the package in order to check the contents, it is possible to withdraw agreements.)
+    <2> When the values of goods have clearly been diminished due to users’ using or partially consuming them
+    <3> When the values of goods have clearly been diminished due to the amount of time spent making it impossible to sell them again
+    <4> When the package of the original goods whose duplications can be made with the same functions has been damaged
 
-  ① “몰”과 재화등의 구매에 관한 계약을 체결한 이용자는 「전자상거래 등에서의 소비자보호에 관한 법률」 제13조 제2항에 따른 계약내용에 관한 서면을 받은 날(그 서면을 받은 때보다 재화 등의 공급이 늦게 이루어진 경우에는 재화 등을 공급받거나 재화 등의 공급이 시작된 날을 말합니다)부터 7일 이내에는 청약의 철회를 할 수 있습니다. 다만, 청약철회에 관하여 「전자상거래 등에서의 소비자보호에 관한 법률」에 달리 정함이 있는 경우에는 동 법 규정에 따릅니다. 
+3. In case of Subsection 2 or 4 of Section 2, if “Mall” has failed to specify the fact that the advanced withdrawal of agreements is restricted and post it in any place for consumers’ easy understanding or has not carried out the necessary process to provide them with trial goods, users’ withdrawal of agreements is not restricted.
 
-  ② 이용자는 재화 등을 배송 받은 경우 다음 각 호의 1에 해당하는 경우에는 반품 및 교환을 할 수 없습니다.
+4. Despite the regulations stated in Section 1 and Section 2, when the contents of the goods are different from what is indicated or advertised or when there is anything different regarding the execution of the agreements, users can withdraw the agreements within 30 days from the day when such a fact is known or possibly known.
 
-    1. 이용자에게 책임 있는 사유로 재화 등이 멸실 또는 훼손된 경우(다만, 재화 등의 내용을 확인하기 위하여 포장 등을 훼손한 경우에는 청약철회를 할 수 있습니다)
-    2. 이용자의 사용 또는 일부 소비에 의하여 재화 등의 가치가 현저히 감소한 경우
-    3. 시간의 경과에 의하여 재판매가 곤란할 정도로 재화등의 가치가 현저히 감소한 경우
-    4. 같은 성능을 지닌 재화 등으로 복제가 가능한 경우 그 원본인 재화 등의 포장을 훼손한 경우
+Clause 16 (Withdrawal Effect of Agreements)
 
-  ③ 제2항제2호 내지 제4호의 경우에 “몰”이 사전에 청약철회 등이 제한되는 사실을 소비자가 쉽게 알 수 있는 곳에 명기하거나 시용상품을 제공하는 등의 조치를 하지 않았다면 이용자의 청약철회 등이 제한되지 않습니다.
+1. After receiving goods from users, “Mall” must refund the payment which it has already received within 3 business days. In such a case, if “Mall” fails to refund the payment to users on time, it is required to calculate a delay interest by applying the delay interest rate stated in Section 2 of Clause 12 in [E-Commerce Consumer Protection Enforcement Ordinance] and pay it to users. 
 
-  ④ 이용자는 제1항 및 제2항의 규정에 불구하고 재화 등의 내용이 표시·광고 내용과 다르거나 계약내용과 다르게 이행된 때에는 당해 재화 등을 공급받은 날부터 3월 이내, 그 사실을 안 날 또는 알 수 있었던 날부터 30일 이내에 청약철회 등을 할 수 있습니다.
+2. If the payment for the goods has been made in such settlement methods as credit cards and digital money, “Mall” must ask the operators of such methods for the suspension or cancellation of the claim for the payment without any hesitation when making a refund.
 
-제16조(청약철회 등의 효과)
+3. In case of the withdrawal of agreements, users must be responsible for the charge necessary to return the goods received. “Mall” does not ask users for any cancellation charge or compensation related to the withdrawal of agreements. However, when the withdrawal of agreements is made because the contents of the goods are different from what is indicated or advertised or the whole process is carried out differently from what is in the agreements, “Mall” is responsible for the charge necessary to return the goods.
 
-  ① “몰”은 이용자로부터 재화 등을 반환받은 경우 3영업일 이내에 이미 지급받은 재화 등의 대금을 환급합니다. 이 경우 “몰”이 이용자에게 재화등의 환급을 지연한때에는 그 지연기간에 대하여 「전자상거래 등에서의 소비자보호에 관한 법률 시행령」제21조의2에서 정하는 지연이자율을 곱하여 산정한 지연이자를 지급합니다.
+4. If users have paid for the charge related to the delivery of the goods, “Mall” must clearly indicate the party responsible for the payment when agreements are withdrawn for users’ easy understanding.
 
-  ② “몰”은 위 대금을 환급함에 있어서 이용자가 신용카드 또는 전자화폐 등의 결제수단으로 재화 등의 대금을 지급한 때에는 지체 없이 당해 결제수단을 제공한 사업자로 하여금 재화 등의 대금의 청구를 정지 또는 취소하도록 요청합니다.
+Clause 17 (Personal Information Protection)
 
-  ③ 청약철회 등의 경우 공급받은 재화 등의 반환에 필요한 비용은 이용자가 부담합니다. “몰”은 이용자에게 청약철회 등을 이유로 위약금 또는 손해배상을 청구하지 않습니다. 다만 재화 등의 내용이 표시·광고 내용과 다르거나 계약내용과 다르게 이행되어 청약철회 등을 하는 경우 재화 등의 반환에 필요한 비용은 “몰”이 부담합니다.
+1. “Mall” collects the minimum amount of personal information within the necessary range in order to provide services when collecting users’ personal information.
 
-  ④ 이용자가 재화 등을 제공받을 때 발송비를 부담한 경우에 “몰”은 청약철회 시 그 비용을  누가 부담하는지를 이용자가 알기 쉽도록 명확하게 표시합니다.
+2. “Mall” does not collect the information necessary for the execution of the purchase agreement in advance during the membership registration process. However, it is not so when the minimum amount of specific personal information is collected for the purpose of identification prior to the purchase agreement in order to execute obligations based on the related ordinance.
 
-제17조(개인정보보호)
+3. “Mall” must notify users of the purpose of collecting and using their personal information and get their approval.
 
-  ① “몰”은 이용자의 개인정보 수집시 서비스제공을 위하여 필요한 범위에서 최소한의 개인정보를 수집합니다. 
+4. “Mall” cannot use the collected personal information for any other purpose. If there is any new purpose for the use of the collected personal information or such information is to be provided to the third party, it is required to notify users of the purpose during the process of using or providing such information and get their approval. However, if there is a separate regulation related to such a process, exceptions can be made.
 
-  ② “몰”은 Sing up시 구매계약이행에 필요한 정보를 미리 수집하지 않습니다. 다만, 관련 법령상 의무이행을 위하여 구매계약 이전에 본인확인이 필요한 경우로서 최소한의 특정 개인정보를 수집하는 경우에는 그러하지 아니합니다.
+5. When “Mall” must get users’ approval in regard to Section 2 and Section 3, it is required to specify or notify them of the matters defined by Section 2 of Clause 22 in [Information and Communication Network Use Facilitation & Information Protection Act] such as the identity of the person in charge of the personal information management (the department, the name and the telephone number along with other contact numbers), the purposes for the collection and use of such information and the matters related to the provision of information to the third party (the party receiving the information, the purpose of providing such information and the contents of the information to be provided). Also, users can always withdraw their approval at any time.
 
-  ③ “몰”은 이용자의 개인정보를 수집·이용하는 때에는 당해 이용자에게 그 목적을 고지하고 동의를 받습니다. 
+6. Users can always ask for reading and correcting errors of their personal information obtained by “Mall”, while “Mall” is responsible for carrying out every necessary action to do so without any hesitation. When users ask for correcting errors, “Mall” must not use their personal information until such errors are corrected.
 
-  ④ “몰”은 수집된 개인정보를 목적외의 용도로 이용할 수 없으며, 새로운 이용목적이 발생한 경우 또는 제3자에게 제공하는 경우에는 이용·제공단계에서 당해 이용자에게 그 목적을 고지하고 동의를 받습니다. 다만, 관련 법령에 달리 정함이 있는 경우에는 예외로 합니다.
+7. “Mall” must limit the number of people dealing with users’ personal information to the minimum in order to protect personal information. Also, “Mall” is responsible for any damage caused to users due to the loss, theft, exposure, provision to the third party without consent or falsification of users’ personal information including that of credit cards and bank accounts.
 
-  ⑤ “몰”이 제2항과 제3항에 의해 이용자의 동의를 받아야 하는 경우에는 개인정보관리 책임자의 신원(소속, 성명 및 전화번호, 기타 연락처), 정보의 수집목적 및 이용목적, 제3자에 대한 정보제공 관련사항(제공받은자, 제공목적 및 제공할 정보의 내용) 등 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제22조제2항이 규정한 사항을 미리 명시하거나 고지해야 하며 이용자는 언제든지 이 동의를 철회할 수 있습니다.
+8. “Mall” or the third party receiving personal information from “Mall” must destroy the personal information without any hesitation once the purpose for collecting or receiving such personal information is achieved.
 
-  ⑥ 이용자는 언제든지 “몰”이 가지고 있는 자신의 개인정보에 대해 열람 및 오류정정을 요구할 수 있으며 “몰”은 이에 대해 지체 없이 필요한 조치를 취할 의무를 집니다. 이용자가 오류의 정정을 요구한 경우에는 “몰”은 그 오류를 정정할 때까지 당해 개인정보를 이용하지 않습니다.
+9. “Mall” is not thought to have chosen the column for consent regarding the collection, use and provision of personal information. Also, it is required to clearly specify the services that can be restricted when users do not approve the collection, use and provision of their personal information. “Mall” must not restrict or refuse the provision of such services as those related to membership because of users not providing their approval for the collection, use and provision of personal information other than the essential collection items.
+
+Clause 18 (Duties of “Mall”)
+
+1. “Mall” must not carry out any action that is prohibited by these clauses or against good public order and customs. Also, “Mall” must try its best to constantly and steadily provide goods and services based on the regulations set by these clauses.
+
+2. “Mall” must have the security system for the protection of users’ personal information (including the credit information) in order to let users use Internet services safely.
+
+3. “Mall” is responsible for any damage encountered by users due to its unreasonable indication or advertisement of goods or services as stated in Clause 3 in [Indication and Advertisement Fairness Act].
+
+4. “Mall” must not send advertisement e-mail messages for profit to users if they do not want them.
+
+Clause 19 (Duties for Users’ Ids and Passwords)
+
+1. Members are responsible for managing their IDs and passwords except for the cases stated in Clause 17.
+
+2. Members must not let the third party use their IDs and passwords.
+
+3. When members realize that their IDs and passwords have been stolen or are being used by the third party, they must immediately notify “Mall” of such a case and follow the guidelines provided by “Mall”.
+
+Clause 20 (Users’ Duties) Users must not carry out the following actions.
+
+    <1> Registering false contents during the application or changing process
+    <2> Stealing others’ information
+    <3> Changing information posted on “Mall”
+    <4> Transmitting or posting the information (including computer programs) other than the one stated by “Mall”
+    <5> Violating intellectual property rights including those of “Mall” and the third party
+    <6> Damaging the honor of “Mall” and the third party or interrupting their businesses
+    <7> Revealing or posting pornographic or violent messages, video clips and voices or anything that is against good public order and customs
+
+Clause 21 (Relationship between Connecting “Mall” and Connected “Mall”)
+
+1. When the upper-class “Mall” and the lower-class “Mall” are connected to each other through hyperlink methods (e.g., the subjects of hyperlinks include texts, pictures and video clips), the former one is regarded as Connecting “Mall” (website) while the latter one is considered to be Connected “Mall” (website).
+
+2. When Connecting “Mall” specifies the fact that it does not have any responsibility of a surety for the transactions made by users for the goods independently provided by Connected “Mall” through the initial screen of Connecting “Mall” or a pop-up screen at the point of connection, Connecting “Mall” does not have any responsibility of a surety for such transactions.
+
+Clause 22 (Ownership of Copyrights & Prohibition of Use)
+
+1. The copyrights or other intellectual property rights for the work made by “Mall” belong to “Mall”.
+
+2. Users must not use the information about which “Mall” has the related intellectual property rights for profit through such methods as duplication, transmission, publication and broadcasting or let the third party use it without the advanced consent of “Mall” after they get it by using “Mall”. 
+
+3. When using the copyrights belonging to users, “Mall” must notify users of it based on these clauses.
+
+Clause 23 (Conflict Resolution)
+
+1. “Mall” establishes and operates an organization responsible which is in charge of handling compensations for losses in order to reflect the reasonable opinions or complaints brought up by users and compensate for the related losses.
+
+2. “Mall” must preferentially deal with the complaints or opinions submitted by users. However, if it is difficult to rapidly deal with such matters, it is required for “Mall” to immediately notify users of the reasons for delay and the schedule for handling them in the future.
+
+3. If users apply for damage relief regarding the e-commerce conflicts which they face with “Mall”, it is possible to follow the resolution provided by Fair Trade Commission or the conflict resolution organization requested by the major or the provincial governor.
+
+Clause 24 (Jurisdiction & Governing Law)
+
+1. The lawsuit for the e-commerce conflict between “Mall” and users is to be carried out in the place where the subject user is located at the time when the lawsuit is brought up. If no address is known, the exclusive jurisdiction area of the district court in charge becomes the place where the lawsuit is carried out. However, if users’ addresses are not clear or located abroad at the time when the lawsuit is brought up, the competent court for the civil procedure has its jurisdiction.
+
+2. Korean laws are applied to the lawsuit related to e-commerce transactions between “Mall” and users.
+</textarea>
+                <div class="agreeArea">
+                    <div class="radio_chk">
+                        <label class="fs14"><input type="radio" name="agree1" value="y"> Agree</label>
+                        <label class="fs14 ml10"><input type="radio" name="agree1"
+                            value="n"> Disagree</label>
+                    </div>
+                </div>
+                <p class="blt01">Consent to the collection and use of articles 15 and 24 of the Personal Information Protection Act</p>
+                <p class="fs14 avt">
+                    <span class="fcR">(Required)</span>Privacy Policy
+                </p>
+                <textarea class="term">Privacy Policy
+
+This Policy (the "Policy") explains the way of treatment of the information which is provided or collected in the web sites on which this Policy is posted. Through this Policy, the Company regards personal information of the users as important and inform them of the purpose and method of Company's using the personal information provided by the users and the measures taken by the Company for protection of those personal information.
+
+1. Information to be collected and method of collection
+
+(1) Personal information items to be collected
+
+Personal information items to be collected by the Company are as follows:
+
+• Information provided by the users
+
+The Company may collect the information directly provided by the users.
+
+- Internet membership service
+
+ ∘ Name, email address, ID, telephone number, address, national information, encoded identification information (CI), identification information of overlapped membership (DI)
+  ∘ For minors, information of legal representatives (name, birth date, CI and DI of legal representatives)
+
+- Online payment service
+
+  ∘ Name, address, telephone number, and email address
+  ∘ Payment information including account number and card number
+  ∘ Delivery information including delivery address, name and contact information of recipient
+  ∘ Information of bid, purchase and sales
+
+- Social network service
+
+∘ Name, email address, ID, telephone number, address, national information, address list (acquaintance)
+  
+• Information collected while the users use services
+
+Besides of information directly provided by the users, the Company may collect information in
+
+the course that the users use the service provided by the Company.
+
+- Equipment information
+∘ Equipment identifier, operation system, hardware version, equipment set-up, type and set-up of browser, use information of website or application and telephone number
+
+- Log information
+∘ IP address, log data, use time, search word input by users, internet protocol address, cookie and web beacon
+
+- Location information
+∘ Information of device location including specific geographical location detected through GPS , Bluetooth or Wifi (limited to the region permissible under the laws)
+                                              
+- Other information
+∘ Preference, advertisement environment, visited pages regarding service use of users
+
+(2) Method of collection
+
+The Company collects the information of users in a way of the followings:
+
+• webpage, written form, fax, telephone calling, e-mailing, tools for collection of created information
+• provided by partner companies
+
+2. Use of collected information
+
+The Company uses the collected information of users for the following purposes:
+
+• Member management and identification
+
+• To detect and deter unauthorized or fraudulent use of or abuse of the Service
+
+• Performance of contract, service fee payment and service fee settlement regarding provision of services demanded by the users
+
+• Improvement of existing services and development of new services
+
+• Making notice of function of company sites or applications or matters on policy change
+
+• To help you connect with other users you already know and, with your permission, allow other users to connect with you
+
+• To make statistics on member’s service usage, to provide services and place advertisements based on statistical characteristics
+
+• To provide information on promotional events as well as opportunity to participate
+
+• To comply with applicable laws or legal obligation
+
+• Use of information with prior consent of the users (for example, utilization of marketing advertisement)
+
+The Company agrees that it will obtain a consent from the users, if the Company desires to use the information other than those expressly stated in this Policy.
+
+3. Disclosure of collected information
+
+Except for the following cases, the Company will not disclose personal information with a 3rd party:
+
+• when the Company disclosing the information with its affiliates, partners and service providers;
+
+   - When the Company's affiliates, partners and service providers carry out services such as bill payment, execution of orders, products delivery and dispute resolution (including disputes on payment and delivery) for and on behalf of the Company
+
+• when the users consent to disclose in advance;
+
+   - when the user selects to be provided by the information of products and services of certain        companies by sharing his or her personal information with those companies
+
+   - when the user selects to allow his or her personal information to be shared with the sites or platform of other companies such as social networking sites
+
+   - other cases where the user gives prior consent for sharing his or her personal information
+
+• when disclosure is required by the laws:
+
+   - if required to be disclosed by the laws and regulations; or
+
+   - if required to be disclosed by the investigative agencies for detecting crimes in accordance with the procedure and method as prescribed in the laws and regulations
+
+4. Cookies, Beacons and Similar Technologies
+
+
+The Company may collect collective and impersonal information through 'cookies' or 'web beacons'.
+
+
+Cookies are very small text files to be sent to the browser of the users by the server used for operation of the websites of the Company and will be stored in hard-disks of the users' computer.
+
+Web beacon is a small quantity of code which exists on the websites and e-mails. By using web beacons, we may know whether an user has interacted with certain webs or the contents of email.
+
+These functions are used for evaluating, improving services and setting-up users' experiences so that much improved services can be provided by the Company to the users
+
+The items of cookies to be collected by the Company and the purpose of such collection are as follows:
+
+- strictly necessary cookies
+This cookie is a kind of indispensible cookie for the users to use the functions of website of the Company. Unless the users allow this cookie, the services such as shopping cart or electronic bill payment cannot be provided. This cookie does not collect any information which may be used for marketing or memorizing the sites visited by the users 
+ ∘ Memorize the information entered in an order form while searching other pages during web browser session
+   ∘ For the page of products and check-out, memorize ordered services
+   ∘ Check whether login is made on website
+   ∘ Check whether the users are connected with correct services of the website of the Company while the Company changes the way of operating its website
+   ∘ Connect the users with certain application or server of the services
+
+- performance cookies
+This cookie collects information how the users use the website of the Company such as the information of the pages which are visited by the users most. This data helps the Company to optimize its website so that the users can search that website more comfortably. 
+This cookie does not collect any information who are the users. Any and all the information collected by this cookie will be processed collectively and the anonymity will be guaranteed.
+   ∘ Web analysis: provide statistical data on the ways of using website
+   ∘ Management of error: measure an error which may occur so as to give a help for improving website
+   ∘ Design testing: test other design of the website of Company
+
+- functionality cookies
+  This cookie is used for memorizing the set-ups so that the Company provides services and improves visit of users. Any information collected by this cookie do not identify the users individually.
+   ∘ Memorize set-ups applied such as layout, text size, basic set-up and colors
+   ∘ Memorize when the customer respond to a survey conducted by the Company
+
+The users have an option for cookie installation. So, they may either allow all cookies by setting option in web browser, make each cookie checked whenever it is saved, or refuses all cookies to be saved: Provided that, if the user rejects the installation of cookies, it may be difficult for that user to use the parts of services provided by the Company.
+
+5. User’s right
+
+The users or their legal representatives, as main agents of the information, may exercise the following rights regarding the collection, use and sharing of personal information by the Company:
+
+• exercise right to access to personal information;
+• make corrections or deletion;
+• make temporary suspension of treatment of personal information; or
+• request the withdrawal of their consent provided before
+
+If, in order to exercise the above rights, you, as an user, use the menu of 'amendment of member information of webpage or contact the Company by sending a document or e-mails, or using telephone to the company(or person in charge of management of personal information or a deputy), the Company will take measures without delay: Provided that the Company may reject the request of you only to the extent that there exists either proper cause as prescribed in the laws or equivalent cause.
+
+6. Security
+
+The Company regard the security of personal information of uses as very important. The company constructs the following security measures to protect the users' personal information from any unauthorized access, release, use or modification
+
+ • Encryption of personal information
+
+    - Transmit users' personal information by using encrypted communication zone
+    - Store important information such as passwords after encrypting it
+
+• Countermeasures against hacking
+
+    - Install a system in the zone the external access to which is controlled so as to prevent leakage or damage of users' personal information by hacking or computer virus
+
+• Establish and execute internal management plan
+• Install and operate access control system
+• Take measures to prevent forging or alteration of access record
+
+7. Protection of personal information of children
+
+In principle, the Company does not collect any information from the children under 13 or equivalent minimum age as prescribed in the laws in relevant jurisdiction. The website, products and services of the Company are the ones to be provided to ordinary people, in principle. The website or application of the Company has function to do age limit so that children cannot use it and the Company does not intentionally collect any personal information from children through that function.
+(Additional procedure for collecting personal information from children) However, if the Company collects any personal information from children under 13 or equivalent minimum age as prescribed in the laws in relevant jurisdiction for the services for unavoidable reason, the Company will go through the additional procedure of the followings for protecting that personal information of children:• verify, to the extent that efforts are reasonably made, whether they are children of the age at which consent from their guardian is required and the consenting person is an authorized one.
+
+• obtain consent from the parents or guardian of children so as to collect personal information of children or directly send the information of products and services of the Company
+
+• give the parents or guardian of children a notice of Company's policy of privacy protection for children including the items, purpose and sharing of personal information collected
+
+• grant to legal representatives of children a right to access to personal information of that children/correction or deletion of personal information/temporary suspension of treatment of personal information/ and request for withdrawal of their consent provided before
+
+• limit the amount of personal information exceeding those necessary for participation in online activities
+
+8. Modification of Privacy Protection Policy
+
+The Company has the right to amend or modify this Policy from time to time and, in such case, the Company will make a public notice of it through bulletin board of its website (or through individual notice such as written document, fax or e-mail) and obtain consent from the users if required by relevant laws.
+
+9. Contact information of Company
+
+Please use one of the following methods to contact the Company should you have any queries in respect to this policy or wish to update your information:
+
+• Company name : CiLab
+
+  Address : Youngsan Univ. Yangsan Campus 50510, Cultural Center 3405, 288 Junam-ro(Junam-dong), Yangsan-si, Gyeongnam-do, Korea
+
+  Tel.: +82 055-785-0710
+
+  E-mail: donghyuk@cilab.kr
+
+(Add the following if designated of data protection officer) The Company designates the following Data Protection Officer (DPO) in order to protect personal information of customers and deal with complaints from customers.
+
+• DPO of the Company: Dong-Hyuk, LEE
+
+Adress: Youngsan Univ. Yangsan Campus 50510, Cultural Center 3405, 288 Junam-ro(Junam-dong), Yangsan-si, Gyeongnam-do, Korea
+
+Tel.: +82 055-785-0710
+
+E-mail: donghyuk@cilab.kr
+
+10. Guide for users residing in Korea
+
+The Company guides several additional matters to be disclosed as required by the information network laws and personal information protection laws in the Republic of Korea as follows:
+
+(1) Period for retention and use of personal information
+
+In principle, the Company destructs personal information of users without delay when: the purpose of its collection and use has been achieved; the legal or management needs are satisfied; or users request: Provided that, if it is required to retain the information by relevant laws and regulations, the Company will retain member information for certain period as designated by relevant laws and regulations. The information to be retained as required by relevant laws and regulations are as follows:
+
+∘ Record regarding contract or withdrawal of subscription: 5 years (The Act on Consumer Protection in Electronic Commerce )
+ ∘ Record on payment and supply of goods:5 years (The Act on Consumer Protection in Electronic Commerce )
+ ∘ Record on consumer complaint or dispute treatment: 3 years (The Act on Consumer Protection in Electronic Commerce )
+ ∘ Record on collection/process, and use of credit information: 3 years (The Act on Use and Protection of Credit Information )
+ ∘ Record on sign/advertisement: 6 months(The Act on Consumer Protection in Electronic Commerce )
+ ∘ Log record of users such as internet/data detecting the place of user connection: 3 months(The Protection of Communications Secrets Act )
+ ∘ Other data for checking communication facts: 12 months (The Protection of Communications Secrets Act )
+
+(2) Procedure and method of destruction of personal information
+
+In principle, the Company destructs the information immediately after the purposes of its collection and use have been achieved without delay: Provided that, if any information is to be retained as required by relevant laws and regulations, the Company retain it for the period as required by those laws and regulations before destruction and, in such event, the personal information which is stored and managed separately will never be used for other purposes. The Company destructs: hard copies of personal information by shredding with a pulverizer or incinerating it; and delete personal information stored in the form of electric file by using technological method making that information not restored.
+
+(3) Technical, managerial and physical measures for protection of personal information In order to prevent the loss, theft, leakage, alteration or damage of personal information of the users, the Company takes technical, managerial and physical measures for securing safety as follows:
+
+- Technical
  
-  ⑦ “몰”은 개인정보 보호를 위하여 이용자의 개인정보를 취급하는 자를  최소한으로 제한하여야 하며 신용카드, 은행계좌 등을 포함한 이용자의 개인정보의 분실, 도난, 유출, 동의 없는 제3자 제공, 변조 등으로 인한 이용자의 손해에 대하여 모든 책임을 집니다.
-
-  ⑧ “몰” 또는 그로부터 개인정보를 제공받은 제3자는 개인정보의 수집목적 또는 제공받은 목적을 달성한 때에는 당해 개인정보를 지체 없이 파기합니다.
-
-  ⑨ “몰”은 개인정보의 수집·이용·제공에 관한 동의 란을 미리 선택한 것으로 설정해두지 않습니다. 또한 개인정보의 수집·이용·제공에 관한 이용자의 동의거절시 제한되는 서비스를 구체적으로 명시하고, 필수수집항목이 아닌 개인정보의 수집·이용·제공에 관한 이용자의 동의 거절을 이유로 Sing up 등 서비스 제공을 제한하거나 거절하지 않습니다.
-
-제18조(“몰“의 의무)
-
-  ① “몰”은 법령과 이 약관이 금지하거나 공서양속에 반하는 행위를 하지 않으며 이 약관이 정하는 바에 따라 지속적이고, 안정적으로 재화․용역을 제공하는데 최선을 다하여야 합니다.
-
-  ② “몰”은 이용자가 안전하게 인터넷 서비스를 이용할 수 있도록 이용자의 개인정보(신용정보 포함)보호를 위한 보안 시스템을 갖추어야 합니다.
-
-  ③ “몰”이 상품이나 용역에 대하여 「표시․광고의 공정화에 관한 법률」 제3조 소정의 부당한 표시․광고행위를 함으로써 이용자가 손해를 입은 때에는 이를 배상할 책임을 집니다.
-
-  ④ “몰”은 이용자가 원하지 않는 영리목적의 광고성 전자우편을 발송하지 않습니다.
-
-제19조(회원의 ID 및 비밀번호에 대한 의무)
-
-  ① 제17조의 경우를 제외한 ID와 비밀번호에 관한 관리책임은 회원에게 있습니다.
-
-  ② 회원은 자신의 ID 및 비밀번호를 제3자에게 이용하게 해서는 안됩니다.
-
-  ③ 회원이 자신의 ID 및 비밀번호를 도난당하거나 제3자가 사용하고 있음을 인지한 경우에는 바로 “몰”에 통보하고 “몰”의 안내가 있는 경우에는 그에 따라야 합니다.
-
-제20조(이용자의 의무) 이용자는 다음 행위를 하여서는 안 됩니다.
-
-    1. 신청 또는 변경시 허위 내용의 등록
-    2. 타인의 정보 도용
-    3. “몰”에 게시된 정보의 변경
-    4. “몰”이 정한 정보 이외의 정보(컴퓨터 프로그램 등) 등의 송신 또는 게시
-    5. “몰” 기타 제3자의 저작권 등 지적재산권에 대한 침해
-    6. “몰” 기타 제3자의 명예를 손상시키거나 업무를 방해하는 행위
-    7. 외설 또는 폭력적인 메시지, 화상, 음성, 기타 공서양속에 반하는 정보를 몰에 공개 또는 게시하는 행위
-
-제21조(연결“몰”과 피연결“몰” 간의 관계)
-
-  ① 상위 “몰”과 하위 “몰”이 하이퍼링크(예: 하이퍼링크의 대상에는 문자, 그림 및 동화상 등이 포함됨)방식 등으로 연결된 경우, 전자를 연결 “몰”(웹 사이트)이라고 하고 후자를 피연결 “몰”(웹사이트)이라고 합니다.
-
-  ② 연결“몰”은 피연결“몰”이 독자적으로 제공하는 재화 등에 의하여 이용자와 행하는 거래에 대해서 보증 책임을 지지 않는다는 뜻을 연결“몰”의 초기화면 또는 연결되는 시점의 팝업화면으로 명시한 경우에는 그 거래에 대한 보증 책임을 지지 않습니다.
-
-제22조(저작권의 귀속 및 이용제한)
-
-  ① “몰“이 작성한 저작물에 대한 저작권 기타 지적재산권은 ”몰“에 귀속합니다.
-
-  ② 이용자는 “몰”을 이용함으로써 얻은 정보 중 “몰”에게 지적재산권이 귀속된 정보를 “몰”의 사전 승낙 없이 복제, 송신, 출판, 배포, 방송 기타 방법에 의하여 영리목적으로 이용하거나 제3자에게 이용하게 하여서는 안됩니다.
-
-  ③ “몰”은 약정에 따라 이용자에게 귀속된 저작권을 사용하는 경우 당해 이용자에게 통보하여야 합니다.
-
-제23조(분쟁해결)
-
-  ① “몰”은 이용자가 제기하는 정당한 의견이나 불만을 반영하고 그 피해를 보상처리하기 위하여 피해보상처리기구를 설치․운영합니다.
-
-  ② “몰”은 이용자로부터 제출되는 불만사항 및 의견은 우선적으로 그 사항을 처리합니다. 다만, 신속한 처리가 곤란한 경우에는 이용자에게 그 사유와 처리일정을 즉시 통보해 드립니다.
-
-  ③ “몰”과 이용자 간에 발생한 전자상거래 분쟁과 관련하여 이용자의 피해구제신청이 있는 경우에는 공정거래위원회 또는 시·도지사가 의뢰하는 분쟁조정기관의 조정에 따를 수 있습니다.
-
-제24조(재판권 및 준거법)
-
-  ① “몰”과 이용자 간에 발생한 전자상거래 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다. 다만, 제소 당시 이용자의 주소 또는 거소가 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다.
-
-  ② “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.</textarea>
-				<div class="agreeArea">
-					<div class="radio_chk">
-						<label class="fs14"><input type="radio" name="agree1" value="y"> Agree</label>
-						<label class="fs14 ml10"><input type="radio" name="agree1"
-							value="n"> Disagree</label>
-					</div>
-				</div>
-				<p class="blt01">Consent to the collection and use of articles 15 and 24 of the Personal Information Protection Act</p>
-				<p class="fs14 avt">
-					<span class="fcR">(Required)</span>Collection of personal information
-				</p>
-				<textarea class="term">1. 개인정보의 처리 목적 (‘cilab.kr’이하 ‘cilab.kr’) 은(는) 다음의 목적을 위하여 개인정보를 처리하고 있으며, 다음의 목적 이외의 용도로는 이용하지 않습니다.
-- 고객 가입의사 확인, 고객에 대한 서비스 제공에 따른 본인 식별.인증, 회원자격 유지.관리, 물품 또는 서비스 공급에 따른 금액 결제, 물품 또는 서비스의 공급.배송 등
-
-
-2. 개인정보의 처리 및 보유 기간
-
-① (‘cilab.kr’이하 ‘cilab.kr’) 은(는) 정보주체로부터 개인정보를 수집할 때 동의 받은 개인정보 보유․이용기간 또는 법령에 따른 개인정보 보유․이용기간 내에서 개인정보를 처리․보유합니다.
-
-② 구체적인 개인정보 처리 및 보유 기간은 다음과 같습니다.
-☞ 아래 예시를 참고하여 개인정보 처리업무와 개인정보 처리업무에 대한 보유기간 및 관련 법령, 근거 등을 기재합니다.
-(예시)- 고객 가입 및 관리 : 서비스 이용계약 또는 Sing up 해지시까지, 다만 채권․채무관계 잔존시에는 해당 채권․채무관계 정산시까지
-- 전자상거래에서의 계약․청약철회, 대금결제, 재화 등 공급기록 : 5년
-
-
-
-
-3. 개인정보의 제3자 제공에 관한 사항
-
-① ('cilab.kr'이하 'cilab.kr')은(는) 정보주체의 동의, 법률의 특별한 규정 등 개인정보 보호법 제17조 및 제18조에 해당하는 경우에만 개인정보를 제3자에게 제공합니다.
-
-
-
-
-② ('cilab.kr')은(는) 다음과 같이 개인정보를 제3자에게 제공하고 있습니다.
-
-
-
-4. 개인정보처리 위탁
-
-① ('cilab.kr')은(는) 원활한 개인정보 업무처리를 위하여 다음과 같이 개인정보 처리업무를 위탁하고 있습니다.
-
-
-
-1. &lt;&gt;
-- 위탁받는 자 (수탁자) :
-- 위탁하는 업무의 내용 :
-- 위탁기간 :
-
-
-
-
-
-② ('cilab.kr'이하 'cilab.kr')은(는) 위탁계약 체결시 개인정보 보호법 제25조에 따라 위탁업무 수행목적 외 개인정보 처리금지, 기술적․관리적 보호조치, 재위탁 제한, 수탁자에 대한 관리․감독, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁자가 개인정보를 안전하게 처리하는지를 감독하고 있습니다.
-
-③ 위탁업무의 내용이나 수탁자가 변경될 경우에는 지체없이 본 개인정보 처리방침을 통하여 공개하도록 하겠습니다.
-
-5. 정보주체와 법정대리인의 권리·의무 및 그 행사방법 이용자는 개인정보주체로써 다음과 같은 권리를 행사할 수 있습니다.
-
-① 정보주체는 CILAB(‘cilab.kr’이하 ‘cilab.kr) 에 대해 언제든지 다음 각 호의 개인정보 보호 관련 권리를 행사할 수 있습니다.
-1. 개인정보 열람요구
-2. 오류 등이 있을 경우 정정 요구
-3. 삭제요구
-4. 처리정지 요구
-
-
-
-6. 처리하는 개인정보의 항목 작성 
-
-① ('cilab.kr'이하 'cilab.kr')은(는) 다음의 개인정보 항목을 처리하고 있습니다.
-
-
-
-
-
-7. 개인정보의 파기('cilab.kr')은(는) 원칙적으로 개인정보 처리목적이 달성된 경우에는 지체없이 해당 개인정보를 파기합니다. 파기의 절차, 기한 및 방법은 다음과 같습니다.
-
--파기절차
-이용자가 입력한 정보는 목적 달성 후 별도의 DB에 옮겨져(종이의 경우 별도의 서류) 내부 방침 및 기타 관련 법령에 따라 일정기간 저장된 후 혹은 즉시 파기됩니다. 이 때, DB로 옮겨진 개인정보는 법률에 의한 경우가 아니고서는 다른 목적으로 이용되지 않습니다.
-
--파기기한
-이용자의 개인정보는 개인정보의 보유기간이 경과된 경우에는 보유기간의 종료일로부터 5일 이내에, 개인정보의 처리 목적 달성, 해당 서비스의 폐지, 사업의 종료 등 그 개인정보가 불필요하게 되었을 때에는 개인정보의 처리가 불필요한 것으로 인정되는 날로부터 5일 이내에 그 개인정보를 파기합니다.
-
-
-
-8. 개인정보 자동 수집 장치의 설치•운영 및 거부에 관한 사항
-
-① CILAB 은 개별적인 맞춤서비스를 제공하기 위해 이용정보를 저장하고 수시로 불러오는 ‘쿠기(cookie)’를 사용합니다. ② 쿠키는 웹사이트를 운영하는데 이용되는 서버(http)가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의 하드디스크에 저장되기도 합니다. 가. 쿠키의 사용 목적 : 이용자가 방문한 각 서비스와 웹 사이트들에 대한 방문 및 이용형태, 인기 검색어, 보안접속 여부, 등을 파악하여 이용자에게 최적화된 정보 제공을 위해 사용됩니다. 나. 쿠키의 설치•운영 및 거부 : 웹브라우저 상단의 도구&gt;인터넷 옵션&gt;개인정보 메뉴의 옵션 설정을 통해 쿠키 저장을 거부 할 수 있습니다. 다. 쿠키 저장을 거부할 경우 맞춤형 서비스 이용에 어려움이 발생할 수 있습니다.
-
-9. 개인정보 보호책임자 작성 
-
-
-① CILAB(‘cilab.kr’이하 ‘cilab.kr) 은(는) 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
-
-
-▶ 개인정보 보호책임자
-성명 :황요섭
-직책 :대표
-직급 :대표
-연락처 :010-9774-0140, mmx001@cilab.kr, 055-785-0711
-※ 개인정보 보호 담당부서로 연결됩니다.
-
-▶ 개인정보 보호 담당부서
-부서명 :제품개발
-담당자 :이동혁
-연락처 :010-4599-8158, Donghyuk@cilab.kr, 055-785-0711
-② 정보주체께서는 CILAB(‘cilab.kr’이하 ‘cilab.kr) 의 서비스(또는 사업)을 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의하실 수 있습니다. CILAB(‘cilab.kr’이하 ‘cilab.kr) 은(는) 정보주체의 문의에 대해 지체 없이 답변 및 처리해드릴 것입니다.
-
-
-
-10. 개인정보 처리방침 변경 
-
-①이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.
-
-
-
-11. 개인정보의 안전성 확보 조치 ('cilab.kr')은(는) 개인정보보호법 제29조에 따라 다음과 같이 안전성 확보에 필요한 기술적/관리적 및 물리적 조치를 하고 있습니다.
-
-1. 정기적인 자체 감사 실시
-개인정보 취급 관련 안정성 확보를 위해 정기적(분기 1회)으로 자체 감사를 실시하고 있습니다.
-
-2. 개인정보 취급 직원의 최소화 및 교육
-개인정보를 취급하는 직원을 지정하고 담당자에 한정시켜 최소화 하여 개인정보를 관리하는 대책을 시행하고 있습니다.
-
-3. 내부관리계획의 수립 및 시행
-개인정보의 안전한 처리를 위하여 내부관리계획을 수립하고 시행하고 있습니다.
-
-4. 해킹 등에 대비한 기술적 대책
-&lt;CILAB&gt;('cilab.kr')은 해킹이나 컴퓨터 바이러스 등에 의한 개인정보 유출 및 훼손을 막기 위하여 보안프로그램을 설치하고 주기적인 갱신·점검을 하며 외부로부터 접근이 통제된 구역에 시스템을 설치하고 기술적/물리적으로 감시 및 차단하고 있습니다.
-
-5. 개인정보의 암호화
-이용자의 개인정보는 비밀번호는 암호화 되어 저장 및 관리되고 있어, 본인만이 알 수 있으며 중요한 데이터는 파일 및 전송 데이터를 암호화 하거나 파일 잠금 기능을 사용하는 등의 별도 보안기능을 사용하고 있습니다.
-
-6. 접속기록의 보관 및 위변조 방지
-개인정보처리시스템에 접속한 기록을 최소 6개월 이상 보관, 관리하고 있으며, 접속 기록이 위변조 및 도난, 분실되지 않도록 보안기능 사용하고 있습니다.
-
-7. 개인정보에 대한 접근 제한
-개인정보를 처리하는 데이터베이스시스템에 대한 접근권한의 부여,변경,말소를 통하여 개인정보에 대한 접근통제를 위하여 필요한 조치를 하고 있으며 침입차단시스템을 이용하여 외부로부터의 무단 접근을 통제하고 있습니다.
-
-8. 문서보안을 위한 잠금장치 사용
-개인정보가 포함된 서류, 보조저장매체 등을 잠금장치가 있는 안전한 장소에 보관하고 있습니다.
-
-9. 비인가자에 대한 출입 통제
-개인정보를 보관하고 있는 물리적 보관 장소를 별도로 두고 이에 대해 출입통제 절차를 수립, 운영하고 있습니다.</textarea>
-				<div class="agreeArea">
-					<div class="radio_chk">
-						<label class="fs14"><input type="radio" name="agree2" value="y"> Agree</label>
-						<label class="fs14 ml10"><input type="radio" name="agree2"
-							value="n"> Disagree</label>
-					</div>
-				</div>
-				<div class="mt20 ar">
-					<input type="submit" name="submit"
-						class="btn_submit btn type07 st2" value="Membership"
-						OnClick="return fregister_submit()"> <a href="/"
-						class="btn type07">Cancel</a>
-				</div>
-			</form>
-		</div>
-	</div>
+∘ Utilize security servers for transmitting encryption of personal information
+ ∘ Take measures of encryption for confidential information
+ ∘ Install and operate access control devices and equipments
+ ∘ Establish and execute internal management plan
+
+- Managerial measures
+
+∘ Appoint a staff responsible for protecting personal information
+∘ Provide education and training for staffs treating personal information
+∘ Establish and execute internal management plan
+∘ Establish rules for writing passwords which is hard to be estimated
+∘ Ensure safe storage of record of access to personal information processing system
+∘ Classify the level of authority to access to personal information processing system
+
+- Physical measures
+
+∘ Establish and operate the procedure for access control for the facilities for storing personal information
+∘ Store documents and backing storage containing personal information in safe places which have locking device
+
+
+(4) Staff responsible for managing personal information
+
+The staff of the Company responsible for managing personal information is as follows:
+
+• Name of staff responsible for managing personal information: Dong-Hyuk, LEE
+
+  Dept. : CiLab
+
+  Tel. : +82 055-785-0710
+                                       
+  Contact : donghyuk@cilab.kr
+
+</textarea>
+                <div class="agreeArea">
+                    <div class="radio_chk">
+                        <label class="fs14"><input type="radio" name="agree2" value="y"> Agree</label>
+                        <label class="fs14 ml10"><input type="radio" name="agree2"
+                            value="n"> Disagree</label>
+                    </div>
+                </div>
+                <div class="mt20 ar">
+                    <input type="submit" name="submit"
+                        class="btn_submit btn type07 st2" value="Membership"
+                        OnClick="return fregister_submit()"> <a href="/"
+                        class="btn type07">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
 
 </section>
 <script>
     function fregister_submit(f) {
-    	var agree1_val = $('input[name="agree1"]:checked').val();
-    	var agree2_val = $('input[name="agree2"]:checked').val();
-    	if(agree1_val == 'y' && agree2_val == 'y'){
-    		return true;
-    	}else if(agree1_val != 'y'){
-    		alert("You have to agree the terms of membership to sign up the membership.");							
-    		return false;
-    	}else if(agree2_val != 'y'){
-    		alert("You have to agree the privacy policy to sign up the membership.");
-    		return false;
-    	}
+        var agree1_val = $('input[name="agree1"]:checked').val();
+        var agree2_val = $('input[name="agree2"]:checked').val();
+        if(agree1_val == 'y' && agree2_val == 'y'){
+            return true;
+        }else if(agree1_val != 'y'){
+            alert("You have to agree the terms of membership to sign up the membership.");                          
+            return false;
+        }else if(agree2_val != 'y'){
+            alert("You have to agree the privacy policy to sign up the membership.");
+            return false;
+        }
         
     }
 </script>
 <?php
 include '../footer.php'?>
-
